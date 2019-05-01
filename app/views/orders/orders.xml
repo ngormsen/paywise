@@ -1,0 +1,12 @@
+<Page class="page">
+    <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+    <StackLayout id="form" orientation="vertical">
+        <Image src="~/images/logo.png" />
+
+        <Button class="btn btn-primary" text="Trinkgeld hinzufügen"
+            tap="onTap" />
+        <Button class="btn btn-primary" text="Zahlungsart wählen"
+            tap="onTap" />
+            
+    </StackLayout>
+</Page>
