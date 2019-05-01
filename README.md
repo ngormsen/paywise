@@ -2,8 +2,6 @@
 
 To start the emulator with this repository:
 
-https://github.com/ngormsen/paywise.git
-
-cd nativescript-realworld-example-app
+git clone https://github.com/ngormsen/paywise.git
 
 tns run android or tns run ios
