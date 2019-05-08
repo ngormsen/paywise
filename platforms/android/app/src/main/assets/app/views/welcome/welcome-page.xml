@@ -1,0 +1,13 @@
+<Page class="page">
+    <ActionBar title="Welcome" class="action-bar"></ActionBar>
+    <StackLayout id="form" orientation="vertical">
+        <Image src="~/images/logo.png" />
+
+        <Label class="h1" textWrap="true" text="Willkommen!"/>
+        <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
+
+
+        <Button class="btn btn-primary" text="Zur Startseite"
+            tap="onTap" />
+    </StackLayout>
+</Page>

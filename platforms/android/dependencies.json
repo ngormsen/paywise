@@ -1,0 +1,26 @@
+[
+    {
+        "name": "nativescript-barcodescanner",
+        "directory": "..\\..\\node_modules\\nativescript-barcodescanner"
+    },
+    {
+        "name": "nativescript-paypal-checkout",
+        "directory": "..\\..\\node_modules\\nativescript-paypal-checkout"
+    },
+    {
+        "name": "nativescript-theme-core",
+        "directory": "..\\..\\node_modules\\nativescript-theme-core"
+    },
+    {
+        "name": "nativescript-webview-interface",
+        "directory": "..\\..\\node_modules\\nativescript-webview-interface"
+    },
+    {
+        "name": "tns-core-modules",
+        "directory": "..\\..\\node_modules\\tns-core-modules"
+    },
+    {
+        "name": "tns-core-modules-widgets",
+        "directory": "..\\..\\node_modules\\tns-core-modules-widgets"
+    }
+]

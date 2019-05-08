@@ -1,0 +1,9 @@
+{
+    "nativescript-barcodescanner": true,
+    "nativescript-paypal-checkout": true,
+    "nativescript-theme-core": true,
+    "nativescript-webview-interface": true,
+    "tns-core-modules": true,
+    "tns-core-modules-widgets": true,
+    "tslib": true
+}

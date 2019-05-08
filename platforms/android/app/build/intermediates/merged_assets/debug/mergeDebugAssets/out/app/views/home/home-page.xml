@@ -1,0 +1,23 @@
+<Page class="page">
+    <ActionBar title="Login" class="action-bar"></ActionBar>
+
+     <FlexboxLayout>
+        <StackLayout id="form" orientation="vertical">
+            <Image src="~/images/logo.png" />
+
+            <TextField class="input input-border" id="email" text="email"
+                hint="Email Address" keyboardType="email" autocorrect="false"
+                autocapitalizationType="none" />
+            <TextField class="input input-border" secure="true" text="password"
+                hint="Password" />
+
+            <Button class="btn btn-primary" text="Login"
+                tap="onTap" />
+            <Button text="Sign Up"
+                class="link" />
+        </StackLayout>
+    </FlexboxLayout>
+</Page>
+
+  
+

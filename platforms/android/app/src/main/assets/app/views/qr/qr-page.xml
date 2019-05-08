@@ -1,0 +1,27 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:Barcode="nativescript-barcodescanner"  loaded="pageLoaded">
+    <ActionBar title="Barcode-Scanner" class="action-bar"></ActionBar>
+
+    <ScrollView>  
+    <StackLayout class="tab-content">
+        <Label class="h1" text="QR-Code-Scannen" />
+        <Label class="h3" text="Kamera Berechtigung" />
+        <Button class="btn btn-outline btn-rounded-sm" text="has permission?" tap="{{ doCheckHasCameraPermission }}" />
+        <Button class="btn btn-primary btn-rounded-sm" text="request permission" tap="{{ doRequestCameraPermission }}" />
+
+        <!--iOS>
+        <ContentView height="240" width="240">
+            <Barcode:BarcodeScannerView></Barcode:BarcodeScannerView>
+        </ContentView>
+        </iOS-->
+
+        <Label class="h3" text="Scanning (QR & EAN-13)" />
+            <Button class="btn btn-primary btn-rounded-sm" text="Kamera aktivieren" tap="{{ doScanWithBackCamera }}" />
+        <iOS>
+            <Button class="btn btn-primary btn-rounded-sm" text="back camera, with torch" tap="{{ doScanWithTorch }}" />
+        </iOS>
+    
+            <Button class="btn btn-primary btn-rounded-sm" text="continue" tap="onTap"/>
+    </StackLayout>
+    </ScrollView>
+
+</Page>
