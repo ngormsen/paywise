@@ -8,10 +8,10 @@
 
 
         <Button class="btn btn-primary" text="Paypal"
-            tap="onTap" />
+            tap="onPaypalTap" />
         <Button class="btn btn-primary" text="Google Pay"
-            tap="onTap" />
-        <Button class="btn btn-primary" text="N26" tap="onTap"/>
+            tap="onGoogleTap" />
+        <Button class="btn btn-primary" text="Apple Pay" tap="onAppleTap"/>
 
     </StackLayout>
 </Page>

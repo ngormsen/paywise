@@ -1,12 +1,21 @@
-<Page class="page">
+<Page class="page" loaded="pageLoaded">
+    
     <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+    
     <StackLayout id="form" orientation="vertical">
-        <Image src="~/images/logo.png" />
+        <ListView items="{{ myTitles }}" 
+          itemTap="onItemTap" 
+          loaded="{{ onListViewLoaded }}" 
+          separatorColor="orangered" rowHeight="50"
+          class="list-group" id="listView" row="2">
+            <ListView.itemTemplate>
+                <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+                <StackLayout class="list-group-item">
+                   <Label text="{{ title + ' ' + amount }}" textWrap="true" class="title" />
+               </StackLayout>
+             </ListView.itemTemplate>
+        </ListView>
+        <Button class="btn btn-primary" text="Zurück zur Übersicht" tap="onTap"/>
 
-        <Button class="btn btn-primary" text="Trinkgeld hinzufügen"
-            tap="onTap" />
-        <Button class="btn btn-primary" text="Zahlungsart wählen"
-            tap="onTap" />
-            
     </StackLayout>
 </Page>

@@ -9,9 +9,15 @@ function onNavigatingTo(args) {
 
 exports.onNavigatingTo = onNavigatingTo;
 
-function onTap() {
+function onPaypalTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/paypal/paypal-page");
 }
 
-exports.onTap = onTap;
+function onGoogleTap() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/google-page/google-page");
+}
+
+exports.onPaypalTap = onPaypalTap;
+exports.onGoogleTap = onGoogleTap;
