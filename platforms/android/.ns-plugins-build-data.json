@@ -3,9 +3,6 @@
 		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\nativescript-barcodescanner\\platforms\\android\\nativescript_barcodescanner.aar": "72cb95a6842d68b7f41d8e992000e770242494c5",
 		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\nativescript-barcodescanner\\platforms\\android\\barcodescanner-release-2.1.6.aar": "03bb6a9683c3ee6b620304f321ea48e5de071ae3"
 	},
-	"tns-core-modules-widgets": {
-		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\tns-core-modules-widgets\\platforms\\android\\widgets-release.aar": "ebf94ad9b17c904a5ccb0bc28d23b8552d0ac178"
-	},
 	"nativescript-paypal-checkout": {
 		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\nativescript-paypal-checkout\\platforms\\android\\include.gradle": "4dec8f8bdab85a569be2f517fdf9bfd23aa1cb7d",
 		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\nativescript-paypal-checkout\\platforms\\android\\nativescript_paypal_checkout.aar": "34346aa2e1d63448a14f980d5dc126897affa1a0",
@@ -13,5 +10,8 @@
 	},
 	"nativescript-webview-interface": {
 		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\nativescript-webview-interface\\platforms\\android\\WebViewInterface.jar": "76c82949e18be2e64a13fcf1587898f426846790"
+	},
+	"tns-core-modules-widgets": {
+		"C:\\Users\\Nils\\Documents\\paywise\\node_modules\\tns-core-modules-widgets\\platforms\\android\\widgets-release.aar": "ebf94ad9b17c904a5ccb0bc28d23b8552d0ac178"
 	}
 }

@@ -8,10 +8,10 @@
 
 
         <Button class="btn btn-primary" text="Bestellung aufgeben"
-            tap="onTap" />
+            tap="onOrdersTap" />
         <Button class="btn btn-primary" text="Meine Bestellungen anzeigen"
-            tap="onTap" />
-        <Button class="btn btn-primary" text="Bezahlen" tap="onTap"/>
+            tap="onOrdersTap" />
+        <Button class="btn btn-primary" text="Bezahlen" tap="onPaymentTap"/>
 
     </StackLayout>
 </Page>

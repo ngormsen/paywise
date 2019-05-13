@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu May 09 16:23:03 CEST 2019
+#Mon May 13 11:47:53 CEST 2019
 20.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 143.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 237.path=app/tns_modules/tns-core-modules/ui/layouts/absolute-layout/absolute-layout.js
@@ -585,7 +585,7 @@
 284.baseType=DIRECTORY
 292.set=ASSET
 440.baseType=DIRECTORY
-257.path=app/www/google.html
+257.path=images/big-datamatrix.png
 40.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 163.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 428.path=app/tns_modules/tns-core-modules/ui/styling/background-common.js
@@ -695,7 +695,7 @@
 241.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 506.path=app/views/payment/payment-page.js
 197.path=html-zh-rCN/license.html
-368.path=app/tns_modules/tns-core-modules/ui/scroll-view/package.json
+368.path=app/tns_modules/nativescript-paypal-checkout/package.json
 104.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 456.set=ASSET
 83.set=ASSET
@@ -1463,7 +1463,7 @@
 282.set=ASSET
 418.baseType=DIRECTORY
 446.baseType=DIRECTORY
-256.path=images/big-datamatrix.png
+256.path=app/www/google.html
 162.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 427.path=html-pt/index.html
 296.baseType=DIRECTORY
@@ -1922,7 +1922,7 @@ count=528
 242.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 507.path=app/tns_modules/tns-core-modules/ui/frame/fragment.transitions.js
 198.path=app/tns_modules/tns-core-modules/ui/layouts/dock-layout/dock-layout.js
-369.path=app/tns_modules/nativescript-paypal-checkout/package.json
+369.path=app/tns_modules/tns-core-modules/ui/scroll-view/package.json
 358.baseType=DIRECTORY
 105.base=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 466.set=ASSET

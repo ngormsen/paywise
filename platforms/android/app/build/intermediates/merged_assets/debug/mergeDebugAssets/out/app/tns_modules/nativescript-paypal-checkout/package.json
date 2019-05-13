@@ -1,27 +1,31 @@
 {
-  "_from": "nativescript-paypal-checkout",
+  "_args": [
+    [
+      "nativescript-paypal-checkout@2.1.1",
+      "C:\\Users\\Nils\\Documents\\paywise"
+    ]
+  ],
+  "_from": "nativescript-paypal-checkout@2.1.1",
   "_id": "nativescript-paypal-checkout@2.1.1",
   "_inBundle": false,
   "_integrity": "sha512-t/6KN8xFa94vfm6VNPaRDRR1dS8dO9FyM2WSDMYaxslEBKybX93zQrrjOr7pNwjdryczoBozjhwPRTOi3+EDjA==",
   "_location": "/nativescript-paypal-checkout",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "nativescript-paypal-checkout",
+    "raw": "nativescript-paypal-checkout@2.1.1",
     "name": "nativescript-paypal-checkout",
     "escapedName": "nativescript-paypal-checkout",
-    "rawSpec": "",
+    "rawSpec": "2.1.1",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "2.1.1"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/nativescript-paypal-checkout/-/nativescript-paypal-checkout-2.1.1.tgz",
-  "_shasum": "3b63afd8690947ddfb1206e1f6e9624b30367131",
-  "_spec": "nativescript-paypal-checkout",
+  "_spec": "2.1.1",
   "_where": "C:\\Users\\Nils\\Documents\\paywise",
   "author": {
     "name": "Alan Neri",
@@ -31,9 +35,7 @@
   "bugs": {
     "url": "https://github.com/NeriCodec/nativescript-paypal/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {},
-  "deprecated": false,
   "description": "PayPal checkout with Braintree - NativeScript plugin.",
   "devDependencies": {
     "prompt": "^1.0.0",

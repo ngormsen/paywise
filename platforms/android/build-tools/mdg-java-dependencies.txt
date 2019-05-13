@@ -49,3 +49,4 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencie
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fdb428740bb49d3858cfa6321ee940f0\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fdf9b19ebbd7bc576b31914425da9cef\WebViewInterface.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fefb843798d70c11a1bf2d79012fb1c3\classes.jar
+C:\Users\Nils\Documents\paywise\platforms\android\app\build\intermediates\javac\debug
