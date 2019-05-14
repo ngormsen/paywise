@@ -1,4 +1,4 @@
 <!--Creates the frame where the navigation is performed. 
 The defaultPage ist the default page of the application.-->
 
-<Frame id="topframe" defaultPage="views/orders/orders"></Frame> 
+<Frame id="topframe" defaultPage="views/home/home-page"></Frame> 
