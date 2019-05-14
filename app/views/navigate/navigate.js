@@ -20,3 +20,10 @@ function onOrdersTap() {
 }
 
 exports.onPaymentTap = onPaymentTap;
+
+exports.onRestAPITap = onRestAPITap;
+
+function onRestAPITap() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/rest-api/rest-api-page");  
+}

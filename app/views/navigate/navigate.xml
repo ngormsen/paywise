@@ -13,5 +13,7 @@
             tap="onOrdersTap" />
         <Button class="btn btn-primary" text="Bezahlen" tap="onPaymentTap"/>
 
+        <Button class="btn btn-primary" text="Test RestAPI" tap="onRestAPITap"/>
+
     </StackLayout>
 </Page>
