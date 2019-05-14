@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.test2",
+    "id": "ggjr.paywise.app",
     "tns-android": {
       "version": "5.3.1"
     },
