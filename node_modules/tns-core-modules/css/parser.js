@@ -491,8 +491,8 @@ function parseArgumentsList(text, start, argument) {
     if (closingBracket) {
         return { start: start, end: end, value: value };
     }
-    for (var index = 0; true; index++) {
-        var arg = argument(text, end, index);
+    for (var index_1 = 0; true; index_1++) {
+        var arg = argument(text, end, index_1);
         if (!arg) {
             return null;
         }

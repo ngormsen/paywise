@@ -42,7 +42,7 @@ var Cache = (function (_super) {
             this._mergeRequests(existingRequest, request);
         }
         else {
-            var queueRequest;
+            var queueRequest = void 0;
             for (var i = 0; i < this._queue.length; i++) {
                 if (this._queue[i].key === request.key) {
                     queueRequest = this._queue[i];
@@ -62,9 +62,9 @@ var Cache = (function (_super) {
     Cache.prototype._mergeRequests = function (existingRequest, newRequest) {
         if (existingRequest.completed) {
             if (newRequest.completed) {
-                var existingCompleted = existingRequest.completed;
+                var existingCompleted_1 = existingRequest.completed;
                 var stackCompleted = function (result, key) {
-                    existingCompleted(result, key);
+                    existingCompleted_1(result, key);
                     newRequest.completed(result, key);
                 };
                 existingRequest.completed = stackCompleted;
@@ -75,9 +75,9 @@ var Cache = (function (_super) {
         }
         if (existingRequest.error) {
             if (newRequest.error) {
-                var existingError = existingRequest.error;
+                var existingError_1 = existingRequest.error;
                 var stackError = function (key) {
-                    existingError(key);
+                    existingError_1(key);
                     newRequest.error(key);
                 };
                 existingRequest.error = stackError;

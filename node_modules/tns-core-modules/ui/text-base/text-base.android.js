@@ -25,7 +25,9 @@ function initializeTextTransformation() {
                 return createSpannableStringBuilder(formattedText);
             }
             else {
-                return getTransformedText(this.textBase.text, this.textBase.textTransform);
+                var text = this.textBase.text;
+                var stringValue = (text === null || text === undefined) ? "" : text.toString();
+                return getTransformedText(stringValue, this.textBase.textTransform);
             }
         };
         TextTransformationImpl.prototype.onFocusChanged = function (view, sourceText, focused, direction, previouslyFocusedRect) {
@@ -287,7 +289,7 @@ function getTransformedText(text, textTransform) {
 }
 exports.getTransformedText = getTransformedText;
 function createSpannableStringBuilder(formattedString) {
-    if (!formattedString) {
+    if (!formattedString || !formattedString.parent) {
         return null;
     }
     var ssb = new android.text.SpannableStringBuilder();

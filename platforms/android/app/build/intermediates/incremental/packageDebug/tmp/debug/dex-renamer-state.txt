@@ -1,4 +1,10 @@
-#Mon May 13 11:47:50 CEST 2019
-base.0=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Sun May 19 09:35:07 CEST 2019
+path.2=classes3.dex
+path.1=classes2.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.2=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.1=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.0=C\:\\Users\\Nils\\Documents\\paywise\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0

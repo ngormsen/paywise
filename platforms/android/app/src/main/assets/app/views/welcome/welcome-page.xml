@@ -1,13 +1,13 @@
-<Page class="page">
+<Page class="page" loaded="pageLoaded">
     <ActionBar title="Welcome" class="action-bar"></ActionBar>
     <StackLayout id="form" orientation="vertical">
         <Image src="~/images/logo.png" />
 
         <Label class="h1" textWrap="true" text="Willkommen!"/>
         <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
-
-
         <Button class="btn btn-primary" text="Zur Startseite"
             tap="onTap" />
+
+        <label class="h3" textWrap='true' text="Fetch data"/>
     </StackLayout>
 </Page>

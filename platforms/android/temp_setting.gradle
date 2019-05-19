@@ -1,6 +1,6 @@
 android {
             defaultConfig {
-                applicationId = "org.nativescript.test2"
+                applicationId = "com.goethe.paywise"
 
                 if (false) {
                     minSdkVersion = false

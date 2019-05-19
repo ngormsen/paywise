@@ -8,9 +8,15 @@ var background_1 = require("../../styling/background");
 var profiling_1 = require("../../../profiling");
 var frame_stack_1 = require("../../frame/frame-stack");
 var application_1 = require("../../../application");
+var platform_1 = require("../../../platform");
+var lazy_1 = require("../../../utils/lazy");
 __export(require("./view-common"));
 var DOMID = "_domId";
 var androidBackPressedEvent = "androidBackPressed";
+var shortAnimTime = 17694720;
+var statePressed = 16842919;
+var stateEnabled = 16842910;
+var sdkVersion = lazy_1.default(function () { return parseInt(platform_1.device.sdkVersion); });
 var modalMap = new Map();
 var TouchListener;
 var DialogFragment;
@@ -537,6 +543,60 @@ var View = (function (_super) {
     };
     View.prototype[style_properties_1.opacityProperty.setNative] = function (value) {
         this.nativeViewProtected.setAlpha(float(value));
+    };
+    View.prototype[style_properties_1.androidElevationProperty.getDefault] = function () {
+        if (sdkVersion() < 21) {
+            return 0;
+        }
+        return view_common_1.layout.toDeviceIndependentPixels(this.nativeViewProtected.getElevation());
+    };
+    View.prototype[style_properties_1.androidElevationProperty.setNative] = function (value) {
+        if (sdkVersion() < 21) {
+            return;
+        }
+        this.refreshStateListAnimator();
+    };
+    View.prototype[style_properties_1.androidDynamicElevationOffsetProperty.getDefault] = function () {
+        return 0;
+    };
+    View.prototype[style_properties_1.androidDynamicElevationOffsetProperty.setNative] = function (value) {
+        if (sdkVersion() < 21) {
+            return;
+        }
+        this.refreshStateListAnimator();
+    };
+    View.prototype.refreshStateListAnimator = function () {
+        var nativeView = this.nativeViewProtected;
+        var ObjectAnimator = android.animation.ObjectAnimator;
+        var AnimatorSet = android.animation.AnimatorSet;
+        var duration = nativeView.getContext().getResources().getInteger(shortAnimTime) / 2;
+        var elevation = view_common_1.layout.toDevicePixels(this.androidElevation || 0);
+        var z = view_common_1.layout.toDevicePixels(0);
+        var pressedZ = view_common_1.layout.toDevicePixels(this.androidDynamicElevationOffset || 0);
+        var pressedSet = new AnimatorSet();
+        pressedSet.playTogether(java.util.Arrays.asList([
+            ObjectAnimator.ofFloat(nativeView, "translationZ", [pressedZ])
+                .setDuration(duration),
+            ObjectAnimator.ofFloat(nativeView, "elevation", [elevation])
+                .setDuration(0),
+        ]));
+        var notPressedSet = new AnimatorSet();
+        notPressedSet.playTogether(java.util.Arrays.asList([
+            ObjectAnimator.ofFloat(nativeView, "translationZ", [z])
+                .setDuration(duration),
+            ObjectAnimator.ofFloat(nativeView, "elevation", [elevation])
+                .setDuration(0),
+        ]));
+        var defaultSet = new AnimatorSet();
+        defaultSet.playTogether(java.util.Arrays.asList([
+            ObjectAnimator.ofFloat(nativeView, "translationZ", [0]).setDuration(0),
+            ObjectAnimator.ofFloat(nativeView, "elevation", [0]).setDuration(0),
+        ]));
+        var stateListAnimator = new android.animation.StateListAnimator();
+        stateListAnimator.addState([statePressed, stateEnabled], pressedSet);
+        stateListAnimator.addState([stateEnabled], notPressedSet);
+        stateListAnimator.addState([], defaultSet);
+        nativeView.setStateListAnimator(stateListAnimator);
     };
     View.prototype[style_properties_1.horizontalAlignmentProperty.getDefault] = function () {
         return org.nativescript.widgets.ViewHelper.getHorizontalAlignment(this.nativeViewProtected);

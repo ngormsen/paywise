@@ -1,11 +1,15 @@
 [
     {
+        "name": "kinvey-nativescript-sdk",
+        "directory": "..\\..\\node_modules\\kinvey-nativescript-sdk"
+    },
+    {
         "name": "nativescript-barcodescanner",
         "directory": "..\\..\\node_modules\\nativescript-barcodescanner"
     },
     {
-        "name": "nativescript-paypal-checkout",
-        "directory": "..\\..\\node_modules\\nativescript-paypal-checkout"
+        "name": "nativescript-plugin-firebase",
+        "directory": "..\\..\\node_modules\\nativescript-plugin-firebase"
     },
     {
         "name": "nativescript-theme-core",
@@ -18,6 +22,14 @@
     {
         "name": "tns-core-modules",
         "directory": "..\\..\\node_modules\\tns-core-modules"
+    },
+    {
+        "name": "nativescript-sqlite",
+        "directory": "..\\..\\node_modules\\nativescript-sqlite"
+    },
+    {
+        "name": "nativescript-urlhandler",
+        "directory": "..\\..\\node_modules\\nativescript-urlhandler"
     },
     {
         "name": "tns-core-modules-widgets",

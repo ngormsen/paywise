@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "713092044799",
+    "firebase_url": "https://play-9c4d7.firebaseio.com",
+    "project_id": "play-9c4d7",
+    "storage_bucket": "play-9c4d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713092044799:android:06a81ff8318996a3",
+        "android_client_info": {
+          "package_name": "com.goethe.paywise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713092044799-cb7g0kkkh0bp2s006l0pe2p5momr8n7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw7WRXx1QdZTPYGcVptBwwiM48WhMzFzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713092044799-cb7g0kkkh0bp2s006l0pe2p5momr8n7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713092044799:android:6456245100337998",
+        "android_client_info": {
+          "package_name": "com.student.playwise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713092044799-cb7g0kkkh0bp2s006l0pe2p5momr8n7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw7WRXx1QdZTPYGcVptBwwiM48WhMzFzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713092044799-cb7g0kkkh0bp2s006l0pe2p5momr8n7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,36 +1,34 @@
 {
-  "_args": [
-    [
-      "tns-core-modules@5.3.1",
-      "C:\\Users\\Nils\\Documents\\paywise"
-    ]
-  ],
-  "_from": "tns-core-modules@5.3.1",
-  "_id": "tns-core-modules@5.3.1",
+  "_from": "tns-core-modules@latest",
+  "_id": "tns-core-modules@5.4.0",
   "_inBundle": false,
-  "_integrity": "sha512-b1zBFr+LTxnUe+jxMqyfjHYXKqbECT/YNqtxmJpbma9P+gqPTfFJ1eFWU+yVNQVDIQhZ/Wy8P56H6cm99nmYoQ==",
+  "_integrity": "sha512-3WI2yJm+ihjrRefOjEABSHFy19r3UCYfbhzlb0eJUDguLKIC+/ZGHIGp8GT4hAU6YbtA4AZfZlvrz5coGlv0ZA==",
   "_location": "/tns-core-modules",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "tag",
     "registry": true,
-    "raw": "tns-core-modules@5.3.1",
+    "raw": "tns-core-modules@latest",
     "name": "tns-core-modules",
     "escapedName": "tns-core-modules",
-    "rawSpec": "5.3.1",
+    "rawSpec": "latest",
     "saveSpec": null,
-    "fetchSpec": "5.3.1"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/tns-core-modules/-/tns-core-modules-5.3.1.tgz",
-  "_spec": "5.3.1",
+  "_resolved": "https://registry.npmjs.org/tns-core-modules/-/tns-core-modules-5.4.0.tgz",
+  "_shasum": "401a2998b561a1be6a9374048c05d4a556a8b55c",
+  "_spec": "tns-core-modules@latest",
   "_where": "C:\\Users\\Nils\\Documents\\paywise",
+  "bundleDependencies": false,
   "dependencies": {
-    "tns-core-modules-widgets": "5.3.0",
+    "tns-core-modules-widgets": "5.4.0",
     "tslib": "^1.9.3"
   },
+  "deprecated": false,
   "description": "Telerik NativeScript Core Modules",
   "devDependencies": {
     "@types/node": "~7.0.5",
@@ -57,13 +55,13 @@
   "name": "tns-core-modules",
   "nativescript": {
     "platforms": {
-      "ios": "4.0.0",
-      "android": "4.0.0"
+      "ios": "5.0.0",
+      "android": "5.0.0"
     }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NativeScript/NativeScript/commit/325f727accba8d6a193c925182d6b462dd4749f6"
+    "url": "https://github.com/NativeScript/NativeScript/commit/37b53c6030da5046ef31a2a3fe9bc79087b3bc69"
   },
   "scripts": {
     "version": "conventional-changelog -p angular -i ../CHANGELOG.md -s && git add ../CHANGELOG.md"
@@ -79,5 +77,5 @@
     }
   },
   "typings": "tns-core-modules.d.ts",
-  "version": "5.3.1"
+  "version": "5.4.0"
 }

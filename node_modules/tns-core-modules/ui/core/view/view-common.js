@@ -6,6 +6,7 @@ var view_base_1 = require("../view-base");
 var style_properties_1 = require("../../styling/style-properties");
 var gestures_1 = require("../../gestures");
 var builder_1 = require("../../builder");
+var platform_1 = require("../../../platform");
 var style_scope_1 = require("../../styling/style-scope");
 var linear_gradient_1 = require("../../styling/linear-gradient");
 exports.LinearGradient = linear_gradient_1.LinearGradient;
@@ -23,6 +24,15 @@ function CSSType(type) {
     };
 }
 exports.CSSType = CSSType;
+function viewMatchesModuleContext(view, context, types) {
+    return context &&
+        view._moduleName &&
+        context.type &&
+        types.some(function (type) { return type === context.type; }) &&
+        context.path &&
+        context.path.includes(view._moduleName);
+}
+exports.viewMatchesModuleContext = viewMatchesModuleContext;
 function PseudoClassHandler() {
     var pseudoClasses = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -102,26 +112,30 @@ var ViewCommon = (function (_super) {
         }
     };
     ViewCommon.prototype._onLivesync = function (context) {
-        exports._rootModalViews.forEach(function (v) { return v.closeModal(); });
-        exports._rootModalViews.length = 0;
-        if (context && context.path) {
-            return this.changeLocalStyles(context.path);
+        if (view_base_1.traceEnabled()) {
+            view_base_1.traceWrite(this + "._onLivesync(" + JSON.stringify(context) + ")", view_base_1.traceCategories.Livesync);
         }
-        return false;
-    };
-    ViewCommon.prototype.changeLocalStyles = function (contextPath) {
-        var _this = this;
-        if (!this.changeStyles(this, contextPath)) {
-            view_base_1.eachDescendant(this, function (child) {
-                _this.changeStyles(child, contextPath);
-                return true;
-            });
+        if (this._handleLivesync(context)) {
+            return true;
         }
-        return true;
+        var handled = false;
+        this.eachChildView(function (child) {
+            if (child._onLivesync(context)) {
+                handled = true;
+                return false;
+            }
+        });
+        return handled;
     };
-    ViewCommon.prototype.changeStyles = function (view, contextPath) {
-        if (view._moduleName && contextPath.includes(view._moduleName)) {
-            view.changeCssFile(contextPath);
+    ViewCommon.prototype._handleLivesync = function (context) {
+        if (view_base_1.traceEnabled()) {
+            view_base_1.traceWrite(this + "._handleLivesync(" + JSON.stringify(context) + ")", view_base_1.traceCategories.Livesync);
+        }
+        if (viewMatchesModuleContext(this, context, ["style"])) {
+            if (view_base_1.traceEnabled()) {
+                view_base_1.traceWrite("Change Handled: Changing CSS for " + this, view_base_1.traceCategories.Livesync);
+            }
+            this.changeCssFile(context.path);
             return true;
         }
         return false;
@@ -216,6 +230,14 @@ var ViewCommon = (function (_super) {
                 options = args[1];
             }
             else {
+                if (args[0] instanceof ViewCommon) {
+                    console.log("showModal(view: ViewBase, context: any, closeCallback: Function, fullscreen?: boolean, animated?: boolean, stretched?: boolean) " +
+                        "is deprecated. Use showModal(view: ViewBase, modalOptions: ShowModalOptions) instead.");
+                }
+                else {
+                    console.log("showModal(moduleName: string, context: any, closeCallback: Function, fullscreen?: boolean, animated?: boolean, stretched?: boolean) " +
+                        "is deprecated. Use showModal(moduleName: string, modalOptions: ShowModalOptions) instead.");
+                }
                 options = {
                     context: args[1],
                     closeCallback: args[2],
@@ -282,7 +304,12 @@ var ViewCommon = (function (_super) {
                         options.closeCallback.apply(undefined, originalArgs);
                     }
                 };
-                that._hideNativeModalView(parent, whenClosedCallback);
+                if (platform_1.isAndroid || (parent.viewController && parent.viewController.presentedViewController)) {
+                    that._hideNativeModalView(parent, whenClosedCallback);
+                }
+                else {
+                    whenClosedCallback();
+                }
             }
         };
     };
@@ -718,6 +745,26 @@ var ViewCommon = (function (_super) {
         },
         set: function (value) {
             this.style.scaleY = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ViewCommon.prototype, "androidElevation", {
+        get: function () {
+            return this.style.androidElevation;
+        },
+        set: function (value) {
+            this.style.androidElevation = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ViewCommon.prototype, "androidDynamicElevationOffset", {
+        get: function () {
+            return this.style.androidDynamicElevationOffset;
+        },
+        set: function (value) {
+            this.style.androidDynamicElevationOffset = value;
         },
         enumerable: true,
         configurable: true
