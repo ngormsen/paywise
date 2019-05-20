@@ -16,5 +16,11 @@ For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
 .btn {
-    font-size: 18;
+    font-size: 14;
 }
+
+.orderGrid {
+    font-size: 20;
+    margin: 10%;
+}
+

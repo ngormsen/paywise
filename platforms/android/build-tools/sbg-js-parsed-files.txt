@@ -228,4 +228,5 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\qr\qr-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\qr\qr-view-model.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\welcome\welcome-page.js
+C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\welcome\welcome-view-model.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\www\lib\nativescript-webview-interface.js

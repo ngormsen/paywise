@@ -54,6 +54,7 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencie
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\878b2ca1c44fdfec3ddff51a2f520cc7\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\8a4c5e62d19b9c039e18bd8871152214\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\8e44ddb97fd96b2676d61f04b81a327c\common-1.1.1.jar
+C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\93550fa476de6278404d49ad6b1fa489\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\94a238ac1af2b8a75e48e72fc759bb85\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\9519c29567ff85c419d91827df8ef848\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\96058908f98ba49aa5e16655742e2d43\grpc-protobuf-lite-1.16.1.jar
@@ -91,3 +92,4 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencie
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fca67f0f8d15f505bfd22d27efd1cabd\okhttp-2.7.5.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fcf948dcce2b8ae88e4145b6ebdebf86\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fdf9b19ebbd7bc576b31914425da9cef\WebViewInterface.jar
+C:\Users\Nils\Documents\paywise\platforms\android\app\build\intermediates\javac\debug

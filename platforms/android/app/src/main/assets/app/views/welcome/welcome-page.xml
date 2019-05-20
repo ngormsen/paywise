@@ -7,7 +7,7 @@
         <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
         <Button class="btn btn-primary" text="Zur Startseite"
             tap="onTap" />
-
+        <Button class="btn btn-primary" text="Upload Data" tap="onUploadTap"/>
         <label class="h3" textWrap='true' text="Fetch data"/>
     </StackLayout>
 </Page>

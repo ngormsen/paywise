@@ -4,12 +4,13 @@ You can use this file to perform app-level initialization, but the primary
 purpose of the file is to pass control to the app’s first module.
 */
 const application = require("tns-core-modules/application");
-
 var firebase = require("nativescript-plugin-firebase");
+const firebaseWebApi = require("nativescript-plugin-firebase/app");
 
 firebase.init({
   // Optionally pass in properties for database, authentication and cloud messaging,
   // see their respective docs.
+  persist: true
 }).then(
     function () {
       console.log("firebase.init done");
@@ -19,7 +20,8 @@ firebase.init({
     }
 );
 
-    
+
+
 
 application.run({ moduleName: "app-root" }); // Initializes first page
 
