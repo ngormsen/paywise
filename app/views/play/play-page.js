@@ -1,9 +1,16 @@
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
-var x
+const view = require("tns-core-modules/ui/core/view");
+var data = require("../shared/data.js");
+
+
 var page = null
 var orders = null
+// var x = data.value
+// data.value = 10;
+// console.log(data.value);
+
 function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();    
@@ -34,7 +41,6 @@ function onNavigatingTo(args) {
                 myItems.push({ name: orders.orders[i].name, prize: orders.orders[i].prize});
                 console.log({ prize: orders.orders[i].prize})
             }
-            
         }
         viewModel.set("myItems", myItems)
         
@@ -113,7 +119,7 @@ function onAddTap() {
             // (note that there's only 1 in this case anyway)
             limit: {
                 type: firebase.QueryLimitType.LAST,
-                value: 2
+                value: 10
             }
         }
     );
