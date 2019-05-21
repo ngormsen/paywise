@@ -8,7 +8,7 @@ const ObservableArray = require("tns-core-modules/data/observable-array").Observ
 const repeaterModule = require("tns-core-modules/ui/repeater");
 const Observable = require("tns-core-modules/data/observable").Observable;
 
-const createViewModel = require("./orders-view-model").createViewModel;
+// const createViewModel = require("./orders-view-model").createViewModel;
 
 // function onNavigatingTo(args) {
 //     const page = args.object;
@@ -22,9 +22,10 @@ const createViewModel = require("./orders-view-model").createViewModel;
 function pageLoaded(args) {
     var orders;
     var viewModel = new Observable();
-
     const page = args.object;
+
     const listView = page.getViewById("listView");
+
     // determines action in case of database change
     var onChildEvent = function (result) {
         // var dish = [];
@@ -54,6 +55,7 @@ function pageLoaded(args) {
         const viewModel = fromObject({
             orders: orders.orders
         });
+
         // const viewModel = fromObject({
         //     dish: dish,
         //     prize: prize
@@ -66,7 +68,6 @@ function pageLoaded(args) {
         // var orderArray = new ObservableArray([orders.orders]);
         // console.log(dish)
         page.bindingContext = viewModel;
-        
         listView.refresh();
 
     };
