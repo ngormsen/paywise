@@ -3,6 +3,8 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
+const Button = require("tns-core-modules/ui/button").Button;
+const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 
 var page = null
@@ -62,9 +64,42 @@ function onNavigatingTo(args) {
 }
 exports.onNavigatingTo = onNavigatingTo;
 
+function onTap(args) {
+    const button = args.object;
+    var id = button.id;
+    var key;
+    var name;
+    var prize;
+    // console.log(id)
+    // console.log(orders.orders)
+    // Receives the correct dish, prize and key on Tap event
+    Object.keys(orders.orders).forEach(function(key, idx) {
+        if(orders.orders[key].name == id){
+            console.log(key)
+            console.log(orders.orders[key].name)
+            console.log(orders.orders[key].prize)
+            
+        }
+
+     }); 
+
+    // firebase.getValue('/companies')
+    // .then(result => console.log(JSON.stringify(result)))
+    // .catch(error => console.log("Error: " + error));
+}
+exports.onTap = onTap;
+
+function onOrdersTap() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/orders/orders-page");
+}
+
+exports.onOrdersTap = onOrdersTap
+
+
+
+
 function onAddTap() {
-    // page.bindingContext.myItems.push({name:"PublishingPublishing"});
-    // console.log(page.bindingContext.myItems.)
     // firebase.setValue(
     //     '/tables/0/orders/10',
     //     {name:'jo', prize: 5}
@@ -87,7 +122,7 @@ function onAddTap() {
 
     firebase.query(
         onQueryEvent,
-        "/tables/0/orders/",
+        "/tables/0",
         {
             // set this to true if you want to check if the value exists or just want the event to fire once
             // default false, so it listens continuously.
@@ -102,7 +137,7 @@ function onAddTap() {
             // use either a 'range'
             // range: {
             //    type: firebase.QueryRangeType.EQUAL_TO,
-            //    value: "something"
+            //    value: '0'
             // },
             // .. or 'chain' ranges like this:
             // ranges: [
@@ -128,3 +163,4 @@ function onAddTap() {
 }
 
 exports.onAddTap = onAddTap;
+
