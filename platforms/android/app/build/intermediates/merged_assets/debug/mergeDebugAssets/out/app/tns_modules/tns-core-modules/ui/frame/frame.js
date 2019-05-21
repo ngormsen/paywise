@@ -55,7 +55,8 @@ function reloadPage(context) {
     var callbacks = activity[CALLBACKS];
     if (callbacks) {
         var rootView = callbacks.getRootView();
-        if (!rootView || !rootView._onLivesync(context)) {
+        var isAppRootModuleChanged = context && context.path && context.path.includes(application.getMainEntry().moduleName) && context.type !== "style";
+        if (isAppRootModuleChanged || !rootView || !rootView._onLivesync(context)) {
             callbacks.resetActivityContent(activity);
         }
     }
@@ -72,7 +73,6 @@ var Frame = (function (_super) {
         _this._containerViewId = -1;
         _this._tearDownPending = false;
         _this._attachedToWindow = false;
-        _this._isBack = true;
         _this._android = new AndroidFrame(_this);
         return _this;
     }
@@ -189,11 +189,11 @@ var Frame = (function (_super) {
         backstackEntry.navDepth = navDepth;
         return newFragment;
     };
-    Frame.prototype.setCurrent = function (entry, isBack) {
+    Frame.prototype.setCurrent = function (entry, navigationType) {
         var current = this._currentEntry;
         var currentEntryChanged = current !== entry;
         if (currentEntryChanged) {
-            this._updateBackstack(entry, isBack);
+            this._updateBackstack(entry, navigationType);
             if (this._tearDownPending) {
                 this._tearDownPending = false;
                 if (!entry.recreated) {
@@ -212,7 +212,7 @@ var Frame = (function (_super) {
                     current.recreated = false;
                 }
             }
-            _super.prototype.setCurrent.call(this, entry, isBack);
+            _super.prototype.setCurrent.call(this, entry, navigationType);
             this._processNavigationQueue(entry.resolvedPage);
         }
         else {
@@ -239,7 +239,10 @@ var Frame = (function (_super) {
     };
     Frame.prototype._navigateCore = function (newEntry) {
         _super.prototype._navigateCore.call(this, newEntry);
-        this._isBack = false;
+        var isReplace = this.navigationType === frame_common_1.NavigationType.replace;
+        if (!isReplace) {
+            this.navigationType = frame_common_1.NavigationType.forward;
+        }
         newEntry.frameId = this._android.frameId;
         var activity = this._android.activity;
         if (!activity) {
@@ -255,7 +258,9 @@ var Frame = (function (_super) {
         if (clearHistory) {
             navDepth = -1;
         }
-        navDepth++;
+        if (!isReplace) {
+            navDepth++;
+        }
         fragmentId++;
         var newFragmentTag = "fragment" + fragmentId + "[" + navDepth + "]";
         var newFragment = this.createFragment(newEntry, newFragmentTag);
@@ -270,7 +275,7 @@ var Frame = (function (_super) {
         transaction.commitAllowingStateLoss();
     };
     Frame.prototype._goBackCore = function (backstackEntry) {
-        this._isBack = true;
+        this.navigationType = frame_common_1.NavigationType.back;
         _super.prototype._goBackCore.call(this, backstackEntry);
         navDepth = backstackEntry.navDepth;
         var manager = this._getFragmentManager();
@@ -753,9 +758,15 @@ var ActivityCallbacksImplementation = (function () {
     ActivityCallbacksImplementation.prototype.getRootView = function () {
         return this._rootView;
     };
-    ActivityCallbacksImplementation.prototype.onCreate = function (activity, savedInstanceState, superFunc) {
+    ActivityCallbacksImplementation.prototype.onCreate = function (activity, savedInstanceState, intentOrSuperFunc, superFunc) {
         if (frame_common_1.traceEnabled()) {
             frame_common_1.traceWrite("Activity.onCreate(" + savedInstanceState + ")", frame_common_1.traceCategories.NativeLifecycle);
+        }
+        var intent = superFunc ? intentOrSuperFunc : undefined;
+        if (!superFunc) {
+            console.log("AndroidActivityCallbacks.onCreate(activity: any, savedInstanceState: any, superFunc: Function) " +
+                "is deprecated. Use AndroidActivityCallbacks.onCreate(activity: any, savedInstanceState: any, intent: any, superFunc: Function) instead.");
+            superFunc = intentOrSuperFunc;
         }
         var isRestart = !!savedInstanceState && exports.moduleLoaded;
         superFunc.call(activity, isRestart ? savedInstanceState : null);
@@ -764,6 +775,14 @@ var ActivityCallbacksImplementation = (function () {
             if (rootViewId !== -1 && activityRootViewsMap.has(rootViewId)) {
                 this._rootView = activityRootViewsMap.get(rootViewId).get();
             }
+        }
+        if (intent && intent.getAction()) {
+            application.android.notify({
+                eventName: application.AndroidApplication.activityNewIntentEvent,
+                object: application.android,
+                activity: activity,
+                intent: intent
+            });
         }
         this.setActivityContent(activity, savedInstanceState, true);
         exports.moduleLoaded = true;
@@ -776,6 +795,16 @@ var ActivityCallbacksImplementation = (function () {
             rootView._saveFragmentsState();
         }
         outState.putInt(ROOT_VIEW_ID_EXTRA, rootView._domId);
+    };
+    ActivityCallbacksImplementation.prototype.onNewIntent = function (activity, intent, superSetIntentFunc, superFunc) {
+        superFunc.call(activity, intent);
+        superSetIntentFunc.call(activity, intent);
+        application.android.notify({
+            eventName: application.AndroidApplication.activityNewIntentEvent,
+            object: application.android,
+            activity: activity,
+            intent: intent
+        });
     };
     ActivityCallbacksImplementation.prototype.onStart = function (activity, superFunc) {
         superFunc.call(activity);
@@ -952,6 +981,9 @@ var ActivityCallbacksImplementation = (function () {
     __decorate([
         profiling_1.profile
     ], ActivityCallbacksImplementation.prototype, "onSaveInstanceState", null);
+    __decorate([
+        profiling_1.profile
+    ], ActivityCallbacksImplementation.prototype, "onNewIntent", null);
     __decorate([
         profiling_1.profile
     ], ActivityCallbacksImplementation.prototype, "onStart", null);

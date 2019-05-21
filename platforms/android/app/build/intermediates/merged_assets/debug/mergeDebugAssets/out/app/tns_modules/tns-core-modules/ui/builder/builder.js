@@ -52,7 +52,9 @@ exports.load = load;
 function loadPage(moduleNamePath, fileName, context) {
     var componentModule = loadInternal(fileName, context, moduleNamePath);
     var componentView = componentModule && componentModule.component;
-    markAsModuleRoot(componentView, moduleNamePath);
+    if (componentView && moduleNamePath) {
+        markAsModuleRoot(componentView, moduleNamePath);
+    }
     return componentView;
 }
 exports.loadPage = loadPage;
@@ -120,11 +122,14 @@ function loadInternal(fileName, context, moduleNamePath) {
     }
     else if (fileName && file_system_1.File.exists(fileName)) {
         var file = file_system_1.File.fromPath(fileName);
-        var text_1 = file.readTextSync(function (error) { throw new Error("Error loading file " + fileName + " :" + error.message); });
-        componentModule = parseInternal(text_1, context, fileName, moduleNamePath);
+        var text = file.readTextSync(function (error) { throw new Error("Error loading file " + fileName + " :" + error.message); });
+        componentModule = parseInternal(text, context, fileName, moduleNamePath);
     }
     if (componentModule && componentModule.component) {
         componentModule.component.exports = context;
+    }
+    if (!componentModule) {
+        throw new Error("Failed to load component from module: " + filePathRelativeToApp + " or file: " + fileName);
     }
     return componentModule;
 }
@@ -486,29 +491,29 @@ var xml2ui;
             var complexProperty = this.complexProperties[this.complexProperties.length - 1];
             if (args.eventType === xml.ParserEventType.StartElement) {
                 if (ComponentParser.isComplexProperty(args.elementName)) {
-                    var name = ComponentParser.getComplexPropertyName(args.elementName);
+                    var name_2 = ComponentParser.getComplexPropertyName(args.elementName);
                     var complexProperty_1 = {
                         parent: parent,
-                        name: name,
+                        name: name_2,
                         items: []
                     };
                     this.complexProperties.push(complexProperty_1);
-                    if (ComponentParser.isKnownTemplate(name, parent.exports)) {
+                    if (ComponentParser.isKnownTemplate(name_2, parent.exports)) {
                         return new TemplateParser(this, {
                             context: (parent ? getExports(parent.component) : null) || this.context,
                             parent: parent,
-                            name: name,
+                            name: name_2,
                             elementName: args.elementName,
                             templateItems: [],
                             errorFormat: this.error,
                             sourceTracker: this.sourceTracker
                         });
                     }
-                    if (ComponentParser.isKnownMultiTemplate(name, parent.exports)) {
+                    if (ComponentParser.isKnownMultiTemplate(name_2, parent.exports)) {
                         var parser = new MultiTemplateParser(this, {
                             context: (parent ? getExports(parent.component) : null) || this.context,
                             parent: parent,
-                            name: name,
+                            name: name_2,
                             elementName: args.elementName,
                             templateItems: [],
                             errorFormat: this.error,

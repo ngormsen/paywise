@@ -23,6 +23,7 @@
   },
   "_requiredBy": [
     "/chrome-trace-event",
+    "/kinvey-nativescript-sdk/rxjs",
     "/rxjs",
     "/tns-core-modules"
   ],

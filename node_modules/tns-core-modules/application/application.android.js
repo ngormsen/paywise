@@ -14,6 +14,7 @@ var ActivityStopped = "activityStopped";
 var SaveActivityState = "saveActivityState";
 var ActivityResult = "activityResult";
 var ActivityBackPressed = "activityBackPressed";
+var ActivityNewIntent = "activityNewIntent";
 var ActivityRequestPermissions = "activityRequestPermissions";
 var AndroidApplication = (function (_super) {
     __extends(AndroidApplication, _super);
@@ -85,6 +86,7 @@ var AndroidApplication = (function (_super) {
     AndroidApplication.saveActivityStateEvent = SaveActivityState;
     AndroidApplication.activityResultEvent = ActivityResult;
     AndroidApplication.activityBackPressedEvent = ActivityBackPressed;
+    AndroidApplication.activityNewIntentEvent = ActivityNewIntent;
     AndroidApplication.activityRequestPermissionsEvent = ActivityRequestPermissions;
     return AndroidApplication;
 }(application_common_1.Observable));

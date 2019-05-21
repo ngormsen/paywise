@@ -3,9 +3,13 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 var button_common_1 = require("./button-common");
+var style_properties_1 = require("../styling/style-properties");
 var profiling_1 = require("../../profiling");
 var gestures_1 = require("../gestures");
+var platform_1 = require("../../platform");
+var lazy_1 = require("../../utils/lazy");
 __export(require("./button-common"));
+var sdkVersion = lazy_1.default(function () { return parseInt(platform_1.device.sdkVersion); });
 var ClickListener;
 var APILEVEL;
 var AndroidButton;
@@ -75,6 +79,7 @@ var Button = (function (_super) {
             this._highlightedHandler = this._highlightedHandler || (function (args) {
                 switch (args.action) {
                     case gestures_1.TouchAction.up:
+                    case gestures_1.TouchAction.cancel:
                         _this._goToVisualState("normal");
                         break;
                     case gestures_1.TouchAction.down:
@@ -121,6 +126,18 @@ var Button = (function (_super) {
             nativeView.setStateListAnimator(null);
         }
         org.nativescript.widgets.ViewHelper.setZIndex(this.nativeViewProtected, value);
+    };
+    Button.prototype[style_properties_1.androidElevationProperty.getDefault] = function () {
+        if (sdkVersion() < 21) {
+            return 0;
+        }
+        return 2;
+    };
+    Button.prototype[style_properties_1.androidDynamicElevationOffsetProperty.getDefault] = function () {
+        if (sdkVersion() < 21) {
+            return 0;
+        }
+        return 4;
     };
     Button.prototype[button_common_1.textAlignmentProperty.setNative] = function (value) {
         var newValue = value === "initial" ? "center" : value;

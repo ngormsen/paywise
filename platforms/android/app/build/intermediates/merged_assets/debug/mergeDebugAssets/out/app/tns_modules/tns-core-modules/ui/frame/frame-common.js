@@ -7,7 +7,14 @@ var view_1 = require("../core/view");
 var builder_1 = require("../builder");
 var profiling_1 = require("../../profiling");
 var frame_stack_1 = require("./frame-stack");
+var utils_1 = require("../../utils/utils");
 __export(require("../core/view"));
+var NavigationType;
+(function (NavigationType) {
+    NavigationType[NavigationType["back"] = 0] = "back";
+    NavigationType[NavigationType["forward"] = 1] = "forward";
+    NavigationType[NavigationType["replace"] = 2] = "replace";
+})(NavigationType = exports.NavigationType || (exports.NavigationType = {}));
 function buildEntryFromArgs(arg) {
     var entry;
     if (typeof arg === "string") {
@@ -134,21 +141,24 @@ var FrameBase = (function (_super) {
     FrameBase.prototype.isCurrent = function (entry) {
         return this._currentEntry === entry;
     };
-    FrameBase.prototype.setCurrent = function (entry, isBack) {
+    FrameBase.prototype.setCurrent = function (entry, navigationType) {
         var newPage = entry.resolvedPage;
         if (!newPage.frame) {
             this._addView(newPage);
             newPage._frame = this;
         }
         this._currentEntry = entry;
+        var isBack = navigationType === NavigationType.back;
         if (isBack) {
             this._pushInFrameStack();
         }
         newPage.onNavigatedTo(isBack);
         this._executingEntry = null;
     };
-    FrameBase.prototype._updateBackstack = function (entry, isBack) {
+    FrameBase.prototype._updateBackstack = function (entry, navigationType) {
         var _this = this;
+        var isBack = navigationType === NavigationType.back;
+        var isReplace = navigationType === NavigationType.replace;
         this.raiseCurrentPageNavigatedEvents(isBack);
         var current = this._currentEntry;
         if (isBack) {
@@ -156,7 +166,7 @@ var FrameBase = (function (_super) {
             this._backStack.splice(index_2 + 1).forEach(function (e) { return _this._removeEntry(e); });
             this._backStack.pop();
         }
-        else {
+        else if (!isReplace) {
             if (entry.entry.clearHistory) {
                 this._backStack.forEach(function (e) { return _this._removeEntry(e); });
                 this._backStack.length = 0;
@@ -439,28 +449,65 @@ var FrameBase = (function (_super) {
         return result;
     };
     FrameBase.prototype._onLivesync = function (context) {
-        if (!_super.prototype._onLivesync.call(this, context)) {
-            if (!this._currentEntry || !this._currentEntry.entry) {
+        if (_super.prototype._onLivesync.call(this, context)) {
+            return true;
+        }
+        if (!context) {
+            return this.legacyLivesync();
+        }
+        return false;
+    };
+    FrameBase.prototype._handleLivesync = function (context) {
+        if (_super.prototype._handleLivesync.call(this, context)) {
+            return true;
+        }
+        if (this.currentPage &&
+            view_common_1.viewMatchesModuleContext(this.currentPage, context, ["markup", "script"])) {
+            view_1.traceWrite("Change Handled: Replacing page " + context.path, view_1.traceCategories.Livesync);
+            this.replacePage(context);
+            return true;
+        }
+        return false;
+    };
+    FrameBase.prototype.legacyLivesync = function () {
+        if (view_1.traceEnabled()) {
+            view_1.traceWrite(this + "._onLivesync()", view_1.traceCategories.Livesync);
+        }
+        if (!this._currentEntry || !this._currentEntry.entry) {
+            return false;
+        }
+        var currentEntry = this._currentEntry.entry;
+        var newEntry = {
+            animated: false,
+            clearHistory: true,
+            context: currentEntry.context,
+            create: currentEntry.create,
+            moduleName: currentEntry.moduleName,
+            backstackVisible: currentEntry.backstackVisible
+        };
+        if (newEntry.create) {
+            var page = newEntry.create();
+            if (page === this.currentPage) {
                 return false;
             }
-            var currentEntry = this._currentEntry.entry;
-            var newEntry = {
-                animated: false,
-                clearHistory: true,
-                context: currentEntry.context,
-                create: currentEntry.create,
-                moduleName: currentEntry.moduleName,
-                backstackVisible: currentEntry.backstackVisible
-            };
-            if (newEntry.create) {
-                var page = newEntry.create();
-                if (page === this.currentPage) {
-                    return false;
-                }
-            }
-            this.navigate(newEntry);
         }
+        this.navigate(newEntry);
         return true;
+    };
+    FrameBase.prototype.replacePage = function (context) {
+        this.navigationType = NavigationType.replace;
+        var currentBackstackEntry = this._currentEntry;
+        var contextModuleName = utils_1.getModuleName(context.path);
+        var newPage = builder_1.createViewFromEntry({ moduleName: contextModuleName });
+        var newBackstackEntry = {
+            entry: currentBackstackEntry.entry,
+            resolvedPage: newPage,
+            navDepth: currentBackstackEntry.navDepth,
+            fragmentTag: currentBackstackEntry.fragmentTag,
+            frameId: currentBackstackEntry.frameId
+        };
+        var navContext = { entry: newBackstackEntry, isBackNavigation: false };
+        this.performNavigation(navContext);
     };
     var FrameBase_1;
     FrameBase.androidOptionSelectedEvent = "optionSelected";

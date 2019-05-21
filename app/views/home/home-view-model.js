@@ -9,3 +9,9 @@ function HomeViewModel() {
 }
 
 module.exports = HomeViewModel;
+
+
+
+function createViewModel() {
+    var viewModel = new Observable();
+  };

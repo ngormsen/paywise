@@ -129,7 +129,7 @@ var CSSSource = (function () {
                 if (!this._source && this._file) {
                     this.load();
                 }
-                if (this._source) {
+                if (this._source && this.source !== "[object Object]") {
                     this.parseCSSAst();
                 }
             }

@@ -16,7 +16,8 @@ function onPaymentTap() {
 
 function onOrdersTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/payment/payment-page");
+    frame.navigate("views/orders/orders");
 }
 
 exports.onPaymentTap = onPaymentTap;
+exports.onOrdersTap = onOrdersTap

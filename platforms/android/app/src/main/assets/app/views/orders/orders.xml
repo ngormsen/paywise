@@ -3,19 +3,23 @@
     <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
     
     <StackLayout id="form" orientation="vertical">
-        <ListView items="{{ myTitles }}" 
-          itemTap="onItemTap" 
-          loaded="{{ onListViewLoaded }}" 
-          separatorColor="orangered" rowHeight="50"
-          class="list-group" id="listView" row="2">
-            <ListView.itemTemplate>
-                <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
-                <StackLayout class="list-group-item">
-                   <Label text="{{ title + ' ' + amount }}" textWrap="true" class="title" />
-               </StackLayout>
-             </ListView.itemTemplate>
-        </ListView>
+        <Button class="btn btn-primary" text='Rechnung anfordern' tap="onOrderTap" />
         <Button class="btn btn-primary" text="Zurück zur Übersicht" tap="onTap"/>
+        <GridLayout rows="*" >
+          <ListView items="{{ orders }}" id="listView" loaded="{{ onListViewLoaded }}" >
+            <!--Describing how the element will look like-->
+              <ListView.itemTemplate>
+                <GridLayout columns="200, auto, auto">
+                    <Label text="{{ name }}" class="orderGrid" col="0"/>
+                    <Label text="{{ prize }}" class="orderGrid" col="1"/>
+                    <Button text="Pick" class="btn btn-primary" col="2"/>
+                    <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
+                    <!-- <TextField text="{{ $parents['ListView'].prize, $parents['ListView'].prize }}" col="1"/> -->
+                </GridLayout>
+              </ListView.itemTemplate>
+          </ListView>
+        </GridLayout>
 
     </StackLayout>
 </Page>
+

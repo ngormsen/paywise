@@ -56,21 +56,17 @@ function livesync(rootView, context) {
     events.notify({ eventName: "livesync", object: app });
     var liveSyncCore = global.__onLiveSyncCore;
     var reapplyAppStyles = false;
-    var reapplyLocalStyles = false;
     if (context && context.path) {
-        var extensions = ["css", "scss"];
+        var styleExtensions = ["css", "scss"];
         var appStylesFullFileName = getCssFileName();
         var appStylesFileName_1 = appStylesFullFileName.substring(0, appStylesFullFileName.lastIndexOf(".") + 1);
-        reapplyAppStyles = extensions.some(function (ext) { return context.path === appStylesFileName_1.concat(ext); });
-        if (!reapplyAppStyles) {
-            reapplyLocalStyles = extensions.some(function (ext) { return context.path.endsWith(ext); });
-        }
+        reapplyAppStyles = styleExtensions.some(function (ext) { return context.path === appStylesFileName_1.concat(ext); });
     }
     if (reapplyAppStyles && rootView) {
         rootView._onCssStateChange();
     }
     else if (liveSyncCore) {
-        reapplyLocalStyles ? liveSyncCore(context) : liveSyncCore();
+        liveSyncCore(context);
     }
 }
 exports.livesync = livesync;

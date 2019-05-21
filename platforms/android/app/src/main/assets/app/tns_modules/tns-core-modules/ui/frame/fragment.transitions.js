@@ -155,19 +155,19 @@ exports._getAnimatedEntries = _getAnimatedEntries;
 function _updateTransitions(entry) {
     var fragment = entry.fragment;
     var enterTransitionListener = entry.enterTransitionListener;
-    if (enterTransitionListener) {
+    if (enterTransitionListener && fragment) {
         fragment.setEnterTransition(enterTransitionListener.transition);
     }
     var exitTransitionListener = entry.exitTransitionListener;
-    if (exitTransitionListener) {
+    if (exitTransitionListener && fragment) {
         fragment.setExitTransition(exitTransitionListener.transition);
     }
     var reenterTransitionListener = entry.reenterTransitionListener;
-    if (reenterTransitionListener) {
+    if (reenterTransitionListener && fragment) {
         fragment.setReenterTransition(reenterTransitionListener.transition);
     }
     var returnTransitionListener = entry.returnTransitionListener;
-    if (returnTransitionListener) {
+    if (returnTransitionListener && fragment) {
         fragment.setReturnTransition(returnTransitionListener.transition);
     }
 }
@@ -564,8 +564,8 @@ function transitionOrAnimationCompleted(entry) {
         var current_1 = frame_1.isCurrent(entry) ? previousCompletedAnimationEntry : entry;
         current_1 = current_1 || entry;
         if (current_1) {
-            var isBack_1 = frame_1._isBack;
-            setTimeout(function () { return frame_1.setCurrent(current_1, isBack_1); });
+            var navType_1 = frame_1.navigationType;
+            setTimeout(function () { return frame_1.setCurrent(current_1, navType_1); });
         }
     }
     else {
