@@ -221,12 +221,15 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\google-page\google-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\home\home-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\home\home-view-model.js
+C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\myorders\myorders-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\navigate\navigate.js
-C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\orders\orders.js
+C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\orders\orders-page.js
+C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\orders\orders-view-model.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\payment\payment-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\paypal\paypal-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\qr\qr-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\qr\qr-view-model.js
+C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\shared\data.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\welcome\welcome-page.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\views\welcome\welcome-view-model.js
 C:\Users\Nils\Documents\paywise\platforms\android\app\src\main\assets\app\www\lib\nativescript-webview-interface.js

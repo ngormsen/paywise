@@ -45,92 +45,12 @@ exports.onTap = onTap;
 
 function onUploadTap() {
     console.log("upload")
-    firebase.init({
-        onAuthStateChanged: function(data) { // optional but useful to immediately re-logon the user when he re-visits your app
-          console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
-          if (data.loggedIn) {
-            console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-          }
-        }
-      });
-
-    firebase.getCurrentUser()
-    .then(user => console.log("User uid: " + user.uid))
-    .catch(error => console.log("Trouble in paradise: " + error));
-
     
-
-    // firebase.keepInSync(
-    //     "/play-9c4d7", // which path in your Firebase needs to be kept in sync?
-    //     true      // set to false to disable this feature again
-    //   ).then(
-    //     function () {
-    //       console.log("firebase.keepInSync is ON for /test");
-    //     },
-    //     function (error) {
-    //       console.log("firebase.keepInSync error: " + error);
-    //     }
-    //   );
-    
-    // firebase.getValue('/playSammlung/F7YdVm9SR3i2nHz90GbW')
-    // .then(console.log(results))
-    // .catch(error => console.log("Error: " + error));
-    // var onChildEvent = function(result) {
-    //     console.log("Event type: " + result.type);
-    //     console.log("Key: " + result.key);
-    //     console.log("Value: " + JSON.stringify(result.value));
-    //   };
-    
-    //   // listen to changes in the /users path
-    // firebase.addChildEventListener(onChildEvent, "/play-9c4d7").then(
-    // function(listenerWrapper) {
-    //     var path = listenerWrapper.path;
-    //     var listeners = listenerWrapper.listeners; // an Array of listeners added
-    //     // you can store the wrapper somewhere to later call 'removeEventListeners'
-    // }
-    // );
-    
-    firebase.push(
-        '/test',
-        {
-          'first': 'Eddy',
-          'last': 'Verbruggen',
-          'birthYear': 1977,
-          'isMale': true,
-          'address': {
-            'street': 'foostreet',
-            'number': 123
-          }
-        }
-    ).then(
-        function (result) {
-          console.log("created key: " + result.key);
-        }
-    );
-  
+    firebase.getValue('/test')
+    .then(result => console.log(result.value['-LfKN_YZHY_g-4jqa8QK']))
+    .catch(error => console.log("Error: " + error));
+     
 }
 
 exports.onUploadTap = onUploadTap;
 
-
-
-// function pageLoaded(args) {
-//     //var express = require('node_modules/express');
-//     // var app = express();
-//     console.log("hello worldd")
-
-    
-//     // app.get('/', function (req, res) {
-//     //     res.send('Hello World!');
-//     //   });
-    
-//     // app.listen(3000, function () {
-//     //     console.log('Example app listening on port 3000!');
-//     //   });
-      
-//     // Get the event sender
-//     var page = args.object;
-//     page.bindingContext = '';
-// }
-
-// exports.pageLoaded = pageLoaded
