@@ -13,11 +13,18 @@ function onPaymentTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/payment/payment-page");
 }
+exports.onPaymentTap = onPaymentTap;
 
 function onOrdersTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/orders/orders");
+    frame.navigate("views/orders/orders-page");
 }
 
-exports.onPaymentTap = onPaymentTap;
 exports.onOrdersTap = onOrdersTap
+
+function onMyOrdersTap() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/myorders/myorders-page");
+}
+
+exports.onMyOrdersTap = onMyOrdersTap

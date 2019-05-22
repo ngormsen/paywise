@@ -7,10 +7,10 @@
         <Label class="h3" textWrap="true" text="Eingecheckt am Tisch 11 -- 20 EURO"/>
 
 
-        <Button class="btn btn-primary" text="Bestellung aufgeben"
+        <Button class="btn btn-primary" text="Bestellungen auswählen"
             tap="onOrdersTap" />
         <Button class="btn btn-primary" text="Meine Bestellungen anzeigen"
-            tap="onOrdersTap" />
+            tap="onMyOrdersTap" />
         <Button class="btn btn-primary" text="Bezahlen" tap="onPaymentTap"/>
 
     </StackLayout>

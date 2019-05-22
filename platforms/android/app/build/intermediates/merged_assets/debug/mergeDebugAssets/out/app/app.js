@@ -7,7 +7,7 @@ const application = require("tns-core-modules/application");
 var firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
 
-var db = firebase.init({
+firebase.init({
   // Optionally pass in properties for database, authentication and cloud messaging,
   // see their respective docs.
   persist: true
@@ -19,6 +19,8 @@ var db = firebase.init({
       console.log("firebase.init error: " + error);
     }
 );
+
+
 
 
 application.run({ moduleName: "app-root" }); // Initializes first page
