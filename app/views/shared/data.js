@@ -1,1 +1,3 @@
-var val = "JA!"
+module.exports = {
+    value: 11.42
+  };
