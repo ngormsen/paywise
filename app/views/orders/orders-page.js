@@ -37,12 +37,17 @@ function onNavigatingTo(args) {
             []
         );
         // update the observable array in case of new order
-        for (var i = 0; i <= 10; i++) {
-            if(orders.orders[i] != null){
-                myItems.push({ name: orders.orders[i].name, prize: orders.orders[i].prize});
-                console.log({ prize: orders.orders[i].prize})
+        try{
+            for (var i = 0; i <= 30; i++) {
+                if(orders.orders[i] != null){
+                    myItems.push({ name: orders.orders[i].name, prize: orders.orders[i].prize});
+                    console.log({ prize: orders.orders[i].prize})
+                }
             }
+        }catch{
+            console.log("No data available.")
         }
+
         viewModel.set("myItems", myItems)
         
     };
@@ -63,24 +68,35 @@ function onNavigatingTo(args) {
 }
 exports.onNavigatingTo = onNavigatingTo;
 
+// Picks an item for own order list
 function onTap(args) {
     const button = args.object;
     var id = button.id;
-    var key;
-    var name;
-    var prize;
+    var buttonKey;
+    var buttonName;
+    var buttonPrize;
     // console.log(id)
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
     Object.keys(orders.orders).forEach(function(key, idx) {
-        if(orders.orders[key].name == id){
-            console.log(key)
-            console.log(orders.orders[key].name)
-            console.log(orders.orders[key].prize)
-            
+        if(orders.orders[key] != null){
+            if(orders.orders[key].name == id){
+                console.log(key)
+                buttonKey = key;
+                console.log(orders.orders[key].name)
+                buttonName = orders.orders[key].name;
+                console.log(orders.orders[key].prize)
+                buttonPrize = orders.orders[key].prize
+                
+            }
         }
-
-     }); 
+    }); 
+    firebase.setValue(
+        `/tables/0/guest/${data.guest}/myorders/${buttonKey}`,
+        {name: buttonName, prize: buttonPrize}
+    );
+    console.log(`/tables/0/orders/${buttonKey}`)
+    firebase.remove(`/tables/0/orders/${buttonKey}`);
 
     // firebase.getValue('/companies')
     // .then(result => console.log(JSON.stringify(result)))
@@ -88,6 +104,7 @@ function onTap(args) {
 }
 exports.onTap = onTap;
 
+// Navigates to guest order page
 function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
@@ -95,6 +112,13 @@ function onMyOrdersTap() {
 
 exports.onMyOrdersTap = onMyOrdersTap
 
+function testTap(){
+    firebase.setValue(
+        `/tables/0/hello/world/`,
+        {name: "buttonName", prize: "buttonPrize"}
+    );
+}
+exports.testTap = testTap
 
 function onAddTap() {
     // firebase.setValue(

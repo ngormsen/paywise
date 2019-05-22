@@ -1,6 +1,7 @@
 <Page class="page"
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
+    <ActionBar title="Bestellungen" class="action-bar"></ActionBar>
     <StackLayout id="form" orientation="vertical">
         <Button class="btn btn-primary" text="Meine Bestellungen anzeigen"
         tap="onMyOrdersTap" />
@@ -10,7 +11,7 @@
                 <!--Describing how the element will look like-->
                 <ListView.itemTemplate>
                     <GridLayout columns="100, 100, auto">
-                        <Button text="Pick item" id="{{ name }}" tap="onAddTap" col="0"/>
+                        <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0"/>
                         <Label text="{{ prize }}" class="h2" col="1"/>
                         <Label text="{{ name }}" class="h2" col="2"/>
 

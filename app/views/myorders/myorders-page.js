@@ -5,7 +5,7 @@ const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
 const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-
+var x
 
 var page = null
 var orders = null
@@ -25,27 +25,32 @@ function onNavigatingTo(args) {
         // var prize = [];
         // var dishPrize = []
         //get database values
-        console.log("Event type: " + result.type);
-        console.log("Key: " + result.key);
-        console.log("Value: " + JSON.stringify(result.value));
+        // console.log("Event type: " + result.type);
+        // console.log("Key: " + result.key);
+        // console.log("Value: " + JSON.stringify(result.value));
         orders = result.value; 
-        console.log("the orders", orders.orders)  
+        guestOrders = orders.guest[data.guest].myorders
+        console.log("the orders", orders)
+        console.log("the guest orders", orders.guest[data.guest].myorders)
         // console.log(orders.orders[0].name)
 
         // set observable array
         var myItems = new ObservableArray(
-            // orders.orders
             []
         );
-        // update the observable array in case of new order
-        for (var i = 0; i <= 10; i++) {
-            if(orders.orders[i] != null){
-                myItems.push({ name: orders.orders[i].name, prize: orders.orders[i].prize});
-                console.log({ prize: orders.orders[i].prize})
+
+        // updates the observable array in case of database modification
+        try{
+            for (var i = 0; i <= 30; i++) {
+            if(guestOrders[i] != null){
+                myItems.push({ name: guestOrders[i].name, prize: guestOrders[i].prize});
+                }
             }
+        }catch{
+            console.log("No data available")
         }
-        viewModel.set("myItems", myItems)
         
+        viewModel.set("myItems", myItems)
     };
     
     firebase.addChildEventListener(onChildEvent, "/tables").then(
@@ -64,31 +69,44 @@ function onNavigatingTo(args) {
 }
 exports.onNavigatingTo = onNavigatingTo;
 
+// Pushes an item back to the global order list
 function onTap(args) {
     const button = args.object;
     var id = button.id;
-    var key;
-    var name;
-    var prize;
-    // console.log(id)
+    var buttonKey;
+    var buttonName;
+    var buttonPrize;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
-    Object.keys(orders.orders).forEach(function(key, idx) {
-        if(orders.orders[key].name == id){
-            console.log(key)
-            console.log(orders.orders[key].name)
-            console.log(orders.orders[key].prize)
-            
+    Object.keys(guestOrders).forEach(function(key, idx) {
+        if(guestOrders[key] != null){
+            if(guestOrders[key].name == id){
+                buttonKey = key;
+                console.log(key)
+                buttonName = guestOrders[key].name
+                console.log(guestOrders[key].name)
+                buttonPrize = guestOrders[key].prize
+                console.log(guestOrders[key].prize)
+                
+            }
         }
-
+    // console.log(`/tables/0/guest/${data.guest}/myorders/${buttonKey}`)
+    // console.log(guestOrders)
      }); 
+     firebase.setValue(
+        `/tables/0/orders/${buttonKey}`,
+        {name: buttonName, prize: buttonPrize}
+    );
+    // firebase.getValue('/tables/0/guest/Moritz/myorders/6')
+    //   .then(result => console.log(JSON.stringify(result)))
+    //   .catch(error => console.log("Error: " + error));
+    firebase.remove(`/tables/0/guest/${data.guest}/myorders/${buttonKey}`);
 
-    // firebase.getValue('/companies')
-    // .then(result => console.log(JSON.stringify(result)))
-    // .catch(error => console.log("Error: " + error));
+  
 }
 exports.onTap = onTap;
 
+// Navigates to orders page
 function onOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/orders/orders-page");
