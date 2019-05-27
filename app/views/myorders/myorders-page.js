@@ -114,6 +114,26 @@ function onOrdersTap() {
 
 exports.onOrdersTap = onOrdersTap
 
+// Navigates to orders page
+function onPayTap(args) {
+    var sum = 0;
+    // console.log(orders.orders)
+    // Receives the correct dish, prize and key on Tap event
+    Object.keys(guestOrders).forEach(function(key, idx) {
+        if(guestOrders[key] != null){
+            sum += guestOrders[key].prize
+            console.log(guestOrders[key].prize)
+        }
+    });
+    console.log(sum);
+    data.value = sum;
+    console.log(data.value);
+    const frame = getFrameById("topframe");
+    frame.navigate("views/payment/payment-page");
+    }   
+
+exports.onPayTap = onPayTap
+
 
 
 
@@ -181,4 +201,4 @@ function onAddTap() {
 }
 
 exports.onAddTap = onAddTap;
-
+var x;

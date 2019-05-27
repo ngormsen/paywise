@@ -9,7 +9,7 @@ const file = folder.getFile("paypal.html");
 var dataStore = require("../shared/data");
 
 // Define Paypal web view template
-const paypalTemplate1 = "<html><head></head><body><div id='paypal-button-container'></div><script src='https://www.paypal.com/sdk/js?client-id=sb&currency=EUR'></script><script>paypal.Buttons({createOrder: function(data, actions) {return actions.order.create({purchase_units: [{amount: {value: "
+const paypalTemplate1 = "<html><head></head><body><div id='paypal-button-container'></div><script src='https://www.paypal.com/sdk/js?client-id=AXL_suPSNiJoeU1nUQ2iUdwBQ-o2knBEyh8p1eIcdU2Si49Dr_prh041AXR-EMEPaaZa-KYb-l3rs6do&currency=EUR'></script><script>paypal.Buttons({createOrder: function(data, actions) {return actions.order.create({purchase_units: [{amount: {value: "
 const paypalTemplate2 = "}}]});},onApprove: function(data, actions) {return actions.order.capture().then(function(details) {alert('Transaction completed by ' + details.payer.name.given_name + '!');});}}).render('#paypal-button-container');</script></body></html>"
  
 exports.pageLoaded = pageLoaded;
