@@ -3,7 +3,6 @@
 
      <FlexboxLayout>
         <StackLayout id="form" orientation="vertical">
-            <Image src="~/images/logo.png" />
 
             <TextField class="input input-border" id="email" text="email"
                 hint="Email Address" keyboardType="email" autocorrect="false"
