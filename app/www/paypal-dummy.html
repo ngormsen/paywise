@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <label id="textF">leider nein</label>
+        <button onclick="myFunction()">Click me</button> 
+
+        <script src="lib/nativescript-webview-interface.js"></script> 
+
+        <script>
+            var oWebViewInterface = window.nsWebViewInterface;
+            document.getElementById('textF').innerHTML = 'webview console okay';
+            //var event = new Event('transactionFinished');
+            //document.dispatchEvent(event);
+            function myFunction() {
+                document.getElementById("textF").innerHTML = "läuft";
+                eventData = 1;
+                oWebViewInterface.emit('transactionFinished', eventData);
+            }
+        </script>
+    </body>        
+</html>

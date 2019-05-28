@@ -36,5 +36,14 @@ function setupWebViewInterface(page){
     });
     // Load html page in web view
     var path = file.path;
+    path = '~/www/paypal-dummy.html';
     oWebViewInterface = new webViewInterfaceModule.WebViewInterface(webView, path);
+    handleEventFromWebView();
+}
+
+// Handle events from webview
+function handleEventFromWebView(){
+    oWebViewInterface.on('transactionFinished', function(eventData){
+        console.log('Transaction finished!');
+    });
 }
