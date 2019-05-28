@@ -1,7 +1,9 @@
 <html>
     <head></head>
     <body>
-        <label id="textF">leider nein</label>
+        <label id="textF">leider nein</label><br>
+        <label id="text1">Submitted value:</label>
+        <label id="textValue">null</label><br>
         <button onclick="myFunction()">Click me</button> 
 
         <script src="lib/nativescript-webview-interface.js"></script> 
@@ -12,10 +14,14 @@
             //var event = new Event('transactionFinished');
             //document.dispatchEvent(event);
             function myFunction() {
-                document.getElementById("textF").innerHTML = "läuft";
-                eventData = 1;
+                //document.getElementById("textF").innerHTML = "läuft";
+                eventData = 42;
                 oWebViewInterface.emit('transactionFinished', eventData);
             }
+
+            oWebViewInterface.on('submitValue', function(value){
+                document.getElementById("textValue").innerHTML = value;
+            });
         </script>
     </body>        
 </html>

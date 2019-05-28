@@ -44,6 +44,8 @@ function setupWebViewInterface(page){
 // Handle events from webview
 function handleEventFromWebView(){
     oWebViewInterface.on('transactionFinished', function(eventData){
-        console.log('Transaction finished!');
+        console.log(eventData);
+        finalValue = dataStore.value;
+        oWebViewInterface.emit('submitValue', finalValue);
     });
 }
