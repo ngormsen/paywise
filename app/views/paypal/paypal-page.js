@@ -48,6 +48,6 @@ function handleEventFromWebView(){
             // TODO: CHANGE NAVIGATION TO HOME VIEW
             frame.navigate("views/orders/orders-page");
         });
-        // TODO: Adjust value in data.js & Firbase database
+        // TODO: Adjust value in data.js & Firebase database
     });
 }
