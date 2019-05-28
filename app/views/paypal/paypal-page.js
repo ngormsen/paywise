@@ -36,16 +36,31 @@ function setupWebViewInterface(page){
     });
     // Load html page in web view
     var path = file.path;
-    path = '~/www/paypal-dummy.html';
+    //path = '~/www/paypal-dummy.html';
+    path = '~/www/paypal.html';
     oWebViewInterface = new webViewInterfaceModule.WebViewInterface(webView, path);
     handleEventFromWebView();
 }
 
-// Handle events from webview
+// Handle events from webview (paypal)
 function handleEventFromWebView(){
+    // Send transaction value to web view
+    oWebViewInterface.on('getTransactionValue', function(eventData){
+        //console.log(eventData);
+        finalValue = dataStore.value;
+        oWebViewInterface.emit('submitValue', finalValue);
+    });
+    // Handle finished transaction
+    oWebViewInterface.on('transactionFinished', function(details){
+        console.log(details);
+    });
+}
+
+// Handle events from webview (dummy)
+/* function handleEventFromWebView(){
     oWebViewInterface.on('transactionFinished', function(eventData){
         console.log(eventData);
         finalValue = dataStore.value;
         oWebViewInterface.emit('submitValue', finalValue);
     });
-}
+} */
