@@ -1,5 +1,5 @@
 module.exports = {
    guest: "Moritz",
-    value: 11.42
+    value: 42.11
   };
 

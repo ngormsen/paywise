@@ -1,42 +1,20 @@
 var webViewInterfaceModule = require('nativescript-webview-interface');
 var oWebViewInterface;
 
-const fileSystemModule = require("tns-core-modules/file-system");
-const documents = fileSystemModule.knownFolders.documents();
-const folder = documents.getFolder("payment/");
-const file = folder.getFile("paypal.html");
+var dialogs = require("tns-core-modules/ui/dialogs");
+const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 var dataStore = require("../shared/data");
-
-// Define Paypal web view template
-const paypalTemplate1 = "<html><head></head><body><div id='paypal-button-container'></div><script src='https://www.paypal.com/sdk/js?client-id=sb&currency=EUR'></script><script>paypal.Buttons({createOrder: function(data, actions) {return actions.order.create({purchase_units: [{amount: {value: "
-const paypalTemplate2 = "}}]});},onApprove: function(data, actions) {return actions.order.capture().then(function(details) {alert('Transaction completed by ' + details.payer.name.given_name + '!');});}}).render('#paypal-button-container');</script></body></html>"
  
 exports.pageLoaded = pageLoaded;
 function pageLoaded(args){
     page = args.object;
-    setupWebViewInterface(page) 
+    setupWebViewInterface(page)
 }
  
 // Initialize webView
 function setupWebViewInterface(page){
     var webView = page.getViewById('webView');
-    // Get value for payment
-    var value = dataStore.value;
-    // Create html page for web view
-    var paypalHTML = paypalTemplate1.concat(value, paypalTemplate2);
-    // Save html page for web view
-    file.writeText(paypalHTML)
-    .then((result) => {
-        file.readText()
-            .then((res) => {
-            });
-    }).catch((err) => {
-        console.log(err);
-    });
-    // Load html page in web view
-    var path = file.path;
-    //path = '~/www/paypal-dummy.html';
     path = '~/www/paypal.html';
     oWebViewInterface = new webViewInterfaceModule.WebViewInterface(webView, path);
     handleEventFromWebView();
@@ -44,23 +22,32 @@ function setupWebViewInterface(page){
 
 // Handle events from webview (paypal)
 function handleEventFromWebView(){
+
     // Send transaction value to web view
     oWebViewInterface.on('getTransactionValue', function(eventData){
-        //console.log(eventData);
+        // Get value for payment
         finalValue = dataStore.value;
         oWebViewInterface.emit('submitValue', finalValue);
     });
+
     // Handle finished transaction
     oWebViewInterface.on('transactionFinished', function(details){
         console.log(details);
+        var payerName = details.payer.name.given_name;
+        var payerSurname = details.payer.name.surname;
+        //var payedValue = details.purchase_units.amount.value;
+        //var payedValueCurr = details.purchase_units.amount.currency_code;
+        //var messageText = "Die Zahlung in Höhe von " + payedValue + " " + payedValueCurr + " wurde erfolgreich von " + payerName + " " + payerSurname + " an das Restaurant übermittelt.";
+        var messageText = "Die Zahlung wurde erfolgreich von " + payerName + " " + payerSurname + " an das Restaurant übermittelt.";
+        dialogs.alert({
+            title: "Zahlung erfolgreich",
+            message: messageText,
+            okButtonText: "Okay"
+        }).then(function () {
+            const frame = getFrameById("topframe");
+            // TODO: CHANGE NAVIGATION TO HOME VIEW
+            frame.navigate("views/orders/orders-page");
+        });
+        // TODO: Adjust value in data.js & Firbase database
     });
 }
-
-// Handle events from webview (dummy)
-/* function handleEventFromWebView(){
-    oWebViewInterface.on('transactionFinished', function(eventData){
-        console.log(eventData);
-        finalValue = dataStore.value;
-        oWebViewInterface.emit('submitValue', finalValue);
-    });
-} */
