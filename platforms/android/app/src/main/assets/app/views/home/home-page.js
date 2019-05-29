@@ -1,30 +1,13 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-var observableModule = require("tns-core-modules/data/observable");
+const observableModule = require("tns-core-modules/data/observable");
 const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
+const dialogsModule = require("ui/dialogs");
 
 const view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
 
-
-firebase.init({
-  // Optionally pass in properties for database, authentication and cloud messaging,
-  // see their respective docs.
-  persist: true
-}).then(
-    function () {
-      console.log("firebase.init done");
-    },
-    function (error) {
-      console.log("firebase.init error: " + error);
-    }
-);
-
-
-
-//const HomeViewModel = require("home/home-view-model")
-//const Button = require("tns-core-modules/ui/button").Button;
 
 
 
@@ -47,20 +30,56 @@ firebase.init({
   
 //}
 
+/*
+var user = new observableModule.fromObject({
+  var user.email: String
+  var user.password String
+});
 
+
+var page;
+var email;
+
+exports.loaded = function (args) {
+  page = args.object;
+  page.bindingContext = user;
+}
+
+*/
 
 
 exports.signIn = function(args){
+  const page = args.object;
   //const email = txtemail.value
   //const passwort = txtpassword.value
   //var password = page.getViewedById("password");
  // const  page = args.object;
-  const page = args.object;
-  const email = page.getViewById("email");
-  const password = page.getViewById("password");
+  const email = page.getViewById("email");  
+  const password = page.getViewById("password"); 
+  var hello = "asdfasd"
+
+  alert("mail" + String(hello)) 
+  alert("email" + String(email))
+  alert("pw" +  String(password))
+
+
+
+      firebase.createUser({
+        email: email.txt,
+        password: password.txt
+       }).then(function (result) {
+        console.log("userid: " + result.key);
+      }).catch(function (err) {
+        console.log("createUser error: " + err);
+        dialogs.alert(err);
+      });
+  };
+
+  
   //auth.signInWithEmailAndPassword(email, password);
  // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
  
+ /*
   firebaseWebApi.auth().createUserWithEmailAndPassword(email, password)
       .then(
         function(user){
@@ -80,7 +99,7 @@ exports.signIn = function(args){
   );
     }
 
-        /*
+        
         console.log("User created: " + JSON.stringify(user));
       })
       .catch(error => console.log("Error creating user: " + error));
@@ -96,7 +115,7 @@ exports.signIn = function(args){
   //});
 
 
-
+/*
 exports.LogIn = function (args){
   const page = args.object;
   const email = page.getViewById("email");
@@ -105,8 +124,8 @@ exports.LogIn = function (args){
       .then(() => console.log("User logged in"))
       .catch(err => console.log("Login error: " + JSON.stringify(err)));
 
+*/
 
-}
   /*
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
@@ -118,7 +137,19 @@ exports.LogIn = function (args){
 
 /*
 
+
+firebase.login(
+    {
+      type: firebase.LoginType.ANONYMOUS
+    })
+    .then(user => console.log("User uid: " + user.uid))
+    .catch(error => console.log("Trouble in paradise: " + error));
+
+
+  }
+
 //Sign out Function:
+
 
 exports.SignOut = function(args){
   firebase.auth().signOut().then(function() {
@@ -128,3 +159,13 @@ exports.SignOut = function(args){
 });
 }
 */
+
+const frameModule = require("ui/frame");
+const LoginViewModel = require("./login-view-model");
+
+const loginViewModel = new LoginViewModel();
+   
+exports.pageLoaded = function (args) {
+    const page = args.object;
+    page.bindingContext = loginViewModel;
+}
