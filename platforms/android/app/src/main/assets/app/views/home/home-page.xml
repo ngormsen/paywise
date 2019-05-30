@@ -1,7 +1,5 @@
 <Page loaded = "loaded">
-
     <ActionBar title="Login" class="action-bar"></ActionBar>
-
      <FlexboxLayout>
         <StackLayout id="form" orientation="vertical">
 
@@ -11,19 +9,13 @@
             <TextField class="input input-border" secure="true" text="password" id = "password"
                 hint="Password" />
 
-            <Button class="btn btn-primary" text="Login" 
+            <Button class="btn btn-primary" text="Login" id = "Login"
                 tap="LogIn" />
-            <Button text="sign In" class="btn btn-primary" tap="signIn"
+            <Button text="sign In" class="btn btn-primary" tap="signIn" id = "signIn"
                 class="link" />
-            <Button text="sign out" class="btn btn-primary" tap="SignOut"
+            <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut"
                 class="link" />
         </StackLayout>
-        <StackLayout class="input-field" visibility="{{ !isLoggingIn ? 'visible' : 'collapse' }}">
-				<TextField id="confirmPassword" class="input" text="{{ confirmPassword }}" hint="Confirm password" secure="true" returnKeyType="done"
-				/>
-				<Label class="hr-light" />
-			</StackLayout>
-
     </FlexboxLayout>
 </Page>
 

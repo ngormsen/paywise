@@ -3,8 +3,9 @@ const observableModule = require("tns-core-modules/data/observable");
 const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const dialogsModule = require("ui/dialogs");
+const textFieldModule = require("ui/text-field");
 
-const view = require("tns-core-modules/ui/core/view");
+var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
 
@@ -40,22 +41,25 @@ var user = new observableModule.fromObject({
 var page;
 var email;
 
+
+
 exports.loaded = function (args) {
-  page = args.object;
-  page.bindingContext = user;
+ const page = args.object;
 }
 
 */
 
-
 exports.signIn = function(args){
-  const page = args.object;
   //const email = txtemail.value
   //const passwort = txtpassword.value
   //var password = page.getViewedById("password");
  // const  page = args.object;
-  const email = page.getViewById("email");  
-  const password = page.getViewById("password"); 
+  const page = args.object
+  const emailfield = page.getViewById("email"); 
+  const  email = String(emailfield);
+  const passwordfield = page.getViewById("password"); 
+  const password = String(passwordfield);
+
   var hello = "asdfasd"
 
   alert("mail" + String(hello)) 
@@ -65,8 +69,8 @@ exports.signIn = function(args){
 
 
       firebase.createUser({
-        email: email.txt,
-        password: password.txt
+        email: email,
+        password: password
        }).then(function (result) {
         console.log("userid: " + result.key);
       }).catch(function (err) {
@@ -158,7 +162,7 @@ exports.SignOut = function(args){
   // An error happened.
 });
 }
-*/
+
 
 const frameModule = require("ui/frame");
 const LoginViewModel = require("./login-view-model");
@@ -169,3 +173,4 @@ exports.pageLoaded = function (args) {
     const page = args.object;
     page.bindingContext = loginViewModel;
 }
+*/

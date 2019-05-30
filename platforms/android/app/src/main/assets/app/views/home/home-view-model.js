@@ -33,7 +33,7 @@ function LoginViewModel() {
 
         //Template:
 
-
+/*
         const observableModule = require("data/observable");
 const dialogsModule = require("ui/dialogs");
 const userService = require("~/services/user-service");
@@ -74,7 +74,7 @@ function LoginViewModel() {
                         moduleName: "./home/home-page",
                         clearHistory: true
                     });
-                */
+                
             })
             .catch((e) => {
                 alert("Unfortunately we could not find your account.");
@@ -121,3 +121,4 @@ function LoginViewModel() {
 }
 
 module.exports = LoginViewModel;
+*/
