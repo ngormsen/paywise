@@ -48,15 +48,21 @@ exports.loaded = function (args) {
 }
 
 */
+var page;
 
-exports.signIn = function(args){
+exports.loaded = loaded;
+function loaded(args){
+  page = args.object;
+}
+
+
+exports.signIn = function(){
   //const email = txtemail.value
   //const passwort = txtpassword.value
   //var password = page.getViewedById("password");
  // const  page = args.object;
-  const page = args.object
   const emailfield = page.getViewById("email"); 
-  const  email = String(emailfield);
+  const email = String(emailfield);
   const passwordfield = page.getViewById("password"); 
   const password = String(passwordfield);
 
