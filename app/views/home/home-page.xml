@@ -1,9 +1,9 @@
-<Page loaded = "loaded">
+<Page loaded = "loaded" class = "page">
     <ActionBar title="Login" class="action-bar"></ActionBar>
      <FlexboxLayout>
         <StackLayout id="form" orientation="vertical">
 
-            <TextField class="input input-border" id="email" text="{{ email }}"
+            <TextField class="input input-border" id="email" text = "{{email}}"
                 hint="Email Address" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
             <TextField class="input input-border" secure="true" text="password" id = "password"
@@ -11,7 +11,7 @@
 
             <Button class="btn btn-primary" text="Login" id = "Login"
                 tap="LogIn" />
-            <Button text="sign In" class="btn btn-primary" tap="signIn" id = "signIn"
+            <Button text="signUp" class="btn btn-primary" tap="signIn" id = "signIn"
                 class="link" />
             <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut"
                 class="link" />
