@@ -1,11 +1,11 @@
 {
-	"time": "Fri May 31 2019 15:18:54 GMT+0200 (GMT+02:00)",
-	"nativePlatformStatus": "3",
+	"time": "Mon Jun 03 2019 19:28:04 GMT+0200 (GMT+02:00)",
+	"nativePlatformStatus": "1",
 	"bundle": false,
 	"release": false,
-	"changesRequireBuild": false,
+	"changesRequireBuild": true,
 	"projectFileHash": "26ad35fd534cb849ccd8b523d8f24bf7a352d0b8e858ce1b8cf38d291ac7c10c",
-	"changesRequireBuildTime": "Wed May 22 2019 20:52:31 GMT+0200 (GMT+02:00)",
+	"changesRequireBuildTime": "Mon Jun 03 2019 19:28:04 GMT+0200 (GMT+02:00)",
 	"appFilesHashes": {
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\check-in\\check-in-page.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\orders\\orders-view-model.js": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -19,14 +19,13 @@
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\google-page\\google-page.js": "0b5e2ff13663d3566a4a0049c0adb6f44561e3af",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\google-page\\google-page.xml": "adc1f9af66d5cce225de700d7018aa9e66d9621f",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-page.css": "b0519c400c4d319e78c3e2d61dc418a1aa29a987",
-		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-page.xml": "493437d2924055581f3d91997c58a2535a69ef94",
-		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-page.js": "a8eaafb9dfe238a053e83eec8e585289c83a4f0c",
+		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-page.xml": "4c08242416a4677f1374265e76008d246e46438d",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-view-model.js": "6deec9bd1b6650230d3276e371e41b1bd8e5c366",
+		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\home\\home-page.js": "061d391ae65af61b3cfe3cf784c75f7084261f71",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\myorders\\myorders-page.js": "a96e96c1eb85c5a20fe6b4e91f6898ba3dee7c7b",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\myorders\\myorders-page.xml": "c26cc61c876c99798e483ea463927531fa3e847a",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\navigate\\navigate.js": "be1b3614df10304fae45de4190d4281f3ebad708",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\navigate\\navigate.xml": "5023736d748ce3c264b02ff2f35d74b9186489cb",
-		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\orders\\orders-page.js": "0c53e259b9c909a271c0c7206167d7e18189d16f",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\orders\\orders-page.xml": "80538c53966cb4757d12d940fa0a0154c208f95e",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\payment\\payment-page.js": "a4b9f102860b5c78eed7b24215e64c5ebc0e9e50",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\payment\\payment-page.xml": "09f27c547792f6846c363ce176aec1b2463c0426",
@@ -41,6 +40,7 @@
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\welcome\\welcome-view-model.js": "46914be56c4718cb630ba71b96b92ea10b26fcdb",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\www\\google.html": "b5a29bc00f7a01b27542e49e491482f16f966c11",
 		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\www\\lib\\nativescript-webview-interface.js": "1d6cb5264ff16b6b72eb93e39071cdd67a21ec75",
-		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\www\\paypal.html": "b5474489179e57bb22b9c1427346f3d532914f2b"
+		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\www\\paypal.html": "b5474489179e57bb22b9c1427346f3d532914f2b",
+		"C:\\Users\\tdavi\\Documents\\GitHub\\App1\\paywise\\app\\views\\orders\\orders-page.js": "0c53e259b9c909a271c0c7206167d7e18189d16f"
 	}
 }

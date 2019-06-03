@@ -11,7 +11,7 @@
 
             <Button class="btn btn-primary" text="Login" id = "Login"
                 tap="LogIn" />
-            <Button text="sign In" class="btn btn-primary" tap="signIn" id = "signIn"
+            <Button text="Register" class="btn btn-primary" tap="Register" id = "Register"
                 class="link" />
             <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut"
                 class="link" />

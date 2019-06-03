@@ -56,15 +56,15 @@ function loaded(args){
 }
 
 
-exports.signIn = function(){
+exports.Register = function(){
   //const email = txtemail.value
   //const passwort = txtpassword.value
   //var password = page.getViewedById("password");
  // const  page = args.object;
-  const emailfield = page.getViewById("email"); 
-  const email = String(emailfield);
-  const passwordfield = page.getViewById("password"); 
-  const password = String(passwordfield);
+  const email = page.getViewById("email").text; 
+  //const email = String(emailfield);
+  const password = page.getViewById("password").text; 
+  //const password = String(passwordfield);
 
   var hello = "asdfasd"
 
@@ -124,19 +124,35 @@ exports.signIn = function(){
   
   //});
 
+*/
 
-/*
-exports.LogIn = function (args){
-  const page = args.object;
-  const email = page.getViewById("email");
-  const password = page.getViewById("password");
+exports.LogIn = function (){
+  const email = page.getViewById("email").text;
+  const password = page.getViewById("password").text;
+    firebase.login(
+      {
+        type: firebase.LoginType.PASSWORD,
+        passwordOptions: {
+          email: email,
+          password: password
+        }
+      })
+      .then(result => console.log("user logged in"))
+      .catch(error => console.log(error));
+    }
+//JSON.stringify(result)
+
+
+
+
+  /*
   firebaseWebApi.auth().signInWithEmailAndPassword(email, password)
       .then(() => console.log("User logged in"))
       .catch(err => console.log("Login error: " + JSON.stringify(err)));
 
 */
 
-  /*
+ /* 
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -145,9 +161,9 @@ exports.LogIn = function (args){
     });  }
 
 
+
+*/
 /*
-
-
 firebase.login(
     {
       type: firebase.LoginType.ANONYMOUS
@@ -157,6 +173,8 @@ firebase.login(
 
 
   }
+
+*/
 
 //Sign out Function:
 
@@ -169,7 +187,7 @@ exports.SignOut = function(args){
 });
 }
 
-
+/*
 const frameModule = require("ui/frame");
 const LoginViewModel = require("./login-view-model");
 
