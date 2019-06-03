@@ -5,23 +5,41 @@
             <div id="paypal-button-container"></div>
         
             <!-- Include the PayPal JavaScript SDK -->
-            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR"></script>
+
+            <!-- Include web view interface -->
+            <script src="lib/nativescript-webview-interface.js"></script> 
 
             <script>
-                // console.log(value)
-                // const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
-                // const payPalClient = require('../Common/payPalClient');
+                var oWebViewInterface = window.nsWebViewInterface;
+                var finalValue = 0;
+                // Get final value for transaction
+                function getValue() {
+                    eventData = null;
+                    oWebViewInterface.emit('getTransactionValue', eventData);
+                }
+                // Save received value accessible for PayPal SDK
+                oWebViewInterface.on('submitValue', function(value){
+                    finalValue = value;
+                });
+                // Handle finished transaction
+                function transactionFinished(details) {
+                    oWebViewInterface.emit('transactionFinished', details);
+                }
+            </script>
 
-
+            <script>
                 // Render the PayPal button into #paypal-button-container
                 paypal.Buttons({
         
                     // Set up the transaction
                     createOrder: function(data, actions) {
+                        var event = new Event('transactionFinished');
+                        this.dispatchEvent(event);
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: '10.00'
+                                    value: finalValue
                                 }
                             }]
                         });
@@ -30,14 +48,18 @@
                     // Finalize the transaction
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
-                            // Show a success message to the buyer
-                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                            transactionFinished(details);
                         });
                     }
         
         
                 }).render('#paypal-button-container');
             </script>
+
+            <script>
+                getValue();
+            </script>
+
         </body>
             
 </html>
