@@ -56,21 +56,21 @@ function loaded(args){
 }
 
 
-exports.signUp = function(){
+exports.signIn = function(){
   //const email = txtemail.value
   //const passwort = txtpassword.value
   //var password = page.getViewedById("password");
  // const  page = args.object;
-  var email = page.getViewById('email').text; 
-  //const email = emailfield);
-  var password = page.getViewById('password').text; 
-  //const password = String(passwordfield);
+  const emailfield = page.getViewById("email"); 
+  const email = String(emailfield);
+  const passwordfield = page.getViewById("password"); 
+  const password = String(passwordfield);
 
-  var hello = "asdfasd";
+  var hello = "asdfasd"
 
-  alert("mail" + String(hello)); 
-  alert("email" + String(email));
-  alert("pw" +  String(password));
+  alert("mail" + String(hello)) 
+  alert("email" + String(email))
+  alert("pw" +  String(password))
 
 
 
