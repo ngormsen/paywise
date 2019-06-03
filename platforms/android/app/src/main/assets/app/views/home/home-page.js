@@ -1,17 +1,81 @@
-const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+const frameModule = require("ui/frame");
+const LoginViewModel = require("./login-view-model");
 const observableModule = require("tns-core-modules/data/observable");
+//const observableModule = require("data/observable");
+const dialogsModule = require("ui/dialogs");
+const userService = require("~/services/user-service");
+const topmost = require("ui/frame").topmost;
 const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
-const dialogsModule = require("ui/dialogs");
-const textFieldModule = require("ui/text-field");
-
 var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
+/*
+const loginViewModel = new LoginViewModel();
+
+exports.pageLoaded = function (args) {
+    const page = args.object;
+    page.bindingContext = loginViewModel;
+}
+
+*/
 
 
+var page;
+
+exports.loaded = loaded;
+function loaded(args){
+  page = args.object;
+}
+
+//sign Up /create Account function
+exports.signUp = function(){
+  var email = page.getViewById('email').text; 
+  var password = page.getViewById('password').text; 
+
+  var hello = "asdfasd";
+
+  alert("mail" + String(hello)); 
+  alert("email" + String(email));
+  alert("pw" +  String(password));
 
 
+//Firebase function:
+      firebase.createUser({
+        email: email,
+        password: password
+       }).then(function (result) {
+        console.log("userid: " + result.key);
+      }).catch(function (err) {
+        console.log("createUser error: " + err);
+        dialogs.alert(err);
+      });
+  };
+
+/*
+//Sign in / Login function  
+exports.signIn = function(){
+  firebase.login(
+    {
+      type: firebase.LoginType.PASSWORD,
+      passwordOptions: {
+        email: email,
+        password: password
+      }
+    })
+    .then(result => JSON.stringify(result))
+      //topmost().navigate("./qr/qr-page")
+  
+    .catch(error => console.log(error));
+}
+
+//
+exports.SignOut = function(args){
+  firebase.logout();
+
+}
+        
+    
 //exports.pageLoaded = function (args) {
   //const page = args.object;
   //page.bindingContext = LogIn;
@@ -47,45 +111,7 @@ exports.loaded = function (args) {
  const page = args.object;
 }
 
-*/
-var page;
 
-exports.loaded = loaded;
-function loaded(args){
-  page = args.object;
-}
-
-
-exports.signUp = function(){
-  //const email = txtemail.value
-  //const passwort = txtpassword.value
-  //var password = page.getViewedById("password");
- // const  page = args.object;
-  var email = page.getViewById('email').text; 
-  //const email = emailfield);
-  var password = page.getViewById('password').text; 
-  //const password = String(passwordfield);
-
-  var hello = "asdfasd";
-
-  alert("mail" + String(hello)); 
-  alert("email" + String(email));
-  alert("pw" +  String(password));
-
-
-
-      firebase.createUser({
-        email: email,
-        password: password
-       }).then(function (result) {
-        console.log("userid: " + result.key);
-      }).catch(function (err) {
-        console.log("createUser error: " + err);
-        dialogs.alert(err);
-      });
-  };
-
-  
   //auth.signInWithEmailAndPassword(email, password);
  // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
  
@@ -124,8 +150,9 @@ exports.signUp = function(){
   
   //});
 
-
 /*
+
+
 exports.LogIn = function (args){
   const page = args.object;
   const email = page.getViewById("email");
@@ -134,7 +161,7 @@ exports.LogIn = function (args){
       .then(() => console.log("User logged in"))
       .catch(err => console.log("Login error: " + JSON.stringify(err)));
 
-*/
+
 
   /*
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -160,16 +187,22 @@ firebase.login(
 
 //Sign out Function:
 
-
-exports.SignOut = function(args){
-  firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  }).catch(function(error) {
-  // An error happened.
-});
-}
+*/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const frameModule = require("ui/frame");
 const LoginViewModel = require("./login-view-model");
 
