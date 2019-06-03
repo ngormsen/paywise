@@ -1,12 +1,15 @@
 {
+
 	"time": "Mon Jun 03 2019 17:52:40 GMT+0200 (Central European Summer Time)",
 	"nativePlatformStatus": "3",
+
 	"bundle": false,
 	"release": false,
-	"changesRequireBuild": false,
+	"changesRequireBuild": true,
 	"projectFileHash": "26ad35fd534cb849ccd8b523d8f24bf7a352d0b8e858ce1b8cf38d291ac7c10c",
-	"changesRequireBuildTime": "Wed May 22 2019 20:52:31 GMT+0200 (GMT+02:00)",
+	"changesRequireBuildTime": "Mon Jun 03 2019 19:28:04 GMT+0200 (GMT+02:00)",
 	"appFilesHashes": {
+
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\views\\check-in\\check-in-page.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\views\\orders\\orders-view-model.js": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\views\\ordersOLD\\orders-view-model.js": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -45,5 +48,6 @@
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\www\\paypal.html": "b5474489179e57bb22b9c1427346f3d532914f2b",
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\www\\google.html": "b5a29bc00f7a01b27542e49e491482f16f966c11",
 		"C:\\Users\\Nils\\Documents\\paywise\\app\\www\\lib\\nativescript-webview-interface.js": "bce960e1689e729ab8367f43d5c7d5de64e9d5ae"
+
 	}
 }
