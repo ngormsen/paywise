@@ -3,10 +3,8 @@
 
     <ScrollView>  
     <StackLayout class="tab-content">
-        <Label class="h1" text="QR-Code-Scannen" />
-        <Label class="h3" text="Kamera Berechtigung" />
-        <Button class="btn btn-outline btn-rounded-sm" text="has permission?" tap="{{ doCheckHasCameraPermission }}" />
-        <Button class="btn btn-primary btn-rounded-sm" text="request permission" tap="{{ doRequestCameraPermission }}" />
+        <Label class="h1" textWrap="true" text="Willkommen!"/>
+        <Label class="h3" textWrap="true" text="Bitte scanne den Barcode an deinem Tisch."/>
 
         <!--iOS>
         <ContentView height="240" width="240">
@@ -14,13 +12,11 @@
         </ContentView>
         </iOS-->
 
-        <Label class="h3" text="Scanning (QR & EAN-13)" />
-            <Button class="btn btn-primary btn-rounded-sm" text="Kamera aktivieren" tap="{{ doScanWithBackCamera }}" />
+            <Button class="btn btn-primary btn-rounded-sm" text="Kamera aktivieren" tap="onTap" />
         <iOS>
             <Button class="btn btn-primary btn-rounded-sm" text="back camera, with torch" tap="{{ doScanWithTorch }}" />
         </iOS>
     
-            <Button class="btn btn-primary btn-rounded-sm" text="continue" tap="onTap"/>
     </StackLayout>
     </ScrollView>
 

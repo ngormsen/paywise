@@ -1,6 +1,14 @@
-var Observable = require("data/observable").Observable;
+var observableModule = require("tns-core-modules/data/observable");
+var data = require("../shared/data.js");
 
+function welcomeViewModel() {
+  var viewModel = observableModule.fromObject({
+    guest: data.guest,
+    restaurant: data.restaurant,
+    table: data.table
+  });
 
-function createViewModel() {
-  var viewModel = new Observable();
-};
+  return viewModel;
+}
+
+module.exports = welcomeViewModel;

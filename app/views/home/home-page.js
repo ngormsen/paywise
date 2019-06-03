@@ -43,6 +43,7 @@ var email;
 
 
 
+
 exports.loaded = function (args) {
  const page = args.object;
 }
@@ -54,6 +55,7 @@ exports.loaded = loaded;
 function loaded(args){
   page = args.object;
 }
+
 
 
 exports.Register = function(){
@@ -108,6 +110,7 @@ exports.Register = function(){
       }
   );
     }
+
 
         
         console.log("User created: " + JSON.stringify(user));
