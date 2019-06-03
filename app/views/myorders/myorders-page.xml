@@ -6,13 +6,15 @@
     <StackLayout id="form" orientation="vertical">
         <Button class="btn btn-primary" text="Bestellungen anzeigen"
         tap="onOrdersTap" />
+        <Button class="btn btn-primary" text="Bezahlen"
+        tap="onPayTap" />
 
         <GridLayout rows="*" >
             <ListView items="{{ myItems }}">
                 <!--Describing how the element will look like-->
                 <ListView.itemTemplate>
                     <GridLayout columns="100, 100, auto">
-                        <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0"/>
+                        <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="0"/>
                         <Label text="{{ prize }}" class="h2" col="1"/>
                         <Label text="{{ name }}" class="h2" col="2"/>
 
