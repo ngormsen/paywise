@@ -5,11 +5,10 @@ const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
 const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-var x
 
 var page = null
 var orders = null
-// var x = data.value
+
 // data.value = 10;
 // console.log(data.value);
 
@@ -20,42 +19,47 @@ function onNavigatingTo(args) {
 
 
 
+
     var onChildEvent = function (result) {
-        // var dish = [];
-        // var prize = [];
-        // var dishPrize = []
-        //get database values
-        // console.log("Event type: " + result.type);
-        // console.log("Key: " + result.key);
-        // console.log("Value: " + JSON.stringify(result.value));
-        orders = result.value; 
-        guestOrders = orders.guest[data.guest].myorders
-        console.log("the orders", orders)
-        console.log("the guest orders", orders.guest[data.guest].myorders)
-        // console.log(orders.orders[0].name)
-
         // set observable array
-        var myItems = new ObservableArray(
-            []
-        );
-
-        // updates the observable array in case of database modification
-        try{
-            for (var i = 0; i <= 30; i++) {
-            if(guestOrders[i] != null){
-                myItems.push({ name: guestOrders[i].name, prize: guestOrders[i].prize});
+        console.log("items", result.value)
+        if(result.key == "myorders"){
+            orders = result.value;
+            var myItems = new ObservableArray(
+                []
+            )
+            console.log(orders)
+            Object.keys(orders).forEach(function(key, idx) {
+                if(orders[key] != null){
+                    if(orders[key] != null){
+                        myItems.push({ name: orders[key].name, prize: orders[key].prize});
+                    }
                 }
-            }
-        }catch{
-            console.log("No data available")
+            }); 
+            // try{
+            //     for (var i = 0; i <= 30; i++) {
+            //         if(orders[i] != null){
+            //             myItems.push({ name: orders[i].name, prize: orders[i].prize});
+            //             console.log({ prize: orders[i].prize})
+            //         }
+            //     }
+            // }catch{
+            //     console.log("No data available.")
+            // }
+    
+            viewModel.set("myItems", myItems)
         }
-        
-        viewModel.set("myItems", myItems)
+        //else{
+        //     var myItems = new ObservableArray(
+        //         []
+        //     )
+        //     viewModel.set("myItems", myItems)
+        // };
     };
     
-    firebase.addChildEventListener(onChildEvent, "/tables").then(
+    firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest}`).then(
         function (result) {
-            that._userListenerWrapper = result;
+            this._userListenerWrapper = result;
             console.log("firebase.addChildEventListener added");
         },
         function (error) {
@@ -78,15 +82,15 @@ function onTap(args) {
     var buttonPrize;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
-    Object.keys(guestOrders).forEach(function(key, idx) {
-        if(guestOrders[key] != null){
-            if(guestOrders[key].name == id){
+    Object.keys(orders).forEach(function(key, idx) {
+        if(orders[key] != null){
+            if(orders[key].name == id){
                 buttonKey = key;
                 console.log(key)
-                buttonName = guestOrders[key].name
-                console.log(guestOrders[key].name)
-                buttonPrize = guestOrders[key].prize
-                console.log(guestOrders[key].prize)
+                buttonName = orders[key].name
+                console.log(orders[key].name)
+                buttonPrize = orders[key].prize
+                console.log(orders[key].prize)
                 
             }
         }
@@ -94,13 +98,13 @@ function onTap(args) {
     // console.log(guestOrders)
      }); 
      firebase.setValue(
-        `/tables/0/orders/${buttonKey}`,
+        `restaurants/testRestaurant/tables/0/global/orders/${buttonKey}`,
         {name: buttonName, prize: buttonPrize}
     );
     // firebase.getValue('/tables/0/guest/Moritz/myorders/6')
     //   .then(result => console.log(JSON.stringify(result)))
     //   .catch(error => console.log("Error: " + error));
-    firebase.remove(`/tables/0/guest/${data.guest}/myorders/${buttonKey}`);
+    firebase.remove(`restaurants/testRestaurant/tables/0/guests/${data.guest}/myorders/${buttonKey}`);
 
   
 }
@@ -119,10 +123,10 @@ function onPayTap(args) {
     var sum = 0;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
-    Object.keys(guestOrders).forEach(function(key, idx) {
-        if(guestOrders[key] != null){
-            sum += guestOrders[key].prize
-            console.log(guestOrders[key].prize)
+    Object.keys(orders).forEach(function(key, idx) {
+        if(orders[key] != null){
+            sum += orders[key].prize
+            console.log(orders[key].prize)
         }
     });
     console.log(sum);
@@ -135,70 +139,3 @@ function onPayTap(args) {
 exports.onPayTap = onPayTap
 
 
-
-
-function onAddTap() {
-    // firebase.setValue(
-    //     '/tables/0/orders/10',
-    //     {name:'jo', prize: 5}
-    // );
-    var onQueryEvent = function(result) {
-        // note that the query returns 1 match at a time
-        // in the order specified in the query
-        if (!result.error) {
-            console.log("Event type: " + result.type);
-            console.log("Key: " + result.key);
-            console.log("Value: " + JSON.stringify(result.value)); // a JSON object
-            console.log("Children: " + JSON.stringify(result.children)); // an array, added in plugin v 8.0.0
-        }
-        // traverse the query result for a certain dish
-        Object.keys(result.value).forEach(function(key, idx) {
-            console.log(result.value[key].name)
-         }); 
-         
-    };
-
-    firebase.query(
-        onQueryEvent,
-        "/tables/0",
-        {
-            // set this to true if you want to check if the value exists or just want the event to fire once
-            // default false, so it listens continuously.
-            // Only when true, this function will return the data in the promise as well!
-            singleEvent: true,
-            // order by company.country
-            orderBy: {
-                type: firebase.QueryOrderByType.CHILD,
-                value: 'since' // mandatory when type is 'child'
-            },
-            // but only companies 'since' a certain year (Telerik's value is 2000, which is imaginary btw)
-            // use either a 'range'
-            // range: {
-            //    type: firebase.QueryRangeType.EQUAL_TO,
-            //    value: '0'
-            // },
-            // .. or 'chain' ranges like this:
-            // ranges: [
-            //   {
-            //       type: firebase.QueryRangeType.START_AT,
-            //       value: 1999
-            //   },
-            //   {
-            //       type: firebase.QueryRangeType.END_AT,
-            //       value: 2000
-            //   }
-            // ],
-            // only the first 2 matches
-            // (note that there's only 1 in this case anyway)
-            limit: {
-                type: firebase.QueryLimitType.LAST,
-                value: 10
-            }
-        }
-    );
-    
-
-}
-
-exports.onAddTap = onAddTap;
-var x;

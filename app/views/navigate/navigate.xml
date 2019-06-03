@@ -3,7 +3,7 @@
     <StackLayout id="form" orientation="vertical">
 
         <Label class="h1" textWrap="true" text="Ristorante La Contessa"/>
-        <Label class="h3" textWrap="true" text="Eingecheckt am Tisch 11 -- 20 EURO"/>
+        <Label class="h3" textWrap="true" text="Eingecheckt am Tisch 0"/>
 
 
         <Button class="btn btn-primary" text="Bestellungen auswählen"

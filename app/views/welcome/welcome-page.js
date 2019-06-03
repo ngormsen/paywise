@@ -1,6 +1,9 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var firebase = require("nativescript-plugin-firebase");
-var createViewModel = require("./welcome-view-model").createViewModel;
+var data = require("../shared/data.js");
+var welcomeViewModel = require("./welcome-view-model");
+var welcomeViewModel = new welcomeViewModel();
+
 
 /*
  In NativeScript, a file with the same name as an XML file is known as
@@ -8,7 +11,7 @@ var createViewModel = require("./welcome-view-model").createViewModel;
  logic, and to set up your page’s data binding.
  */
 
-function onNavigatingTo(args) {
+function pageLoaded(args) {
     /*
      This gets a reference this page’s <Page> UI component. You can
      view the API reference of the Page to see what’s available at
@@ -25,7 +28,7 @@ function onNavigatingTo(args) {
      You can learn more about data binding in NativeScript at
      https://docs.nativescript.org/core-concepts/data-binding.
      */
-    page.bindingContext = createViewModel();
+    page.bindingContext = welcomeViewModel;
   }
   
   /*
@@ -34,7 +37,7 @@ function onNavigatingTo(args) {
    function here makes the navigatingTo="onNavigatingTo" binding in this page’s XML
    file work.
    */
-  exports.onNavigatingTo = onNavigatingTo;
+  exports.pageLoaded = pageLoaded;
 
 function onTap() {
     const frame = getFrameById("topframe");
@@ -42,15 +45,3 @@ function onTap() {
 }
 
 exports.onTap = onTap;
-
-function onUploadTap() {
-    console.log("upload")
-    
-    firebase.getValue('/test')
-    .then(result => console.log(result.value['-LfKN_YZHY_g-4jqa8QK']))
-    .catch(error => console.log("Error: " + error));
-     
-}
-
-exports.onUploadTap = onUploadTap;
-

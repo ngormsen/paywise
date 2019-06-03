@@ -1,5 +1,9 @@
 module.exports = {
-   guest: "Moritz",
-    value: 11.42
+    guest: "testGuest",
+    value: 11.42, 
+    table: 0,
+    restaurant: "testRestaurant",
+    tip: 0,
+    total: 0
   };
 

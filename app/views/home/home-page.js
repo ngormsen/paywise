@@ -8,6 +8,7 @@ const HomeViewModel = require("./home-view-model");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 
+
 function onNavigatingTo(args) {
     /* Creates a reference to the current page.*/
     const page = args.object;
@@ -18,7 +19,7 @@ exports.onNavigatingTo = onNavigatingTo;
 
 function onTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/check-in/check-in-page");
+    frame.navigate("views/qr/qr-page");
 
 }
 
