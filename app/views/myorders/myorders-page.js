@@ -40,6 +40,7 @@ function onNavigatingTo(args) {
         console.log("items", result.value)
         if(result.key == "myorders"){
             orders = result.value;
+            data.mydata = []
 
             // set observable array
             var myItems = new ObservableArray(
@@ -133,6 +134,7 @@ function onPayTap() {
     console.log(sum);
     console.log("total", Number(tip))
     tip = page.getViewById("tipField").text
+    data.tip = tip;
     data.value = sum + parseFloat(tip);
     console.log(data.value);
     const frame = getFrameById("topframe");
