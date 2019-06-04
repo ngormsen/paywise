@@ -1,6 +1,8 @@
 var observable_1 = require("data/observable");
 var dialogs_1 = require("ui/dialogs");
 var nativescript_barcodescanner_1 = require("nativescript-barcodescanner");
+var data = require("../shared/data.js");
+
 var BarcodeModel = (function (_super) {
     __extends(BarcodeModel, _super);
     function BarcodeModel() {
@@ -107,6 +109,9 @@ var BarcodeModel = (function (_super) {
                     message: "Format: " + result.format + ",\nValue: " + result.text,
                     okButtonText: "OK"
                 });
+                data.value = result.text[result.text.length-1];
+                console.log(data.table)
+                
             }, 500);
         }, function (errorMessage) {
             console.log("No scan. " + errorMessage);

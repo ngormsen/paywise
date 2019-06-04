@@ -28,7 +28,7 @@ function onNavigatingTo(args) {
         console.log("Key: " + result.key);
         console.log("Value: " + JSON.stringify(result.value));
         orders = result.value; 
-        console.log("the orders", orders.orders)  
+        console.log("the orders", orders.orders) 
         // console.log(orders.orders[0].name)
 
         // set observable array

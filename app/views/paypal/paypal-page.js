@@ -1,5 +1,7 @@
 var webViewInterfaceModule = require('nativescript-webview-interface');
 var oWebViewInterface;
+var firebase = require("nativescript-plugin-firebase");
+var data = require("../shared/data.js");
 
 var dialogs = require("tns-core-modules/ui/dialogs");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
@@ -35,6 +37,32 @@ function handleEventFromWebView(){
         console.log(details);
         var payerName = details.payer.name.given_name;
         var payerSurname = details.payer.name.surname;
+        
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        
+        today = mm + '/' + dd + '/' + yyyy;
+    
+        console.log("MYORDER", data.myorder)
+        firebase.push(
+            '/restaurants/testRestaurant/paid',
+            {
+              'order': data.myorder,
+              'guest': data.guest,
+              'table': data.table,
+              'date': today,
+              'sum': data.value,
+              'tip': data.tip
+            }
+        ).then(
+            function (result) {
+              console.log("created key: " + result.key);
+            }
+        );
+        
+        firebase.remove(`/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders`);
         //var payedValue = details.purchase_units.amount.value;
         //var payedValueCurr = details.purchase_units.amount.currency_code;
         //var messageText = "Die Zahlung in Höhe von " + payedValue + " " + payedValueCurr + " wurde erfolgreich von " + payerName + " " + payerSurname + " an das Restaurant übermittelt.";
@@ -44,6 +72,7 @@ function handleEventFromWebView(){
             message: messageText,
             okButtonText: "Okay"
         }).then(function () {
+           
             const frame = getFrameById("topframe");
             // TODO: CHANGE NAVIGATION TO HOME VIEW
             frame.navigate("views/orders/orders-page");

@@ -4,6 +4,7 @@ const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const dialogsModule = require("ui/dialogs");
 const textFieldModule = require("ui/text-field");
+var data = require("../shared/data.js");
 
 var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
@@ -68,22 +69,22 @@ exports.Register = function(){
   const password = page.getViewById("password").text; 
   //const password = String(passwordfield);
 
-  var hello = "asdfasd"
+//   var hello = "asdfasd"
 
-  alert("mail" + String(hello)) 
-  alert("email" + String(email))
-  alert("pw" +  String(password))
+//   alert("mail" + String(hello)) 
+//   alert("email" + String(email))
+//   alert("pw" +  String(password))
 
 
 
-      firebase.createUser({
+    firebase.createUser({
         email: email,
         password: password
        }).then(function (result) {
-        console.log("userid: " + result.key);
+            console.log("userid: " + result.key);
       }).catch(function (err) {
-        console.log("createUser error: " + err);
-        dialogs.alert(err);
+            console.log("createUser error: " + err);
+            dialogs.alert(err);
       });
   };
 
@@ -129,6 +130,12 @@ exports.Register = function(){
 
 */
 
+function success(result){
+    data.guest = result.email
+    getFrameById("topframe").navigate("views/qr/qr-page")
+}
+
+
 exports.LogIn = function (){
   const email = page.getViewById("email").text;
   const password = page.getViewById("password").text;
@@ -140,8 +147,8 @@ exports.LogIn = function (){
           password: password
         }
       })
-      .then(result => console.log("user logged in"))
-      .catch(error => console.log(error));
+      .then(result => success(result))
+      .catch(error => alert("Falsches Passwort/E-Mail Adresse."));
     }
 //JSON.stringify(result)
 
