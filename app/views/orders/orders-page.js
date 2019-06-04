@@ -7,9 +7,11 @@ const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var page = null
 
-var globalOrders;
-// var guestOrders;
 var orders;
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
 
 function onNavigatingTo(args) {
     page = args.object;
@@ -20,7 +22,8 @@ function onNavigatingTo(args) {
     var onChildEvent = function (result) {
         console.log("ORDER PAGE CHILD EVENT")
         console.log("RESULT", result.value)
-        
+        console.log("USER", data.guest.replaceAll("\.","").replaceAll("@", "")) 
+
         // set observable array
         var myItems = new ObservableArray(
             []
@@ -85,10 +88,10 @@ function onTap(args) {
         }
     }); 
     firebase.setValue(
-        `restaurants/testRestaurant/tables/0/guests/${data.guest}/myorders/${buttonKey}`,
+        `restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.","")}/myorders/${buttonKey}`,
         {name: buttonName, prize: buttonPrize}
     );
-    firebase.remove(`restaurants/testRestaurant/tables/0/global/orders/${buttonKey}`);
+    firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
 
     // firebase.getValue('/companies')
     // .then(result => console.log(JSON.stringify(result)))

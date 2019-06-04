@@ -5,59 +5,64 @@ const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
 const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+var getViewById = require("tns-core-modules/ui/core/view").getViewById;
+const fromObject = require("tns-core-modules/data/observable").fromObject;
 
 var page = null
 var orders = null
+var tip;
 
 // data.value = 10;
 // console.log(data.value);
+
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
 
 function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();    
     page.bindingContext = viewModel;
+    
+    // const source = fromObject({
+    //     textSource: "Text set via twoWay binding"
+    // });
+    
+    // tip = page.getViewById("tip").text;
+    // console.log("TIP", tip)
 
-
-
-
+    
     var onChildEvent = function (result) {
-        // set observable array
+        console.log("USER", data.guest.replaceAll("\.","")) 
+        
+
         console.log("items", result.value)
         if(result.key == "myorders"){
             orders = result.value;
+
+            // set observable array
             var myItems = new ObservableArray(
                 []
             )
+
             console.log(orders)
             Object.keys(orders).forEach(function(key, idx) {
                 if(orders[key] != null){
                     if(orders[key] != null){
                         myItems.push({ name: orders[key].name, prize: orders[key].prize});
+                        data.myorder.push({ name: orders[key].name, prize: orders[key].prize})
                     }
                 }
             }); 
-            // try{
-            //     for (var i = 0; i <= 30; i++) {
-            //         if(orders[i] != null){
-            //             myItems.push({ name: orders[i].name, prize: orders[i].prize});
-            //             console.log({ prize: orders[i].prize})
-            //         }
-            //     }
-            // }catch{
-            //     console.log("No data available.")
-            // }
+
     
             viewModel.set("myItems", myItems)
         }
-        //else{
-        //     var myItems = new ObservableArray(
-        //         []
-        //     )
-        //     viewModel.set("myItems", myItems)
-        // };
+
     };
     
-    firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest}`).then(
+    firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}`).then(
         function (result) {
             this._userListenerWrapper = result;
             console.log("firebase.addChildEventListener added");
@@ -80,8 +85,7 @@ function onTap(args) {
     var buttonKey;
     var buttonName;
     var buttonPrize;
-    // console.log(orders.orders)
-    // Receives the correct dish, prize and key on Tap event
+    // Receives the correct name, prize and key on Tap event
     Object.keys(orders).forEach(function(key, idx) {
         if(orders[key] != null){
             if(orders[key].name == id){
@@ -94,17 +98,14 @@ function onTap(args) {
                 
             }
         }
-    // console.log(`/tables/0/guest/${data.guest}/myorders/${buttonKey}`)
-    // console.log(guestOrders)
      }); 
+
      firebase.setValue(
-        `restaurants/testRestaurant/tables/0/global/orders/${buttonKey}`,
+        `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`,
         {name: buttonName, prize: buttonPrize}
     );
-    // firebase.getValue('/tables/0/guest/Moritz/myorders/6')
-    //   .then(result => console.log(JSON.stringify(result)))
-    //   .catch(error => console.log("Error: " + error));
-    firebase.remove(`restaurants/testRestaurant/tables/0/guests/${data.guest}/myorders/${buttonKey}`);
+
+    firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders/${buttonKey}`);
 
   
 }
@@ -119,7 +120,7 @@ function onOrdersTap() {
 exports.onOrdersTap = onOrdersTap
 
 // Navigates to orders page
-function onPayTap(args) {
+function onPayTap() {
     var sum = 0;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
@@ -130,7 +131,9 @@ function onPayTap(args) {
         }
     });
     console.log(sum);
-    data.value = sum;
+    console.log("total", Number(tip))
+    tip = page.getViewById("tipField").text
+    data.value = sum + parseFloat(tip);
     console.log(data.value);
     const frame = getFrameById("topframe");
     frame.navigate("views/payment/payment-page");
@@ -138,4 +141,22 @@ function onPayTap(args) {
 
 exports.onPayTap = onPayTap
 
+function testTap(){
+    var sum = 0;
+    // console.log(orders.orders)
+    // Receives the correct dish, prize and key on Tap event
+    Object.keys(orders).forEach(function(key, idx) {
+        if(orders[key] != null){
+            sum += orders[key].prize
+            console.log(orders[key].prize)
+        }
+    });
+    console.log(sum);
+    console.log("total", Number(tip))
+    tip = page.getViewById("tipField").text
+    data.value = sum + parseFloat(tip);
+    percent =  parseFloat(tip) / data.value * 100
+    alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das Durchschnittliche Trinkgeld in den letzten 30 Tagen beträgt: 9%. `)
+}
 
+exports.testTap = testTap

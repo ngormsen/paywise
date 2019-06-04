@@ -2,7 +2,7 @@
     <ActionBar title="Navigation" class="action-bar"></ActionBar>
     <StackLayout id="form" orientation="vertical">
 
-        <Label class="h1" textWrap="true" text="Ristorante La Contessa"/>
+        <Label class="h1" textWrap="true" text="testRestaurant"/>
         <Label class="h3" textWrap="true" text="Eingecheckt am Tisch 0"/>
 
 

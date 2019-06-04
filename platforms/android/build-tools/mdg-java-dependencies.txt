@@ -92,3 +92,4 @@ C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencie
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fca67f0f8d15f505bfd22d27efd1cabd\okhttp-2.7.5.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fcf948dcce2b8ae88e4145b6ebdebf86\classes.jar
 C:\Users\Nils\Documents\paywise\platforms\android\app\build\exploded-dependencies\fdf9b19ebbd7bc576b31914425da9cef\WebViewInterface.jar
+C:\Users\Nils\Documents\paywise\platforms\android\app\build\intermediates\javac\debug

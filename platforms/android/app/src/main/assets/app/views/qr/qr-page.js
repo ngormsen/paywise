@@ -12,8 +12,8 @@ function onTap(args) {
     var page = args.object;
     page.bindingContext = new qr_view_model_1.BarcodeModel();
 
-    page.bindingContext.doRequestCameraPermission();
-    page.bindingContext.doScanWithTorch();
+    // page.bindingContext.doRequestCameraPermission();
+    // page.bindingContext.doScanWithTorch();
   
     setTimeout(() => {
         
