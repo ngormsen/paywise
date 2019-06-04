@@ -4,10 +4,12 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 
 function onPageLoaded(args) {
     var sum = data.value;
+    var restaurant = data.restaurant;
     console.log('sum', sum)
     const page = args.object;
     viewModel = new Observable();
-    viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EUR.`)
+    viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EUR.`);
+    viewModel.set("restaurant", `${restaurant}`);
     page.bindingContext = viewModel;
 }
 exports.onPageLoaded = onPageLoaded;
