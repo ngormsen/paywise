@@ -1,22 +1,24 @@
-<Page loaded = "loaded">
-    <ActionBar title="Login" class="action-bar"></ActionBar>
-     <FlexboxLayout>
-        <StackLayout id="form" orientation="vertical">
+<Page loaded = "loaded" class = "page">
+     <StackLayout id="form" orientation="vertical">
+            <Label text = "Welcome to Paywise!" orientation = "center"/>
+            <Image src="~/paywise_logo.png" />
 
-            <TextField class="input input-border" id="email" text="{{ email }}"
+            <TextField class = "full-width" id="email" text="{{ email }}"
                 hint="Email Address" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
-            <TextField class="input input-border" secure="true" text="password" id = "password"
+            <TextField class="full-width" secure="true" id = "password"
                 hint="Password" />
 
-            <Button class="btn btn-primary" text="Login" id = "Login"
+            <Button class="ghost-round" text="Login" id = "Login"
                 tap="LogIn" />
-            <Button text="Register" class="btn btn-primary" tap="Register" id = "Register"
-                class="link" />
-            <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut"
-                class="link" />
-        </StackLayout>
-    </FlexboxLayout>
+            
+            <Button text="Guest" class="ghost-round" tap="guest" id = "guest"/>
+
+            <Button text="Create a new Account"  tap="Register" id = "Register"
+                class="spacing" />
+            <Button text="Forgot your password?" class="spacing" tap="resetPassword"  />  
+                
+    </StackLayout>
 </Page>
 
   

@@ -4,7 +4,6 @@ const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const dialogsModule = require("ui/dialogs");
 const textFieldModule = require("ui/text-field");
-var data = require("../shared/data.js");
 
 var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
@@ -44,7 +43,6 @@ var email;
 
 
 
-
 exports.loaded = function (args) {
  const page = args.object;
 }
@@ -58,7 +56,6 @@ function loaded(args){
 }
 
 
-
 exports.Register = function(){
   //const email = txtemail.value
   //const passwort = txtpassword.value
@@ -69,73 +66,39 @@ exports.Register = function(){
   const password = page.getViewById("password").text; 
   //const password = String(passwordfield);
 
-//   var hello = "asdfasd"
-
-//   alert("mail" + String(hello)) 
-//   alert("email" + String(email))
-//   alert("pw" +  String(password))
-
-
-
-    firebase.createUser({
+      firebase.createUser({
         email: email,
         password: password
        }).then(function (result) {
-            console.log("userid: " + result.key);
+        console.log("userid: " + result.key);
+        alert("Sie wurden registriert!")
       }).catch(function (err) {
-            console.log("createUser error: " + err);
-            dialogs.alert(err);
+        console.log("createUser error: " + err);
+        Fehler("Es gabe leider einen Fehler:" + err)
+        dialogs.alert(err);
       });
   };
 
-  
-  //auth.signInWithEmailAndPassword(email, password);
- // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
- 
- /*
-  firebaseWebApi.auth().createUserWithEmailAndPassword(email, password)
-      .then(
-        function(user){
-          dialogs.alert({
-            title: "User created",
-            message: "email: " + user.email,
-            okButtonText: "Nice!"
-        })
+  /*
+exports.FacebookLogin = function (){
+  firebase.login({
+    type: firebase.LoginType.FACEBOOK,
+    // Optional
+    facebookOptions: {
+      // defaults to ['public_profile', 'email']
+      scopes: ['public_profile', 'email'] // note: this property was renamed from "scope" in 8.4.0
+    }
+  }).then(
+      function (result) {
+        JSON.stringify(result);
       },
-        function (errorMessage) {
-          dialogs.alert({
-            title: "No user created",
-            message: errorMessage,
-            okButtonText: "OK, got it"
-        })
+      function (errorMessage) {
+        console.log(errorMessage);
       }
   );
-    }
-
-
-        
-        console.log("User created: " + JSON.stringify(user));
-      })
-      .catch(error => console.log("Error creating user: " + error));
-
-    }
-  
-    // Handle Errors here.
-   // var errorCode = error.code;
-    //var errorMessage = error.message;
-    // ...
-
-  
-  //});
-
-*/
-
-function success(result){
-    data.guest = result.email
-    getFrameById("topframe").navigate("views/qr/qr-page")
 }
-
-
+ 
+*/
 exports.LogIn = function (){
   const email = page.getViewById("email").text;
   const password = page.getViewById("password").text;
@@ -147,56 +110,46 @@ exports.LogIn = function (){
           password: password
         }
       })
-      .then(result => success(result))
-      .catch(error => alert("Falsches Passwort/E-Mail Adresse."));
+      .then(result => console.log("user logged in"))
+      .catch(error => console.log(error));
+      
     }
 //JSON.stringify(result)
 
 
 
-
-  /*
-  firebaseWebApi.auth().signInWithEmailAndPassword(email, password)
-      .then(() => console.log("User logged in"))
-      .catch(err => console.log("Login error: " + JSON.stringify(err)));
-
-*/
-
- /* 
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-    });  }
-
-
-
-*/
-/*
+exports.guest = function (){
 firebase.login(
     {
       type: firebase.LoginType.ANONYMOUS
     })
     .then(user => console.log("User uid: " + user.uid))
-    .catch(error => console.log("Trouble in paradise: " + error));
+      alert("Sie wurden mit einem Gastzugang eingeloggt")
+    .catch(function (err) {
+      console.log("createUser error: " + err);
+      Fehler("Es gabe leider einen Fehler:" + err)
+      dialogs.alert(err);
+    });
 
 
   }
 
-*/
 
-//Sign out Function:
-
-
-exports.SignOut = function(args){
-  firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  }).catch(function(error) {
-  // An error happened.
-});
+exports.resetPassword = function(){
+  const email = page.getViewById("email").text;
+  firebase.sendPasswordResetEmail(email)
+      .then(() => console.log("Password reset email sent"))
+      alert("Password reset email sent")
+      .catch(error => console.log("Error sending password reset email: " + error));
 }
+//Sign out Function:
+/*
 
+exports.SignOut = function(){
+  firebase.logout()
+  .then(console.log("user logged out"))
+}
+*/
 /*
 const frameModule = require("ui/frame");
 const LoginViewModel = require("./login-view-model");

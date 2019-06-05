@@ -1,13 +1,16 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+var navigateViewModel = require("./navigate-view-model");
+
+var navigateViewModel = new navigateViewModel();
 
 
-function onNavigatingTo(args) {
+function pageLoaded(args) {
     /* Creates a reference to the current page.*/
     const page = args.object;
-    page.bindingContext = new HomeViewModel();
+    page.bindingContext = navigateViewModel;
 }
 
-exports.onNavigatingTo = onNavigatingTo;
+exports.pageLoaded = pageLoaded;
 
 function onPaymentTap() {
     const frame = getFrameById("topframe");

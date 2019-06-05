@@ -1,14 +1,32 @@
 FlexboxLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #eee;
+  height: 100%;
+}
+
+
+
+  ActionbarLayout {
     justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-image: url("~/images/background.jpg");
   }
   StackLayout {
-    width: 300;
-    padding: 12 16;
-    background-color: #f0f0f0;
-  }
+      background: #000000;
+      opacity: 0.85;
+      filter: alpha(opacity=85);
+      z-index: 1;
+    }
+
   Image {
     margin-bottom: 20;
     height: 70;
@@ -20,3 +38,160 @@ FlexboxLayout {
     placeholder-color: #C4AFB4;
     color: black;
   }
+.header{
+  font-size: 25;
+  text-align: center;
+  color: red;
+}
+
+.transparent_btn {
+  background-color: transparent;
+  border:none;
+  height: 50;
+  width:100;
+}
+
+.sign-up-label {
+  margin-bottom: 20;
+
+}
+
+.facebook {
+  background-color: orangered;
+  border-radius: 5;
+  color: white;
+  font-family: FontAwesome;
+  font-size: 24;
+  vertical-align: middle;
+  width: 80%;
+
+
+
+}
+ 
+
+ input {
+   border: none;
+ }
+
+button:focus {
+  outline: none;
+}
+
+.highlight:hover {
+  color: #fff;
+  transition: color .2s ease;
+}
+
+.input-line:focus {
+  outline: none;
+  border-color: #fff;
+  transition: color .2s ease;
+}
+
+.input-line {
+  background: none;
+  margin-bottom: 10px;
+  line-height: 2.4em;
+  color: #fff;
+  font-family: roboto;
+  font-weight: 300;
+  letter-spacing: 0px;
+  letter-spacing: 0.02rem;
+  font-size: 19px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.input-fields {
+  margin-top: 25px;
+}
+
+.spacing {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  height: 120px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.65)
+}
+
+
+.ghost-round {
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.65);
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  line-height: 2.5em;
+  margin-top: auto;
+  margin-bottom: 25px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.ghost-round:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+
+
+.spacing {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  height: 120px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.65)
+}
+
+.page {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #eee;
+  height: 100%;
+}
+
+.window {
+  width: 100%;
+  height: 100%;
+}
+
+.welcome {
+  font-weight: 200;
+  margin-top: 75px;
+  text-align: center;
+  font-size: 40px;
+  font-size: 30;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+}

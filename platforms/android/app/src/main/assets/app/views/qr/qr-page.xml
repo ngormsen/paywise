@@ -13,9 +13,9 @@
         </iOS-->
 
             <Button class="btn btn-primary btn-rounded-sm" text="Kamera aktivieren" tap="onTap" />
-        <iOS>
+<!--         <iOS>
             <Button class="btn btn-primary btn-rounded-sm" text="back camera, with torch" tap="{{ doScanWithTorch }}" />
-        </iOS>
+        </iOS> -->
     
     </StackLayout>
     </ScrollView>
