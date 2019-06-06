@@ -7,13 +7,14 @@ const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 const fromObject = require("tns-core-modules/data/observable").fromObject;
+const listViewModule = require("tns-core-modules/ui/list-view");
 
 var page = null
 var orders = null
 var tip;
 
-// data.value = 10;
-// console.log(data.value);
+// set observable array
+var myItems = new ObservableArray([]);
 
 String.prototype.replaceAll = function(str1, str2, ignore) 
 {
@@ -40,25 +41,22 @@ function onNavigatingTo(args) {
         console.log("items", result.value)
         if(result.key == "myorders"){
             orders = result.value;
-            data.mydata = []
+            data.mydata = [];
+            
+            myItems = [];
 
-            // set observable array
-            var myItems = new ObservableArray(
-                []
-            )
-
-            console.log(orders)
+            console.log(orders);
             Object.keys(orders).forEach(function(key, idx) {
                 if(orders[key] != null){
                     if(orders[key] != null){
                         myItems.push({ name: orders[key].name, prize: orders[key].prize});
-                        data.myorder.push({ name: orders[key].name, prize: orders[key].prize})
+                        data.myorder.push({ name: orders[key].name, prize: orders[key].prize});
                     }
                 }
             }); 
 
     
-            viewModel.set("myItems", myItems)
+            viewModel.set("myItems", myItems);
         }
 
     };
@@ -107,8 +105,19 @@ function onTap(args) {
     );
 
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders/${buttonKey}`);
-
-  
+    
+    // var listView = page.getViewById("ordersList");
+    if (myItems.length == 1){
+        const frame = getFrameById("topframe");
+        //frame.reloadPage();
+        const navigationEntry = {
+            moduleName: "views/myorders/myorders-page",
+            backstackVisible: false,
+            animated: false
+        };
+        frame.navigate(navigationEntry);
+    }
+    //listView.refresh();
 }
 exports.onTap = onTap;
 

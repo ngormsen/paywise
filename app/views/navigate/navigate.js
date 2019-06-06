@@ -27,7 +27,12 @@ exports.onOrdersTap = onOrdersTap
 
 function onMyOrdersTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/myorders/myorders-page");
+    const navigationEntry = {
+        moduleName: "views/myorders/myorders-page",
+        backstackVisible: false
+    };
+    frame.navigate(navigationEntry);
+    //frame.navigate("views/myorders/myorders-page");
 }
 
 exports.onMyOrdersTap = onMyOrdersTap
