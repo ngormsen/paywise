@@ -5,6 +5,7 @@ const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const dialogsModule = require("ui/dialogs");
 const textFieldModule = require("ui/text-field");
 
+
 var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
@@ -79,7 +80,7 @@ exports.Register = function(){
       });
   };
 
-  /*
+  
 exports.FacebookLogin = function (){
   firebase.login({
     type: firebase.LoginType.FACEBOOK,
@@ -91,6 +92,7 @@ exports.FacebookLogin = function (){
   }).then(
       function (result) {
         JSON.stringify(result);
+        alert("Logged in with Facebook!")
       },
       function (errorMessage) {
         console.log(errorMessage);
@@ -98,7 +100,7 @@ exports.FacebookLogin = function (){
   );
 }
  
-*/
+
 exports.LogIn = function (){
   const email = page.getViewById("email").text;
   const password = page.getViewById("password").text;

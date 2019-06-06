@@ -1,6 +1,6 @@
 <Page loaded = "loaded" class = "page">
      <StackLayout id="form" orientation="vertical">
-            <Label text = "Welcome to Paywise!" orientation = "center"/>
+            <Label text = "Welcome to Paywise!" class = "header"/>
             <Image src="~/paywise_logo.png" />
 
             <TextField class = "full-width" id="email" text="{{ email }}"
@@ -9,14 +9,16 @@
             <TextField class="full-width" secure="true" id = "password"
                 hint="Password" />
 
-            <Button class="ghost-round" text="Login" id = "Login"
+            <Button class="ghost-round full-width" text="Login" id = "Login"
                 tap="LogIn" />
             
-            <Button text="Guest" class="ghost-round" tap="guest" id = "guest"/>
+            <Button text="Guest" class="transparent_btn" tap="guest" id = "guest"/>
+            <Button text="Facebook" class="spacing full-width" tap="FacebookLogin"  />  
 
-            <Button text="Create a new Account"  tap="Register" id = "Register"
-                class="spacing" />
-            <Button text="Forgot your password?" class="spacing" tap="resetPassword"  />  
+            <Button text="Sign Up"  tap="Register" id = "Register"
+                class="transparent_btn" />
+            <Button text="Forgot your password?" class="transparent_btn" tap="resetPassword"  />  
+
                 
     </StackLayout>
 </Page>
