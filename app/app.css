@@ -26,9 +26,9 @@ components that have the btn class name.
 
 /*Actionbar*/
 
-.action-bar{
+.actionbar{
     background-color: #66c792;
-    color: #66c792;
+    color: white;
 }
 
 .menuicon{
@@ -42,27 +42,28 @@ components that have the btn class name.
     background-color: #66c792;
     color: white;
     text-align: center;
-    Height: 25%;
+    height: 25%;
 }
 
 .radsidepic{
     width: 50%;
     height: 50%;
     margin-top: 5%;
+    align: left;
 }
 
 .radsidebody{
-    background-color: #66c792;
-    color: white;
+    background-color: #EBEBEB;
+    color: #FFFFFF;
 }
 
 .radsidebutton{
-    background-color: #66c792;
-    color: white;
+    background-color: #EBEBEB;
+    color: #66c792;
     height: 12,50%;
     font-weight: bold;
     border-width: 1px;
-    border-color: white;
+    border-color: #66c792;
 }
 
 .radsidebuttonsignout{
