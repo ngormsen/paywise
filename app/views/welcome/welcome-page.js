@@ -44,3 +44,78 @@ function onTap() {
 }
 
 exports.onTap = onTap;
+
+
+//Side Drawer 
+var view = require("ui/core/view");
+var drawer;
+
+exports.pageLoaded = function(args) {
+    var page = args.object;
+    drawer = view.getViewById(page, "sideDrawer");
+};
+
+exports.toggleDrawer = function() {
+    drawer.toggleDrawerState();
+};
+
+
+// Navigates to orders page
+function onOrdersTap() {
+  const frame = getFrameById("topframe");
+  frame.navigate("views/orders/orders-page");
+}
+
+exports.onOrdersTap = onOrdersTap
+
+// Navigates to orders page
+function onPayTap() {
+  var sum = 0;
+  // console.log(orders.orders)
+  // Receives the correct dish, prize and key on Tap event
+  Object.keys(orders).forEach(function(key, idx) {
+      if(orders[key] != null){
+          sum += orders[key].prize
+          console.log(orders[key].prize)
+      }
+  });
+  console.log(sum);
+  console.log("total", Number(tip))
+  tip = page.getViewById("tipField").text
+  data.tip = tip;
+  data.value = sum + parseFloat(tip);
+  console.log(data.value);
+  const frame = getFrameById("topframe");
+  frame.navigate("views/payment/payment-page");
+  }   
+
+exports.onPayTap = onPayTap
+
+
+//Sign out Function:
+exports.SignOut = function(args){
+  firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+  }).catch(function(error) {
+  // An error happened.
+});
+}
+
+exports.onTap = onTap;
+
+// Navigates to guest order page
+function onMyOrdersTap() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/myorders/myorders-page");
+}
+
+exports.onMyOrdersTap = onMyOrdersTap
+
+//Navigate to QR Code Scanner
+function onTap() {
+  const frame = getFrameById("topframe");
+  frame.navigate("views/qr/qr-page");
+
+}
+
+exports.onTap = onTap;
