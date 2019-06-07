@@ -26,33 +26,59 @@ components that have the btn class name.
 
 /*Actionbar*/
 
-.actionbar{
-    background-color: #616161;
-    color: white;
+.action-bar{
+    background-color: #66c792;
+    color: #66c792;
+}
+
+.menuicon{
+    width: 5%;
+    height: 5%;
 }
 
 /*RadSideDrawer*/
 
 .radsideheader{
-    background-color: #616161;
+    background-color: #66c792;
     color: white;
+    text-align: center;
+    Height: 25%;
+}
+
+.radsidepic{
+    width: 50%;
+    height: 50%;
+    margin-top: 5%;
 }
 
 .radsidebody{
-    background-color: #616161;
+    background-color: #66c792;
     color: white;
 }
 
 .radsidebutton{
-    background-color: #616161;
+    background-color: #66c792;
     color: white;
-    height: 16%;
+    height: 12,50%;
+    font-weight: bold;
+    border-width: 1px;
+    border-color: white;
+}
+
+.radsidebuttonsignout{
+    background-color: orange;
+    color: white;
+    height: 12,50%;
+    font-weight: bold;
+    border-width: 1px;
+    border-color: white;
+    margin-top: 29%;
 }
 
 /*App-content*/
 
 .buttonprimary{
-    background-color: #616161;
+    background-color: #66c792;
     color: white;
 }
 
@@ -62,6 +88,6 @@ components that have the btn class name.
 }
 
 .content{
-    background-color: #616161;
+    background-color: #EBEBEB;
     color: white;
 }
