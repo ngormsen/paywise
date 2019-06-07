@@ -23,3 +23,45 @@ components that have the btn class name.
     font-size: 20;
     margin: 10%;
 }
+
+/*Actionbar*/
+
+.actionbar{
+    background-color: #616161;
+    color: white;
+}
+
+/*RadSideDrawer*/
+
+.radsideheader{
+    background-color: #616161;
+    color: white;
+}
+
+.radsidebody{
+    background-color: #616161;
+    color: white;
+}
+
+.radsidebutton{
+    background-color: #616161;
+    color: white;
+    height: 16%;
+}
+
+/*App-content*/
+
+.buttonprimary{
+    background-color: #616161;
+    color: white;
+}
+
+.buttonsecondary{
+    background-color: #FFFFFF;
+    color: white;
+}
+
+.content{
+    background-color: #616161;
+    color: white;
+}

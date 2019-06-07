@@ -1,12 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer" loaded="pageLoaded">
 
-<ActionBar title="Hauptmenü">
-  <android>
-    <NavigationButton  tap="toggleDrawer" />
-  </android>
-  <ios>
-    <ActionItem ios.position="left" tap="toggleDrawer" />
-  </ios>
+<ActionBar title="Zuhause" class="actionbar">
+    <ActionItem tap="toggleDrawer" ios.systemIcon="4" android.systemIcon="ic_menu_btn_add" ios.position="left" />
 </ActionBar>
 
     <sd:RadSideDrawer id="sideDrawer">
@@ -14,23 +9,23 @@
         <!-- side drawer content -->
         <sd:RadSideDrawer.drawerContent>
             <StackLayout class="sidedrawer-left">
-                <StackLayout class="sidedrawer-header">
-                    <Label text="Hello RadSideDrawer!" class="sidedrawer-header-brand" />
+                <StackLayout class="radsideheader">
+                    <Label text="Hello RadSideDrawer!" class="radsidebody" />
                 </StackLayout>
-                <StackLayout class="sidedrawer-content">
-                    <Label text="Home" class="sidedrawer-list-item-text" />
-                            <Button class="btn btn-primary" text="Am tisch einchecken" tap="onTap" />
-                    <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
-                    <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
-                    <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />  
-                    <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut" />
+                <StackLayout class="radsidebody">
+                    <Button text="Home" class="radsidebutton" />
+                    <Button class="radsidebutton" text="Am tisch einchecken" tap="onTap" />
+                    <Button class="radsidebutton" text="Bestellungen anzeigen" tap="onOrdersTap" />
+                    <Button class="radsidebutton" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+                    <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
+                    <Button text="sign out" class="radsidebutton" tap="SignOut" id = "signOut" />
                 </StackLayout>
             </StackLayout>
         </sd:RadSideDrawer.drawerContent>
 
         <!-- The main content -->
         <sd:RadSideDrawer.mainContent>
-            <StackLayout class="stackback">
+            <StackLayout class="content">
             
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
