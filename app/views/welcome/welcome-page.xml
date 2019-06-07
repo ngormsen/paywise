@@ -1,11 +1,11 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer" loaded="pageLoaded">
 
-<ActionBar title="SideDrawer Button">
+<ActionBar title="Hauptmenü">
   <android>
-    <NavigationButton icon="res://ic_menu" tap="toggleDrawer" />
+    <NavigationButton  tap="toggleDrawer" />
   </android>
   <ios>
-    <ActionItem icon="res://ic_menu" ios.position="left" tap="toggleDrawer" />
+    <ActionItem ios.position="left" tap="toggleDrawer" />
   </ios>
 </ActionBar>
 
