@@ -4,6 +4,8 @@ const firebase = require("nativescript-plugin-firebase");
 const firebaseWebApi = require("nativescript-plugin-firebase/app");
 const dialogsModule = require("ui/dialogs");
 const textFieldModule = require("ui/text-field");
+var data = require("../shared/data.js");
+
 
 
 var view = require("tns-core-modules/ui/core/view");
@@ -49,11 +51,21 @@ exports.loaded = function (args) {
 }
 
 */
+
+
+
+
 var page;
 
 exports.loaded = loaded;
 function loaded(args){
   page = args.object;
+}
+
+
+function success(result){
+  data.guest = result.email
+  getFrameById("topframe").navigate("views/qr/qr-page")
 }
 
 
@@ -80,7 +92,7 @@ exports.Register = function(){
       });
   };
 
-  
+ /* 
 exports.FacebookLogin = function (){
   firebase.login({
     type: firebase.LoginType.FACEBOOK,
@@ -100,6 +112,8 @@ exports.FacebookLogin = function (){
   );
 }
  
+*/
+// Facebook Entwickler-Account: tdavidjin@gmail.com pw: paywise
 
 exports.LogIn = function (){
   const email = page.getViewById("email").text;
@@ -112,8 +126,8 @@ exports.LogIn = function (){
           password: password
         }
       })
-      .then(result => console.log("user logged in"))
-      .catch(error => console.log(error));
+      .then(result => success(result))
+      .catch(error => alert("Falsches Passwort/Email Adrersse"));
       
     }
 //JSON.stringify(result)
@@ -125,12 +139,13 @@ firebase.login(
     {
       type: firebase.LoginType.ANONYMOUS
     })
-    .then(user => console.log("User uid: " + user.uid))
+    .then(result => success(result))
+    //console.log("User uid: " + user.uid)
       alert("Sie wurden mit einem Gastzugang eingeloggt")
     .catch(function (err) {
       console.log("createUser error: " + err);
       Fehler("Es gabe leider einen Fehler:" + err)
-      dialogs.alert(err);
+      dialogs.alert(err);s
     });
 
 

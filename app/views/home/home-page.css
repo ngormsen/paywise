@@ -1,88 +1,44 @@
-FlexboxLayout {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background: #eee;
-  height: 100%;
-}
 
 
 
-  ActionbarLayout {
-    justify-content: center;
-  }
+
+  /* filter over stacklayout, foggy */
   StackLayout {
-      background: #0080A6;
-      opacity: 0.85;
+    
+    opacity: 0.85;
       filter: alpha(opacity=85);
       z-index: 1;
     }
+  
+
+
 
   Image {
-    margin-bottom: 20;
+    margin-bottom: 50;
     height: 70;
+    margin-top: 70;
   }
+
   Button, TextField {
     margin-bottom: 10;
   }
-  TextField {
-    placeholder-color: #C4AFB4;
-    color: black;
-  }
-.header{
-  font-size: 25;
-  text-align: center;
-  color: whitesmoke;
-}
-
-
-
-
 
 .transparent_btn {
   background-color: transparent;
-  border:none;
+  color: white;
   font-weight: 300;
   height: 40;
-  width:200;
-  margin-bottom: 25px;
+  width:100;
+  margin-top:90;
 }
 
-.sign-up-label {
-  margin-bottom: 20;
 
-}
-
-.facebook {
-  background-color: orangered;
-  border-radius: 5;
-  color: white;
-  font-family: FontAwesome;
-  font-size: 24;
-  vertical-align: middle;
-  width: 80%;
-
-
-
-}
- 
 
  input {
    border: none;
  }
 
-button:focus {
-  outline: none;
-}
+
 
 .highlight:hover {
   color: #fff;
@@ -91,62 +47,38 @@ button:focus {
 
 .input-line:focus {
   outline: none;
-  border-color: #fff;
+  border-color:white;
   transition: color .2s ease;
+  placeholder-color: white;
 }
 
 .input-line {
   background: none;
   margin-bottom: 10px;
   line-height: 2.4em;
-  color: #fff;
-  font-family: roboto;
+  color:white;
+  font-family: robot;
   font-weight: 300;
-  letter-spacing: 0px;
+  letter-spacing: 100px;
   letter-spacing: 0.02rem;
-  font-size: 19px;
-  font-size: 1.2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: white;
   -webkit-transition: all .2s ease;
+  placeholder-color: rgba(255, 255, 255, 0.65);
   transition: all .2s ease;
+  text-align: center;
 }
 
-.full-width {
+.input-fields {
   width: 90%;
 }
 
-
-.input-fields {
-  margin-top: 25px;
-}
-
-.spacing {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  height: 120px;
-  font-weight: 300;
-  text-align: center;
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.65)
-}
-
-
 .ghost-round {
   cursor: pointer;
-  background:#464646;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 25px;
-  color: rgba(255, 255, 255, 0.65);
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
-  line-height: 2.5em;
-  margin-top: 80px;
-  margin-bottom: 25px;
+  background:#01B4D0;
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
+  width: 90%;
+  margin-top: 30;
 }
 
 .ghost-round:hover {
@@ -157,49 +89,25 @@ button:focus {
 }
 
 
-
-.spacing {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  background: None;
-  height: 120px;
-  font-weight: 300;
-  text-align: center;
-  margin-top: 0;
-  color: black(255, 255, 255, 0.65)
-}
-
 .page {
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background: #eee;
+  background: #1F2D44;
   height: 100%;
 }
 
-.window {
-  width: 100%;
-  height: 100%;
+
+.labelsignup {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    margin-top: 30;
+    color: rgba(255, 255, 255, 0.15);
 }
 
-.welcome {
-  font-weight: 200;
-  margin-top: 75px;
+
+.labelForgotpw {
+  display: block;
+  color:rgba(255, 255, 255, 0.15);
   text-align: center;
-  font-size: 40px;
-  font-size: 30;
-  letter-spacing: 0px;
-  letter-spacing: 0.05rem;
+  line-height: 150%;
+  margin-top: 10;
 }

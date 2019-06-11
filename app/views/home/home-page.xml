@@ -1,25 +1,21 @@
-<Page loaded = "loaded" class = "page">
-     <StackLayout id="form" orientation="vertical">
-            <Label text = "Welcome to Paywise!" class = "header"/>
+<Page loaded = "loaded" class = "page" actionBarHidden = "true">
+     <StackLayout id="form" orientation="vertical" class = "page">
             <Image src="~/paywise_logo.png" />
 
-            <TextField class = "full-width" id="email" text="{{ email }}"
+            <TextField class = "input-fields input-line" id="email" text="{{ email }}"
                 hint="Email Address" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
-            <TextField class="full-width" secure="true" id = "password"
+            <TextField class="input-fields input-line" secure="true" id = "password"
                 hint="Password" />
 
-            <Button class="ghost-round full-width" text="Login" id = "Login"
+            <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
                 tap="LogIn" />
+            <Label text="Forgot password?"  tap="resetPassword" class = "labelForgotpw"/> 
             
             <Button text="Guest" class="transparent_btn" tap="guest" id = "guest"/>
-            <Button text="Facebook" class="spacing full-width" tap="FacebookLogin"  />  
 
-            <Button text="Sign Up"  tap="Register" id = "Register"
-                class="transparent_btn" />
-            <Button text="Forgot your password?" class="transparent_btn" tap="resetPassword"  />  
-
-                
+            <Label text="Don´t have an account? Create one"  tap="Register" id = "Register" class ="labelsignup"/>
+             
     </StackLayout>
 </Page>
 

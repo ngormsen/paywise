@@ -7,6 +7,16 @@ const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var page = null
 
+//swipe:
+var gestures = require("tns-core-modules/ui/gestures");
+var labelModule = require("tns-core-modules/ui/label");
+var label = new labelModule.Label();
+label.on(gestures.GestureTypes.swipe, function (args) {
+    console.log("Swipe Direction: " + args.direction);
+});
+
+
+
 var orders;
 String.prototype.replaceAll = function(str1, str2, ignore) 
 {
