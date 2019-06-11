@@ -25,6 +25,6 @@
                     </GridLayout>
                 </ListView.itemTemplate>
             </ListView>
-        </GridLayout>
+        </GridLayout> 
     </StackLayout>
 </Page>
