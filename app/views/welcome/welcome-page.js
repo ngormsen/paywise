@@ -119,3 +119,26 @@ function onTap() {
 }
 
 exports.onTap = onTap;
+
+// Navigates to orders page
+function onPayTap() {
+  var sum = 0;
+  // console.log(orders.orders)
+  // Receives the correct dish, prize and key on Tap event
+  Object.keys(orders).forEach(function(key, idx) {
+      if(orders[key] != null){
+          sum += orders[key].prize
+          console.log(orders[key].prize)
+      }
+  });
+  console.log(sum);
+  console.log("total", Number(tip))
+  tip = page.getViewById("tipField").text
+  data.tip = tip;
+  data.value = sum + parseFloat(tip);
+  console.log(data.value);
+  const frame = getFrameById("topframe");
+  frame.navigate("views/payment/payment-page");
+  }   
+
+exports.onPayTap = onPayTap

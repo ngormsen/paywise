@@ -4,25 +4,29 @@
     <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
 
     <StackLayout id="form" orientation="vertical">
-        <Button class="btn btn-primary" text="Bestellungen anzeigen"
-        tap="onOrdersTap" />
-        <Button class="btn btn-primary" text="Bezahlen"
-        tap="onPayTap" />
-        <GridLayout rows="80" >
+        
+        <GridLayout rows="50">
             <GridLayout columns="150, auto">
                 <Button class="btn btn-primary" text="confirm"  tap="testTap" col="0"/>
                 <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1"/>
             </GridLayout>
         </GridLayout>
 
-        <GridLayout rows="*" >
+        <Button class="btn btn-primary" text="Bestellungen anzeigen"
+        tap="onOrdersTap" />
+        <Button class="btn btn-primary" text="Bezahlen"
+        tap="onPayTap" />
+        
+
+
+        <GridLayout>
             <ListView items="{{ myItems }}">
                 <!--Describing how the element will look like-->
                 <ListView.itemTemplate>
-                    <GridLayout columns="100, 100, auto">
-                        <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="0"/>
+                    <GridLayout columns="60, 100, auto" class="myorderslist">
+                        <Label text="{{ name }}" class="h2" col="0"/>
                         <Label text="{{ prize }}" class="h2" col="1"/>
-                        <Label text="{{ name }}" class="h2" col="2"/>
+                        <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="2"/>
 
                         <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
                         <!-- Parent binding to a string property -->
@@ -34,8 +38,6 @@
                     </GridLayout>
                 </ListView.itemTemplate>
             </ListView>
-
-        </GridLayout>
-
+        </GridLayout> 
     </StackLayout>
 </Page>

@@ -1,10 +1,9 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:Barcode="nativescript-barcodescanner"  loaded="pageLoaded">
-    <ActionBar title="Barcode-Scanner" class="action-bar"></ActionBar>
+<Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:Barcode="nativescript-barcodescanner"  actionBarHidden="true" loaded="pageLoaded" xmlns:customControls="shared">
+    <ActionBar title="Tab-to-Scan" class="action-bar"></ActionBar>
 
-    <ScrollView>  
-    <StackLayout class="tab-content">
-        <Label class="h1" textWrap="true" text="Willkommen!"/>
-        <Label class="h3" textWrap="true" text="Bitte scanne den Barcode an deinem Tisch."/>
+
+    <StackLayout class="qrcodebackground" >
+      
 
         <!--iOS>
         <ContentView height="240" width="240">
@@ -12,12 +11,12 @@
         </ContentView>
         </iOS-->
 
-            <Button class="btn btn-primary btn-rounded-sm" text="Kamera aktivieren" tap="onTap" />
+            <image src="~/images/ScanQRCode.png" tap="onTap" class="qrcodepic" />
 <!--         <iOS>
             <Button class="btn btn-primary btn-rounded-sm" text="back camera, with torch" tap="{{ doScanWithTorch }}" />
         </iOS> -->
     
     </StackLayout>
-    </ScrollView>
+
 
 </Page>

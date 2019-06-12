@@ -1,4 +1,4 @@
-<Page loaded = "loaded">
+<Page loaded = "loaded" actionBarHidden="true" class="qrcodebackground">
     <ActionBar title="Login" class="action-bar"></ActionBar>
      <FlexboxLayout>
         <StackLayout id="form" orientation="vertical">

@@ -27,7 +27,7 @@ components that have the btn class name.
 /*Actionbar*/
 
 .actionbar{
-    background-color: #66c792;
+    background-color: #1F2D44;
     color: white;
 }
 
@@ -39,7 +39,7 @@ components that have the btn class name.
 /*RadSideDrawer*/
 
 .radsideheader{
-    background-color: #66c792;
+    background-color: #1F2D44;
     color: white;
     text-align: center;
     height: 25%;
@@ -48,7 +48,7 @@ components that have the btn class name.
 .radsidepic{
     width: 50%;
     height: 50%;
-    margin-top: 5%;
+    margin-top: 10%;
     align: left;
 }
 
@@ -59,15 +59,16 @@ components that have the btn class name.
 
 .radsidebutton{
     background-color: #EBEBEB;
-    color: #66c792;
+    color: #1F2D44;
     height: 12,50%;
     font-weight: bold;
     border-width: 1px;
-    border-color: #66c792;
+    border-color: #1F2D44;
 }
 
 .radsidebuttonsignout{
-    background-color: orange;
+    background-color: #3F5069;
+    /*background-color: #3ebeb1;*/
     color: white;
     height: 12,50%;
     font-weight: bold;
@@ -91,4 +92,22 @@ components that have the btn class name.
 .content{
     background-color: #EBEBEB;
     color:black;
+}
+
+/*QR Code Scanner*/
+
+.qrcodebackground{
+    background-image: linear-gradient(to bottom right,#1F2D44,#3F5069);
+}
+
+.qrcodepic{
+    width: 200;
+    height: 200%;
+    align: center;
+    vertical-align: center;
+}
+
+/*MyOrders*/
+.myorderslist{
+    margin-left: 20%;
 }

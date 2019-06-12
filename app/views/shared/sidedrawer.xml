@@ -14,4 +14,4 @@
                     <Button text="sign out" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
                 </StackLayout>
             </StackLayout>
-        </sd:RadSideDrawer.drawerContent>
+</sd:RadSideDrawer.drawerContent>
