@@ -18,8 +18,15 @@ function pageLoaded(args){
 function setupWebViewInterface(page){
     var webView = page.getViewById('webView');
     path = '~/www/paypal.html';
+    //path = '~/www/paypal-dummy.html';
     oWebViewInterface = new webViewInterfaceModule.WebViewInterface(webView, path);
     handleEventFromWebView();
+}
+
+// Touch gesture callback method for web view
+exports.webViewTouch = webViewTouch;
+function webViewTouch(args) {
+    //console.log("log: web view touched");
 }
 
 // Handle events from webview (paypal)
