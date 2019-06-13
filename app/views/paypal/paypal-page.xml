@@ -1,3 +1,16 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
-<web-view id="webView"></web-view>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer"
+    xmlns:comps="components">
+    <sd:RadSideDrawer id="sideDrawer">
+
+
+        <sd:RadSideDrawer.drawerContent>
+            <comps:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
+        <sd:RadSideDrawer.mainContent>
+
+            <web-view id="webView"></web-view>
+        </sd:RadSideDrawer.mainContent>
+
+    </sd:RadSideDrawer>
+
 </Page>

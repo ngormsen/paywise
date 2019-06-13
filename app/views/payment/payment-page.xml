@@ -1,16 +1,24 @@
-<Page class="page" loaded="onPageLoaded">
-    <ActionBar title="Payment" class="action-bar"></ActionBar>
-    <StackLayout id="form" orientation="vertical">
+<Page class="page" loaded="onPageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+    <sd:RadSideDrawer id="sideDrawer">
 
-        <Label class="h1" textWrap="true" text="Ristorante La Contessa"/>
-        <Label class="h3" textWrap="true" text="{{ sum, sum }}"/>
+        <sd:RadSideDrawer.drawerContent>
+            <comps:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
+        <sd:RadSideDrawer.mainContent>
+
+            <ActionBar title="Payment" class="action-bar"></ActionBar>
+            <StackLayout id="form" orientation="vertical">
+
+                <Label class="h1" textWrap="true" text="Ristorante La Contessa" />
+                <Label class="h3" textWrap="true" text="{{ sum, sum }}" />
 
 
-        <Button class="btn btn-primary" text="Paypal"
-            tap="onPaypalTap" />
-        <Button class="btn btn-primary" text="Google Pay"
-            tap="onGoogleTap" />
-        <Button class="btn btn-primary" text="Apple Pay" tap="onAppleTap"/>
+                <Button class="btn btn-primary" text="Paypal" tap="onPaypalTap" />
+                <Button class="btn btn-primary" text="Google Pay" tap="onGoogleTap" />
+                <Button class="btn btn-primary" text="Apple Pay" tap="onAppleTap" />
 
-    </StackLayout>
+            </StackLayout>
+        </sd:RadSideDrawer.mainContent>
+
+    </sd:RadSideDrawer>
 </Page>

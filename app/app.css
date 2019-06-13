@@ -23,3 +23,91 @@ components that have the btn class name.
     font-size: 20;
     margin: 10%;
 }
+
+/*Actionbar*/
+
+.actionbar{
+    background-color: #1F2D44;
+    color: white;
+}
+
+.menuicon{
+    width: 5%;
+    height: 5%;
+}
+
+/*RadSideDrawer*/
+
+.radsideheader{
+    background-color: #1F2D44;
+    color: white;
+    text-align: center;
+    height: 25%;
+}
+
+.radsidepic{
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    align: left;
+}
+
+.radsidebody{
+    background-color: #EBEBEB;
+    color: #FFFFFF;
+}
+
+.radsidebutton{
+    background-color: #EBEBEB;
+    color: #1F2D44;
+    height: 12,50%;
+    font-weight: bold;
+    border-width: 1px;
+    border-color: #1F2D44;
+}
+
+.radsidebuttonsignout{
+    background-color: #3F5069;
+    /*background-color: #3ebeb1;*/
+    color: white;
+    height: 12,50%;
+    font-weight: bold;
+    border-width: 1px;
+    border-color: white;
+    margin-top: 29%;
+}
+
+/*App-content*/
+
+.buttonprimary{
+    background-color: #66c792;
+    color: white;
+}
+
+.buttonsecondary{
+    background-color: #FFFFFF;
+    color: white;
+}
+
+.content{
+    background-color: #EBEBEB;
+    color:black;
+}
+
+/*QR Code Scanner*/
+
+.qrcodebackground{
+    background-image: linear-gradient(to bottom right,#1F2D44,#3F5069);
+}
+
+.qrcodepic{
+    width: 200;
+    height: 200%;
+    align: center;
+    vertical-align: center;
+}
+
+/*MyOrders*/
+.myorderslist{
+    margin-left: 20%;
+}

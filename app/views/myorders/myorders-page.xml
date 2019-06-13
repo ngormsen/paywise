@@ -1,41 +1,51 @@
-<Page class="page"
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
     <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+    <sd:RadSideDrawer id="sideDrawer">
 
-    <StackLayout id="form" orientation="vertical">
-        <Button class="btn btn-primary" text="Bestellungen anzeigen"
-        tap="onOrdersTap" />
-        <Button class="btn btn-primary" text="Bezahlen"
-        tap="onPayTap" />
-        <GridLayout rows="80" >
-            <GridLayout columns="150, auto">
-                <Button class="btn btn-primary" text="confirm"  tap="testTap" col="0"/>
-                <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1"/>
-            </GridLayout>
-        </GridLayout>
 
-        <GridLayout rows="*" >
-            <ListView items="{{ myItems }}">
-                <!--Describing how the element will look like-->
-                <ListView.itemTemplate>
-                    <GridLayout columns="100, 100, auto">
-                        <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="0"/>
-                        <Label text="{{ prize }}" class="h2" col="1"/>
-                        <Label text="{{ name }}" class="h2" col="2"/>
+        <sd:RadSideDrawer.drawerContent>
+            <comps:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
 
-                        <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
-                        <!-- Parent binding to a string property -->
-                        <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
+        <sd:RadSideDrawer.mainContent>
+            <StackLayout id="form" orientation="vertical">
 
-                        <!-- Parent binding to a method onTap -->
-                        <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
-
+                <GridLayout rows="50">
+                    <GridLayout columns="150, auto">
+                        <Button class="btn btn-primary" text="confirm" tap="testTap" col="0" />
+                        <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" />
                     </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
+                </GridLayout>
 
-        </GridLayout>
+                <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
+                <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />
 
-    </StackLayout>
+
+
+                <GridLayout>
+                    <ListView items="{{ myItems }}">
+                        <!--Describing how the element will look like-->
+                        <ListView.itemTemplate>
+                            <GridLayout columns="60, 100, auto" class="myorderslist">
+                                <Label text="{{ name }}" class="h2" col="0" />
+                                <Label text="{{ prize }}" class="h2" col="1" />
+                                <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="2" />
+
+                                <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
+                                <!-- Parent binding to a string property -->
+                                <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
+
+                                <!-- Parent binding to a method onTap -->
+                                <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
+
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </GridLayout>
+            </StackLayout>
+        </sd:RadSideDrawer.mainContent>
+
+    </sd:RadSideDrawer>
+
 </Page>

@@ -1,30 +1,42 @@
-<Page class="page"
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+
     <ActionBar title="Bestellungen (Tisch)" class="action-bar"></ActionBar>
-    <StackLayout id="form" orientation="vertical">
-        <Button class="btn btn-primary" text="Meine Bestellungen anzeigen"
-        tap="onMyOrdersTap" />
+    <sd:RadSideDrawer id="sideDrawer">
 
-        <GridLayout rows="*" >
-            <ListView items="{{ myItems }}">
-                <!--Describing how the element will look like-->
-                <ListView.itemTemplate>
-                    <GridLayout columns="100, 100, auto">
-                        <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0"/>
-                        <Label text="{{ prize }}" class="h2" col="1"/>
-                        <Label text="{{ name }}" class="h2" col="2"/>
 
-                        <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
-                        <!-- Parent binding to a string property -->
-                        <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
+        <sd:RadSideDrawer.drawerContent>
+            <comps:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
 
-                        <!-- Parent binding to a method onTap -->
-                        <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
+        <sd:RadSideDrawer.mainContent>
 
-                    </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
-        </GridLayout>
-    </StackLayout>
+            <StackLayout id="form" orientation="vertical">
+                <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+
+                <GridLayout rows="*">
+                    <ListView items="{{ myItems }}">
+                        <!--Describing how the element will look like-->
+                        <ListView.itemTemplate>
+                            <GridLayout columns="100, 100, auto">
+                                <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0" />
+                                <Label text="{{ prize }}" class="h2" col="1" />
+                                <Label text="{{ name }}" class="h2" col="2" />
+
+                                <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
+                                <!-- Parent binding to a string property -->
+                                <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
+
+                                <!-- Parent binding to a method onTap -->
+                                <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
+
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </GridLayout>
+            </StackLayout>
+        </sd:RadSideDrawer.mainContent>
+
+    </sd:RadSideDrawer>
+
 </Page>
