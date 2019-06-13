@@ -2,7 +2,8 @@ const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 var welcomeViewModel = require("./welcome-view-model");
-var welcomeViewModel = new welcomeViewModel();
+var view = require("ui/core/view");
+var drawer;
 
 /*
  In NativeScript, a file with the same name as an XML file is known as
@@ -17,7 +18,7 @@ function pageLoaded(args) {
      https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
      */
     var page = args.object;
-  
+
     /*
      A page’s bindingContext is an object that should be used to perform
      data binding between XML markup and JavaScript code. Properties
@@ -45,10 +46,6 @@ function onTap() {
 
 exports.onTap = onTap;
 
-
-//Side Drawer 
-var view = require("ui/core/view");
-var drawer;
 
 exports.pageLoaded = function(args) {
     var page = args.object;

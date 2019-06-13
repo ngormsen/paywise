@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components"  loaded="pageLoaded">
 
 <ActionBar title="Restaurant" class="actionbar">
     <ActionItem tap="toggleDrawer" ios.systemIcon="4" android.systemIcon="ic_menu_btn_add" ios.position="left" />
@@ -8,27 +8,36 @@
 
         <!-- side drawer content -->
         <sd:RadSideDrawer.drawerContent>
-            <StackLayout class="sidedrawer-left">
+            <comps:sidedrawer />
+            <!-- <StackLayout class="sidedrawer-left">
                 <StackLayout class="radsideheader">
                     <Image src="~/images/profilepic" class="radsidepic"></Image>
                     <Label text="Michael.Assmann@gaylord.org" class="radsideheader" />
                 </StackLayout>
                 <StackLayout class="radsidebody">
-                    <Button text="Home" class="radsidebutton" />
+                    <Button text="Home" class="radsidebutton"/>
                     <Button class="radsidebutton" text="Am Tisch einchecken" tap="onTap" />
                     <Button class="radsidebutton" text="Offene Bestellungen" tap="onOrdersTap" />
                     <Button class="radsidebutton" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
                     <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
                     <Button text="sign out" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
                 </StackLayout>
-            </StackLayout>
+            </StackLayout> -->
         </sd:RadSideDrawer.drawerContent>
 
         <!-- The main content -->
         <sd:RadSideDrawer.mainContent>
-            <StackLayout class="content">
-            
-            </StackLayout>
+    <StackLayout class="content" orientation="vertical">
+    
+        <Label class="h1" textWrap="true" text="Willkommen!"/>
+        <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
+        <Button class="btn btn-primary" text="Zur Startseite"
+            tap="onTap" />
+        <label class="h2" textWrap='true' text="{{ guest }}"/>
+        <label class="h2" textWrap='true' text="{{ restaurant }}"/>
+        <label class="h2" textWrap='true' text="{{ table }}"/>
+    </StackLayout>
+
         </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>
