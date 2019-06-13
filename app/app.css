@@ -19,10 +19,12 @@ components that have the btn class name.
     font-size: 14;
 }
 
+
 .orderGrid {
     font-size: 20;
     margin: 10%;
 }
+
 
 /*Actionbar*/
 
@@ -111,3 +113,21 @@ components that have the btn class name.
 .myorderslist{
     margin-left: 20%;
 }
+
+
+.ghost-round {
+    cursor: pointer;
+    background:#464646;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 25px;
+    color: rgba(255, 255, 255, 0.65);
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    line-height: 2.5em;
+    margin-top: 80px;
+    margin-bottom: 25px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 90%;
+  }

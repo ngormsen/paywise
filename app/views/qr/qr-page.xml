@@ -21,9 +21,6 @@
         </iOS-->
 
                 <image src="~/images/ScanQRCode.png" tap="onTap" class="qrcodepic" />
-                <!--         <iOS>
-            <Button class="btn btn-primary btn-rounded-sm" text="back camera, with torch" tap="{{ doScanWithTorch }}" />
-        </iOS> -->
 
             </StackLayout>
         </sd:RadSideDrawer.mainContent>

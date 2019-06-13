@@ -1,22 +1,23 @@
 <Page loaded = "loaded" actionBarHidden="true" class="qrcodebackground">
     <ActionBar title="Login" class="action-bar"></ActionBar>
-     <FlexboxLayout>
         <StackLayout id="form" orientation="vertical">
+            <Image src="~/paywise_logo.png" />
 
-            <TextField class="input input-border" id="email" text="{{ email }}"
+            <TextField class = "input-fields input-line" id="email" text="{{ email }}"
                 hint="Email Address" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
-            <TextField class="input input-border" secure="true" text="" id = "password"
+            <TextField class="input-fields input-line" secure="true" id = "password"
                 hint="Password" />
 
-            <Button class="btn btn-primary" text="Login" id = "Login"
+            <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
                 tap="LogIn" />
-            <Button text="Register" class="btn btn-primary" tap="Register" id = "Register"
-                class="link" />
-            <!-- <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut" -->
-                <!-- class="link" /> -->
-        </StackLayout>
-    </FlexboxLayout>
+            <Label text="Forgot password?"  tap="resetPassword" class = "labelForgotpw"/> 
+            
+            <Button text="Guest" class="transparent_btn" tap="guest" id = "guest"/>
+
+            <Label text="Don´t have an account? Create one"  tap="Register" id = "Register" class ="labelsignup"/>
+
+    </StackLayout>
 </Page>
 
   
