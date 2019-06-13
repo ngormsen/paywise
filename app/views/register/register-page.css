@@ -1,0 +1,113 @@
+
+
+
+
+  /* filter over stacklayout, foggy */
+  StackLayout {
+    
+    opacity: 0.85;
+      filter: alpha(opacity=85);
+      z-index: 1;
+    }
+  
+
+
+
+  Image {
+    margin-bottom: 50;
+    height: 70;
+    margin-top: 70;
+  }
+
+  Button, TextField {
+    margin-bottom: 10;
+  }
+
+.transparent_btn {
+  background-color: transparent;
+  color: white;
+  font-weight: 300;
+  height: 40;
+  width:100;
+  margin-top:90;
+}
+
+
+
+ input {
+   border: none;
+ }
+
+
+
+.highlight:hover {
+  color: #fff;
+  transition: color .2s ease;
+}
+
+.input-line:focus {
+  outline: none;
+  border-color:white;
+  transition: color .2s ease;
+  placeholder-color: white;
+}
+
+.input-line {
+  background: none;
+  margin-bottom: 10px;
+  line-height: 2.4em;
+  color:white;
+  font-family: robot;
+  font-weight: 300;
+  letter-spacing: 100px;
+  letter-spacing: 0.02rem;
+  border-bottom: white;
+  -webkit-transition: all .2s ease;
+  placeholder-color: rgba(255, 255, 255, 0.65);
+  transition: all .2s ease;
+  text-align: center;
+}
+
+.input-fields {
+  width: 90%;
+}
+
+.ghost-round {
+  cursor: pointer;
+  background:#01B4D0;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  width: 90%;
+  margin-top: 30;
+}
+
+.ghost-round:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+
+.page {
+  background: #1F2D44;
+  height: 100%;
+}
+
+
+.labelsignup {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    margin-top: 30;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+
+.labelForgotpw {
+  display: block;
+  color:rgba(255, 255, 255, 0.15);
+  text-align: center;
+  line-height: 150%;
+  margin-top: 10;
+}

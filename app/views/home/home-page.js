@@ -62,6 +62,11 @@ function loaded(args){
   page = args.object;
 }
 
+// Navigate to register view
+exports.navToRegister = function(){
+  getFrameById("topframe").navigate("views/register/register-page");
+}
+
 
 
 exports.Register = function(){

@@ -15,7 +15,7 @@
             
             <Button text="Guest" class="transparent_btn" tap="guest" id = "guest"/>
 
-            <Label text="Don´t have an account? Create one"  tap="Register" id = "Register" class ="labelsignup"/>
+            <Label text="Don´t have an account? Create one"  tap="navToRegister" id = "Register" class ="labelsignup"/>
 
     </StackLayout>
 </Page>
