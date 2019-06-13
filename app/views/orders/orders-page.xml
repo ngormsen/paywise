@@ -1,7 +1,7 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Bestellungen (Tisch)" class="action-bar"></ActionBar>
+    <ActionBar title="Bestellungen (Tisch)" class="actionbar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -12,14 +12,14 @@
         <sd:RadSideDrawer.mainContent>
 
             <StackLayout id="form" orientation="vertical">
-                <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+                <Button class="buttonprimary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
 
                 <GridLayout rows="*">
                     <ListView items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
                             <GridLayout columns="100, 100, auto">
-                                <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0" />
+                                <Button class="buttonsecondary" text="Pick item" id="{{ name }}" tap="onTap" col="0" />
                                 <Label text="{{ prize }}" class="h2" col="1" />
                                 <Label text="{{ name }}" class="h2" col="2" />
 

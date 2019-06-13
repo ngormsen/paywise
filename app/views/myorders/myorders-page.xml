@@ -1,6 +1,6 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
-    <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+    <ActionBar title="Meine Bestellungen" class="actionbar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -13,13 +13,13 @@
 
                 <GridLayout rows="50">
                     <GridLayout columns="150, auto">
-                        <Button class="btn btn-primary" text="confirm" tap="testTap" col="0" />
+                        <Button class="buttonsecondary" text="confirm" tap="testTap" col="0" />
                         <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" />
                     </GridLayout>
                 </GridLayout>
 
-                <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
-                <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />
+                <Button class="buttonprimary" text="Bestellungen anzeigen" tap="onOrdersTap" />
+                <Button class="buttonprimary" text="Bezahlen" tap="onPayTap" />
 
 
 
@@ -30,7 +30,7 @@
                             <GridLayout columns="60, 100, auto" class="myorderslist">
                                 <Label text="{{ name }}" class="h2" col="0" />
                                 <Label text="{{ prize }}" class="h2" col="1" />
-                                <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="2" />
+                                <Button class="handback" text="Hand back" id="{{ name }}" tap="onTap" col="2" />
 
                                 <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
                                 <!-- Parent binding to a string property -->

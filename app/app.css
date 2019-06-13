@@ -80,18 +80,32 @@ components that have the btn class name.
 /*App-content*/
 
 .buttonprimary{
-    background-color: #66c792;
+    background-color: #3ebeb1;
     color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 .buttonsecondary{
-    background-color: #FFFFFF;
+    background-color: #01B4D0;
     color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 .content{
     background-color: #EBEBEB;
     color:black;
+}
+
+.willkommen{
+    align-content: center;
 }
 
 /*QR Code Scanner*/
@@ -110,4 +124,10 @@ components that have the btn class name.
 /*MyOrders*/
 .myorderslist{
     margin-left: 20%;
+}
+
+.handback{
+    background-color: red;
+    color: white;
+    margin-left: 55;
 }

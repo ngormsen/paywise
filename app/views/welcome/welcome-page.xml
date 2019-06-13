@@ -29,9 +29,9 @@
         <sd:RadSideDrawer.mainContent>
     <StackLayout class="content" orientation="vertical">
     
-        <Label class="h1" textWrap="true" text="Willkommen!"/>
+        <Label class="h1" textWrap="true" text="Willkommen!" class="willkommen"/>
         <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
-        <Button class="btn btn-primary" text="Zur Startseite"
+        <Button class="buttonprimary" text="Zur Startseite"
             tap="onTap" />
         <label class="h2" textWrap='true' text="{{ guest }}"/>
         <label class="h2" textWrap='true' text="{{ restaurant }}"/>
