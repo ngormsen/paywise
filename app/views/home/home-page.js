@@ -131,8 +131,12 @@ exports.Register = function(){
 */
 
 function success(result){
-    data.guest = result.email
-    getFrameById("topframe").navigate("views/qr/qr-page")
+    data.guest = result.email;
+    const navigationEntry = {
+      moduleName: "views/qr/qr-page",
+      clearHistory: true
+    };
+    getFrameById("topframe").navigate(navigationEntry);
 }
 
 

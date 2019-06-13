@@ -8,7 +8,7 @@
         </sd:RadSideDrawer.drawerContent>
         <sd:RadSideDrawer.mainContent>
 
-            <web-view id="webView"></web-view>
+            <web-view touch="webViewTouch" id="webView"></web-view>
         </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>
