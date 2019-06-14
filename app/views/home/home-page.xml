@@ -1,19 +1,21 @@
 <Page loaded = "loaded" actionBarHidden="true" class="qrcodebackground">
-    <ActionBar title="Login" class="action-bar"></ActionBar>
+    <ActionBar title="Login" class="action-bar">
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    </ActionBar>
         <StackLayout id="form" orientation="vertical">
-            <Image src="~/paywise_logo.png" />
+            <Image class="login_logo" src="~/images/paywise_write.png" />
 
-            <TextField class = "input-fields input-line" id="email" text="{{ email }}"
+            <TextField class = "input-line" id="email" text="{{ email }}"
                 hint="Email Address" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
-            <TextField class="input-fields input-line" secure="true" id = "password"
+            <TextField class="input-line" secure="true" id = "password"
                 hint="Password" />
 
             <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
                 tap="LogIn" />
-            <Label text="Forgot password?"  tap="resetPassword" class = "labelForgotpw"/> 
+            <Label text="Forgot password?"  tap="resetPassword" class="labelForgotpw"/> 
             
-            <Button text="Guest" class="transparent_btn" tap="guest" id = "guest"/>
+            <button text="Guest" class="guestorder" tap="guest" id="guest"/>
 
             <Label text="Don´t have an account? Create one"  tap="Register" id = "Register" class ="labelsignup"/>
 

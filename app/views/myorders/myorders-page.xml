@@ -1,6 +1,8 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
-    <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+    <ActionBar title="Meine Bestellungen" class="actionbar">
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -20,9 +22,6 @@
                 <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
                 <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />
                 <Label text="{{ sum }}"/>
-
-
-
 
                 <GridLayout>
                     <ListView items="{{ myItems }}">
