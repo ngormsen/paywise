@@ -15,11 +15,12 @@
                     <GridLayout columns="150, auto">
                         <Button class="btn btn-primary" text="confirm" tap="testTap" col="0" />
                         <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" />
-                    </GridLayout>
+                    </GridLayout>                
                 </GridLayout>
-
                 <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
                 <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />
+                <Label text="{{ sum }}"/>
+
 
 
 
