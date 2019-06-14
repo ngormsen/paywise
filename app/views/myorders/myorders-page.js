@@ -1,23 +1,22 @@
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
-const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
-const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-var getViewById = require("tns-core-modules/ui/core/view").getViewById;
-const fromObject = require("tns-core-modules/data/observable").fromObject;
-const listViewModule = require("tns-core-modules/ui/list-view");
+// const view = require("tns-core-modules/ui/core/view");
+// const Button = require("tns-core-modules/ui/button").Button;
+// var getViewById = require("tns-core-modules/ui/core/view").getViewById;
+// const fromObject = require("tns-core-modules/data/observable").fromObject;
+// const listViewModule = require("tns-core-modules/ui/list-view");
 
 var page = null
 var orders = null
-var tip;
+var tip = 0;
 
 // set observable array
 var myItems = new ObservableArray([]);
 
-String.prototype.replaceAll = function(str1, str2, ignore) 
-{
+String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
 
@@ -25,18 +24,15 @@ function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();    
     page.bindingContext = viewModel;
-    
-    // const source = fromObject({
-    //     textSource: "Text set via twoWay binding"
-    // });
-    
-    // tip = page.getViewById("tip").text;
-    // console.log("TIP", tip)
+    viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
 
     
     var onChildEvent = function (result) {
         console.log("USER", data.guest.replaceAll("\.","")) 
+
         
+        // total orders value
+        var sum = 0.00;
 
         console.log("items", result.value)
         if(result.key == "myorders"){
@@ -51,13 +47,16 @@ function onNavigatingTo(args) {
                     if(orders[key] != null){
                         myItems.push({ name: orders[key].name, prize: orders[key].prize});
                         data.myorder.push({ name: orders[key].name, prize: orders[key].prize});
+                        sum += orders[key].prize
                     }
                 }
             }); 
 
-    
-            viewModel.set("myItems", myItems);
         }
+        // set items and sum to display in view
+        sum = sum + parseFloat(data.tip)
+        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
+        viewModel.set("myItems", myItems);
 
     };
     
@@ -152,7 +151,7 @@ function onPayTap() {
 
 exports.onPayTap = onPayTap
 
-function testTap(){
+function testTap(args){
     var sum = 0;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
@@ -166,6 +165,7 @@ function testTap(){
     console.log("total", Number(tip))
     tip = page.getViewById("tipField").text
     data.value = sum + parseFloat(tip);
+    data.tip = tip
     percent =  parseFloat(tip) / data.value * 100
     alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das Durchschnittliche Trinkgeld in den letzten 30 Tagen beträgt: 9%. `)
 }

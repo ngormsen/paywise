@@ -1,11 +1,12 @@
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
-const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
-const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+// const view = require("tns-core-modules/ui/core/view");
+// const Button = require("tns-core-modules/ui/button").Button;
 var page = null
+
 
 //swipe:
 var gestures = require("tns-core-modules/ui/gestures");
@@ -18,23 +19,29 @@ label.on(gestures.GestureTypes.swipe, function (args) {
 
 
 var orders;
-String.prototype.replaceAll = function(str1, str2, ignore) 
-{
+
+// replaces the given characters in a string
+// necessary to replace "@" in emails as firebase does not accept certain characters
+String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
 
 function onNavigatingTo(args) {
     page = args.object;
-    var viewModel = new Observable();    
+    var viewModel = new Observable();   
+
     page.bindingContext = viewModel;
+    viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
 
 
     var onChildEvent = function (result) {
         console.log("ORDER PAGE CHILD EVENT")
         console.log("RESULT", result.value)
         console.log("USER", data.guest.replaceAll("\.","").replaceAll("@", "")) 
+        // total orders value
+        var sum = 0;
 
-        // set observable array
+        // creates orders array 
         var myItems = new ObservableArray(
             []
         );
@@ -42,22 +49,14 @@ function onNavigatingTo(args) {
         Object.keys(orders).forEach(function(key, idx) {
             if(orders[key] != null){
                 if(orders[key] != null){
-                    myItems.push({ name: orders[key].name, prize: orders[key].prize});
+                    myItems.push({ name: orders[key].name, prize: orders[key].prize}); 
+                    sum += orders[key].prize;
                 }
             }
         }); 
-    
-        // try{
-        //     for (var i = 0; i <= 30; i++) {
-        //         if(orders[i] != null){
-        //             myItems.push({ name: orders[i].name, prize: orders[i].prize});
-        //             console.log({ prize: orders[i].prize})
-        //         }
-        //     }
-        // }catch{
-        //     console.log("No data available.")
-        // }
-        // console.log(myItems.length)
+
+        // set items and sum to display in view
+        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
         viewModel.set("myItems", myItems)
     };
     
@@ -145,45 +144,6 @@ function onAddTap() {
          }); 
          
     };
-
-    firebase.query(
-        onQueryEvent,
-        "/tables/0",
-        {
-            // set this to true if you want to check if the value exists or just want the event to fire once
-            // default false, so it listens continuously.
-            // Only when true, this function will return the data in the promise as well!
-            singleEvent: true,
-            // order by company.country
-            orderBy: {
-                type: firebase.QueryOrderByType.CHILD,
-                value: 'since' // mandatory when type is 'child'
-            },
-            // but only companies 'since' a certain year (Telerik's value is 2000, which is imaginary btw)
-            // use either a 'range'
-            // range: {
-            //    type: firebase.QueryRangeType.EQUAL_TO,
-            //    value: '0'
-            // },
-            // .. or 'chain' ranges like this:
-            // ranges: [
-            //   {
-            //       type: firebase.QueryRangeType.START_AT,
-            //       value: 1999
-            //   },
-            //   {
-            //       type: firebase.QueryRangeType.END_AT,
-            //       value: 2000
-            //   }
-            // ],
-            // only the first 2 matches
-            // (note that there's only 1 in this case anyway)
-            limit: {
-                type: firebase.QueryLimitType.LAST,
-                value: 10
-            }
-        }
-    );
     
 
 }

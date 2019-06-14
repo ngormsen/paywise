@@ -12,7 +12,10 @@
         <sd:RadSideDrawer.mainContent>
 
             <StackLayout id="form" orientation="vertical">
+
                 <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+                <Label text="{{ sum }}"/>
+
 
                 <GridLayout rows="*">
                     <ListView items="{{ myItems }}">
