@@ -1,0 +1,6 @@
+<Page loaded="loaded">
+  <StackLayout>
+    <Button text="Boom" tap="goBoom" />
+    <Label text="Explode This" tap="goBoom" />
+  </StackLayout> 
+</Page>  

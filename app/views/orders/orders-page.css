@@ -1,0 +1,27 @@
+.pickButton {
+    height: 40;
+    width: 40;
+}
+
+.tableorders {
+    background: white;
+    width: 90%;
+    horizontalAlignment: "center";
+    verticalAlignment: "center";
+    margin-top: 15%;
+    margin-bottom: 30%;
+    transition: all .2s ease;
+
+    
+}
+
+.ordersText {
+    margin-top: 10%;
+    size: 30;
+    color: white;
+}
+
+Image{
+    height: 30;
+    width: 30;
+}

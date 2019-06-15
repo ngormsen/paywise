@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="qrcodebackground" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
     <ActionBar title="Bestellungen (Tisch)" class="action-bar"></ActionBar>
@@ -11,18 +11,23 @@
 
         <sd:RadSideDrawer.mainContent>
 
-            <StackLayout id="form" orientation="vertical">
-                <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+            <StackLayout id="form">
+            <!-- Button can not be on the bottom atm because the list has * rows -->
 
-                <GridLayout rows="*">
+            <Label text="Hier siehst du alle Bestellungen die an deinem Tisch eingegangen sind:" class = "ordersText"/>
+             <Image src="~/paywise_logo.png" tap ="animateIcon" id="icon"/>
+                
+
+                <StackLayout rows="*" class=  "tableorders" >
                     <ListView items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
-                            <GridLayout columns="100, 100, auto">
-                                <Button class="btn btn-primary" text="Pick item" id="{{ name }}" tap="onTap" col="0" />
+                            <GridLayout columns="180, 100, auto" >
+                                <Label text="{{ name }}" class="h2" col="0" />
                                 <Label text="{{ prize }}" class="h2" col="1" />
-                                <Label text="{{ name }}" class="h2" col="2" />
-
+                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="2" id = "{{name}}" class ="pickButton"/>
+    
+                            
                                 <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
                                 <!-- Parent binding to a string property -->
                                 <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
@@ -33,8 +38,13 @@
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
-                </GridLayout>
-            </StackLayout>
+                </StackLayout>
+            
+
+                 <Button class="buttonprimarybit" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+            
+
+        </StackLayout>
         </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>

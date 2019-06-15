@@ -131,3 +131,12 @@ components that have the btn class name.
     transition: all .2s ease;
     width: 90%;
   }
+
+
+.pick-button {
+    height: 50;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;
+}
