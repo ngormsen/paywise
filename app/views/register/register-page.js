@@ -17,16 +17,24 @@ function loaded(args){
   page = args.object;
 }
 
+// Navigate to home page
 exports.testChg = navToLogin;
 function navToLogin(){
   getFrameById("topframe").navigate("views/home/home-page");
 }
 
+// Replace 
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+  return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
+
 // Register new user at firebase DB
 exports.Register = register;
 function register(){
-  const email = page.getViewById("email").text;
-  const password = page.getViewById("password").text;
+  var usrName = page.getViewById("name").text;
+  var email = page.getViewById("email").text;
+  var password = page.getViewById("password").text;
 
   // TODO: Check if password=password AND check box checked
 
@@ -36,12 +44,14 @@ function register(){
        }).then(function (result) {
           // Registration successful
           console.log("User created; userid: " + result.key);
+          var emailID = email.replaceAll("\.","");
+          console.log(`/users/${emailID}/`);
+          firebase.setValue(
+            `/users/${emailID}/`,
+            {'name': usrName, 'email': email, 'points': 100}
+          );
           navToLogin();
           alert("Es wurde erfolgreich ein Account angelegt. Du kannst dich nun mit E-Mail und Passwort einloggen.");
-
-          // TODO: WRITE FUNCTION THAT CREATES USER IN USER DB (all fields + points)
-          // MAYBE: Initial points > 0 as gift for registration
-
       }).catch(function (err) {
           // Registration not successful
           console.log("createUser error: " + err);

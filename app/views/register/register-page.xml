@@ -10,7 +10,7 @@
                 autocapitalizationType="none" />
             <TextField class="input-fields input-line" secure="true" id = "password"
                 hint="Passwort" />
-            <TextField class="input-fields input-line" secure="true" id = "password"
+            <TextField class="input-fields input-line" secure="true" id = "password2"
                 hint="Passwort wiederholen" />
             <StackLayout orientation="horizontal">
                 <Switch checked="false" id="check" class="m-15" row="1" col="1"></Switch>
