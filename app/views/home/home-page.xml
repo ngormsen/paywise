@@ -6,18 +6,18 @@
             <Image class="login_logo" src="~/images/paywise_write.png" />
 
             <TextField class = "input-line" id="email" text="{{ email }}"
-                hint="Email Address" keyboardType="email" autocorrect="false"
+                hint="Email Addresse" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
             <TextField class="input-line" secure="true" id = "password"
-                hint="Password" />
+                hint="Passwort" />
 
             <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
                 tap="LogIn" />
-            <Label text="Forgot password?"  tap="resetPassword" class="labelForgotpw"/> 
+            <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw"/> 
             
-            <button text="Guest" class="guestorder" tap="guest" id="guest"/>
+            <button text="Gast?" class="guestorder" tap="guest" id="guest"/>
 
-            <Label text="Don´t have an account? Create one"  tap="Register" id = "Register" class ="labelsignup"/>
+            <Label text="Haben Sie noch keinen Acount?"  tap="Register" id = "Register" class ="labelsignup"/>
 
     </StackLayout>
 </Page>
