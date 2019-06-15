@@ -1,3 +1,4 @@
+const sliderModule = require("tns-core-modules/ui/slider");
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
@@ -55,7 +56,7 @@ function onNavigatingTo(args) {
         }
         // set items and sum to display in view
         sum = sum + parseFloat(data.tip)
-        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
+        viewModel.set("sum", `${sum.toFixed(2)} EUR.`);
         viewModel.set("myItems", myItems);
 
     };
@@ -128,7 +129,7 @@ function onOrdersTap() {
 
 exports.onOrdersTap = onOrdersTap
 
-// Navigates to orders page
+// Navigates to payment page
 function onPayTap() {
     var sum = 0;
     // console.log(orders.orders)
@@ -172,3 +173,104 @@ function testTap(args){
 
 exports.testTap = testTap
 
+
+
+
+//Swipe Actions
+/*
+On MyOders List, the Swipe Actions are implementet without Tab-to-execute actions.
+We Use the SwipeActions with a specific threshold position.
+When this position is reached, the action starts 
+*/
+
+
+//Start Swiping
+/*
+function onSwipeCellStarted(args)
+ {
+    const swipeLimits = args.data.swipeLimits;
+    const swipeView = args.swipeView;
+    const leftItem = swipeView.getViewById('mark-view');
+    const rightItem = swipeView.getViewById('delete-view');
+    swipeLimits.left = swipeLimits.right = args.data.x > 0 ? swipeView.getMeasuredWidth() / 2 : swipeView.getMeasuredWidth() / 2;
+    swipeLimits.threshold = swipeView.getMeasuredWidth();
+}
+exports.onSwipeCellStarted=onSwipeCellStarted
+*/
+//Defining the swipe threshold
+/*
+function onCellSwiping(args) {
+    const swipeLimits = args.data.swipeLimits;
+    const swipeView = args.swipeView;
+    const mainView = args.mainView;
+    const leftItem = swipeView.getViewById('mark-view');
+    const rightItem = swipeView.getViewById('delete-view');
+
+    if (args.data.x > swipeView.getMeasuredWidth() / 4 && !leftThresholdPassed) {
+        console.log("Notify perform left action");
+        const markLabel = leftItem.getViewById('mark-text');
+        leftThresholdPassed = true;
+    } else if (args.data.x < -swipeView.getMeasuredWidth() / 4 && !rightThresholdPassed) {
+        const deleteLabel = rightItem.getViewById('delete-text');
+        console.log("Notify perform right action");
+        rightThresholdPassed = true;
+    }
+    if (args.data.x > 0) {
+        const leftDimensions = View.measureChild(
+            leftItem.parent,
+            leftItem,
+            layout.makeMeasureSpec(Math.abs(args.data.x), layout.EXACTLY),
+            layout.makeMeasureSpec(mainView.getMeasuredHeight(), layout.EXACTLY));
+        View.layoutChild(
+            leftItem.parent,
+            leftItem,
+            0, 0,
+            leftDimensions.measuredWidth, leftDimensions.measuredHeight);
+    } else {
+        const rightDimensions = View.measureChild(
+            rightItem.parent,
+            rightItem,
+            layout.makeMeasureSpec(Math.abs(args.data.x), layout.EXACTLY),
+            layout.makeMeasureSpec(mainView.getMeasuredHeight(), layout.EXACTLY));
+
+        View.layoutChild(
+            rightItem.parent,
+            rightItem,
+            mainView.getMeasuredWidth() - rightDimensions.measuredWidth, 0,
+            mainView.getMeasuredWidth(), rightDimensions.measuredHeight);
+    }
+}
+exports.SwipeActionsEventData = SwipeActionsEventData
+*/
+
+//slider
+/*
+function onNavigatingTo(args) {
+    const page = args.object;
+    // set up the initial values for the slider components
+    const vm = new observableModule.Observable();
+    vm.set("currentValue", 10);
+    vm.set("sliderValue", 10);
+    vm.set("fontSize", 20);
+    vm.set("firstMinValue", 0);
+    vm.set("firstMaxValue", 100);
+    // handle value change
+    vm.on(observableModule.Observable.propertyChangeEvent, (propertyChangeData) => {
+        if (propertyChangeData.propertyName === "sliderValue") {
+            vm.set("currentValue", propertyChangeData.value);
+        }
+    });
+    page.bindingContext = vm;
+}
+// handle value change
+function onSliderLoaded(args) {
+    const sliderComponent = args.object;
+    sliderComponent.on("valueChange", (sargs) => {
+        const page = sargs.object.page;
+        const vm = page.bindingContext;
+        vm.set("fontSize", sargs.object.value);
+    });
+}
+
+exports.onSliderLoaded = onSliderLoaded;
+exports.onNavigatingTo = onNavigatingTo;*/

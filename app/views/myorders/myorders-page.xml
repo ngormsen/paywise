@@ -1,5 +1,6 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
-    xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+    xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components"
+    xmlns:lv="nativescript-ui-listview">
     <ActionBar title="Meine Bestellungen" class="actionbar">
     <NavigationButton visibility="hidden" ></NavigationButton>
     </ActionBar>
@@ -11,26 +12,21 @@
         </sd:RadSideDrawer.drawerContent>
 
         <sd:RadSideDrawer.mainContent>
-            <StackLayout id="form" orientation="vertical">
+           
+            <StackLayout id="from">
 
-                <GridLayout rows="50">
-                    <GridLayout columns="150, auto">
-                        <Button class="btn btn-primary" text="confirm" tap="testTap" col="0" />
-                        <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" />
-                    </GridLayout>                
-                </GridLayout>
-                <Button class="btn btn-primary" text="Bestellungen anzeigen" tap="onOrdersTap" />
-                <Button class="btn btn-primary" text="Bezahlen" tap="onPayTap" />
-                <Label text="{{ sum }}"/>
-
-                <GridLayout>
+                <Button class="buttonprimary" text="Bestellungen anzeigen" tap="onOrdersTap" />         
+            
+                
+                <!--Content Area-->
+                <StackLayout class="myordercontent">
                     <ListView items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
-                            <GridLayout columns="60, 100, auto" class="myorderslist">
-                                <Label text="{{ name }}" class="h2" col="0" />
-                                <Label text="{{ prize }}" class="h2" col="1" />
-                                <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="2" />
+                            <GridLayout columns="250, 100, auto">
+                                <Label text="{{ name }}" col="0" />
+                                <Label text="{{ prize }}" col="1" />
+                                <Image class="handback" src="~/images/remove.png" id="{{ name }}" tap="onTap" col="2" />
 
                                 <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
                                 <!-- Parent binding to a string property -->
@@ -42,9 +38,37 @@
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
+                </StackLayout>
+
+                <!--Bottom Area Tip + Payment -->   
+                <GridLayout columns="250, 100, auto" height="10%">       
+                    <Label class="sumup" text="Gesamtbetrag Bestellungen: " col="0"/>
+                    <Label class="sumup" text="{{ sum }}"  col="1"/>
                 </GridLayout>
+
+
+
+                <!--Slider-->
+                         <GridLayout class="m-15" rows="auto auto" columns="50 * 50">
+                            <Label row="0" colSpan="3" class="h2 p-15" text="{{ currentValue }}" textWrap="true"/>
+                            <Label row="1" col="0" text="&#xe90b;" textWrap="true" fontSize="15" class="icon"/>
+                            <Slider row="1" col="1" value="{{ sliderValue }}"  minValue="{{ firstMinValue }}" maxValue="{{ firstMaxValue }}"/>
+                            <Label row="1" col="2" text="&#xe90b;" textWrap="true" fontSize="20" class="icon"/>
+                        </GridLayout>
+                
+
+                <GridLayout columns="100, auto" height="7%">
+                     <Button class="buttonprimarybit" text="Bit" tap="testTap" col="0" />-->
+                    <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" />
+                </GridLayout>                
+                
+                <Button class="buttonsecondary" text="Bezahlen" tap="onPayTap" />
             </StackLayout>
+
+
+
         </sd:RadSideDrawer.mainContent>
+
 
     </sd:RadSideDrawer>
 

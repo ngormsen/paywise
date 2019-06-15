@@ -80,16 +80,6 @@ components that have the btn class name.
 /*App-content*/
 
 .buttonprimary{
-    background-color: #3ebeb1;
-    color: white;
-    padding: 10;
-    margin-left: 10;
-    margin-right: 10;
-    margin-top: 10;
-    margin-bottom: 10;
-}
-
-.buttonsecondary{
     background-color: #01B4D0;
     color: white;
     padding: 10;
@@ -97,6 +87,20 @@ components that have the btn class name.
     margin-right: 10;
     margin-top: 10;
     margin-bottom: 10;
+    height: 7%;
+    border-radius: 25px;
+}
+
+.buttonsecondary{
+    background-color: #464646;
+    color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    border-radius: 25px;
+    height: 9%;
 }
 
 .content{
@@ -124,12 +128,24 @@ components that have the btn class name.
 /*MyOrders*/
 .myorderslist{
     margin-left: 20%;
+    background-color: white;
+    align-content: stretch;
+}
+
+.radlistorder{
+    width: 100%;
 }
 
 .handback{
-    background-color: red;
+
     color: white;
-    margin-left: 55;
+    margin-left: 20;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 100%;
+    width: 6%;
+    height: 6%;
 }
 
 
@@ -143,9 +159,37 @@ components that have the btn class name.
     -ms-flex-item-align: end;
     align-self: flex-end;
     line-height: 2.5em;
-    margin-top: 80px;
-    margin-bottom: 25px;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    width: 90%;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 8%;
   }
+
+
+.sumup{
+    margin-bottom: 20;
+}
+
+.buttonprimarybit{
+    background-color: #01B4D0;
+    color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 80%;
+    border-radius: 25px;
+}
+
+.myordercontent{
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 25;
+    height: 45%;
+}
+
