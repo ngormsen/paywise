@@ -15,6 +15,12 @@ refer to http://docs.nativescript.org/ui/theme.
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
+
+.actionbar{
+    background-color: #1F2D44;
+    color: white;
+}
+
 .btn {
     font-size: 14;
 }
@@ -82,19 +88,23 @@ components that have the btn class name.
 /*App-content*/
 
 .buttonprimary{
-    background-color: #66c792;
+    background-color: #01B4D0;
     color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 7%;
+    border-radius: 25px;
 }
+
 
 .buttonsecondary{
     background-color: #FFFFFF;
     color: white;
 }
 
-.content{
-    background-color: #EBEBEB;
-    color:black;
-}
 
 /*QR Code Scanner*/
 
@@ -131,3 +141,24 @@ components that have the btn class name.
     transition: all .2s ease;
     width: 90%;
   }
+
+
+.pick-button {
+    height: 50;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;
+    
+}
+
+
+
+
+.myordercontent{
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 25;
+    height: 45%;
+}
