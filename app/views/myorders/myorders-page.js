@@ -1,41 +1,104 @@
-const sliderModule = require("tns-core-modules/ui/slider");
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+// const sliderModule = require("tns-core-modules/ui/slider");
+// const fromObject = require("tns-core-modules/data/observable").fromObject;
 // const view = require("tns-core-modules/ui/core/view");
 // const Button = require("tns-core-modules/ui/button").Button;
 // var getViewById = require("tns-core-modules/ui/core/view").getViewById;
-// const fromObject = require("tns-core-modules/data/observable").fromObject;
 // const listViewModule = require("tns-core-modules/ui/list-view");
 
 var page = null
 var orders = null
 var tip = 0;
+var sum = 0;
+var total = 0;
+var percent = 0;
 
-// set observable array
+
+// Sets observable array
 var myItems = new ObservableArray([]);
 
+// Replaces the given characters in a string.
+// Necessary to replace "@" in emails as firebase does not accept certain characters.
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
 
+
+// Calculates the tip value based on the choosen slider value and the total order value.
+function calculateTip(orderValue, sliderValue){
+    console.log((orderValue * sliderValue) / 100 )
+    return (orderValue * sliderValue) / 100 
+}
+
+
+// Calculates the total value based on the tip and order value.
+function calculateTotal(orderValue, tipValue){
+    return(orderValue + tipValue)
+}
+
+
 function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();    
-    page.bindingContext = viewModel;
     viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
 
-    
+    viewModel.set("currentValue", 0);
+    viewModel.set("sliderValue", 0);
+    viewModel.set("firstMinValue", 0);
+    viewModel.set("firstMaxValue", 20);
+    viewModel.set("tipValue", 0)
+    viewModel.on(Observable.propertyChangeEvent, (propertyChangeData) => {
+      
+        if (propertyChangeData.propertyName === "sliderValue") {
+            viewModel.set("currentValue", propertyChangeData.value);
+            // console.log(viewModel.get("currentValue"))
+            // console.log(calculateTip(sum, viewModel.get("currentValue")).toFixed(2), "EURO")
+            viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+            // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
+            viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+            total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
+            tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+            console.log(total,tip)
+            percent = viewModel.get("sliderValue")
+            // tip = viewModel.get("tipValue")
+            // sum = viewModel.get("sum")
+        } else if (propertyChangeData.propertyName === "sum") {
+            console.log("update")
+            // viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+            // viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+            // total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
+            // tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+            // percent = viewModel.get("sliderValue")
+
+        }
+
+
+    });
+
+    page.bindingContext = viewModel;
+
     var onChildEvent = function (result) {
         console.log("USER", data.guest.replaceAll("\.","")) 
+        viewModel.set("currentValue", 0);
+        viewModel.set("sliderValue", 0);
+
+        viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+        // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
+        viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+        total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
+        tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+        console.log(total,tip)
+        percent = viewModel.get("sliderValue")
 
         
         // total orders value
-        var sum = 0.00;
+        sum = 0.00;
 
-        console.log("items", result.value)
+        console.log("items", result.value)      
         if(result.key == "myorders"){
             orders = result.value;
             data.mydata = [];
@@ -55,8 +118,8 @@ function onNavigatingTo(args) {
 
         }
         // set items and sum to display in view
-        sum = sum + parseFloat(data.tip)
-        viewModel.set("sum", `${sum.toFixed(2)} EUR.`);
+        // sum = sum + parseFloat(data.tip)
+        viewModel.set("sum", `${sum.toFixed(2)} EURO.`); //TODO put EURO into XML 
         viewModel.set("myItems", myItems);
 
     };
@@ -152,7 +215,9 @@ function onPayTap() {
 
 exports.onPayTap = onPayTap
 
-function testTap(args){
+
+// Gamification of the tip element. 
+function tipTap(args){
     var sum = 0;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
@@ -164,14 +229,15 @@ function testTap(args){
     });
     console.log(sum);
     console.log("total", Number(tip))
-    tip = page.getViewById("tipField").text
-    data.value = sum + parseFloat(tip);
-    data.tip = tip
-    percent =  parseFloat(tip) / data.value * 100
-    alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das Durchschnittliche Trinkgeld in den letzten 30 Tagen beträgt: 9%. `)
+    //tip = page.getViewById("tipField").text
+    // data.value = sum + parseFloat(tip);
+    data.value = total;
+    data.tip = tip;
+ 
+    alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
 }
 
-exports.testTap = testTap
+exports.tipTap = tipTap
 
 
 
