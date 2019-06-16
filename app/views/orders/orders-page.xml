@@ -1,4 +1,4 @@
-<Page class="content" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
     <ActionBar title="Tisch" class="action-bar"></ActionBar>
@@ -20,13 +20,14 @@
            
                 
 
-                <StackLayout rows="*" class=  "tableorders" >
-                    <ListView items="{{ myItems }}">
+                <StackLayout rows="*" class=  "myordercontent" height = "40%">
+                    <ListView height = "100%" items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
-                            <GridLayout columns="180, 100, auto" >
-                                <Label text="{{ name }}" class="h2" col="0" />
-                                <Label text="{{ prize }}" class="h2" col="1" />
+                        
+                            <GridLayout columns="200, 100, auto" >
+                                <Label text="{{ name }}"  col="0" />
+                                <Label text="{{ prize }}"  col="1" />
                                 <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="2" id = "{{name}}" class ="pickButton"/>
     
                             
@@ -43,7 +44,7 @@
                 </StackLayout>
             
 
-                 <Button class="myOrdersButton" text="Meine Bestellungen" tap="onMyOrdersTap" />
+                 <Button class="buttonprimary" text="Meine Bestellungen" tap="onMyOrdersTap"  height = "7%"/>
             
 
         </StackLayout>
