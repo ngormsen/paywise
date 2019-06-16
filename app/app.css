@@ -19,12 +19,10 @@ components that have the btn class name.
     font-size: 14;
 }
 
-
 .orderGrid {
     font-size: 20;
     margin: 10%;
 }
-
 
 /*Actionbar*/
 
@@ -33,10 +31,6 @@ components that have the btn class name.
     color: white;
 }
 
-.menuicon{
-    width: 5%;
-    height: 5%;
-}
 
 /*RadSideDrawer*/
 
@@ -82,18 +76,36 @@ components that have the btn class name.
 /*App-content*/
 
 .buttonprimary{
-    background-color: #66c792;
+    background-color: #01B4D0;
     color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 7%;
+    border-radius: 25px;
 }
 
 .buttonsecondary{
-    background-color: #FFFFFF;
+    background-color: #464646;
     color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    border-radius: 25px;
+    height: 9%;
 }
 
 .content{
     background-color: #EBEBEB;
     color:black;
+}
+
+.willkommen{
+    align-content: center;
 }
 
 /*QR Code Scanner*/
@@ -112,6 +124,24 @@ components that have the btn class name.
 /*MyOrders*/
 .myorderslist{
     margin-left: 20%;
+    background-color: white;
+    align-content: stretch;
+}
+
+.radlistorder{
+    width: 100%;
+}
+
+.handback{
+
+    color: white;
+    margin-left: 20;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 100%;
+    width: 6%;
+    height: 6%;
 }
 
 
@@ -125,9 +155,37 @@ components that have the btn class name.
     -ms-flex-item-align: end;
     align-self: flex-end;
     line-height: 2.5em;
-    margin-top: 80px;
-    margin-bottom: 25px;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    width: 90%;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 8%;
   }
+
+
+.sumup{
+    margin-bottom: 20;
+}
+
+.buttonprimarybit{
+    background-color: #01B4D0;
+    color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 80%;
+    border-radius: 25px;
+}
+
+.myordercontent{
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 25;
+    height: 45%;
+}
+

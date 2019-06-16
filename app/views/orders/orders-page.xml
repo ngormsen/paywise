@@ -1,7 +1,9 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Bestellungen (Tisch)" class="action-bar"></ActionBar>
+    <ActionBar title="Bestellungen (Tisch)" class="actionbar">
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
