@@ -46,35 +46,28 @@ function onNavigatingTo(args) {
     var viewModel = new Observable();    
     viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
 
-    viewModel.set("currentValue", 0);
-    viewModel.set("sliderValue", 0);
+    viewModel.set("currentValue", data.percent);
+    viewModel.set("sliderValue", data.percent);
     viewModel.set("firstMinValue", 0);
     viewModel.set("firstMaxValue", 20);
-    viewModel.set("tipValue", 0)
+    viewModel.set("tipValue", data.tip)
     viewModel.on(Observable.propertyChangeEvent, (propertyChangeData) => {
       
         if (propertyChangeData.propertyName === "sliderValue") {
             viewModel.set("currentValue", propertyChangeData.value);
-            // console.log(viewModel.get("currentValue"))
-            // console.log(calculateTip(sum, viewModel.get("currentValue")).toFixed(2), "EURO")
             viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
-            // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
             viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
             total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
             tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
             console.log(total,tip)
             percent = viewModel.get("sliderValue")
+            data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+            data.percent = viewModel.get("sliderValue")
+            data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+        
             // tip = viewModel.get("tipValue")
             // sum = viewModel.get("sum")
-        } else if (propertyChangeData.propertyName === "sum") {
-            console.log("update")
-            // viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
-            // viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
-            // total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
-            // tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-            // percent = viewModel.get("sliderValue")
-
-        }
+        } 
 
 
     });
@@ -83,8 +76,8 @@ function onNavigatingTo(args) {
 
     var onChildEvent = function (result) {
         console.log("USER", data.guest.replaceAll("\.","")) 
-        viewModel.set("currentValue", 0);
-        viewModel.set("sliderValue", 0);
+        viewModel.set("currentValue", data.percent);
+        viewModel.set("sliderValue", data.percent);
 
         viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
         // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
@@ -93,6 +86,8 @@ function onNavigatingTo(args) {
         tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
         console.log(total,tip)
         percent = viewModel.get("sliderValue")
+        data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+        data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
 
         
         // total orders value
@@ -120,6 +115,7 @@ function onNavigatingTo(args) {
         // set items and sum to display in view
         // sum = sum + parseFloat(data.tip)
         viewModel.set("sum", `${sum.toFixed(2)} EURO.`); //TODO put EURO into XML 
+        data.value = sum;
         viewModel.set("myItems", myItems);
 
     };
@@ -194,21 +190,21 @@ exports.onOrdersTap = onOrdersTap
 
 // Navigates to payment page
 function onPayTap() {
-    var sum = 0;
-    // console.log(orders.orders)
-    // Receives the correct dish, prize and key on Tap event
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            sum += orders[key].prize
-            console.log(orders[key].prize)
-        }
-    });
-    console.log(sum);
-    console.log("total", Number(tip))
-    tip = page.getViewById("tipField").text
-    data.tip = tip;
-    data.value = sum + parseFloat(tip);
-    console.log(data.value);
+    // var sum = 0;
+    // // console.log(orders.orders)
+    // // Receives the correct dish, prize and key on Tap event
+    // Object.keys(orders).forEach(function(key, idx) {
+    //     if(orders[key] != null){
+    //         sum += orders[key].prize
+    //         console.log(orders[key].prize)
+    //     }
+    // });
+    // console.log(sum);
+    // console.log("total", Number(tip))
+    // tip = page.getViewById("tipField").text
+    // data.tip = tip;
+    // data.value = sum + parseFloat(tip);
+    // console.log(data.value);
     const frame = getFrameById("topframe");
     frame.navigate("views/payment/payment-page");
     }   
@@ -234,7 +230,7 @@ function tipTap(args){
     data.value = total;
     data.tip = tip;
  
-    alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
+    alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
 }
 
 exports.tipTap = tipTap
