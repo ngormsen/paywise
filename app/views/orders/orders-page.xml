@@ -1,7 +1,7 @@
-<Page class="qrcodebackground" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+<Page class="content" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Bestellungen (Tisch)" class="action-bar"></ActionBar>
+    <ActionBar title="Tisch" class="action-bar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -14,8 +14,10 @@
             <StackLayout id="form">
             <!-- Button can not be on the bottom atm because the list has * rows -->
 
-            <Label text="Hier siehst du alle Bestellungen die an deinem Tisch eingegangen sind:" class = "ordersText"/>
-             <Image src="~/paywise_logo.png" tap ="animateIcon" id="icon"/>
+            <Label class = "h2" text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
+            <Image src ="~/images/table.png" class ="tableicon"/>
+            
+           
                 
 
                 <StackLayout rows="*" class=  "tableorders" >
@@ -41,7 +43,7 @@
                 </StackLayout>
             
 
-                 <Button class="buttonprimarybit" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
+                 <Button class="myOrdersButton" text="Meine Bestellungen" tap="onMyOrdersTap" />
             
 
         </StackLayout>

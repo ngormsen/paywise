@@ -139,4 +139,11 @@ components that have the btn class name.
     background: none;
     margin: white;
     color: black;
+    
+}
+
+
+.background_content {
+    background-color: grey;
+    color: darkgrey;
 }
