@@ -14,7 +14,7 @@
             <StackLayout id="form">
             <!-- Button can not be on the bottom atm because the list has * rows -->
 
-            <Label class = "h2" text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
+            <Label  text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
             <Image src ="~/images/table.png" class ="tableicon"/>
             
            

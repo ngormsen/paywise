@@ -27,8 +27,8 @@
     margin-top: 5%;
     margin-bottom: 5%;
     size: 30;
-    color:grey;
     width: 90%;
+    border-style: solid;
     border-color:black;
     
 
@@ -40,6 +40,13 @@
     margin-bottom: 10;
     horizontal-align: right;
     margin-top: 20%;
+    cursor: pointer;
+    background:#01B4D0;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    color: white;
+  }
+    
     
 }
 

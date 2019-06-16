@@ -1,9 +1,9 @@
-// require the plugin module
-var explosion = require("nativescript-explosionfield");
-
-function goBoom(args) {    
-    // call the *explode* method on the plugin passing in a view
-    // on tap events in Nativescript this will be args.object.
-    explosion.explode(args.object);
+exports.navigate = function() {
+//code transfer back to navigate-view
 }
-exports.goBoom = goBoom;
+
+exports.SignOut = function(){
+        firebase.logout()
+        .then(console.log("user logged out"))
+        alert("Du wurdest ausgeloggt")    
+    }
