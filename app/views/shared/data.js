@@ -12,6 +12,7 @@ module.exports = {
     percent: 0,
     points: 0,
     attempts: 3,
-    bit: false
+    bit: false,
+    pointsGained: 0
   };
 

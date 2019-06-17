@@ -15,7 +15,7 @@
                 tap="LogIn" />
             <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw"/> 
             
-            <button text="Gast?" class="labelForgotpw" tap="guest" id="guest"/>
+            <button text="Gast?" class="guestorder" tap="guest" id="guest"/>
 
             <Label text="Don´t have an account? Create one"  tap="navToRegister" id = "Register" class ="labelsignup"/>
 

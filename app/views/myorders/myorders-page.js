@@ -253,17 +253,18 @@ function tipTap(args){
     if(data.percent > data.avgTip && data.bit == false && data.attempts > 0){
         data.attempts -= 1;
         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: ${data.avgTip.toFixed(2) }%. Für deine Großzügigkeit erhälst du ${calculatePoints(data.avgTip, data.percent)} Punkte! Verbleibende Versuche: ${data.attempts}`)
-        data.points = calculatePoints(data.avgTip, data.percent);
+        data.pointsGained = calculatePoints(data.avgTip, data.percent);
         data.value = data.total;
         console.log(data.points, data.attempts)
     }else if(data.bit == true){
         alert(`Du hast deine Punkte bereits erhalten.`)
+    }else if(data.attempts <= 0){
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: ${data.avgTip.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
+
     }
     else{
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt:  ${data.avgTip.toFixed(2) }%. Leider erhälst du keine Punkte!`)
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt:  ${data.avgTip.toFixed(2) }%. Leider erhälst du keine Punkte.`)
     }
-    // attempts - 1
-    // 
 
 }
 

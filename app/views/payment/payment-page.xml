@@ -19,7 +19,7 @@
             <Barcode:BarcodeScannerView></Barcode:BarcodeScannerView>
         </ContentView>
         </iOS-->
-
+                <!-- <button text="Punkte einlösen" class="buttonprimarybit" height = "10%"/> -->
                 <image src="~/images/Paypal-icon.png" tap="onPaypalTap" class="qrcodepic" />
 
             </StackLayout>
