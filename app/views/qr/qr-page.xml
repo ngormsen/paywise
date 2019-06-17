@@ -1,7 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:Barcode="nativescript-barcodescanner" actionBarHidden="true"
     loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Tab-to-Scan" class="action-bar"></ActionBar>
+    <ActionBar title="Tab-to-Scan" class="actionbar">
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 

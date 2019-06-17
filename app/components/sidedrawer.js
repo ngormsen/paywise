@@ -22,12 +22,18 @@ exports.onOrdersTap = onOrdersTap
 
 //Sign out Function:
 exports.SignOut = function(args){
-    firebase.auth().signOut().then(function() {
-    // Sign-out successful.
+    firebase.logout().then(function (){
+        console.log("User logged out.");
+        const frame = getFrameById("topframe");
+        frame.navigate("views/home/home-page"); 
+    });
+/*     firebase.auth().signOut().then(function() {
+
+        // Sign-out successful.
     }).catch(function(error) {
     // An error happened.
-  });
-  }
+  }); */
+}
   
 exports.onTap = onTap;
   

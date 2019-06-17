@@ -12,17 +12,33 @@
   
 
 
-/*Image*/
+
   Image {
-    margin-bottom: 5test0;
+    margin-bottom: 50;
     height: 70;
     margin-top: 70;
   }
 
-.login_logo{
-  width: 30%;
-  height: 30%;
+  Button, TextField {
+    margin-bottom: 10;
+  }
+
+.transparent_btn {
+  background-color: transparent;
+  color: white;
+  font-weight: 300;
+  height: 40;
+  width:100;
+  margin-top:90;
 }
+
+
+
+ input {
+   border: none;
+ }
+
+
 
 .highlight:hover {
   color: #fff;
@@ -38,8 +54,8 @@
 
 .input-line {
   background: none;
-  margin-bottom: 20px;
-  line-height: 2,4em;
+  margin-bottom: 10px;
+  line-height: 2.4em;
   color:white;
   font-family: robot;
   font-weight: 300;
@@ -50,10 +66,11 @@
   placeholder-color: rgba(255, 255, 255, 0.65);
   transition: all .2s ease;
   text-align: center;
-  font-size: 20;
-  margin-bottom: 10;
 }
 
+.input-fields {
+  width: 90%;
+}
 
 .ghost-round {
   cursor: pointer;
@@ -72,36 +89,25 @@
 }
 
 
+.page {
+  background: #1F2D44;
+  height: 100%;
+}
 
 
+.labelsignup {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    margin-top: 30;
+    color: rgba(255, 255, 255, 0.15);
+}
 
-
-/*Forgot password*/
 
 .labelForgotpw {
   display: block;
-  color:rgb(116, 116, 116);
+  color:rgba(255, 255, 255, 0.15);
   text-align: center;
   line-height: 150%;
   margin-top: 10;
-}
-
-/*Guest Order*/
-
-.guestorder {
-  background-color: transparent;
-  color: white;
-  font-weight: 300;
-  margin-top:22%;
-  align-content: center;
-}
-
-
-/*Sign Up*/
-
-.labelsignup {
-  display: block;
-  text-align: center;
-  line-height: 100%;
-  color: rgb(116, 116, 116);
 }

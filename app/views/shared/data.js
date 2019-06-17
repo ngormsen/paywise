@@ -1,12 +1,13 @@
 module.exports = {
 
     guest: "nils.gormsen@googlemail.com",
-    value: 11.42, 
+    value: 0.00, 
     table: 0,
     restaurant: "testRestaurant",
     tip: 0,
     total: 0,
-    myorder: []
+    myorder: [],
+    percent: 0
 
   };
 

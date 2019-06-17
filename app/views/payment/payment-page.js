@@ -3,7 +3,7 @@ var data = require("../shared/data.js");
 const Observable = require("tns-core-modules/data/observable").Observable;
 
 function onPageLoaded(args) {
-    var sum = data.value;
+    var sum = parseFloat(data.value).toFixed(2);
     var restaurant = data.restaurant;
     console.log('sum', sum)
     const page = args.object;

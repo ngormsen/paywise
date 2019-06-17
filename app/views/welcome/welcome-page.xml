@@ -1,7 +1,9 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components"  loaded="pageLoaded">
 
-<ActionBar title="Restaurant" class="actionbar">
-    <ActionItem tap="toggleDrawer" ios.systemIcon="4" android.systemIcon="ic_menu_btn_add" ios.position="left" />
+<ActionBar class="actionbar" title="Restaurant">
+    <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.systemIcon="ic_menu_btn_add">
+    </ActionItem>
+    <NavigationButton visibility="hidden" ></NavigationButton>
 </ActionBar>
 
     <sd:RadSideDrawer id="sideDrawer">
@@ -31,8 +33,7 @@
     
         <Label class="h1" textWrap="true" text="Willkommen!"/>
         <Label class="h3" textWrap="true" text="Du wurdest erfolgreich an deinem Tisch eingecheckt."/>
-        <Button class="btn btn-primary" text="Zur Startseite"
-            tap="onTap" />
+        <Button class="btn btn-primary" text="Zur Startseite" tap="onTap" />
         <label class="h2" textWrap='true' text="{{ guest }}"/>
         <label class="h2" textWrap='true' text="{{ restaurant }}"/>
         <label class="h2" textWrap='true' text="{{ table }}"/>

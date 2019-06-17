@@ -18,7 +18,7 @@ function pageLoaded(args){
 function setupWebViewInterface(page){
     var webView = page.getViewById('webView');
     path = '~/www/paypal.html';
-    //path = '~/www/paypal-dummy.html';
+    //path = '~/www/paypal-new.html';
     oWebViewInterface = new webViewInterfaceModule.WebViewInterface(webView, path);
     handleEventFromWebView();
 }
