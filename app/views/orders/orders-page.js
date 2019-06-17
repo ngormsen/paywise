@@ -16,7 +16,17 @@ label.on(gestures.GestureTypes.swipe, function (args) {
     console.log("Swipe Direction: " + args.direction);
 });
 
+/*
+exports.animateIcon = function(args){
+    const icon = getViewById("icon"); //rotate
+    icon.originX =1;
+    icon.orginY = 0.5;
+    icon.animate({
+        rotate: 360,
+        duration: 1000
+})};
 
+*/
 
 var orders;
 

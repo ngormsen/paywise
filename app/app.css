@@ -15,6 +15,12 @@ refer to http://docs.nativescript.org/ui/theme.
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
+
+.actionbar{
+    background-color: #1F2D44;
+    color: white;
+}
+
 .btn {
     font-size: 14;
 }
@@ -87,6 +93,7 @@ components that have the btn class name.
     border-radius: 25px;
 }
 
+
 .buttonsecondary{
     background-color: #464646;
     color: white;
@@ -99,10 +106,6 @@ components that have the btn class name.
     height: 9%;
 }
 
-.content{
-    background-color: #EBEBEB;
-    color:black;
-}
 
 .willkommen{
     align-content: center;
@@ -165,6 +168,17 @@ components that have the btn class name.
   }
 
 
+.pick-button {
+    height: 50;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;
+    
+}
+
+
+
 .sumup{
     margin-bottom: 20;
 }
@@ -188,4 +202,3 @@ components that have the btn class name.
     margin-bottom: 25;
     height: 45%;
 }
-

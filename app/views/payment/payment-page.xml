@@ -1,24 +1,31 @@
-<Page class="page" loaded="onPageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="true" 
+    loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+
+    <ActionBar title="Tab-to-Pay" class="action-bar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
+
         <sd:RadSideDrawer.drawerContent>
-            <comps:sidedrawer />
+             <comps:sidedrawer />
         </sd:RadSideDrawer.drawerContent>
+
         <sd:RadSideDrawer.mainContent>
 
-            <ActionBar title="Payment" class="action-bar"></ActionBar>
-            <StackLayout id="form" orientation="vertical">
-
-                <Label class="h1" textWrap="true" text="{{ restaurant }}" />
-                <Label class="h3" textWrap="true" text="{{ sum, sum }}" />
+            <StackLayout class="qrcodebackground">
 
 
-                <Button class="btn btn-primary" text="Paypal" tap="onPaypalTap" />
-                <Button class="btn btn-primary" text="Google Pay" tap="onGoogleTap" />
-                <Button class="btn btn-primary" text="Apple Pay" tap="onAppleTap" />
+                <!--iOS>
+        <ContentView height="240" width="240">
+            <Barcode:BarcodeScannerView></Barcode:BarcodeScannerView>
+        </ContentView>
+        </iOS-->
+
+                <image src="~/images/Paypal-icon.png" tap="onPaypalTap" class="qrcodepic" />
 
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>
+
+
 </Page>
