@@ -15,6 +15,8 @@ var orders = null
 var tip = 0;
 var sum = 0;
 var total = 0;
+var avgTip = 0;
+var attempts = 0;
 
 
 // Sets observable array
@@ -236,8 +238,19 @@ function tipTap(args){
     // data.value = sum + parseFloat(tip);
     data.value = total;
     data.tip = tip;
- 
-    alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
+    // avgTip = firebase.getValue(`/users/${data.guest}/points`)
+    // .then(result => console.log(JSON.stringify(result)))
+    // .catch(error => console.log("Error: " + error));
+
+    if(data.percent > avgTip){
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
+        //give points
+    }else{
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Leider erhälst du keine Punkte!`)
+    }
+    // attempts - 1
+    // 
+
 }
 
 exports.tipTap = tipTap
