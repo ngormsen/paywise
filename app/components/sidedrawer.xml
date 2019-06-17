@@ -1,7 +1,9 @@
-    <StackLayout class="sidedrawer-left">
+    <StackLayout class="sidedrawer-left" loaded="onLoaded">
         <StackLayout class="radsideheader">
             <Image src="~/images/profilepic" class="radsidepic"></Image>
-            <Label text="{{ data.guest }}" class="radsideheader" />
+            <Label text="{{ guest }}" class="radsideheader" />
+            <Label text="{{ points }}" class="radsideheader" />
+
         </StackLayout>
         <StackLayout class="radsidebody">
             <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/>

@@ -15,14 +15,13 @@ var orders = null
 var tip = 0;
 var sum = 0;
 var total = 0;
-var percent = 0;
 
 
 // Sets observable array
 var myItems = new ObservableArray([]);
 
 // Replaces the given characters in a string.
-// Necessary to replace "@" in emails as firebase does not accept certain characters.
+// Necessary to replace "." in emails as firebase does not accept certain characters.
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
@@ -30,7 +29,7 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 
 // Calculates the tip value based on the choosen slider value and the total order value.
 function calculateTip(orderValue, sliderValue){
-    console.log((orderValue * sliderValue) / 100 )
+    // console.log((orderValue * sliderValue) / 100 )
     return (orderValue * sliderValue) / 100 
 }
 
@@ -44,8 +43,7 @@ function calculateTotal(orderValue, tipValue){
 function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();    
-    viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
-
+    viewModel.set("sum", `${0} EUR.`);
     viewModel.set("currentValue", data.percent);
     viewModel.set("sliderValue", data.percent);
     viewModel.set("firstMinValue", 0);
@@ -54,17 +52,16 @@ function onNavigatingTo(args) {
     viewModel.on(Observable.propertyChangeEvent, (propertyChangeData) => {
       
         if (propertyChangeData.propertyName === "sliderValue") {
-            viewModel.set("currentValue", propertyChangeData.value);
+            console.log("sliderEvent")
+            viewModel.set("currentValue", propertyChangeData.value.toFixed(0));
             viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
             viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
             total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
             tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-            console.log(total,tip)
-            percent = viewModel.get("sliderValue")
             data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
             data.percent = viewModel.get("sliderValue")
             data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-        
+            data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
             // tip = viewModel.get("tipValue")
             // sum = viewModel.get("sum")
         } 
@@ -75,47 +72,55 @@ function onNavigatingTo(args) {
     page.bindingContext = viewModel;
 
     var onChildEvent = function (result) {
-        console.log("USER", data.guest.replaceAll("\.","")) 
+        console.log("childEvent")
+        // console.log("USER", data.guest.replaceAll("\.","")) 
         viewModel.set("currentValue", data.percent);
         viewModel.set("sliderValue", data.percent);
-
         viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+        viewModel.set("sum", `${0} EUR.`)
+        data.value = 0;
+        
         // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
-        viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+
         total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
         tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-        console.log(total,tip)
+        // console.log(total,tip)
         percent = viewModel.get("sliderValue")
         data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
         data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
 
         
         // total orders value
+        // Set sum to zero prior calculating the current value
         sum = 0.00;
 
-        console.log("items", result.value)      
+        // console.log("items", result.value)      
+        // Pushes the correct items into the list and calculates the total sum.
         if(result.key == "myorders"){
             orders = result.value;
             data.mydata = [];
             
             myItems = [];
 
-            console.log(orders);
+            // console.log(orders);
             Object.keys(orders).forEach(function(key, idx) {
                 if(orders[key] != null){
                     if(orders[key] != null){
+                        // Pushes the order items into the view list.
                         myItems.push({ name: orders[key].name, prize: orders[key].prize});
+                        // Pushes the order items into a data array that is pushed to the firebase at the 
+                        // end of a transaction.
                         data.myorder.push({ name: orders[key].name, prize: orders[key].prize});
+                        // Updates the sum.
                         sum += orders[key].prize
                     }
                 }
             }); 
 
         }
-        // set items and sum to display in view
-        // sum = sum + parseFloat(data.tip)
-        viewModel.set("sum", `${sum.toFixed(2)} EURO.`); //TODO put EURO into XML 
-        data.value = sum;
+
+        data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+        viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
         viewModel.set("myItems", myItems);
 
     };
@@ -148,11 +153,11 @@ function onTap(args) {
         if(orders[key] != null){
             if(orders[key].name == id){
                 buttonKey = key;
-                console.log(key)
+                // console.log(key)
                 buttonName = orders[key].name
-                console.log(orders[key].name)
+                // console.log(orders[key].name)
                 buttonPrize = orders[key].prize
-                console.log(orders[key].prize)
+                // console.log(orders[key].prize)
                 
             }
         }
@@ -164,7 +169,9 @@ function onTap(args) {
     );
 
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders/${buttonKey}`);
-    
+  
+
+
     // var listView = page.getViewById("ordersList");
     if (myItems.length == 1){
         const frame = getFrameById("topframe");
@@ -223,8 +230,8 @@ function tipTap(args){
             console.log(orders[key].prize)
         }
     });
-    console.log(sum);
-    console.log("total", Number(tip))
+    // console.log(sum);
+    // console.log("total", Number(tip))
     //tip = page.getViewById("tipField").text
     // data.value = sum + parseFloat(tip);
     data.value = total;

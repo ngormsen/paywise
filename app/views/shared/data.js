@@ -7,7 +7,8 @@ module.exports = {
     tip: 0,
     total: 0,
     myorder: [],
-    percent: 0
+    percent: 0,
+    points: 0
 
   };
 

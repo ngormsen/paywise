@@ -1,6 +1,7 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../../app/views/shared/data.js");
+const Observable = require("tns-core-modules/data/observable").Observable;
 
 console.log(data.guest)
 // app/components/sidedrawer.js
@@ -9,8 +10,14 @@ function onLoaded(args) {
 
     // Navigates to orders page
     // you could also extend the custom component logic here e.g.:
-    // let stack = args.view;
-    // stack.bindingContext = myCustomComponentViewModel;
+    var stack = args.object;
+    var viewModel = new Observable();
+    console.log("guest data", data.guest)   
+    viewModel.set("guest", data.guest);
+    viewModel.set("points", data.points)
+    stack.bindingContext = viewModel;    
+
+    ;
 }
 exports.onLoaded = onLoaded;
 function onOrdersTap() {

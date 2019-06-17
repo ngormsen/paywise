@@ -21,7 +21,7 @@ label.on(gestures.GestureTypes.swipe, function (args) {
 var orders;
 
 // replaces the given characters in a string
-// necessary to replace "@" in emails as firebase does not accept certain characters
+// necessary to replace "." in emails as firebase does not accept certain characters
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
@@ -73,7 +73,7 @@ function onNavigatingTo(args) {
 }
 exports.onNavigatingTo = onNavigatingTo;
 
-// Picks an item for own order list
+// Picks an item for guest order list
 function onTap(args) {
     const button = args.object;
     var id = button.id;

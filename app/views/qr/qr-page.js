@@ -8,6 +8,7 @@ function pageLoaded(args) {
 
 }
 
+
 function onTap(args) {
     var page = args.object;
     page.bindingContext = new qr_view_model_1.BarcodeModel();
@@ -18,7 +19,7 @@ function onTap(args) {
     setTimeout(() => {
         
         const frame = getFrameById("topframe");
-        frame.navigate("views/welcome/welcome-page");
+        frame.navigate("views/orders/orders-page");
 
     }, 300);
     
