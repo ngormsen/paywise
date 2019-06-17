@@ -53,18 +53,22 @@ function onNavigatingTo(args) {
     viewModel.on(Observable.propertyChangeEvent, (propertyChangeData) => {
       
         if (propertyChangeData.propertyName === "sliderValue") {
-            console.log("sliderEvent")
-            viewModel.set("currentValue", propertyChangeData.value.toFixed(0));
-            viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
-            viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
-            total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
-            tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-            data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
-            data.percent = viewModel.get("sliderValue")
-            data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-            data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
-            // tip = viewModel.get("tipValue")
-            // sum = viewModel.get("sum")
+            if(sum != 0){
+                console.log("sliderEvent")
+                viewModel.set("currentValue", propertyChangeData.value.toFixed(0));
+                viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+                viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+                total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
+                tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+                data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+                data.percent = viewModel.get("sliderValue")
+                data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+                data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+                // tip = viewModel.get("tipValue")
+                // sum = viewModel.get("sum")
+
+            }
+            
         } 
 
 
@@ -79,7 +83,7 @@ function onNavigatingTo(args) {
         viewModel.set("sliderValue", data.percent);
         viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
         viewModel.set("sum", `${0} EUR.`)
-        data.value = 0;
+        data.total = 0;
         
         // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
 
@@ -88,7 +92,7 @@ function onNavigatingTo(args) {
         // console.log(total,tip)
         percent = viewModel.get("sliderValue")
         data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-        data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+        data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
 
         
         // total orders value
@@ -119,8 +123,12 @@ function onNavigatingTo(args) {
             }); 
 
         }
-
-        data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+        if(sum == 0){
+            data.total = 0
+        }else{
+            data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+        }
+        
         viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
         viewModel.set("myItems", myItems);
 
@@ -213,6 +221,7 @@ function onPayTap() {
     // data.tip = tip;
     // data.value = sum + parseFloat(tip);
     // console.log(data.value);
+    // data.value = data.total;
     const frame = getFrameById("topframe");
     frame.navigate("views/payment/payment-page");
     }   
@@ -222,30 +231,36 @@ exports.onPayTap = onPayTap
 
 // Gamification of the tip element. 
 function tipTap(args){
-    var sum = 0;
+    // var sum = 0;
     // console.log(orders.orders)
     // Receives the correct dish, prize and key on Tap event
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            sum += orders[key].prize
-            console.log(orders[key].prize)
-        }
-    });
+    // Object.keys(orders).forEach(function(key, idx) {
+    //     if(orders[key] != null){
+    //         sum += orders[key].prize
+    //         console.log(orders[key].prize)
+    //     }
+    // });
     // console.log(sum);
     // console.log("total", Number(tip))
     //tip = page.getViewById("tipField").text
     // data.value = sum + parseFloat(tip);
-    data.value = total;
-    data.tip = tip;
+    // data.total = total;
+    // data.tip = tip;
     // avgTip = firebase.getValue(`/users/${data.guest}/points`)
     // .then(result => console.log(JSON.stringify(result)))
     // .catch(error => console.log("Error: " + error));
 
-    if(data.percent > avgTip){
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Für deine Großzügigkeit erhälst du x Punkte!`)
-        //give points
-    }else{
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: 9.00%. Leider erhälst du keine Punkte!`)
+    if(data.percent > data.avgTip && data.bit == false && data.attempts > 0){
+        data.attempts -= 1;
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: ${data.avgTip.toFixed(2) }%. Für deine Großzügigkeit erhälst du ${calculatePoints(data.avgTip, data.percent)} Punkte! Verbleibende Versuche: ${data.attempts}`)
+        data.points = calculatePoints(data.avgTip, data.percent);
+        data.value = data.total;
+        console.log(data.points, data.attempts)
+    }else if(data.bit == true){
+        alert(`Du hast deine Punkte bereits erhalten.`)
+    }
+    else{
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt:  ${data.avgTip.toFixed(2) }%. Leider erhälst du keine Punkte!`)
     }
     // attempts - 1
     // 
@@ -254,6 +269,10 @@ function tipTap(args){
 
 exports.tipTap = tipTap
 
+function calculatePoints(avgTip, percent){
+    console.log((percent - avgTip) * 100)
+    return (percent - avgTip) * 100
+}
 
 
 
