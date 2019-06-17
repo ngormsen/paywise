@@ -41,8 +41,6 @@
 
             // Set up the transaction
             createOrder: function(data, actions) {
-                var event = new Event('transactionFinished');
-                this.dispatchEvent(event);
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
