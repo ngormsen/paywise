@@ -24,6 +24,7 @@ firebase.init({
 
 
 
+
 application.run({ moduleName: "app-root" }); // Initializes first page
 
 /*

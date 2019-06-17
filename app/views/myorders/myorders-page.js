@@ -16,7 +16,6 @@ var tip = 0;
 var sum = 0;
 var total = 0;
 var avgTip = 0;
-var attempts = 0;
 
 
 // Sets observable array

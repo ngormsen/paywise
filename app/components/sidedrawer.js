@@ -3,21 +3,41 @@ var firebase = require("nativescript-plugin-firebase");
 var data = require("../../app/views/shared/data.js");
 const Observable = require("tns-core-modules/data/observable").Observable;
 
+
+String.prototype.replaceAll = function(str1, str2, ignore) {
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
 console.log(data.guest)
 // app/components/sidedrawer.js
 function onLoaded(args) {
     console.log("Custom Component Loaded");
-
+    var onValueEvent = function(result) {
+        // console.log("Event type: " + result.type);
+        // console.log("Key: " + result.key);
+        // console.log("Value: " + JSON.stringify(result.value));
+        // console.log(result.value.name)
+        data.name = result.value.name;
+        data.points = result.value.points;
+        var stack = args.object;
+        var viewModel = new Observable();
+        viewModel.set("guest", data.name);
+        viewModel.set("points", data.points)
+        stack.bindingContext = viewModel;    
+      };
+    
+      // listen to changes in the /companies path
+      firebase.addValueEventListener(onValueEvent, `/users/${(data.guest).replaceAll("\.", "")}`).then(
+        function(listenerWrapper) {
+          var path = listenerWrapper.path;
+          var listeners = listenerWrapper.listeners; // an Array of listeners added
+          // you can store the wrapper somewhere to later call 'removeEventListeners'
+        }
+      );
+    
+    // console.log(data.name)
     // Navigates to orders page
     // you could also extend the custom component logic here e.g.:
-    var stack = args.object;
-    var viewModel = new Observable();
-    console.log("guest data", data.guest)   
-    viewModel.set("guest", data.guest);
-    viewModel.set("points", data.points)
-    stack.bindingContext = viewModel;    
 
-    ;
 }
 exports.onLoaded = onLoaded;
 function onOrdersTap() {
@@ -71,21 +91,7 @@ exports.onWelcomeTap = onWelcomeTap;
 
 
 function onPayTap() {
-    // var sum = 0;
-    // // console.log(orders.orders)
-    // // Receives the correct dish, prize and key on Tap event
-    // Object.keys(orders).forEach(function(key, idx) {
-    //     if(orders[key] != null){
-    //         sum += orders[key].prize
-    //         console.log(orders[key].prize)
-    //     }
-    // });
-    // console.log(sum);
-    // console.log("total", Number(tip))
-    // tip = page.getViewById("tipField").text
-    // data.tip = tip;
-    // data.value = sum + parseFloat(tip);
-    // console.log(data.value);
+
     const frame = getFrameById("topframe");
     frame.navigate("views/payment/payment-page");
     }   
