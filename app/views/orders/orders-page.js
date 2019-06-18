@@ -1,57 +1,38 @@
+// Imports
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-// const view = require("tns-core-modules/ui/core/view");
-// const Button = require("tns-core-modules/ui/button").Button;
+
+// Global variables
 var page = null
-
-
-//swipe:
-var gestures = require("tns-core-modules/ui/gestures");
-var labelModule = require("tns-core-modules/ui/label");
-var label = new labelModule.Label();
-label.on(gestures.GestureTypes.swipe, function (args) {
-    console.log("Swipe Direction: " + args.direction);
-});
-
-/*
-exports.animateIcon = function(args){
-    const icon = getViewById("icon"); //rotate
-    icon.originX =1;
-    icon.orginY = 0.5;
-    icon.animate({
-        rotate: 360,
-        duration: 1000
-})};
-
-*/
-
 var orders;
 
-// replaces the given characters in a string
+// Replaces the given characters in a string
 // necessary to replace "." in emails as firebase does not accept certain characters
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
 
+// Handle navigation to page
+exports.onNavigatingTo = onNavigatingTo;
 function onNavigatingTo(args) {
     page = args.object;
-    var viewModel = new Observable();   
+    var viewModel = new Observable();
 
     page.bindingContext = viewModel;
     viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
 
-
+    // Add child event
     var onChildEvent = function (result) {
         console.log("ORDER PAGE CHILD EVENT")
         console.log("RESULT", result.value)
         console.log("USER", data.guest.replaceAll("\.","").replaceAll("@", "")) 
-        // total orders value
+        // Variable for total value of orders
         var sum = 0;
 
-        // creates orders array 
+        // Create orders array 
         var myItems = new ObservableArray(
             []
         );
@@ -65,13 +46,13 @@ function onNavigatingTo(args) {
             }
         }); 
 
-        // set items and sum to display in view
+        // Set items and sum to display in view
         var sumTo2 = sum.toFixed(2);
-        //viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
         viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sumTo2} EUR.`);
         viewModel.set("myItems", myItems)
     };
     
+    // Add child event listener for firebase
     firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/global/`).then(
         function (result) {
             this._userListenerWrapper = result;
@@ -83,10 +64,8 @@ function onNavigatingTo(args) {
     );
 
 }
-exports.onNavigatingTo = onNavigatingTo;
 
-
-// Picks an item for guest order list
+// Pick an item (moves it to the cart of the guest)
 exports.onTap = onTap;
 function onTap(args) {
     const button = args.object;
@@ -95,7 +74,7 @@ function onTap(args) {
     var buttonName;
     var buttonPrize;
 
-    // Receives the correct dish, prize and key on Tap event
+    // Receive the correct name, price and key
     Object.keys(orders).forEach(function(key, idx) {
         if(orders[key] != null){
             if(orders[key].name == id){
@@ -107,16 +86,18 @@ function onTap(args) {
                 buttonPrize = orders[key].prize  
             }
         }
-    }); 
+    });
+    // Create item in the user cart on firebase
     firebase.setValue(
         `restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.","")}/myorders/${buttonKey}`,
         {name: buttonName, prize: buttonPrize}
     );
+    // Remove item from the global order list on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
     data.bit = false;
 }
 
-// Splits an item from the list
+// Split an item from the list
 exports.splitItem = splitItem;
 function splitItem(args) {
     const button = args.object;
@@ -126,7 +107,7 @@ function splitItem(args) {
     var buttonPrize;
     var maxButtonKey;
 
-    // Receives the correct dish, prize and key on Tap event
+    // Receive the correct name, price and key
     maxButtonKey = 0;
     Object.keys(orders).forEach(function(key, idx) {
         if(orders[key] != null){
@@ -138,6 +119,7 @@ function splitItem(args) {
                 console.log(orders[key].prize)
                 buttonPrize = orders[key].prize  
             }
+            // Detect the highest key that used in the global order list
             if (key > maxButtonKey){
                 maxButtonKey = key;
             }
@@ -147,56 +129,25 @@ function splitItem(args) {
     // Split the item in n parts
     n = 2;
     for (i=0; i<n; i++){
+        // Divide price with n and round to two digits
         newPrize = Number((buttonPrize / n).toFixed(2));
         newName = buttonName + " (" + (i+1) + ")";
         //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+        // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
         newKey= (Date.now() + i);
+        // Create item on firebase
         firebase.setValue(
             `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
             {name: newName, prize: newPrize}
         );
     }
+    // Remove splitted item on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
 }
 
 // Navigates to guest order page
+exports.onMyOrdersTap = onMyOrdersTap;
 function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
-
-exports.onMyOrdersTap = onMyOrdersTap
-
-function testTap(){
-    firebase.setValue(
-        `/tables/0/hello/world/`,
-        {name: "buttonName", prize: "buttonPrize"}
-    );
-}
-exports.testTap = testTap
-
-function onAddTap() {
-    // firebase.setValue(
-    //     '/tables/0/orders/10',
-    //     {name:'jo', prize: 5}
-    // );
-    var onQueryEvent = function(result) {
-        // note that the query returns 1 match at a time
-        // in the order specified in the query
-        if (!result.error) {
-            console.log("Event type: " + result.type);
-            console.log("Key: " + result.key);
-            console.log("Value: " + JSON.stringify(result.value)); // a JSON object
-            console.log("Children: " + JSON.stringify(result.children)); // an array, added in plugin v 8.0.0
-        }
-        // traverse the query result for a certain dish
-        Object.keys(result.value).forEach(function(key, idx) {
-            console.log(result.value[key].name)
-         }); 
-         
-    };
-    
-
-}
-
-exports.onAddTap = onAddTap;
