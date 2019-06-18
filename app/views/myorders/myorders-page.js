@@ -60,10 +60,10 @@ function onNavigatingTo(args) {
                 viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
                 total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)
                 tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-                data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+                data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
                 data.percent = viewModel.get("sliderValue")
                 data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-                data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+                data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
                 // tip = viewModel.get("tipValue")
                 // sum = viewModel.get("sum")
 
@@ -83,7 +83,7 @@ function onNavigatingTo(args) {
         viewModel.set("sliderValue", data.percent);
         viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
         viewModel.set("sum", `${0} EUR.`)
-        data.total = 0;
+        data.value = 0;
         
         // console.log("Total", calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2));
 
@@ -92,7 +92,7 @@ function onNavigatingTo(args) {
         // console.log(total,tip)
         percent = viewModel.get("sliderValue")
         data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
-        data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+        data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
 
         
         // total orders value
@@ -124,9 +124,9 @@ function onNavigatingTo(args) {
 
         }
         if(sum == 0){
-            data.total = 0
+            data.value = 0
         }else{
-            data.total = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+            data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
         }
         
         viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
@@ -249,21 +249,21 @@ function tipTap(args){
     // avgTip = firebase.getValue(`/users/${data.guest}/points`)
     // .then(result => console.log(JSON.stringify(result)))
     // .catch(error => console.log("Error: " + error));
-
-    if(data.percent > data.avgTip && data.bit == false && data.attempts > 0){
-        data.attempts -= 1;
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: ${data.avgTip.toFixed(2) }%. Für deine Großzügigkeit erhälst du ${calculatePoints(data.avgTip, data.percent)} Punkte! Verbleibende Versuche: ${data.attempts}`)
+    // Verbleibende Versuche: ${data.attempts}
+    if(data.percent > data.avgTip && data.bit == false){
+        // data.attempts -= 1;
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist geringer. Für deine Großzügigkeit erhälst du nach Beendigung der Transaktion ${calculatePoints(data.avgTip, data.percent)} Punkte! `)
         data.pointsGained = calculatePoints(data.avgTip, data.percent);
-        data.value = data.total;
         console.log(data.points, data.attempts)
+        // data.bit = true;
     }else if(data.bit == true){
         alert(`Du hast deine Punkte bereits erhalten.`)
     }else if(data.attempts <= 0){
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt: ${data.avgTip.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
 
     }
     else{
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage beträgt:  ${data.avgTip.toFixed(2) }%. Leider erhälst du keine Punkte.`)
+        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist höher. Leider erhälst du keine Punkte.`)
     }
 
 }

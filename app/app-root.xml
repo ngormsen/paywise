@@ -3,4 +3,4 @@ The defaultPage ist the starting page of the application.-->
 
 
 
-<Frame id="topframe" defaultPage="views/home/home-page"></Frame>
+<Frame id="topframe" defaultPage="views/qr/qr-page"></Frame>

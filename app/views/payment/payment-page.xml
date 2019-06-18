@@ -1,7 +1,7 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="true" 
-    loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
+<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="false" class="qrcodebackground"
+    loaded="onPageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Tab-to-Pay" class="action-bar"></ActionBar>
+    <ActionBar title="Bezahlung" class="actionbar" ></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -11,7 +11,7 @@
 
         <sd:RadSideDrawer.mainContent>
 
-            <StackLayout class="qrcodebackground">
+            <StackLayout >
 
 
                 <!--iOS>
@@ -20,8 +20,16 @@
         </ContentView>
         </iOS-->
                 <!-- <button text="Punkte einlösen" class="buttonprimarybit" height = "10%"/> -->
-                <image src="~/images/Paypal-icon.png" tap="onPaypalTap" class="qrcodepic" />
+                <GridLayout class="payment" rows="auto auto auto" columns="*">
+                    <Label row="0" col="0"  class="h1" text="{{ restaurant }}" textWrap="true" />
+                    <Label row="1" col="0"  text="{{ sum }}" textWrap="true" />
+                    <Label row="2" col="0"  text="{{ points }}" textWrap="true" />
+                </GridLayout>
 
+                <Button class="buttonprimary" text="Punkte einlösen" id = "LogIn"
+                                tap="onPoints" />
+                <image src="~/images/Paypal-icon.png" tap="onPaypalTap" class="qrcodepic" />
+            
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
 

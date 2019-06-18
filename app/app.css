@@ -43,8 +43,8 @@ components that have the btn class name.
 .radsideheader{
     background-color: #1F2D44;
     color: white;
-    text-align: center;
-    height: 25%;
+    text-align: left;
+    height: 30%;
 }
 
 .radsidepic{

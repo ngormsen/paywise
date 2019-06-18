@@ -112,7 +112,7 @@ function onTap(args) {
         {name: buttonName, prize: buttonPrize}
     );
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
-
+    data.bit = false;
     // firebase.getValue('/companies')
     // .then(result => console.log(JSON.stringify(result)))
     // .catch(error => console.log("Error: " + error));

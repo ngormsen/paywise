@@ -15,6 +15,7 @@ var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
 
 
+
 //exports.pageLoaded = function (args) {
   //const page = args.object;
   //page.bindingContext = LogIn;

@@ -23,6 +23,7 @@ function setupWebViewInterface(page){
     handleEventFromWebView();
 }
 
+
 // Touch gesture callback method for web view
 exports.webViewTouch = webViewTouch;
 function webViewTouch(args) {

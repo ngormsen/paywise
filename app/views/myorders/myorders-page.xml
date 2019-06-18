@@ -1,6 +1,6 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components" xmlns:lv="nativescript-ui-listview">
-    <ActionBar title="Meine Bestellungen" class="actionbar">
+    <ActionBar title="Meine Bestellungen" class="actionbar" >
         <NavigationButton visibility="hidden"></NavigationButton>
     </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
@@ -11,15 +11,19 @@
         </sd:RadSideDrawer.drawerContent>
 
         <sd:RadSideDrawer.mainContent>
-
+          
+            <!-- <StackLayout id="from" class="qrcodebackground"> -->
             <StackLayout id="from">
 
-                <Button class="buttonprimary" text="Alle Bestellungen anzeigen" tap="onOrdersTap" height="7%" />
+                <Button class="buttonprimary" text="Zurück zum Tisch" tap="onOrdersTap" height="7%" />
                 <!-- <Button class="buttonprimarybit" text="test" tap="tipTap" height = "5%"/>--> -->
+                <!--Bottom Area Tip + Payment -->
 
 
                 <!--Content Area-->
-                <StackLayout class="myordercontent" height="40%">
+
+                <!-- <StackLayout class="myordercontent" height="40%"> -->
+                <StackLayout  rows="*" class= "myordercontent" height="30%">
                     <ListView height="100%" items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
@@ -42,32 +46,33 @@
                 </StackLayout>
 
 
-                <!--Bottom Area Tip + Payment -->
-                <GridLayout columns="250, 100, auto" height="10%">
+
+
+                <GridLayout columns="185 *" height="7%">
                     <Label class="sumup" text="Gesamtbetrag Bestellungen: " col="0" />
                     <Label class="sumup" text="{{ sum }}" col="1" />
                 </GridLayout>
 
-
-
                 <!--Slider-->
             
-                <GridLayout class="m-15" rows="auto auto" columns="50 * 50">
+                <GridLayout class="m-15" rows="auto auto" columns="*">
                     <!-- <Label row="1" col="0" text="{{ firstMinValue }}" textWrap="true" fontSize="15" class="icon" /> -->
-                    <Slider row="1" col="1" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
+                    <Slider row="1" col="0" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
                         maxValue="{{ firstMaxValue }}" />
                     <!-- <Label row="1" col="2" text="{{ firstMaxValue }}" textWrap="true" fontSize="20" class="icon" /> -->
                 </GridLayout>
-                <GridLayout class="m-15" rows="auto auto" columns="auto,auto,auto,auto">
-                    <Label row="0" col="0" class="h2 p-15" text="{{ currentValue }}" textWrap="true" />
-                    <Label row="0" col="1" class="h2 p-15" text="%" textWrap="true" />
-                    <Label row="0" col="2" class="h2 p-15" text="{{ tipValue }}" textWrap="true" />
-                    <Label row="0" col="3" class="h2 p-15" text="Euro" textWrap="true" />
+                <GridLayout class="m-15" rows="auto auto" columns="auto, auto,auto,auto,auto">
+                    <Label row="0" col="0" class="h2 p-8" text="Tip:" textWrap="true" />
+
+                    <Label row="0" col="1" class="h2 p-8" text="{{ currentValue }}" textWrap="true" />
+                    <Label row="0" col="2" class="h2 p-8" text="%" textWrap="true" />
+                    <Label row="0" col="3" class="h2 p-8" text="{{ tipValue }}" textWrap="true" />
+                    <Label row="0" col="4" class="h2 p-8" text="EUR." textWrap="true" />
                 </GridLayout>
 
 
-                <GridLayout columns="100, auto" height="7%">
-                    <Button class="buttonprimarybit" text="Bit" tap="tipTap" col="0" />-->
+                <GridLayout columns="*" height="8%">
+                    <Button class="buttonprimarybit" text="Trinkgeld Bestätigen" tap="tipTap" col="0" />-->
                     <!-- <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1" /> -->
                 </GridLayout>
 

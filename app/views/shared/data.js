@@ -1,7 +1,7 @@
 module.exports = {
 
-    guest: "E-Mail",
-    name: "Name",
+    guest: "nils.gormsen@gmail.com",
+    name: "Nils",
     value: 0.00, 
     table: 0,
     restaurant: "testRestaurant",
@@ -14,5 +14,6 @@ module.exports = {
     attempts: 3,
     bit: false,
     pointsGained: 0
+    
   };
 

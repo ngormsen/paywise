@@ -1,7 +1,7 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Tisch" class="action-bar"></ActionBar>
+    <ActionBar title="Tisch" class="actionbar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 
@@ -13,22 +13,19 @@
 
             <StackLayout id="form" orientation="vertical">
 
-                <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
-                <Label text="{{ sum }}"/>
+                <Button class="buttonprimary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
 
 
-            <Label  text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
-            <Image src ="~/images/table.png" class ="tableicon"/>
             
            
                 
 
-                <StackLayout rows="*" class=  "myordercontent" height = "40%">
+                <StackLayout rows="*" class= "myordercontent" height = "40%">
                     <ListView height = "100%" items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
                         
-                            <GridLayout columns="200, 100, auto" >
+                            <GridLayout columns="250, 100, auto" >
                                 <Label text="{{ name }}"  col="0" />
                                 <Label text="{{ prize }}"  col="1" />
                                 <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="2" id = "{{name}}" class ="pickButton"/>
@@ -45,10 +42,10 @@
                         </ListView.itemTemplate>
                     </ListView>
                 </StackLayout>
+                <Label text="{{ sum }}" height="10%"/>
             
-
-                 <Button class="buttonprimary" text="Meine Bestellungen" tap="onMyOrdersTap"  height = "7%"/>
-            
+            <Label  text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
+            <Image src ="~/images/table.png" class ="tableicon"/>
 
         </StackLayout>
         </sd:RadSideDrawer.mainContent>
