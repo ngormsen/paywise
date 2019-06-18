@@ -66,7 +66,9 @@ function onNavigatingTo(args) {
         }); 
 
         // set items and sum to display in view
-        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
+        var sumTo2 = sum.toFixed(2);
+        //viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sum.toFixed(2)} EUR.`);
+        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sumTo2} EUR.`);
         viewModel.set("myItems", myItems)
     };
     
@@ -85,14 +87,14 @@ exports.onNavigatingTo = onNavigatingTo;
 
 
 // Picks an item for guest order list
+exports.onTap = onTap;
 function onTap(args) {
     const button = args.object;
     var id = button.id;
     var buttonKey;
     var buttonName;
     var buttonPrize;
-    // console.log(id)
-    // console.log(orders.orders)
+
     // Receives the correct dish, prize and key on Tap event
     Object.keys(orders).forEach(function(key, idx) {
         if(orders[key] != null){
@@ -102,8 +104,7 @@ function onTap(args) {
                 console.log(orders[key].name)
                 buttonName = orders[key].name;
                 console.log(orders[key].prize)
-                buttonPrize = orders[key].prize
-                
+                buttonPrize = orders[key].prize  
             }
         }
     }); 
@@ -113,11 +114,48 @@ function onTap(args) {
     );
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
     data.bit = false;
-    // firebase.getValue('/companies')
-    // .then(result => console.log(JSON.stringify(result)))
-    // .catch(error => console.log("Error: " + error));
 }
-exports.onTap = onTap;
+
+// Splits an item from the list
+exports.splitItem = splitItem;
+function splitItem(args) {
+    const button = args.object;
+    var id = button.id;
+    var buttonKey;
+    var buttonName;
+    var buttonPrize;
+    var maxButtonKey;
+
+    // Receives the correct dish, prize and key on Tap event
+    maxButtonKey = 0;
+    Object.keys(orders).forEach(function(key, idx) {
+        if(orders[key] != null){
+            if(orders[key].name == id){
+                console.log(key)
+                buttonKey = key;
+                console.log(orders[key].name)
+                buttonName = orders[key].name;
+                console.log(orders[key].prize)
+                buttonPrize = orders[key].prize  
+            }
+            if (key > maxButtonKey){
+                maxButtonKey = key;
+            }
+        }
+    });
+
+    // Split the order in n parts
+    n = 2;
+    for (i=0; i<n; i++){
+        newPrize = Number((buttonPrize / n).toFixed(2));
+        newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+        firebase.setValue(
+            `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
+            {name: buttonName, prize: newPrize}
+        );
+    }
+    firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
+}
 
 // Navigates to guest order page
 function onMyOrdersTap() {

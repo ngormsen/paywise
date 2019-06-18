@@ -25,10 +25,11 @@
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
                         
-                            <GridLayout columns="250, 100, auto" >
+                            <GridLayout columns="250, 50, auto, auto" >
                                 <Label text="{{ name }}"  col="0" />
                                 <Label text="{{ prize }}"  col="1" />
-                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="2" id = "{{name}}" class ="pickButton"/>
+                                <Image src ="~/images/split.png" tap= "splitItem" col ="2" id = "{{name}}" class ="pickButton"/>
+                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="3" id = "{{name}}" class ="pickButton"/>
     
                             
                                 <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
