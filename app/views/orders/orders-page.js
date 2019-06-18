@@ -144,14 +144,16 @@ function splitItem(args) {
         }
     });
 
-    // Split the order in n parts
+    // Split the item in n parts
     n = 2;
     for (i=0; i<n; i++){
         newPrize = Number((buttonPrize / n).toFixed(2));
-        newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+        newName = buttonName + " (" + (i+1) + ")";
+        //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+        newKey= (Date.now() + i);
         firebase.setValue(
             `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
-            {name: buttonName, prize: newPrize}
+            {name: newName, prize: newPrize}
         );
     }
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
