@@ -139,7 +139,7 @@ function splitItem(args) {
         firebase.setValue(
             `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
             {name: newName, prize: newPrize}
-        );
+        )
     }
     // Remove splitted item on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
