@@ -48,7 +48,8 @@
 
 
 
-                <GridLayout columns="185 *" height="7%">
+
+                <GridLayout columns="260 *" height="8%">
                     <Label class="sumup" text="Gesamtbetrag Bestellungen: " col="0" />
                     <Label class="sumup" text="{{ sum }}" col="1" />
                 </GridLayout>

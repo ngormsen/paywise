@@ -42,7 +42,7 @@
                         </ListView.itemTemplate>
                     </ListView>
                 </StackLayout>
-                <Label text="{{ sum }}" height="10%"/>
+                <Label class="sumup" text="{{ sum }}" height="10%"/>
             
             <Label  text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
             <Image src ="~/images/table.png" class ="tableicon"/>

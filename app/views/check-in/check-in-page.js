@@ -14,10 +14,11 @@ function onNavigatingTo(args) {
 
 exports.onNavigatingTo = onNavigatingTo;
 
+
 function onTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/qr/qr-page");
-
 }
+
 
 exports.onTap = onTap;

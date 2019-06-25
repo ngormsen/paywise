@@ -1,5 +1,7 @@
     <StackLayout class="sidedrawer-left" loaded="onLoaded">
             <GridLayout class="radsideheader" rows="auto auto auto"  height="14%">
+                <!-- <Image src="../images/profilepic" row="0" class="radsidepic"></Image> -->
+
                 <!-- <Label class="radsideheader" text="Restaurant: " row="0" col="0" /> -->
                 <Label class="radsideheader" text="{{'Restaurant: ' + restaurant }}" row="0"  />
                 <!-- <Label class="radsideheader" text="Name: " row="1" col="0" /> -->
@@ -9,7 +11,6 @@
             </GridLayout>
 <!--      
         <StackLayout class="radsideheader">
-            <Image src="~/images/profilepic" class="radsidepic"></Image>
 
             <Label text="{{ guest }}" class="radsideheader" />
             <Label text="{{ points }}" class="radsideheader" />
