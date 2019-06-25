@@ -1,8 +1,8 @@
 <Page loaded = "loaded" actionBarHidden="false" class="qrcodebackground">
-    <ActionBar title="Account erstellen" class="action-bar"></ActionBar>
+    <ActionBar title="Account erstellen" class="actionbar"></ActionBar>
         <StackLayout id="form" orientation="vertical">
+            
             <Image src="~/paywise_logo.png" />
-
             <TextField class = "input-fields input-line" id="name" hint="Name" 
                 autocorrect="false" />
             <TextField class = "input-fields input-line" id="email"
@@ -12,7 +12,7 @@
                 hint="Passwort" />
             <TextField class="input-fields input-line" secure="true" id = "password2"
                 hint="Passwort wiederholen" />
-            <StackLayout orientation="horizontal">
+            <StackLayout orientation="horizontal" class="gtc">
                 <Switch checked="false" id="check" class="m-15" row="1" col="1"></Switch>
                 <Label text="Ich bin mit den Nutzungsbedingungen und der Datenschutzerklärung einverstanden." 
                     textWrap="true"/>

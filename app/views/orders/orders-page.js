@@ -5,9 +5,25 @@ var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
+
 // Global variables
 var page = null
 var orders;
+var view = require("ui/core/view");
+var drawer;
+
+//SideDrawer_ToogleDrawer
+
+exports.pageLoaded = function(args) {
+    var page = args.object;
+    drawer = view.getViewById(page, "sideDrawer");
+};
+
+exports.toggleDrawer = function() {
+    drawer.toggleDrawerState();
+};
+
+
 
 // Replaces the given characters in a string
 // necessary to replace "." in emails as firebase does not accept certain characters
@@ -151,3 +167,4 @@ function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
+

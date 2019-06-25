@@ -1,20 +1,19 @@
     <StackLayout class="sidedrawer-left" loaded="onLoaded">
-            <GridLayout class="radsideheader" rows="auto auto auto"  height="14%">
-                <!-- <Label class="radsideheader" text="Restaurant: " row="0" col="0" /> -->
-                <Label class="radsideheader" text="{{'Restaurant: ' + restaurant }}" row="0"  />
-                <!-- <Label class="radsideheader" text="Name: " row="1" col="0" /> -->
-                <Label class="radsideheader" text="{{'Name: ' + guest }}" row="1"  />
-                <!-- <Label class="radsideheader" text="Punkte: " row="2" col="0" /> -->
-                <Label class="radsideheader" text="{{'Punkte: ' + points }}" row="2"  />
-            </GridLayout>
-<!--      
+    
         <StackLayout class="radsideheader">
             <Image src="~/images/profilepic" class="radsidepic"></Image>
-
-            <Label text="{{ guest }}" class="radsideheader" />
-            <Label text="{{ points }}" class="radsideheader" />
-
-        </StackLayout> -->
+            <GridLayout class="radsideheader" rows="auto auto auto" columns="100 auto" class="radsideheadercred">
+                <!-- Restaurant -->
+                <Label class="radsideheader" text="Restaurant: " row="0" col="0" />
+                <Label class="radsideheader" text="{{ restaurant }}" row="0" col="1" />
+                <!-- Guest -->
+                <Label class="radsideheader" text="Name: " row="1"  col="0"/>
+                <Label class="radsideheader" text="{{ guest }}" row="1"  col="1"/>
+                <!-- Points -->
+                <Label class="radsideheader" text="Punkte: " row="2" col="0" />
+                <Label class="radsideheader" text="{{ points }}" row="2" col="1"/>
+            </GridLayout>
+        </StackLayout>
 
         <StackLayout class="radsidebody">
             <!-- <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/> -->
@@ -24,4 +23,4 @@
             <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
             <Button text="sign out" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
         </StackLayout>
-    </StackLayout>
+ </StackLayout>
