@@ -2,6 +2,8 @@
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components" xmlns:lv="nativescript-ui-listview">
     <ActionBar title="Meine Bestellungen" class="actionbar" >
         <NavigationButton visibility="hidden"></NavigationButton>
+        <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.systemIcon="ic_menu_btn_add">
+        </ActionItem>
     </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
@@ -15,7 +17,8 @@
             <!-- <StackLayout id="from" class="qrcodebackground"> -->
             <StackLayout id="from">
 
-                <Button class="buttonprimary" text="Zurück zum Tisch" tap="onOrdersTap" height="7%" />
+                <Button class="buttonprimary" text="Zurück zum Tisch" tap="onOrdersTap" height="7%"/>
+                
                 <!-- <Button class="buttonprimarybit" text="test" tap="tipTap" height = "5%"/>--> -->
                 <!--Bottom Area Tip + Payment -->
 
@@ -23,12 +26,12 @@
                 <!--Content Area-->
 
                 <!-- <StackLayout class="myordercontent" height="40%"> -->
-                <StackLayout  rows="*" class= "myordercontent" height="30%">
+                <StackLayout  rows="*" class= "myordercontent" height="40%">
                     <ListView height="100%" items="{{ myItems }}">
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
 
-                            <GridLayout columns="250, 100, auto">
+                            <GridLayout columns="250, 80, auto">
                                 <Label text="{{ name }}" col="0" />
                                 <Label text="{{ prize }}" col="1" />
                                 <Image class="handback" src="~/images/remove.png" id="{{ name }}" tap="onTap" col="2" />
@@ -56,13 +59,13 @@
 
                 <!--Slider-->
             
-                <GridLayout class="m-15" rows="auto auto" columns="*">
+                <GridLayout class="slidercontent" rows="auto auto" columns="*">
                     <!-- <Label row="1" col="0" text="{{ firstMinValue }}" textWrap="true" fontSize="15" class="icon" /> -->
                     <Slider row="1" col="0" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
                         maxValue="{{ firstMaxValue }}" />
                     <!-- <Label row="1" col="2" text="{{ firstMaxValue }}" textWrap="true" fontSize="20" class="icon" /> -->
                 </GridLayout>
-                <GridLayout class="m-15" rows="auto auto" columns="auto, auto,auto,auto,auto">
+                <GridLayout class="slidercontent1" rows="auto auto" columns="auto, auto,auto,auto,auto">
                     <Label row="0" col="0" class="h2 p-8" text="Tip:" textWrap="true" />
 
                     <Label row="0" col="1" class="h2 p-8" text="{{ currentValue }}" textWrap="true" />

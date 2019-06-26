@@ -1,7 +1,11 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Tisch" class="actionbar"></ActionBar>
+    <ActionBar title="Tisch" class="actionbar">
+        <NavigationButton visibility="hidden"></NavigationButton>
+        <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.systemIcon="ic_menu_btn_add">
+        </ActionItem>
+    </ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
         <sd:RadSideDrawer.drawerContent>
@@ -11,26 +15,26 @@
         <sd:RadSideDrawer.mainContent>
 
             <StackLayout id="form" orientation="vertical">
+            
+            
+            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle deine Bestellungen aus und sie werden in deinen persönlichen Warenkorb übertragen." class = "ordersText" textWrap = "true"/>
 
-                <Button class="buttonprimary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
-
-                <StackLayout rows="*" class= "myordercontent" height = "40%">
+                <StackLayout rows="*" class= "myordercontent" height = "55%">
                     <ListView height = "100%" items="{{ myItems }}">
                         <ListView.itemTemplate>
-                            <GridLayout columns="250, 50, auto, auto" >
+                            <GridLayout columns="250, 50, 50, auto" >
                                 <Label text="{{ name }}"  col="0" />
                                 <Label text="{{ prize }}"  col="1" />
-                                <Image src ="~/images/split.png" tap= "splitItem" col ="2" id = "{{name}}" class ="pickButton"/>
+                                <Image src ="~/images/spliticon.png" tap= "splitItem" col ="2" id = "{{name}}" class ="splitButton"/>
                                 <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="3" id = "{{name}}" class ="pickButton"/>
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
                 </StackLayout>
-                <Label class="sumup" text="{{ sum }}" height="10%"/>
-            
-            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle deine Bestellungen aus und sie werden in deinen persönlichen Warenkorb übertragen." class = "ordersText" textWrap = "true"/>
-            <Image src ="~/images/table.png" class ="tableicon"/>
 
+                <Label text="{{ sum }}" height="10%"/>
+        
+            <Button class="buttonprimary" text="Zu deiner Bestellübersicht" tap="onMyOrdersTap" />
         </StackLayout>
         </sd:RadSideDrawer.mainContent>
 

@@ -49,13 +49,11 @@
   outline: none;
   border-color:white;
   transition: color .2s ease;
-  placeholder-color: white;
 }
 
 .input-line {
   background: none;
-  margin-bottom: 10px;
-  line-height: 2.4em;
+  margin-bottom: 30px;
   color:white;
   font-family: robot;
   font-weight: 300;
@@ -63,9 +61,10 @@
   letter-spacing: 0.02rem;
   border-bottom: white;
   -webkit-transition: all .2s ease;
-  placeholder-color: rgba(255, 255, 255, 0.65);
   transition: all .2s ease;
   text-align: center;
+  font-size: 20;
+  placeholder-color: rgba(255, 255, 255, 0.65);
 }
 
 .input-fields {
@@ -109,5 +108,9 @@
   color:rgba(255, 255, 255, 0.15);
   text-align: center;
   line-height: 150%;
+  margin-top: 10;
+}
+
+.gtc{
   margin-top: 10;
 }

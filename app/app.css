@@ -47,16 +47,21 @@ components that have the btn class name.
     height: 30%;
 }
 
+.radsideheadercred{
+    margin-left: 3%;
+}
+
 .radsidepic{
-    width: 50%;
-    height: 50%;
+    width: 45%;
+    height: 45%;
     margin-top: 10%;
-    align: left;
+    margin-bottom: 8%;
 }
 
 .radsidebody{
     background-color: #EBEBEB;
     color: #FFFFFF;
+    height: 70%;
 }
 
 .radsidebutton{
@@ -76,7 +81,7 @@ components that have the btn class name.
     font-weight: bold;
     border-width: 1px;
     border-color: white;
-    margin-top: 29%;
+    margin-top: 41%;
 }
 
 /*App-content*/
@@ -111,6 +116,7 @@ components that have the btn class name.
     align-content: center;
 }
 
+
 /*QR Code Scanner*/
 
 .qrcodebackground{
@@ -121,7 +127,7 @@ components that have the btn class name.
 .qrcodepic{
     width: 200;
     height: 200%;
-    align: center;
+
     vertical-align: center;
 }
 
@@ -174,8 +180,15 @@ components that have the btn class name.
     width: auto;
     background: none;
     margin: white;
-    color: black;
-    
+    color: black;    
+}
+
+.splitButton{
+    height:25;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;      
 }
 
 
@@ -198,9 +211,21 @@ components that have the btn class name.
 }
 
 .myordercontent{
-    margin-left: 10;
+    margin-left: 20;
     margin-right: 10;
     margin-top: 10;
     margin-bottom: 25;
     height: 45%;
+}
+
+.slidercontent{
+    color: #464646;
+    align-content: center;
+}
+
+.slidercontent1{
+    color: #464646;
+    font-size: 10;
+    align-content: center;
+    margin-bottom: 10;
 }
