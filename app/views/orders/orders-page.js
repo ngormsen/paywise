@@ -74,6 +74,9 @@ function onTap(args) {
     var buttonName;
     var buttonPrize;
 
+    // Setting empty flag false.
+    data.empty = false;
+
     // Receive the correct name, price and key
     Object.keys(orders).forEach(function(key, idx) {
         if(orders[key] != null){

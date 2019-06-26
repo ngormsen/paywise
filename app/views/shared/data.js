@@ -13,7 +13,8 @@ module.exports = {
     points: 0,
     attempts: 3,
     bit: false,
-    pointsGained: 0
+    pointsGained: 0,
+    empty: false
     
   };
 
