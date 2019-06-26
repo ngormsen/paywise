@@ -1,5 +1,5 @@
 <Page loaded = "loaded" actionBarHidden="false" class="qrcodebackground">
-    <ActionBar title="Account erstellen" class="action-bar"></ActionBar>
+    <ActionBar title="Account erstellen" class="actionbar"></ActionBar>
         <StackLayout id="form" orientation="vertical">
             <Image src="~/paywise_logo.png" />
 
@@ -15,7 +15,7 @@
             <StackLayout orientation="horizontal">
                 <Switch checked="false" id="check" class="m-15" row="1" col="1"></Switch>
                 <Label text="Ich bin mit den Nutzungsbedingungen und der Datenschutzerklärung einverstanden." 
-                    textWrap="true"/>
+                    textWrap="true" />
             </StackLayout>   
 
             <Button class="ghost-round input-fields" text="Registrieren" id = "Register"

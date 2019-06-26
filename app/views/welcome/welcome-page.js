@@ -30,7 +30,10 @@ function pageLoaded(args) {
      */
     page.bindingContext = welcomeViewModel;
   }
+
   
+
+
   /*
    Exporting a function in a NativeScript code-behind file makes it accessible
    to the file’s corresponding XML file. In this case, exporting the onNavigatingTo

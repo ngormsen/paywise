@@ -1,12 +1,24 @@
     <StackLayout class="sidedrawer-left" loaded="onLoaded">
+            <GridLayout class="radsideheader" rows="auto auto auto"  height="14%">
+                <!-- <Image src="../images/profilepic" row="0" class="radsidepic"></Image> -->
+
+                <!-- <Label class="radsideheader" text="Restaurant: " row="0" col="0" /> -->
+                <Label class="radsideheader" text="{{'Restaurant: ' + restaurant }}" row="0"  />
+                <!-- <Label class="radsideheader" text="Name: " row="1" col="0" /> -->
+                <Label class="radsideheader" text="{{'Name: ' + guest }}" row="1"  />
+                <!-- <Label class="radsideheader" text="Punkte: " row="2" col="0" /> -->
+                <Label class="radsideheader" text="{{'Punkte: ' + points }}" row="2"  />
+            </GridLayout>
+<!--      
         <StackLayout class="radsideheader">
-            <Image src="~/images/profilepic" class="radsidepic"></Image>
+
             <Label text="{{ guest }}" class="radsideheader" />
             <Label text="{{ points }}" class="radsideheader" />
 
-        </StackLayout>
+        </StackLayout> -->
+
         <StackLayout class="radsidebody">
-            <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/>
+            <!-- <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/> -->
             <Button class="radsidebutton" text="Am Tisch einchecken" tap="onTap" />
             <Button class="radsidebutton" text="Offene Bestellungen" tap="onOrdersTap" />
             <Button class="radsidebutton" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />

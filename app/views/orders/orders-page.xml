@@ -1,9 +1,8 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Tisch" class="action-bar"></ActionBar>
+    <ActionBar title="Tisch" class="actionbar"></ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
-
 
         <sd:RadSideDrawer.drawerContent>
             <comps:sidedrawer />
@@ -13,42 +12,24 @@
 
             <StackLayout id="form" orientation="vertical">
 
-                <Button class="btn btn-primary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
-                <Label text="{{ sum }}"/>
+                <Button class="buttonprimary" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
 
-
-            <Label  text="Hier siehst du alle Bestellungen die an deinem Tisch vorgenommen wurden. Wähle deine Bestellungen aus und sie werden in deine persönlichen Bestellungen übertragen." class = "ordersText" textWrap = "true"/>
-            <Image src ="~/images/table.png" class ="tableicon"/>
-            
-           
-                
-
-                <StackLayout rows="*" class=  "myordercontent" height = "40%">
+                <StackLayout rows="*" class= "myordercontent" height = "40%">
                     <ListView height = "100%" items="{{ myItems }}">
-                        <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
-                        
-                            <GridLayout columns="200, 100, auto" >
+                            <GridLayout columns="250, 50, auto, auto" >
                                 <Label text="{{ name }}"  col="0" />
                                 <Label text="{{ prize }}"  col="1" />
-                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="2" id = "{{name}}" class ="pickButton"/>
-    
-                            
-                                <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
-                                <!-- Parent binding to a string property -->
-                                <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
-
-                                <!-- Parent binding to a method onTap -->
-                                <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
-
+                                <Image src ="~/images/split.png" tap= "splitItem" col ="2" id = "{{name}}" class ="pickButton"/>
+                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="3" id = "{{name}}" class ="pickButton"/>
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
                 </StackLayout>
+                <Label class="sumup" text="{{ sum }}" height="10%"/>
             
-
-                 <Button class="buttonprimary" text="Meine Bestellungen" tap="onMyOrdersTap"  height = "7%"/>
-            
+            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle deine Bestellungen aus und sie werden in deinen persönlichen Warenkorb übertragen." class = "ordersText" textWrap = "true"/>
+            <Image src ="~/images/table.png" class ="tableicon"/>
 
         </StackLayout>
         </sd:RadSideDrawer.mainContent>

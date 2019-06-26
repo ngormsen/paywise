@@ -21,7 +21,8 @@ function onLoaded(args) {
         var stack = args.object;
         var viewModel = new Observable();
         viewModel.set("guest", data.name);
-        viewModel.set("points", data.points)
+        viewModel.set("points", data.points);
+        viewModel.set("restaurant", data.restaurant);
         stack.bindingContext = viewModel;    
       };
     

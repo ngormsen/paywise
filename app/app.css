@@ -43,8 +43,8 @@ components that have the btn class name.
 .radsideheader{
     background-color: #1F2D44;
     color: white;
-    text-align: center;
-    height: 25%;
+    text-align: left;
+    height: 30%;
 }
 
 .radsidepic{
@@ -115,6 +115,7 @@ components that have the btn class name.
 
 .qrcodebackground{
     background-image: linear-gradient(to bottom right,#1F2D44,#3F5069);
+    color: white;
 }
 
 .qrcodepic{
@@ -181,6 +182,7 @@ components that have the btn class name.
 
 .sumup{
     margin-bottom: 20;
+    font-size: 20px
 }
 
 .buttonprimarybit{

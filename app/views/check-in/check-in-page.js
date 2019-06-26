@@ -6,7 +6,6 @@ logic, and to set up your page’s data binding.
 
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
-
 function onNavigatingTo(args) { 
     /* Creates a reference to the current page.*/
     const page = args.object;
@@ -15,10 +14,11 @@ function onNavigatingTo(args) {
 
 exports.onNavigatingTo = onNavigatingTo;
 
+
 function onTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/qr/qr-page");
-
 }
+
 
 exports.onTap = onTap;
