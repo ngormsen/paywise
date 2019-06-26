@@ -28,7 +28,7 @@
 
                 <Button class="buttonprimary" text="Punkte einlösen" id = "LogIn"
                                 tap="onPoints" />
-                <image src="~/images/Paypal-icon.png" tap="onPaypalTap" class="qrcodepic" />
+                <image src="~/images/paypal_checkout.png" tap="onPaypalTap" class="qrcodepic" />
             
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
