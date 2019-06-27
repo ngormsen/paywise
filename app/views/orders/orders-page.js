@@ -4,6 +4,7 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+var dialogs = require("tns-core-modules/ui/dialogs");
 
 
 // Global variables
@@ -122,6 +123,7 @@ function splitItem(args) {
     var buttonName;
     var buttonPrize;
     var maxButtonKey;
+    var n;
 
     // Receive the correct name, price and key
     maxButtonKey = 0;
@@ -142,24 +144,57 @@ function splitItem(args) {
         }
     });
 
-    // Split the item in n parts
-    n = 2;
-    for (i=0; i<n; i++){
-        // Divide price with n and round to two digits
-        newPrize = Number((buttonPrize / n).toFixed(2));
-        newName = buttonName + " (" + (i+1) + ")";
-        //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
-        // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
-        newKey= (Date.now() + i);
-        // Create item on firebase
-        firebase.setValue(
-            `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
-            {name: newName, prize: newPrize}
-        )
-    }
-    // Remove splitted item on firebase
-    firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
+    // Ask user in how many (n) parts to split
+    dialogs.action({
+        message: "Mit wie vielen Personen möchtest du dir diese Bestellung teilen?",
+        cancelButtonText: "Abbrechen",
+        actions: ["2", "3", "4", "5"]
+    }).then(function (result) {
+        console.log("Dialog result: " + result);
+        if(result == "2"){
+            n = 2;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "3"){
+            n = 3;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "4"){
+            n = 4;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "5"){
+            n = 5;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else{
+            n = 0;
+        }
+    });
 }
+
+// Split the item in n parts
+function splitterFun(n, buttonPrize, buttonName, buttonKey) {
+    if (n > 0){
+        for (i=0; i<n; i++){
+            // Divide price with n and round to two digits
+            newPrize = Number((buttonPrize / n).toFixed(2));
+            //newName = buttonName + " (" + (i+1) + ")";
+            newName = buttonName + " (" + parseFloat((1/n)*100).toFixed(0)+ "%)";
+            //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+            // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
+            newKey= (Date.now() + i);
+            // Create item on firebase
+            firebase.setValue(
+                `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
+                {name: newName, prize: newPrize}
+            )
+        }
+        // Remove splitted item on firebase
+        firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
+    }
+}
+
 
 // Navigates to guest order page
 exports.onMyOrdersTap = onMyOrdersTap;
@@ -167,4 +202,3 @@ function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
-
