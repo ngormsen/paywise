@@ -179,9 +179,18 @@ function splitterFun(n, buttonPrize, buttonName, buttonKey) {
         for (i=0; i<n; i++){
             // Divide price with n and round to two digits
             newPrize = Number((buttonPrize / n).toFixed(2));
-            //newName = buttonName + " (" + (i+1) + ")";
-            newName = buttonName + " (" + parseFloat((1/n)*100).toFixed(0)+ "%)";
-            //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
+
+            // Adjust percentage in []
+            matches = buttonName.match(/\[(.*?)\]/);
+            if (matches) {
+                oldPercentage = matches[1];
+            } else {
+                oldPercentage = "100%";
+            }
+            oldPercentageInt = parseInt(oldPercentage, 10) / 100;
+            newPercentage = (oldPercentageInt / n) * 100;
+            newName = buttonName.replace(" [" + oldPercentage + "]", "") + " [" + parseFloat(newPercentage).toFixed(0)+ "%]";
+
             // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
             newKey= (Date.now() + i);
             // Create item on firebase
