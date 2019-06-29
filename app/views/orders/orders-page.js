@@ -5,16 +5,15 @@ var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var dialogs = require("tns-core-modules/ui/dialogs");
-
+var view = require("ui/core/view");
 
 // Global variables
 var page = null
 var orders;
-var view = require("ui/core/view");
 var drawer;
+var myItems = new ObservableArray([]);
 
 //SideDrawer_ToogleDrawer
-
 exports.pageLoaded = function(args) {
     var page = args.object;
     drawer = view.getViewById(page, "sideDrawer");
@@ -49,10 +48,9 @@ function onNavigatingTo(args) {
         // Variable for total value of orders
         var sum = 0;
 
-        // Create orders array 
-        var myItems = new ObservableArray(
-            []
-        );
+        // Reset orders array 
+        myItems = [];
+
         orders = result.value;
         Object.keys(orders).forEach(function(key, idx) {
             if(orders[key] != null){
@@ -112,6 +110,17 @@ function onTap(args) {
     // Remove item from the global order list on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
     data.bit = false;
+
+    // Force refresh of list view if the last item is picked
+    if (myItems.length == 1){
+        const frame = getFrameById("topframe");
+        const navigationEntry = {
+            moduleName: "views/orders/orders-page",
+            backstackVisible: false,
+            animated: false
+        };
+        frame.navigate(navigationEntry);
+    }
 }
 
 // Split an item from the list
