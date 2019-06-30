@@ -4,16 +4,16 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-
+var dialogs = require("tns-core-modules/ui/dialogs");
+var view = require("ui/core/view");
 
 // Global variables
 var page = null
 var orders;
-var view = require("ui/core/view");
 var drawer;
+var myItems = new ObservableArray([]);
 
 //SideDrawer_ToogleDrawer
-
 exports.pageLoaded = function(args) {
     var page = args.object;
     drawer = view.getViewById(page, "sideDrawer");
@@ -48,10 +48,9 @@ function onNavigatingTo(args) {
         // Variable for total value of orders
         var sum = 0;
 
-        // Create orders array 
-        var myItems = new ObservableArray(
-            []
-        );
+        // Reset orders array 
+        myItems = [];
+
         orders = result.value;
         Object.keys(orders).forEach(function(key, idx) {
             if(orders[key] != null){
@@ -114,6 +113,17 @@ function onTap(args) {
     // Remove item from the global order list on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
     data.bit = false;
+
+    // Force refresh of list view if the last item is picked
+    if (myItems.length == 1){
+        const frame = getFrameById("topframe");
+        const navigationEntry = {
+            moduleName: "views/orders/orders-page",
+            backstackVisible: false,
+            animated: false
+        };
+        frame.navigate(navigationEntry);
+    }
 }
 
 // Split an item from the list
@@ -125,6 +135,7 @@ function splitItem(args) {
     var buttonName;
     var buttonPrize;
     var maxButtonKey;
+    var n;
 
     // Receive the correct name, price and key
     maxButtonKey = 0;
@@ -145,24 +156,66 @@ function splitItem(args) {
         }
     });
 
-    // Split the item in n parts
-    n = 2;
-    for (i=0; i<n; i++){
-        // Divide price with n and round to two digits
-        newPrize = Number((buttonPrize / n).toFixed(2));
-        newName = buttonName + " (" + (i+1) + ")";
-        //newKey = (parseFloat(maxButtonKey) + parseFloat(i) + 1);
-        // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
-        newKey= (Date.now() + i);
-        // Create item on firebase
-        firebase.setValue(
-            `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
-            {name: newName, prize: newPrize}
-        )
-    }
-    // Remove splitted item on firebase
-    firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
+    // Ask user in how many (n) parts to split
+    dialogs.action({
+        message: "Mit wie vielen Personen möchtest du dir diese Bestellung teilen?",
+        cancelButtonText: "Abbrechen",
+        actions: ["2", "3", "4", "5"]
+    }).then(function (result) {
+        console.log("Dialog result: " + result);
+        if(result == "2"){
+            n = 2;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "3"){
+            n = 3;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "4"){
+            n = 4;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else if(result == "5"){
+            n = 5;
+            splitterFun(n, buttonPrize, buttonName, buttonKey);
+            n = null;
+        }else{
+            n = 0;
+        }
+    });
 }
+
+// Split the item in n parts
+function splitterFun(n, buttonPrize, buttonName, buttonKey) {
+    if (n > 0){
+        for (i=0; i<n; i++){
+            // Divide price with n and round to two digits
+            newPrize = Number((buttonPrize / n).toFixed(2));
+
+            // Adjust percentage in []
+            matches = buttonName.match(/\[(.*?)\]/);
+            if (matches) {
+                oldPercentage = matches[1];
+            } else {
+                oldPercentage = "100%";
+            }
+            oldPercentageInt = parseInt(oldPercentage, 10) / 100;
+            newPercentage = (oldPercentageInt / n) * 100;
+            newName = buttonName.replace(" [" + oldPercentage + "]", "") + " [" + parseFloat(newPercentage).toFixed(0)+ "%]";
+
+            // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
+            newKey= (Date.now() + i);
+            // Create item on firebase
+            firebase.setValue(
+                `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
+                {name: newName, prize: newPrize}
+            )
+        }
+        // Remove splitted item on firebase
+        firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
+    }
+}
+
 
 // Navigates to guest order page
 exports.onMyOrdersTap = onMyOrdersTap;
@@ -170,4 +223,3 @@ function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
-
