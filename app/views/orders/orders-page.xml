@@ -17,9 +17,9 @@
             <StackLayout id="form" orientation="vertical">
             
             
-            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle deine Bestellungen aus und sie werden in deinen persönlichen Warenkorb übertragen." class = "ordersText" textWrap = "true"/>
+            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle die Bestellungen aus die du bezahlen möchtest oder teile Sie die mit Freunden indem du den Split-Button klickst" class = "ordersText" textWrap = "true"/>
 
-                <StackLayout rows="*" class= "myordercontent" height = "55%">
+                <StackLayout rows="*" class= "myordercontent" height = "65%">
                     <ListView height = "100%" items="{{ myItems }}">
                         <ListView.itemTemplate>
                             <GridLayout columns="250, 50, 50, auto" >
@@ -32,8 +32,10 @@
                     </ListView>
                 </StackLayout>
 
-                <Label text="{{ sum }}" height="10%"/>
-        
+                <GridLayout columns="250, *" height="3%" class="desksumup">
+                    <Label text="Gesamtbetrag:" col="0"/>
+                    <Label text="{{ sum }}" col="1" />
+                </GridLayout>
             <Button class="buttonprimary" text="Zu deiner Bestellübersicht" tap="onMyOrdersTap" />
         </StackLayout>
         </sd:RadSideDrawer.mainContent>

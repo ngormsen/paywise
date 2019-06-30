@@ -28,8 +28,12 @@
 
                 <Button class="buttonprimary" text="Punkte einlösen" id = "LogIn"
                                 tap="onPoints" />
-                <image src="~/images/paypal_checkout.png" tap="onPaypalTap" class="qrcodepic" />
-            
+                <GridLayout class="webview">
+                <web-view touch="webViewTouch" id="webView"></web-view>
+                </GridLayout>
+                               
+               <!--<image src="~/images/paypal_checkout.png" tap="onPaypalTap" class="qrcodepic" />-->
+
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
 

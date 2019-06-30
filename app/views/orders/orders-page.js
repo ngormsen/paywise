@@ -63,7 +63,7 @@ function onNavigatingTo(args) {
 
         // Set items and sum to display in view
         var sumTo2 = sum.toFixed(2);
-        viewModel.set("sum", `Gesamtbetrag Bestellungen: ${sumTo2} EUR.`);
+        viewModel.set("sum", `${sumTo2} EUR.`);
         viewModel.set("myItems", myItems)
     };
     

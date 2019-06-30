@@ -31,7 +31,7 @@
                         <!--Describing how the element will look like-->
                         <ListView.itemTemplate>
 
-                            <GridLayout columns="250, 80, auto">
+                            <GridLayout columns="260, 80 , auto">
                                 <Label text="{{ name }}" col="0" />
                                 <Label text="{{ prize }}" col="1" />
                                 <Image class="handback" src="~/images/remove.png" id="{{ name }}" tap="onTap" col="2" />
@@ -52,7 +52,7 @@
 
 
 
-                <GridLayout columns="260 *" height="8%">
+                <GridLayout columns="260 *" class="sumup" >
                     <Label class="sumup" text="Gesamtbetrag Bestellungen: " col="0" />
                     <Label class="sumup" text="{{ sum }}" col="1" />
                 </GridLayout>

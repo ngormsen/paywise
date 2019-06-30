@@ -2,20 +2,20 @@
     xmlns:comps="components">
 
     <ActionBar title="Bezahlung" class="actionbar" ></ActionBar>
-
+<!--
     <sd:RadSideDrawer id="sideDrawer">
 
 
         <sd:RadSideDrawer.drawerContent>
             <comps:sidedrawer />
         </sd:RadSideDrawer.drawerContent>
-        <sd:RadSideDrawer.mainContent>
+        <sd:RadSideDrawer.mainContent>-->
     <ActionBar title="Bezahlung" class="actionbar" ></ActionBar>
 
             <web-view touch="webViewTouch" id="webView"></web-view>
-        </sd:RadSideDrawer.mainContent>
+ <!--       </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>
-    
+    --> 
 
 </Page>

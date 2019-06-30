@@ -132,6 +132,7 @@ components that have the btn class name.
 }
 
 /*MyOrders*/
+
 .myorderslist{
     margin-left: 20%;
     background-color: white;
@@ -143,7 +144,6 @@ components that have the btn class name.
 }
 
 .handback{
-
     color: white;
     margin-left: 20;
     margin-right: 10;
@@ -194,38 +194,59 @@ components that have the btn class name.
 
 
 .sumup{
-    margin-bottom: 20;
-    font-size: 20px
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 18%;
 }
 
 .buttonprimarybit{
     background-color: #01B4D0;
     color: white;
-    padding: 10;
-    margin-left: 10;
-    margin-right: 10;
-    margin-top: 10;
-    margin-bottom: 10;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     height: 80%;
     border-radius: 25px;
 }
 
 .myordercontent{
-    margin-left: 20;
-    margin-right: 10;
-    margin-top: 10;
-    margin-bottom: 25;
-    height: 45%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 1%;
+    height: 70%;
 }
 
 .slidercontent{
     color: #464646;
     align-content: center;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .slidercontent1{
     color: #464646;
     font-size: 10;
     align-content: center;
-    margin-bottom: 10;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+
+/*Orders*/
+.desksumup{
+    font-size: 20;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+
+
+}
+
+.webview{
+height: 50%;
+width: 90%;
+
 }
