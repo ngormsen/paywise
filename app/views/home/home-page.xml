@@ -14,8 +14,8 @@
             <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
                 tap="LogIn" />
             <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw" height="10%"/> 
-            <Label text="Don´t have an account? Create one"  tap="navToRegister" id = "Register" class ="labelsignup"/>
-            <button text="Gast?" class="guestorder" tap="guest" id="guest"/>
+            <Label text="Noch keinen Account? Hier erstellen"  tap="navToRegister" id = "Register" class ="labelsignup"/>
+           <!-- <button text="Gast?" class="guestorder" tap="guest" id="guest"/>-->
             
 
 

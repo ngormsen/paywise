@@ -38,8 +38,7 @@
 
 .input-line {
   background: none;
-  margin-bottom: 20px;
-  line-height: 2,4em;
+  margin-bottom: 2%;
   color:white;
   font-family: robot;
   font-weight: 300;
@@ -83,20 +82,9 @@
   color:rgb(116, 116, 116);
   text-align: center;
   line-height: 150%;
-  margin-top: 10;
+  margin-top: 20%;
+  
 }
-
-/*Guest Order*/
-
-.guestorder {
-  background-color: transparent;
-  color: white;
-  font-weight: 300;
-  /* margin-top:22%; */
-  align-content: center;
-}
-
-
 
 /*Sign Up*/
 
@@ -105,4 +93,13 @@
   text-align: center;
   line-height: 100%;
   color: rgb(116, 116, 116);
+}
+
+/*Guest Order*/
+
+.guestorder {
+  background-color: transparent;
+  color: white;
+  font-weight: 300;
+  align-content: center;
 }

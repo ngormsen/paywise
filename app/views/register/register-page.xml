@@ -2,7 +2,7 @@
     <ActionBar title="Account erstellen" class="actionbar"></ActionBar>
         <StackLayout id="form" orientation="vertical">
             
-            <Image src="~/paywise_logo.png" />
+        <Image class="login_logo" src="~/images/paywise_write.png" />
             <TextField class = "input-fields input-line" id="name" hint="Name" 
                 autocorrect="false" />
             <TextField class = "input-fields input-line" id="email"
@@ -18,7 +18,7 @@
                     textWrap="true" />
             </StackLayout>   
 
-            <Button class="ghost-round input-fields" text="Registrieren" id = "Register"
+            <Button class="registerbutton" text="Registrieren" id = "Register"
                 tap="Register" />
     </StackLayout>
 </Page>

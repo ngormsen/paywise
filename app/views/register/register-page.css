@@ -13,26 +13,30 @@
 
 
 
-  Image {
-    margin-bottom: 50;
-    height: 70;
-    margin-top: 70;
-  }
-
-  Button, TextField {
-    margin-bottom: 10;
-  }
-
-.transparent_btn {
-  background-color: transparent;
-  color: white;
-  font-weight: 300;
-  height: 40;
-  width:100;
-  margin-top:90;
+ /*Image*/
+ Image {
+  margin-bottom: 5test0;
+  height: 70;
+  margin-top: 70;
 }
 
+.login_logo{
+width: 30%;
+height: 30%;
+}
 
+.registerbutton{
+  background-color: #01B4D0;
+  color: white;
+  padding: 10;
+  margin-left: 10;
+  margin-right: 10;
+  margin-top: 10;
+  margin-bottom: 10;
+  height: 7%;
+  border-radius: 25px;
+  margin-top: 5%;
+}
 
  input {
    border: none;
