@@ -131,6 +131,12 @@ components that have the btn class name.
     vertical-align: center;
 }
 
+/*Payment*/
+.paybackground{
+    background: #3f5069; /*linear-gradient(#1F2D44,#28364e);*/
+    color: white;
+}
+
 /*MyOrders*/
 
 .myorderslist{

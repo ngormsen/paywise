@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="false" class="qrcodebackground"
+<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="false" class="paybackground"
     loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
     <ActionBar title="Bezahlung" class="actionbar" ></ActionBar>
@@ -19,7 +19,7 @@
                 </GridLayout>
 
                <Button class="buttonprimary" text="Punkte einlösen" id = "LogIn"
-                                tap="onPoints" visibility="collapsed"/>
+                                tap="onPoints" />
                
                 <GridLayout>
                     <web-view touch="webViewTouch" id="webView"></web-view>

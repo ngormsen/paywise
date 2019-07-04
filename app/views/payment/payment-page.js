@@ -26,7 +26,7 @@ function pageLoaded(args){
     viewModel.set("restaurant", `${data.restaurant}`);
     viewModel.set("points", `Du hast aktuell ${data.points} Punkte.`);
     // Setup webView
-    setupWebViewInterface(page)
+    setupWebViewInterface(page);
 }
  
 
@@ -117,9 +117,13 @@ function onPoints(){
     data.points = 0;
     viewModel.set("points", `Du hast aktuell ${data.points} Punkte.`)
     viewModel.set("sum", `Zu bezahlender Betrag: ${data.value} EURO.`);
+    console.log("onPoints", data.points);
 
-    console.log("onPoints", data.points)
-
+    //var page = page;
+    console.log("here11:" + page);
+    //setupWebViewInterface(page);
+    var webView = page.getViewById('webView');
+    webView.reload();
 }
 
 /* exports.onPaypalTap = onPaypalTap;
