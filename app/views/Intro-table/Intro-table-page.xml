@@ -1,0 +1,7 @@
+<page page = "loaded" actionBarHidden ="true" >
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    <StackLayout>
+         <Image src="~/images/Meinwarenkorb_erklärung2.png" height = "90%" />
+         <!---Button class="buttonprimary" text="Zurück zur App"  height="7%"/-->
+    </StackLayout>
+</page>

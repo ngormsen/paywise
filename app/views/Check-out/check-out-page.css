@@ -1,0 +1,21 @@
+StackLayout {
+    horizontal-align: center;
+    vertical-align: center;
+    spacing: 100;
+}
+
+Label {
+    text-align: center;
+    padding: 10;
+}
+
+.largeText {
+    font-size: 50;
+    color: #0080A6;
+    font-style: inherit;
+
+}
+
+.mediumText {
+    font-size: 15;
+}

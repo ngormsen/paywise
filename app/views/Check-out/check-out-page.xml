@@ -1,6 +1,14 @@
-<Page loaded="loaded">
-  <StackLayout>
-    <Button text="Boom" tap="goBoom" />
-    <Label text="Explode This" tap="goBoom" />
-  </StackLayout> 
+<Page loaded="loaded" actionBarHidden ="true" class="qrcodebackground">
+   <NavigationButton visibility="hidden" ></NavigationButton>
+  <StackLayout orientation = "vertical">
+    <Label class ="largeText" text = "Vielen Dank!" />
+ 
+      <Label text = "Du hast bei diesem Besuch:" class="mediumText"/>
+      <Label text = "____"/>
+      <Label text = "Punkte gesammelt!" class="mediumText" />
+  
+    <Label text = "Komm bald wieder und löse die Punkte ein!"/>
+    <Image src="~/images/coins.png"  height = "50" />
+    <Button class="buttonprimary" text="Zurück zum Tisch"  height="7%"/>
+  </StackLayout>
 </Page>  
