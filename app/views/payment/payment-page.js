@@ -22,7 +22,7 @@ function pageLoaded(args){
     page.bindingContext = viewModel;
     // Show payment information
     var sum = parseFloat(data.value).toFixed(2);
-    viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EURO.`);
+    viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EUR.`);
     viewModel.set("restaurant", `${data.restaurant}`);
     viewModel.set("points", `Du hast aktuell ${data.points} Punkte.`);
     // Setup webView

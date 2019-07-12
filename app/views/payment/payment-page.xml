@@ -11,7 +11,6 @@
 
         <sd:RadSideDrawer.mainContent>
             <StackLayout >
-                <!-- <button text="Punkte einlösen" class="buttonprimarybit" height = "10%"/> -->
                 <GridLayout class="payment" rows="auto auto auto" columns="*">
                     <Label row="0" col="0"  class="h1" text="{{ restaurant }}" textWrap="true" />
                     <Label row="1" col="0"  text="{{ sum }}" textWrap="true" />
@@ -24,8 +23,6 @@
                 <GridLayout>
                     <web-view touch="webViewTouch" id="webView"></web-view>
                 </GridLayout>
-                               
-               <!--<image src="~/images/paypal_checkout.png" tap="onPaypalTap" class="qrcodepic" />-->
 
             </StackLayout>
         </sd:RadSideDrawer.mainContent>
