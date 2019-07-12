@@ -43,46 +43,68 @@ components that have the btn class name.
 .radsideheader{
     background-color: #1F2D44;
     color: white;
-    text-align: left;
-    height: 30%;
+    height: 15%;
 }
 
-.radsideheadercred{
-    margin-left: 3%;
+.radsideheadercontent{
+    margin-top: 10%;
+    font-size: 25;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.radsideheaderpoints{
+    font-size: 15;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .radsidepic{
-    width: 45%;
-    height: 45%;
-    margin-top: 10%;
+    width: 70%;
+    height: 70%;
+    margin-top: 20%;
     margin-bottom: 8%;
 }
 
 .radsidebody{
-    background-color: #EBEBEB;
-    color: #FFFFFF;
-    height: 70%;
+    background-color: rgb(233, 233, 233);
+    height: 85%;
 }
 
 .radsidebutton{
-    background-color: #EBEBEB;
     color: #1F2D44;
-    height: 12,50%;
+    height: 50;
     font-weight: bold;
-    border-width: 1px;
-    border-color: #1F2D44;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
+
+.radsidebutton2{
+    color: #1F2D44;
+    height: 50;
+    font-weight: bold;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(233, 233, 233);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.radsidecluster{
+    width: 94%;
+    background-color: white;
+    margin-top: 5%;
+    border-radius: 15px;
+}
+
 
 .radsidebuttonsignout{
     background-color: #3F5069;
-    /*background-color: #3ebeb1;*/
     color: white;
-    height: 12,50%;
+    height: 50;
     font-weight: bold;
     border-width: 1px;
-    border-color: white;
-    margin-top: 41%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 
 /*App-content*/
 
@@ -90,12 +112,13 @@ components that have the btn class name.
     background-color: #01B4D0;
     color: white;
     padding: 10;
-    margin-left: 10;
-    margin-right: 10;
+    margin-left: 7;
+    margin-right: 7;
     margin-top: 10;
     margin-bottom: 10;
     height: 7%;
-    border-radius: 25px;
+    border-radius: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
@@ -105,10 +128,10 @@ components that have the btn class name.
     padding: 10;
     margin-left: 10;
     margin-right: 10;
-    margin-top: 10;
     margin-bottom: 10;
-    border-radius: 25px;
+    border-radius: 20px;
     height: 9%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
@@ -131,7 +154,20 @@ components that have the btn class name.
     vertical-align: center;
 }
 
+/*Payment*/
+.paybackground{
+    background: #3f5069; /*linear-gradient(#1F2D44,#28364e);*/
+    color: white;
+}
+
 /*MyOrders*/
+.shoppingcard_header{
+    font-size: 20vw ;
+    font-weight: bold;
+    margin-left: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
 
 .myorderslist{
     margin-left: 20%;
@@ -180,7 +216,8 @@ components that have the btn class name.
     width: auto;
     background: none;
     margin: white;
-    color: black;    
+    color: black;
+
 }
 
 .splitButton{
@@ -188,16 +225,8 @@ components that have the btn class name.
     width: auto;
     background: none;
     margin: white;
-    color: black;      
-}
-
-
-
-.sumup{
-    font-size: 20px;
-    margin-left: 2%;
-    margin-right: 2%;
-    height: 18%;
+    color: black;     
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .buttonprimarybit{
@@ -208,7 +237,8 @@ components that have the btn class name.
     margin-top: 2%;
     margin-bottom: 2%;
     height: 80%;
-    border-radius: 25px;
+    border-radius: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .myordercontent{
@@ -216,23 +246,33 @@ components that have the btn class name.
     margin-right: 3%;
     margin-top: 1%;
     height: 70%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .slidercontent{
     color: #464646;
     align-content: center;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .slidercontent1{
     color: #464646;
     font-size: 10;
     align-content: center;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.slidervalues{
+    font-size: 20;
+    margin-bottom: 15%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
 
 /*Orders*/
 .desksumup{
@@ -241,6 +281,7 @@ components that have the btn class name.
     margin-right: 3%;
     margin-bottom: 1%;
     margin-top: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 
 }

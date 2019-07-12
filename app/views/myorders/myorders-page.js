@@ -165,11 +165,15 @@ function onOrdersTap() {
 }
 exports.onOrdersTap = onOrdersTap
 
-// Navigates to payment page
+// Navigates to payment page (if sum <> 0)
 function onPayTap() {
-    const frame = getFrameById("topframe");
-    frame.navigate("views/payment/payment-page");
-    }   
+    if (sum != 0){
+        const frame = getFrameById("topframe");
+        frame.navigate("views/payment/payment-page");
+    } else {
+        alert('Bevor du bezahlen kannst, musst du Bestellungen vom Tisch auswählen und zu deinem persönlichen Warenkorb hinzufügen.');
+    }
+}
 exports.onPayTap = onPayTap
 
 

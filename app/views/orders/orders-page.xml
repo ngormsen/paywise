@@ -15,29 +15,39 @@
         <sd:RadSideDrawer.mainContent>
 
             <StackLayout id="form" orientation="vertical">
-            
-            
-            <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle die Bestellungen aus die du bezahlen möchtest oder teile Sie die mit Freunden indem du den Split-Button klickst" class = "ordersText" textWrap = "true"/>
-
-                <StackLayout rows="*" class= "myordercontent" height = "65%">
+                
+                <GridLayout columns="*" height="22%">
+                   <Label  text="Hier siehst du alles, was an deinem Tisch bestellt wurde. Wähle die Bestellungen aus die du bezahlen möchtest oder teile Sie dir mit deinen Freunden indem du den Split-Button klickst" class = "ordersText" textWrap = "true"/>
+                </GridLayout>
+   
+               <StackLayout orientation="horizontal" height="6%" backgroundColor="lightgray">    
+                    <Label text="Gerichte" width="55%" class="shoppingcard_header"/>
+                    <Label text="Preis" width="20%" class="shoppingcard_header"/>
+                    <Label text="" class="shoppingcard_header"/>
+                </StackLayout>
+                <StackLayout rows="*" class= "myordercontent" height = "55%">
+            <!--Header -->
                     <ListView height = "100%" items="{{ myItems }}">
                         <ListView.itemTemplate>
-                            <GridLayout columns="250, 50, 50, auto" >
-                                <Label text="{{ name }}"  col="0" />
-                                <Label text="{{ prize }}"  col="1" />
-                                <Image src ="~/images/spliticon.png" tap= "splitItem" col ="2" id = "{{name}}" class ="splitButton"/>
-                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="3" id = "{{name}}" class ="pickButton"/>
+                            <GridLayout columns="auto, auto, auto, auto" >
+                                <Label text="{{ name }}"  col="0" width="60%"/>
+                                <Label text="{{ prize }}"  col="1" width="15%" />
+                                <Image src ="~/images/spliticon.png" tap= "splitItem" col ="2" id = "{{name}}" class ="splitButton" width="15%"/>
+                                <Image src ="~/images/shopping_cart.png" tap= "onTap" col ="3" id = "{{name}}" class ="pickButton" width="10%"/>
                             </GridLayout>
                         </ListView.itemTemplate>
                     </ListView>
                 </StackLayout>
+<!--SumUp-->
+               <StackLayout orientation="horizontal" height="6%" backgroundColor="lightgray">    
+                    <Label text="Gesamtbetrag:" width="55%" class="shoppingcard_header"/>
+                    <Label text="{{ sum }}" width="" class="shoppingcard_header"/>
+                </StackLayout>
 
-                <GridLayout columns="250, *" height="3%" class="desksumup">
-                    <Label text="Gesamtbetrag:" col="0"/>
-                    <Label text="{{ sum }}" col="1" />
-                </GridLayout>
-            <Button class="buttonprimary" text="Zu deiner Bestellübersicht" tap="onMyOrdersTap" />
+            <Button class="buttonprimary" text="Zu deinem Warenkorb" tap="onMyOrdersTap" />
+        
         </StackLayout>
+       
         </sd:RadSideDrawer.mainContent>
 
     </sd:RadSideDrawer>

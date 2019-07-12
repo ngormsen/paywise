@@ -1,26 +1,38 @@
     <StackLayout class="sidedrawer-left" loaded="onLoaded">
     
         <StackLayout class="radsideheader">
-            <Image src="~/images/profilepic" class="radsidepic"></Image>
-            <GridLayout class="radsideheader" rows="auto auto auto" columns="100 auto" class="radsideheadercred">
-                <!-- Restaurant -->
+            
+            <GridLayout class="radsideheader" rows="auto auto" columns=" 100 auto" class="radsideheadercred">
+                <Image src="~/images/profilepic" class="radsidepic" col="0" rowSpan="2"/>
+                <!-- Restaurant
                 <Label class="radsideheader" text="Restaurant: " row="0" col="0" />
                 <Label class="radsideheader" text="{{ restaurant }}" row="0" col="1" />
+                 -->
                 <!-- Guest -->
-                <Label class="radsideheader" text="Name: " row="1"  col="0"/>
-                <Label class="radsideheader" text="{{ guest }}" row="1"  col="1"/>
+                <Label class="radsideheadercontent" text=" {{ 'Hi ' + guest }} " row="0" col="1"/>
                 <!-- Points -->
-                <Label class="radsideheader" text="Punkte: " row="2" col="0" />
-                <Label class="radsideheader" text="{{ points }}" row="2" col="1"/>
+                <Label class="radsideheaderpoints" text="{{ 'Deine Punkte:  ' + points }}" row="1" col="1"/>
             </GridLayout>
+
         </StackLayout>
 
         <StackLayout class="radsidebody">
             <!-- <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/> -->
-            <Button class="radsidebutton" text="Am Tisch einchecken" tap="onTap" />
-            <Button class="radsidebutton" text="Offene Bestellungen" tap="onOrdersTap" />
-            <Button class="radsidebutton" text="Meine Bestellungen anzeigen" tap="onMyOrdersTap" />
-            <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
-            <Button text="sign out" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
+
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton" text="Am Tisch einchecken" tap="onTap" />
+            </StackLayout>
+            
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton2" text="Tisch Bestellungen" tap="onOrdersTap" />
+                <Button class="radsidebutton" text="Aktueller Warenkorb" tap="onMyOrdersTap" />
+            </StackLayout>    
+            
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
+            </StackLayout>
+             <StackLayout class="radsidecluster">           
+                <Button text="Ausloggen" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
+             </StackLayout>
         </StackLayout>
  </StackLayout>
