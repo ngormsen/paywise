@@ -55,7 +55,7 @@ function onNavigatingTo(args) {
         Object.keys(orders).forEach(function(key, idx) {
             if(orders[key] != null){
                 if(orders[key] != null){
-                    myItems.push({ name: orders[key].name, prize: orders[key].prize}); 
+                    myItems.push({ name: orders[key].name, prize: orders[key].prize.toFixed(2)}); 
                     sum += orders[key].prize;
                 }
             }

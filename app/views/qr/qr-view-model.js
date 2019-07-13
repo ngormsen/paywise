@@ -92,7 +92,9 @@ var BarcodeModel = (function (_super) {
     };
     ;
     BarcodeModel.prototype.scan = function (front, flip, torch, orientation) {
+        console.log("scanning")
         this.barcodeScanner.scan({
+
             formats: "QR_CODE, EAN_13",
             cancelLabel: "EXIT. Also, try the volume buttons!",
             message: "Use the volume buttons for extra light",
@@ -104,9 +106,10 @@ var BarcodeModel = (function (_super) {
         }).then(function (result) {
             // Note that this Promise is never invoked when a 'continuousScanCallback' function is provided
             setTimeout(function () {
+                // TODO process text
                 dialogs_1.alert({
                     title: "Scan result",
-                    message: "Format: " + result.format + ",\nValue: " + result.text,
+                    message: result.text,
                     okButtonText: "OK"
                 });
                 data.value = result.text[result.text.length-1];

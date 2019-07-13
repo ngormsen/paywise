@@ -15,7 +15,7 @@ function onNavigatingTo(args) {
     var viewModel = new Observable();    
     page.bindingContext = viewModel;
 
-    viewModel.set("sum", `${0} EURO.`);
+    viewModel.set("sum", `${0.00.toFixed(2)} EUR.`);
 
     // Slider values:
     viewModel.set("currentValue", data.percent); // displays the sliderValue
@@ -50,7 +50,7 @@ function onNavigatingTo(args) {
     var onChildEvent = function (result) {
         console.log("childEvent")
         //TODO Bezahlen zurück zu myorders: keep values        
-        viewModel.set("sum", `${0} EUR.`)
+        viewModel.set("sum", `${0.00.toFixed(2)} EUR.`)
         viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
         data.value = 0;
         
@@ -76,7 +76,7 @@ function onNavigatingTo(args) {
                 if(orders[key] != null){
                     if(orders[key] != null){
                         // Pushes the order items into the view list.
-                        myItems.push({ name: orders[key].name, prize: orders[key].prize});
+                        myItems.push({ name: orders[key].name, prize: orders[key].prize.toFixed(2)});
                         // Pushes the order items into a data array that is pushed to the firebase at the 
                         // end of a transaction.
                         data.myorder.push({ name: orders[key].name, prize: orders[key].prize});
@@ -167,14 +167,17 @@ exports.onOrdersTap = onOrdersTap
 
 // Navigates to payment page (if sum <> 0)
 function onPayTap() {
-    if (sum != 0){
+    if (sum != 0 && data.empty == false){
         const frame = getFrameById("topframe");
+        //TODO Load avgTip value at app initialisation
+        data.pointsGained = calculatePoints(data.avgTip, data.percent);
         frame.navigate("views/payment/payment-page");
     } else {
         alert('Bevor du bezahlen kannst, musst du Bestellungen vom Tisch auswählen und zu deinem persönlichen Warenkorb hinzufügen.');
     }
 }
 exports.onPayTap = onPayTap
+
 
 
 // Gamification of the tip element. 
