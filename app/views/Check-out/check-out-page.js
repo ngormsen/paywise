@@ -1,17 +1,17 @@
+// Imports
+const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
-//code transfer back to navigate-view
-/*
-function onOrdersTap() {
+
+// Navigate to global order list / "table"
+exports.backTable = backTable;
+function backTable() {
     const frame = getFrameById("topframe");
     frame.navigate("views/orders/orders-page");
 }
-exports.onOrdersTap = onOrdersTap
-*/
-/*
-exports.SignOut = function(){
-        firebase.logout()
-        .then(console.log("user logged out"))
-        alert("Du wurdest ausgeloggt")    
-    }
 
-    */
+// Navigate to QR scanner
+exports.checkOut = checkOut;
+function checkOut() {
+    const frame = getFrameById("topframe");
+    frame.navigate("views/qr/qr-page");
+}

@@ -89,7 +89,7 @@ function handleEventFromWebView(){
            
             const frame = getFrameById("topframe");
             // TODO: CHANGE NAVIGATION TO HOME VIEW
-            frame.navigate("views/orders/orders-page");
+            frame.navigate("views/Check-out/check-out-page");
         });
         // TODO: Adjust value in data.js & Firebase database
     });
