@@ -2,6 +2,6 @@
     <NavigationButton visibility="hidden" ></NavigationButton>
     <StackLayout>
          <Image src="~/images/Tischwarenkorb_erklärung4.png" height = "90%" />
-         <Button class="buttonprimary" text="Okay"  height="7%"/>
+         <Button tap="myTable" class="buttonprimary" text="Okay"  height="7%"/>
     </StackLayout>
 </page>
