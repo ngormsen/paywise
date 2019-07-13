@@ -11,9 +11,8 @@
             <TextField class="input-line" secure="true" id = "password"
                 hint="Passwort" />
 
-            <Button class="ghost-round input-fields" text="Log in" id = "LogIn"
-                tap="LogIn" />
-            <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw" height="10%"/> 
+            <Button class="ghost-round input-fields" text="Log in" id = "LogIn" tap="LogIn" />
+            <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw"/> 
             <Label text="Noch keinen Account? Hier erstellen"  tap="navToRegister" id = "Register" class ="labelsignup"/>
            <!-- <button text="Gast?" class="guestorder" tap="guest" id="guest"/>-->
             
