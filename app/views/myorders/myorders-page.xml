@@ -49,7 +49,7 @@
                 <Image src="~/images/coin.png" row="1" col="0" class="coinicon" width="4%"/>
                     <!-- <Label row="1" col="0" text="{{ firstMinValue }}" textWrap="true" fontSize="15" class="icon" /> -->
                     <Slider row="1" col="1" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
-                        maxValue="{{ firstMaxValue }}" width="89%" />
+                        maxValue="{{ firstMaxValue }}" width="87%" />
                     <!-- <Label row="1" col="2" text="{{ firstMaxValue }}" textWrap="true" fontSize="20" class="icon" /> -->
                 <Image src="~/images/coins.png" row="1" col="2" class="coinicon1" width="7%"/>
                 </GridLayout>
