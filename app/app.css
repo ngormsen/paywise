@@ -16,11 +16,6 @@ For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
 
-.actionbar{
-    background-color: #1F2D44;
-    color: white;
-}
-
 .btn {
     font-size: 14;
 }
@@ -252,8 +247,8 @@ components that have the btn class name.
 .slidercontent{
     color: #464646;
     align-content: center;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 3%;
     margin-top: 3%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -272,6 +267,15 @@ components that have the btn class name.
     margin-bottom: 15%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+}
+
+.coinicon1{
+    margin-left: 1%;
+}
+
+.coinicon{
+
+    margin-right: 1%;
 }
 
 /*Orders*/

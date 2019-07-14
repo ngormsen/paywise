@@ -44,12 +44,16 @@
 
                 
                 <!--Slider-->
-                <GridLayout class="slidercontent" rows="auto auto" columns="*">
+
+                <GridLayout class="slidercontent" rows="auto auto" columns="auto auto auto">
+                <Image src="~/images/coin.png" row="1" col="0" class="coinicon" width="4%"/>
                     <!-- <Label row="1" col="0" text="{{ firstMinValue }}" textWrap="true" fontSize="15" class="icon" /> -->
-                    <Slider row="1" col="0" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
-                        maxValue="{{ firstMaxValue }}" />
+                    <Slider row="1" col="1" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
+                        maxValue="{{ firstMaxValue }}" width="89%" />
                     <!-- <Label row="1" col="2" text="{{ firstMaxValue }}" textWrap="true" fontSize="20" class="icon" /> -->
+                <Image src="~/images/coins.png" row="1" col="2" class="coinicon1" width="7%"/>
                 </GridLayout>
+                
                 <GridLayout class="slidercontent1" rows="auto auto" columns="auto, auto,auto,auto,auto">
                     <Label row="0" col="0" class="slidervalues" text="Tip:" width="20%"/>
                     <Label row="0" col="1" class="slidervalues" text="{{ currentValue }}"/>
