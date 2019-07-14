@@ -15,5 +15,6 @@ module.exports = {
     bit: false,
     pointsGained: 0,
     empty: false
+    
   };
 
