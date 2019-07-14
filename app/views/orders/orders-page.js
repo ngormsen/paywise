@@ -6,7 +6,7 @@ var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var dialogs = require("tns-core-modules/ui/dialogs");
 var view = require("ui/core/view");
-
+// TODO Fix error messages: Failed to apply property background/margin with value none 
 // Global variables
 var page = null
 var orders;
@@ -81,7 +81,6 @@ function onNavigatingTo(args) {
 }
 
 // Pick an item (moves it to the cart of the guest)
-exports.onTap = onTap;
 function onTap(args) {
     const button = args.object;
     var id = button.id;
@@ -125,6 +124,7 @@ function onTap(args) {
         frame.navigate(navigationEntry);
     }
 }
+exports.onTap = onTap;
 
 // Split an item from the list
 exports.splitItem = splitItem;
@@ -155,7 +155,7 @@ function splitItem(args) {
             }
         }
     });
-
+    // TODO restrict user from splitting to many times
     // Ask user in how many (n) parts to split
     dialogs.action({
         message: "Mit wie vielen Personen möchtest du dir diese Bestellung teilen?",
@@ -223,3 +223,15 @@ function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
+
+
+function onSetGlobalTap(){
+    firebase.setValue(
+        `restaurants/${data.restaurant}/tables/${data.table}/global/orders`,
+        {"0" : {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }}
+    );
+}
+exports.onSetGlobalTap = onSetGlobalTap

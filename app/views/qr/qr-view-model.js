@@ -2,6 +2,7 @@ var observable_1 = require("data/observable");
 var dialogs_1 = require("ui/dialogs");
 var nativescript_barcodescanner_1 = require("nativescript-barcodescanner");
 var data = require("../shared/data.js");
+const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 var BarcodeModel = (function (_super) {
     __extends(BarcodeModel, _super);
@@ -106,16 +107,17 @@ var BarcodeModel = (function (_super) {
         }).then(function (result) {
             // Note that this Promise is never invoked when a 'continuousScanCallback' function is provided
             setTimeout(function () {
-                // TODO process text
+                let text = (result.text).split(",");
+                data.restaurant = text[0];
+                data.table = parseInt(text[1]);
                 dialogs_1.alert({
-                    title: "Scan result",
-                    message: result.text,
+                    title: "Du hast dich erfolgreich angemeldet!",
+                    message: "Restaurant: " + data.restaurant + ", Tisch: " + data.table, 
                     okButtonText: "OK"
                 });
-                data.value = result.text[result.text.length-1];
-                console.log(data.table)
-                
-            }, 500);
+                    const frame = getFrameById("topframe");
+                    frame.navigate("views/orders/orders-page");
+            }, 200);
         }, function (errorMessage) {
             console.log("No scan. " + errorMessage);
         });

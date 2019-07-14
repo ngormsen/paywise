@@ -69,7 +69,7 @@ function handleEventFromWebView(){
               console.log("created key: " + result.key);
             }
         );
-        
+        // TODO Ist das die korrekte Funktion fuer transactionFinished? Es gibt die Funktion auch in payment-page
         firebase.setValue(
             `/users/${(data.guest).replaceAll("\.", "")}`,
             {

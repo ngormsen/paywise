@@ -31,7 +31,7 @@ function onNavigatingTo(args) {
             if(data.empty != true){
                 console.log(myItems.length)
                 // Sets the currentValue, tipValue and the new sum in case of sliderValue change.
-                viewModel.set("currentValue", propertyChangeData.value.toFixed(0));
+                viewModel.set("currentValue", propertyChangeData.value.toFixed());
                 viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
                 viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
                 
@@ -69,8 +69,8 @@ function onNavigatingTo(args) {
         // Pushes the correct items into the list and calculates the total sum.
         if(result.key == "myorders"){
             orders = result.value;
-            data.mydata = [];   // local myorder list
-            myItems = [];       // database myorder list
+            myItems = [];       // local myorder list
+            data.myorder = [];  // database myorder list
 
             Object.keys(orders).forEach(function(key, idx) {
                 if(orders[key] != null){
@@ -170,6 +170,7 @@ function onPayTap() {
     if (sum != 0 && data.empty == false){
         const frame = getFrameById("topframe");
         //TODO Load avgTip value at app initialisation
+        //TODO Set global order on secret button
         data.pointsGained = calculatePoints(data.avgTip, data.percent);
         frame.navigate("views/payment/payment-page");
     } else {
@@ -180,32 +181,40 @@ exports.onPayTap = onPayTap
 
 
 
-// Gamification of the tip element. 
-function tipTap(args){
-    if(data.percent > data.avgTip && data.bit == false){
-        // data.attempts -= 1;
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist geringer. Für deine Großzügigkeit erhälst du nach Beendigung der Transaktion ${calculatePoints(data.avgTip, data.percent)} Punkte! `)
-        data.pointsGained = calculatePoints(data.avgTip, data.percent);
-        console.log(data.points, data.attempts)
-        // data.bit = true;
-    }else if(data.bit == true){
-        alert(`Du hast deine Punkte bereits erhalten.`)
-    }else if(data.attempts <= 0){
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
+// // Gamification of the tip element. 
+// function tipTap(args){
+//     if(data.percent > data.avgTip && data.bit == false){
+//         // data.attempts -= 1;
+//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist geringer. Für deine Großzügigkeit erhälst du nach Beendigung der Transaktion ${calculatePoints(data.avgTip, data.percent)} Punkte! `)
+//         data.pointsGained = calculatePoints(data.avgTip, data.percent);
+//         console.log(data.points, data.attempts)
+//         // data.bit = true;
+//     }else if(data.bit == true){
+//         alert(`Du hast deine Punkte bereits erhalten.`)
+//     }else if(data.attempts <= 0){
+//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
 
-    }
-    else{
-        alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist höher. Leider erhälst du keine Punkte.`)
-    }
+//     }
+//     else{
+//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist höher. Leider erhälst du keine Punkte.`)
+//     }
 
-}
-exports.tipTap = tipTap
+// }
+// exports.tipTap = tipTap
 
 // Calculates the points one gets for a tip.
 function calculatePoints(avgTip, percent){
-    console.log((percent - avgTip) * 100)
-    return (percent - avgTip) * 100
-}
+    let distance = percent - avgTip
+    if ( distance < 5 && distance > 0){
+        console.log(10 * data.value * distance)
+        return (10 * data.value * distance).toFixed()
+    }
+    else if(distance > 5){
+        return (10 * data.value * distance * 2).toFixed()
+    }
+  }
+  exports.calculatePoints = calculatePoints
+  
 
 
 // Replaces the given characters in a string.
@@ -214,7 +223,7 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
 
-
+// TODO reevaluate tip calcuation
 // Calculates the tip value based on the choosen slider value and the total order value.
 function calculateTip(orderValue, sliderValue){
     return (orderValue * sliderValue) / 100 

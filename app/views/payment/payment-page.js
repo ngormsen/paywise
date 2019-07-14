@@ -120,15 +120,15 @@ function onPoints(){
     let pointValue = points / 100 * 0.5;
     data.value = (data.value - pointValue).toFixed(2);
     if(data.value < 0){
-        data.value = 0
+        data.value = 0.01
     };
     points = 0;
     viewModel.set("points", `Du hast aktuell ${points} Punkte.`);
     viewModel.set("sum", `Zu bezahlender Betrag: ${data.value} EUR.`);
     console.log("onPoints", data.points);
 
-    // Punkte in data.points setzen
-    // Punkte in DB setzen
+    // TODO Punkte in data.points setzen
+    // TODO Punkte in DB setzen
     data.points = points
 
 
@@ -140,15 +140,3 @@ function onPoints(){
     webView.reload();
 }
 
-/* exports.onPaypalTap = onPaypalTap;
-function onPaypalTap() {
-    const frame = getFrameById("topframe");
-    frame.navigate("views/paypal/paypal-page");
-}
-
-
-exports.onGoogleTap = onGoogleTap;
-function onGoogleTap() {
-    const frame = getFrameById("topframe");
-    frame.navigate("views/google-page/google-page");
-} */
