@@ -1,0 +1,7 @@
+<page page = "loaded" actionBarHidden ="true" >
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    <StackLayout>
+         <Image src="~/images/Gamifizierung_erklärung3.png" height = "90%" />
+         <Button tap ="myOrders" class="buttonprimary" text="Okay"  height="7%"/>
+    </StackLayout>
+</page>
