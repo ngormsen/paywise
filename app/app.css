@@ -42,6 +42,7 @@ components that have the btn class name.
 }
 
 .radsideheadercontent{
+    margin-left: 3%;
     margin-top: 10%;
     font-size: 25;
     font-weight: bold;
@@ -49,6 +50,7 @@ components that have the btn class name.
     
 }
 .radsideheaderpoints{
+    margin-left: 3%;
     font-size: 15;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
