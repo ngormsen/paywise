@@ -3,7 +3,8 @@ var firebase = require("nativescript-plugin-firebase");
 var data = require("../../app/views/shared/data.js");
 const Observable = require("tns-core-modules/data/observable").Observable;
 
-
+// TODO aufraeumen
+// TODO Fix side drawer button
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
@@ -94,8 +95,27 @@ exports.onWelcomeTap = onWelcomeTap;
 function onPayTap() {
 
     const frame = getFrameById("topframe");
-    frame.navigate("views/payment/payment-page");
+    if(data.empty == true || data.value == 0){
+      alert('Bevor du bezahlen kannst, musst du Bestellungen vom Tisch auswählen und zu deinem persönlichen Warenkorb hinzufügen.');
+      console.log("empty")
+    }
+    else{
+      data.pointsGained = calculatePoints(data.avgTip, data.percent);
+      frame.navigate("views/payment/payment-page");
+    }
     }   
   
 exports.onPayTap = onPayTap
-  
+
+function calculatePoints(avgTip, percent){
+  let distance = percent - avgTip
+  if ( distance < 5 && distance > 0){
+    // TODO toFixed returns String -> check if ok for all use cases
+      console.log((10 * data.value * distance).toFixed())
+      return (10 * data.value * distance).toFixed()
+  }
+  else if(distance > 5){
+      return (10 * data.value * distance * 2).toFixed()
+  }
+}
+exports.calculatePoints = calculatePoints

@@ -55,7 +55,7 @@ function handleEventFromWebView(){
     
         console.log("MYORDER", data.myorder)
         firebase.push(
-            '/restaurants/testRestaurant/paid',
+            `/restaurants/${data.restaurant}/paid`,
             {
               'order': data.myorder,
               'guest': data.guest,
@@ -69,6 +69,24 @@ function handleEventFromWebView(){
               console.log("created key: " + result.key);
             }
         );
+        // TODO Ist das die korrekte Funktion fuer transactionFinished? Es gibt die Funktion auch in payment-page
+        firebase.setValue(
+            `/users/${(data.guest).replaceAll("\.", "")}`,
+            {
+                email: data.guest,
+                name: data.name,
+                points: data.pointsGained
+            });
+
+        //TODO Calculate Tip Value based on past tips
+        //TODO add current Tip to database
+
+
+        data.value = 0;
+        data.percent = 0;
+        data.tip = 0;
+
+        
         
         firebase.remove(`/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders`);
         //var payedValue = details.purchase_units.amount.value;
@@ -85,6 +103,5 @@ function handleEventFromWebView(){
             // TODO: CHANGE NAVIGATION TO HOME VIEW
             frame.navigate("views/orders/orders-page");
         });
-        // TODO: Adjust value in data.js & Firebase database
     });
 }

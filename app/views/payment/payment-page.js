@@ -22,7 +22,13 @@ function pageLoaded(args){
     page.bindingContext = viewModel;
     // Show payment information
     var sum = parseFloat(data.value).toFixed(2);
-    viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EUR.`);
+    if(data.empty==true){
+        viewModel.set("sum", `Zu bezahlender Betrag: ${0.00} EUR.`);
+    }
+    else{
+        viewModel.set("sum", `Zu bezahlender Betrag: ${sum} EUR.`);
+
+    }
     viewModel.set("restaurant", `${data.restaurant}`);
     viewModel.set("points", `Du hast aktuell ${data.points} Punkte.`);
     // Setup webView
@@ -72,7 +78,7 @@ function handleEventFromWebView(){
     
         console.log("MYORDER", data.myorder)
         firebase.push(
-            '/restaurants/testRestaurant/paid',
+            `/restaurants/${data.restaurant}/paid`,
             {
               'order': data.myorder,
               'guest': data.guest,
@@ -110,14 +116,22 @@ function handleEventFromWebView(){
 // Use points for payment
 exports.onPoints = onPoints;
 function onPoints(){
-    let points = data.points;
-    let value = points / 100 * 0.5
-    console.log(value)
-    data.value = data.value - value
-    data.points = 0;
-    viewModel.set("points", `Du hast aktuell ${data.points} Punkte.`)
-    viewModel.set("sum", `Zu bezahlender Betrag: ${data.value} EURO.`);
+    let points = data.points;;
+    let pointValue = points / 100 * 0.5;
+    data.value = (data.value - pointValue).toFixed(2);
+    if(data.value < 0){
+        data.value = 0.01
+    };
+    points = 0;
+    viewModel.set("points", `Du hast aktuell ${points} Punkte.`);
+    viewModel.set("sum", `Zu bezahlender Betrag: ${data.value} EUR.`);
     console.log("onPoints", data.points);
+
+    // TODO Punkte in data.points setzen
+    // TODO Punkte in DB setzen
+    data.points = points
+
+
 
     //var page = page;
     console.log("here11:" + page);
@@ -126,15 +140,3 @@ function onPoints(){
     webView.reload();
 }
 
-/* exports.onPaypalTap = onPaypalTap;
-function onPaypalTap() {
-    const frame = getFrameById("topframe");
-    frame.navigate("views/paypal/paypal-page");
-}
-
-
-exports.onGoogleTap = onGoogleTap;
-function onGoogleTap() {
-    const frame = getFrameById("topframe");
-    frame.navigate("views/google-page/google-page");
-} */

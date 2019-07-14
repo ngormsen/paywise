@@ -12,7 +12,7 @@ var view = require("tns-core-modules/ui/core/view");
 var getViewById = require("tns-core-modules/ui/core/view").getViewById;
 
 
-
+// TODO delete all console log messages
 
 
 
