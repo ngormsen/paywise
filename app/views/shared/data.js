@@ -4,7 +4,7 @@ module.exports = {
     name: "Nils",
     value: 0.00, 
     table: 0,
-    restaurant: "testRestaurant",
+    restaurant: "laContessa",
     tip: 0,
     avgTip: 9,
     total: 0,
