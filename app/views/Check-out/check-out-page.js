@@ -5,6 +5,7 @@ var data = require("../shared/data.js");
 
 // Show points gained
 exports.loaded = loaded;
+
 function loaded(args) {
     page = args.object;
     const label = page.getViewById("points");
@@ -14,6 +15,7 @@ function loaded(args) {
 
 // Navigate to global order list / "table"
 exports.backTable = backTable;
+
 function backTable() {
     const frame = getFrameById("topframe");
     frame.navigate("views/orders/orders-page");
@@ -21,10 +23,11 @@ function backTable() {
 
 // Navigate to QR scanner
 exports.checkOut = checkOut;
+
 function checkOut() {
     const frame = getFrameById("topframe");
     frame.navigate("views/qr/qr-page");
-    
+
     data.table = null;
     data.restaurant = null;
 }

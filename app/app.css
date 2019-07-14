@@ -72,6 +72,7 @@ components that have the btn class name.
     color: #1F2D44;
     height: 50;
     font-weight: bold;
+    background-color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
@@ -80,8 +81,9 @@ components that have the btn class name.
     color: #1F2D44;
     height: 50;
     font-weight: bold;
-    border-bottom-width: 2px;
-    border-bottom-color: rgb(233, 233, 233);
+    background-color: white;
+    /* border-bottom-width: 2px;
+    border-bottom-color: rgb(233, 233, 233); */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 

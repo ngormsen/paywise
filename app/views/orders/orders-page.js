@@ -38,7 +38,7 @@ function onNavigatingTo(args) {
     var viewModel = new Observable();
 
     page.bindingContext = viewModel;
-    viewModel.set("sum", `Gesamtbetrag Bestellungen: ${0.00} EUR.`);
+    viewModel.set("sum", `${0.00} EUR.`);
 
     // Add child event
     var onChildEvent = function (result) {

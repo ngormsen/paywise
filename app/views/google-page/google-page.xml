@@ -1,3 +1,0 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
-<web-view id="webView" src="~/www/google.html"></web-view>
-</Page>

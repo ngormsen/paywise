@@ -20,7 +20,6 @@
                 <StackLayout orientation="horizontal" height="6%" backgroundColor="lightgray">    
                         <Label text="Deine Gerichte" width="55%" class="shoppingcard_header"/>
                         <Label text="Preis" width="20%" class="shoppingcard_header"/>
-                        <Label text="Aktion" class="shoppingcard_header"/>
                 </StackLayout>
                 
                 <StackLayout  rows="*" class= "myordercontent" height="50%">

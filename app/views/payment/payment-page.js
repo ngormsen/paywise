@@ -2,8 +2,6 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var data = require("../shared/data.js");
 const Observable = require("tns-core-modules/data/observable").Observable;
-var paymentViewModel = require("./payment-view-model");
-var observableModule = require("tns-core-modules/data/observable");
 var webViewInterfaceModule = require('nativescript-webview-interface');
 var oWebViewInterface;
 var firebase = require("nativescript-plugin-firebase");

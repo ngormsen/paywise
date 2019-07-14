@@ -14,8 +14,6 @@ function onTap(args) {
     barcodeScanner = new qr_view_model_1.BarcodeModel();
 
     barcodeScanner.doScanWithBackCamera();
-  
-    
 
 }
 

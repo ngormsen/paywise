@@ -16,8 +16,6 @@
             <Label text="Noch keinen Account? Hier erstellen"  tap="navToRegister" id = "Register" class ="labelsignup"/>
            <!-- <button text="Gast?" class="guestorder" tap="guest" id="guest"/>-->
             
-
-
     </StackLayout>
 </Page>
 

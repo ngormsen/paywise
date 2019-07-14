@@ -1,7 +1,3 @@
-
-
-
-
   /* filter over stacklayout, foggy */
   StackLayout {
     
@@ -10,9 +6,6 @@
       z-index: 1;
     }
   
-
-
-
  /*Image*/
  Image {
   margin-bottom: 5test0;

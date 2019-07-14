@@ -2,16 +2,16 @@
     
         <StackLayout class="radsideheader">
             
-            <GridLayout class="radsideheader" rows="auto auto" columns=" auto 100" class="radsideheadercred">
-                <Image src="~/images/profilepic" class="radsidepic" col="1" rowSpan="2"/>
+            <GridLayout class="radsideheader" rows="auto auto" columns="100 auto" class="radsideheadercred">
+                <Image src="~/images/profilepic.png" class="radsidepic" col="0" rowSpan="2"/>
                 <!-- Restaurant
                 <Label class="radsideheader" text="Restaurant: " row="0" col="0" />
                 <Label class="radsideheader" text="{{ restaurant }}" row="0" col="1" />
                  -->
                 <!-- Guest -->
-                <Label class="radsideheadercontent" text=" {{ 'Hi ' + guest }} " row="0" col="0"/>
+                <Label class="radsideheadercontent" text=" {{ 'Hi ' + guest }} " row="0" col="1"/>
                 <!-- Points -->
-                <Label class="radsideheaderpoints" text="{{ 'Deine Punkte:  ' + points }}" row="1" col="0"/>
+                <Label class="radsideheaderpoints" text="{{ 'Deine Punkte:  ' + points }}" row="1" col="1"/>
             </GridLayout>
 
         </StackLayout>
