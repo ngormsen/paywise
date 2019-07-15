@@ -30,7 +30,7 @@
             </StackLayout>    
 
             <StackLayout class="radsidecluster">
-                <Button class="radsidebutton" text="Anleitung" tap="onPayTap" />  
+                <Button class="radsidebutton" text="Anleitung" tap="onTutorialTap" />  
             </StackLayout>
 
              <StackLayout class="radsidecluster">           
