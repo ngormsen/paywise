@@ -3,18 +3,20 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-
+var view = require("ui/core/view");
 var page = null
 var orders = null
 var sum = 0;
 var myItems = new ObservableArray([]);  // Sets observable array
+var drawer;
 
 
 function onNavigatingTo(args) {
     page = args.object;
+    drawer = view.getViewById(page, "sideDrawer");
     var viewModel = new Observable();    
     page.bindingContext = viewModel;
-
+    drawer = view.getViewById(page, "sideDrawer");
     viewModel.set("sum", `${0.00.toFixed(2)} EUR.`);
 
     // Slider values:
@@ -181,27 +183,6 @@ exports.onPayTap = onPayTap
 
 
 
-// // Gamification of the tip element. 
-// function tipTap(args){
-//     if(data.percent > data.avgTip && data.bit == false){
-//         // data.attempts -= 1;
-//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist geringer. Für deine Großzügigkeit erhälst du nach Beendigung der Transaktion ${calculatePoints(data.avgTip, data.percent)} Punkte! `)
-//         data.pointsGained = calculatePoints(data.avgTip, data.percent);
-//         console.log(data.points, data.attempts)
-//         // data.bit = true;
-//     }else if(data.bit == true){
-//         alert(`Du hast deine Punkte bereits erhalten.`)
-//     }else if(data.attempts <= 0){
-//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Leider hast du deine Versuche bereits aufgebraucht.`)
-
-//     }
-//     else{
-//         alert(`Trinkgeld gegeben: ${data.percent.toFixed(2) }%. Das durchschnittliche Trinkgeld der letzten Tage ist höher. Leider erhälst du keine Punkte.`)
-//     }
-
-// }
-// exports.tipTap = tipTap
-
 // Calculates the points one gets for a tip.
 function calculatePoints(avgTip, percent){
     let distance = percent - avgTip
@@ -234,3 +215,9 @@ function calculateTip(orderValue, sliderValue){
 function calculateTotal(orderValue, tipValue){
     return(orderValue + tipValue)
 }
+
+
+function toggleDrawer(){
+    drawer.toggleDrawerState();
+};
+exports.toggleDrawer = toggleDrawer;

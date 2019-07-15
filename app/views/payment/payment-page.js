@@ -7,6 +7,8 @@ var oWebViewInterface;
 var firebase = require("nativescript-plugin-firebase");
 var dialogs = require("tns-core-modules/ui/dialogs");
 var dataStore = require("../shared/data");
+var view = require("ui/core/view");
+var drawer;
 
 // Global variables
 viewModel = new Observable();
@@ -18,6 +20,7 @@ exports.pageLoaded = pageLoaded;
 
 function pageLoaded(args) {
     page = args.object;
+    drawer = view.getViewById(page, "sideDrawer");
     page.bindingContext = viewModel;
     // Show payment information
     var sum = parseFloat(data.value).toFixed(2);
@@ -154,3 +157,8 @@ function onPoints() {
     var webView = page.getViewById('webView');
     webView.reload();
 }
+
+
+exports.toggleDrawer = function() {
+    drawer.toggleDrawerState();
+};
