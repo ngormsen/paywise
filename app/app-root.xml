@@ -3,4 +3,4 @@ The defaultPage ist the starting page of the application.-->
 
 
 
-<Frame id="topframe" defaultPage="views/myorders/myorders-page"></Frame>
+<Frame id="topframe" defaultPage="views/intro-table-split/intro-table-split-page"></Frame>

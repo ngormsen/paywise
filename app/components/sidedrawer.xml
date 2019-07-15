@@ -25,12 +25,14 @@
             
             <StackLayout class="radsidecluster">
                 <Button class="radsidebutton2" text="Tisch Bestellungen" tap="onOrdersTap" />
-                <Button class="radsidebutton" text="Aktueller Warenkorb" tap="onMyOrdersTap" />
+                <Button class="radsidebutton2" text="Aktueller Warenkorb" tap="onMyOrdersTap" />
+                <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" /> 
             </StackLayout>    
-            
+
             <StackLayout class="radsidecluster">
-                <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" />  
+                <Button class="radsidebutton" text="Anleitung" tap="onPayTap" />  
             </StackLayout>
+
              <StackLayout class="radsidecluster">           
                 <Button text="Ausloggen" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
              </StackLayout>

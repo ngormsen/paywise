@@ -8,12 +8,12 @@
         rowSpan="5"
         col="0"
         stretch="aspectFill"
-        src="~/images/fifth_coachmark.png"
+        src="~/images/third_coachmark.png"
         id="userIcon" />
 
     
     <StackLayout row="1" class="btngotit">
-         <Button tap="myOrders" class="buttonprimary" text="Okay"/>
+         <Button tap="" class="buttonprimary" text="Okay"/>
     </StackLayout>
 </GridLayout>
 

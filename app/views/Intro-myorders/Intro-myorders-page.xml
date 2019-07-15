@@ -1,7 +1,20 @@
-<page page = "loaded" actionBarHidden ="true" >
+<page page = "loaded" actionBarHidden ="true" class="qrcodebackground" >
     <NavigationButton visibility="hidden" ></NavigationButton>
-    <StackLayout>
-         <Image src="~/images/Meinwarenkorb_erklärung4.png" height = "90%" />
-         <Button tap = "introGame" class="buttonprimary" text="Weiter"  height="7%"/>
+
+
+<GridLayout  rows="auto, *" columns="*">
+    <Image
+        row="0"
+        rowSpan="5"
+        col="0"
+        stretch="aspectFill"
+        src="~/images/sixth_coachmark.png"
+        id="userIcon" />
+
+    
+    <StackLayout row="1" class="btngotit">
+        <Button tap = "introGame" class="buttonprimary" text="Weiter" />
     </StackLayout>
+</GridLayout>
+
 </page>

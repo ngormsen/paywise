@@ -82,8 +82,8 @@ components that have the btn class name.
     height: 50;
     font-weight: bold;
     background-color: white;
-    /* border-bottom-width: 2px;
-    border-bottom-color: rgb(233, 233, 233); */
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(233, 233, 233);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
