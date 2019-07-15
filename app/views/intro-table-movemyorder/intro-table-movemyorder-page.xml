@@ -13,7 +13,7 @@
 
     
     <StackLayout row="1" class="btngotit">
-         <Button tap="" class="buttonprimary" text="Okay"/>
+         <Button tap="onMyOrderTutTap" class="buttonprimary" text="Okay"/>
     </StackLayout>
 </GridLayout>
 

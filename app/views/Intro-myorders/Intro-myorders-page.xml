@@ -13,7 +13,7 @@
 
     
     <StackLayout row="1" class="btngotit">
-        <Button tap = "introGame" class="buttonprimary" text="Weiter" />
+        <Button tap = "onGameTap" class="buttonprimary" text="Weiter" />
     </StackLayout>
 </GridLayout>
 

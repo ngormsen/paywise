@@ -2,9 +2,10 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 
-// Navigate to global order list / "table"
-exports.backTable = backTable;
-function backTable() {
+//Navigate to Tutorial - split
+function onSplitTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/orders/orders-page");
-}
+    frame.navigate("views/intro-table-split/intro-table-split-page");
+  }
+  exports.onSplitTap = onSplitTap;
+  

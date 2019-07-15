@@ -120,8 +120,10 @@ function calculatePoints(avgTip, percent){
 }
 exports.calculatePoints = calculatePoints
 
+
 //Navigate to Tutorial
 function onTutorialTap() {
   const frame = getFrameById("topframe");
-  frame.navigate("views/intro-table/intro-table-page");
+  frame.navigate("views/Intro-table/Intro-table-page");
 }
+exports.onTutorialTap = onTutorialTap;

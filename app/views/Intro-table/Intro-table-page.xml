@@ -17,7 +17,7 @@
 
     
     <StackLayout row="1" class="btngotit">
-        <Button tap="myTable" class="buttonprimary" text="Okay"/>
+        <Button tap="onSplitTap" class="buttonprimary" text="Okay"/>
     </StackLayout>
 </GridLayout>
 

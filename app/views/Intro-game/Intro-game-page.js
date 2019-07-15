@@ -2,9 +2,12 @@
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 
 
-// Navigate to my orders 
-exports.myOrders = myOrders;
-function myOrders() {
+// Navigates to guest order page
+function onOrdersTap() {
     const frame = getFrameById("topframe");
-    frame.navigate("views/myorders/myorders-page");
+    frame.navigate("views/orders/orders-page");
 }
+
+exports.onOrdersTap = onOrdersTap;
+
+  
