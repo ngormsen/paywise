@@ -50,6 +50,7 @@ function onTap() {
 exports.onTap = onTap;
 
 
+
 exports.pageLoaded = function(args) {
     var page = args.object;
     drawer = view.getViewById(page, "sideDrawer");

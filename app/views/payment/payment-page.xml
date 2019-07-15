@@ -1,7 +1,11 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden ="false" class="paybackground"
     loaded="pageLoaded" xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components">
 
-    <ActionBar title="Bezahlung" class="actionbar" ></ActionBar>
+    <ActionBar title="Bezahlung" class="actionbar" >
+        <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.systemIcon="ic_menu_btn_add">
+    </ActionItem>
+    <NavigationButton visibility="hidden" ></NavigationButton>
+</ActionBar>
     <sd:RadSideDrawer id="sideDrawer">
 
 

@@ -14,12 +14,11 @@ var drawer;
 var myItems = new ObservableArray([]);
 
 //SideDrawer_ToogleDrawer
-exports.pageLoaded = function(args) {
+exports.pageLoaded = function (args) {
     var page = args.object;
-    drawer = view.getViewById(page, "sideDrawer");
 };
 
-exports.toggleDrawer = function() {
+exports.toggleDrawer = function () {
     drawer.toggleDrawerState();
 };
 
@@ -27,15 +26,17 @@ exports.toggleDrawer = function() {
 
 // Replaces the given characters in a string
 // necessary to replace "." in emails as firebase does not accept certain characters
-String.prototype.replaceAll = function(str1, str2, ignore) {
-    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+String.prototype.replaceAll = function (str1, str2, ignore) {
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
 };
 
 // Handle navigation to page
 exports.onNavigatingTo = onNavigatingTo;
+
 function onNavigatingTo(args) {
     page = args.object;
     var viewModel = new Observable();
+    drawer = view.getViewById(page, "sideDrawer");
 
     page.bindingContext = viewModel;
     viewModel.set("sum", `${0.00} EUR.`);
@@ -44,7 +45,7 @@ function onNavigatingTo(args) {
     var onChildEvent = function (result) {
         console.log("ORDER PAGE CHILD EVENT")
         console.log("RESULT", result.value)
-        console.log("USER", data.guest.replaceAll("\.","").replaceAll("@", "")) 
+        console.log("USER", data.guest.replaceAll("\.", "").replaceAll("@", ""))
         // Variable for total value of orders
         var sum = 0;
 
@@ -52,21 +53,24 @@ function onNavigatingTo(args) {
         myItems = [];
 
         orders = result.value;
-        Object.keys(orders).forEach(function(key, idx) {
-            if(orders[key] != null){
-                if(orders[key] != null){
-                    myItems.push({ name: orders[key].name, prize: orders[key].prize.toFixed(2)}); 
+        Object.keys(orders).forEach(function (key, idx) {
+            if (orders[key] != null) {
+                if (orders[key] != null) {
+                    myItems.push({
+                        name: orders[key].name,
+                        prize: orders[key].prize.toFixed(2)
+                    });
                     sum += orders[key].prize;
                 }
             }
-        }); 
+        });
 
         // Set items and sum to display in view
         var sumTo2 = sum.toFixed(2);
         viewModel.set("sum", `${sumTo2} EUR.`);
         viewModel.set("myItems", myItems)
     };
-    
+
     // Add child event listener for firebase
     firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/global/`).then(
         function (result) {
@@ -92,29 +96,31 @@ function onTap(args) {
     data.empty = false;
 
     // Receive the correct name, price and key
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            if(orders[key].name == id){
+    Object.keys(orders).forEach(function (key, idx) {
+        if (orders[key] != null) {
+            if (orders[key].name == id) {
                 console.log(key)
                 buttonKey = key;
                 console.log(orders[key].name)
                 buttonName = orders[key].name;
                 console.log(orders[key].prize)
-                buttonPrize = orders[key].prize  
+                buttonPrize = orders[key].prize
             }
         }
     });
     // Create item in the user cart on firebase
     firebase.setValue(
-        `restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.","")}/myorders/${buttonKey}`,
-        {name: buttonName, prize: buttonPrize}
+        `restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.","")}/myorders/${buttonKey}`, {
+            name: buttonName,
+            prize: buttonPrize
+        }
     );
     // Remove item from the global order list on firebase
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`);
     data.bit = false;
 
     // Force refresh of list view if the last item is picked
-    if (myItems.length == 1){
+    if (myItems.length == 1) {
         const frame = getFrameById("topframe");
         const navigationEntry = {
             moduleName: "views/orders/orders-page",
@@ -128,6 +134,7 @@ exports.onTap = onTap;
 
 // Split an item from the list
 exports.splitItem = splitItem;
+
 function splitItem(args) {
     const button = args.object;
     var id = button.id;
@@ -139,18 +146,18 @@ function splitItem(args) {
 
     // Receive the correct name, price and key
     maxButtonKey = 0;
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            if(orders[key].name == id){
+    Object.keys(orders).forEach(function (key, idx) {
+        if (orders[key] != null) {
+            if (orders[key].name == id) {
                 console.log(key)
                 buttonKey = key;
                 console.log(orders[key].name)
                 buttonName = orders[key].name;
                 console.log(orders[key].prize)
-                buttonPrize = orders[key].prize  
+                buttonPrize = orders[key].prize
             }
             // Detect the highest key that used in the global order list
-            if (key > maxButtonKey){
+            if (key > maxButtonKey) {
                 maxButtonKey = key;
             }
         }
@@ -163,23 +170,23 @@ function splitItem(args) {
         actions: ["2", "3", "4", "5"]
     }).then(function (result) {
         console.log("Dialog result: " + result);
-        if(result == "2"){
+        if (result == "2") {
             n = 2;
             splitterFun(n, buttonPrize, buttonName, buttonKey);
             n = null;
-        }else if(result == "3"){
+        } else if (result == "3") {
             n = 3;
             splitterFun(n, buttonPrize, buttonName, buttonKey);
             n = null;
-        }else if(result == "4"){
+        } else if (result == "4") {
             n = 4;
             splitterFun(n, buttonPrize, buttonName, buttonKey);
             n = null;
-        }else if(result == "5"){
+        } else if (result == "5") {
             n = 5;
             splitterFun(n, buttonPrize, buttonName, buttonKey);
             n = null;
-        }else{
+        } else {
             n = 0;
         }
     });
@@ -187,8 +194,8 @@ function splitItem(args) {
 
 // Split the item in n parts
 function splitterFun(n, buttonPrize, buttonName, buttonKey) {
-    if (n > 0){
-        for (i=0; i<n; i++){
+    if (n > 0) {
+        for (i = 0; i < n; i++) {
             // Divide price with n and round to two digits
             newPrize = Number((buttonPrize / n).toFixed(2));
 
@@ -201,14 +208,16 @@ function splitterFun(n, buttonPrize, buttonName, buttonKey) {
             }
             oldPercentageInt = parseInt(oldPercentage, 10) / 100;
             newPercentage = (oldPercentageInt / n) * 100;
-            newName = buttonName.replace(" [" + oldPercentage + "]", "") + " [" + parseFloat(newPercentage).toFixed(0)+ "%]";
+            newName = buttonName.replace(" [" + oldPercentage + "]", "") + " [" + parseFloat(newPercentage).toFixed(0) + "%]";
 
             // Use milliseconds since 01.01.1970 00:00:00 as key for splitted items
-            newKey= (Date.now() + i);
+            newKey = (Date.now() + i);
             // Create item on firebase
             firebase.setValue(
-                `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`,
-                {name: newName, prize: newPrize}
+                `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${newKey}`, {
+                    name: newName,
+                    prize: newPrize
+                }
             )
         }
         // Remove splitted item on firebase
@@ -219,19 +228,75 @@ function splitterFun(n, buttonPrize, buttonName, buttonKey) {
 
 // Navigates to guest order page
 exports.onMyOrdersTap = onMyOrdersTap;
+
 function onMyOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/myorders/myorders-page");
 }
 
 
-function onSetGlobalTap(){
+function onSetGlobalTap() {
     firebase.setValue(
-        `restaurants/${data.restaurant}/tables/${data.table}/global/orders`,
-        {"0" : {
-            "name" : "Wasser",
-            "prize" : 1.99
-          }}
+        `restaurants/${data.restaurant}/tables/${data.table}/global/orders`, {
+            "0": {
+                "name": "Wasser",
+                "prize": 1.99
+            },
+            "1": {
+                "name": "Cola",
+                "prize": 2.59
+            },
+            "2": {
+                "name": "Apfelsaftschorle",
+                "prize": 1.99
+            },
+            "3": {
+                "name": "Orangensaft",
+                "prize": 1.89
+            },
+            "4" : {
+              "name" : "Bratwurst mit Sauerkraut",
+              "prize" : 8.99
+            },
+            "5" : {
+              "name" : "Schnitzel mit Pommes",
+              "prize" : 9.99
+            },
+            "6" : {
+              "name" : "Pizza Diavolo",
+              "prize" : 7.89
+            },
+            "7" : {
+              "name" : "Pollo Piccante",
+              "prize" : 10.50
+            },
+            "8" : {
+              "name" : "Obstsalat",
+              "prize" : 5.59
+            },
+            "9" : {
+              "name" : "Kleiner Salat",
+              "prize" : 3.89
+            },
+            "10" : {
+              "name" : "Radler",
+              "prize" : 2.99
+            },
+            "11" : {
+              "name" : "Schokoladeneis",
+              "prize" : 4.99
+            },
+            "12" : {
+              "name" : "Kuchen",
+              "prize" : 4.99
+            }
+        }
     );
 }
 exports.onSetGlobalTap = onSetGlobalTap
+
+
+function toggleDrawer() {
+    drawer.toggleDrawerState();
+};
+exports.toggleDrawer = toggleDrawer;
