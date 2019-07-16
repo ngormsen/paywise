@@ -8,7 +8,7 @@
       <Label text = "Punkte gesammelt!" class="mediumText" />
   
     <Label text = "Komm bald wieder und löse die Punkte ein!"/>
-    <Image src="~/images/coins.png"  height = "50" />
+    <Image src="~/images/coins2.png"  height = "65" />
   
     <Button tap="checkOut" class="buttonprimary" text="Auschecken"  />
     <Button tap="backTable" class="buttonsecondary" text="Etwas vergessen? Zurück zum Tisch."  height="7%"/>
