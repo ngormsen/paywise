@@ -16,7 +16,7 @@
         <sd:RadSideDrawer.mainContent>
             <StackLayout >
                 <GridLayout class="payment" rows="auto auto auto" columns="*">
-                    <Label row="0" col="0"  class="h1" text="{{ restaurant }}" textWrap="true" />
+                    <Label row="0" col="0"  class="h1" text="{{ restaurant }}" textWrap="true" tap="quickTest"/>
                     <Label row="1" col="0"  text="{{ sum }}" textWrap="true" />
                     <Label row="2" col="0"  text="{{ points }}" textWrap="true" />
                 </GridLayout>
