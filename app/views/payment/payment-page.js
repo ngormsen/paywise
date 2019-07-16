@@ -79,6 +79,7 @@ function handleEventFromWebView() {
         today = mm + '/' + dd + '/' + yyyy;
 
         console.log("MYORDER", data.myorder)
+        // Update database invoice with the completed order.
         firebase.push(
             `/restaurants/${data.restaurant}/paid`, {
                 'order': data.myorder,
@@ -93,22 +94,42 @@ function handleEventFromWebView() {
                 console.log("created key: " + result.key);
             }
         );
-        // TODO Ist das die korrekte Funktion fuer transactionFinished? Es gibt die Funktion auch in payment-page
+
+        // Update global tips and avgtip value in database
+        firebase.push(
+            `/restaurants/${data.restaurant}/tips`, {
+                'tip': data.percent
+            }
+        ).then(
+            function (result) {
+                console.log("created key: " + result.key);
+            }
+        );
+        
+
+        let updatedPoints = parseInt(data.points) + parseInt(data.pointsGained)
         firebase.setValue(
             `/users/${(data.guest).replaceAll("\.", "")}`, {
                 email: data.guest,
                 name: data.name,
-                points: data.pointsGained
+                points: updatedPoints
             });
-
+        
+        // Updating avg Tip value
+        firebase.getValue(`/restaurants/${data.restaurant}/tips`)
+            .then(result => calculateAverage(result))
+            .catch(error => console.log("Error: " + error));
+        
         //TODO Calculate Tip Value based on past tips
         //TODO add current Tip to database
 
         // Resetting values
+        console.log("resettting values: ", data.tip)
         data.value = 0;
         data.percent = 0;
         data.tip = 0;
         data.empty = true;
+        console.log("resettting values: ", data.tip)
 
         firebase.remove(`/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders`);
         //var payedValue = details.purchase_units.amount.value;
@@ -135,7 +156,7 @@ exports.onPoints = onPoints;
 
 function onPoints() {
     let points = data.points;;
-    let pointValue = points / 100 * 0.5;
+    let pointValue = points / 100 * 0.1;
     data.value = (data.value - pointValue).toFixed(2);
     if (data.value < 0) {
         data.value = 0.01
@@ -162,3 +183,31 @@ function onPoints() {
 exports.toggleDrawer = function() {
     drawer.toggleDrawerState();
 };
+
+
+function quickTest() {
+    console.log("hello world")
+    firebase.getValue(`/restaurants/${data.restaurant}/tips`)
+    .then(result => calculateAverage(result))
+    .catch(error => console.log("Error: " + error));
+
+}
+exports.quickTest = quickTest
+
+function calculateAverage(result){
+    let nrOfTips = 0;
+    let totalValueOfTips = 0;
+    for(var key in result.value){
+        console.log(result.value[key].tip)
+        totalValueOfTips += result.value[key].tip
+        nrOfTips += 1
+    }
+    let avgTip = parseFloat((totalValueOfTips / nrOfTips).toFixed(2))
+    console.log("avgTip", parseFloat((totalValueOfTips / nrOfTips).toFixed(2)))
+    data.avgTip = avgTip;
+    firebase.setValue(
+        `/restaurants/${data.restaurant}/avgtip`,
+        {currentAvg: avgTip}
+    );
+  
+}
