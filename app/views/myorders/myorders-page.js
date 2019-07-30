@@ -1,68 +1,114 @@
 const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const Observable = require("tns-core-modules/data/observable").Observable;
 var firebase = require("nativescript-plugin-firebase");
-const view = require("tns-core-modules/ui/core/view");
 var data = require("../shared/data.js");
-const Button = require("tns-core-modules/ui/button").Button;
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
-var getViewById = require("tns-core-modules/ui/core/view").getViewById;
-const fromObject = require("tns-core-modules/data/observable").fromObject;
-
+var view = require("ui/core/view");
 var page = null
 var orders = null
-var tip;
+var sum = 0;
+var myItems = new ObservableArray([]); // Sets observable array
+var drawer;
 
-// data.value = 10;
-// console.log(data.value);
-
-String.prototype.replaceAll = function(str1, str2, ignore) 
-{
-    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-};
 
 function onNavigatingTo(args) {
     page = args.object;
-    var viewModel = new Observable();    
+    drawer = view.getViewById(page, "sideDrawer");
+    var viewModel = new Observable();
     page.bindingContext = viewModel;
-    
-    // const source = fromObject({
-    //     textSource: "Text set via twoWay binding"
-    // });
-    
-    // tip = page.getViewById("tip").text;
-    // console.log("TIP", tip)
+    viewModel.set("sum", `${0.00.toFixed(2)} EUR.`);
 
-    
-    var onChildEvent = function (result) {
-        console.log("USER", data.guest.replaceAll("\.","")) 
-        
+    // Slider values:
+    data.percent = parseInt(data.percent).toFixed();
+    viewModel.set("currentValue", data.percent); // displays the sliderValue
+    viewModel.set("sliderValue", data.percent); // Internal slider value
+    viewModel.set("firstMinValue", 0); // Minimum Slider Value
+    viewModel.set("firstMaxValue", 20); // Maximum Slider value
+    console.log("setting tip value with: ", data.tip)
+    console.log("empty flag is: ", data.empty)
+    viewModel.set("tipValue", data.tip) // Calculated tip value 
 
-        console.log("items", result.value)
-        if(result.key == "myorders"){
-            orders = result.value;
-            data.mydata = []
+    // Slider event listener.
+    viewModel.on(Observable.propertyChangeEvent, (propertyChangeData) => {
+        if (propertyChangeData.propertyName === "sliderValue") {
 
-            // set observable array
-            var myItems = new ObservableArray(
-                []
-            )
+            if (data.empty != true) {
+                console.log(myItems.length)
+                // Sets the currentValue, tipValue and the new sum in case of sliderValue change.
+                viewModel.set("currentValue", propertyChangeData.value.toFixed());
+                viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+                viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
 
-            console.log(orders)
-            Object.keys(orders).forEach(function(key, idx) {
-                if(orders[key] != null){
-                    if(orders[key] != null){
-                        myItems.push({ name: orders[key].name, prize: orders[key].prize});
-                        data.myorder.push({ name: orders[key].name, prize: orders[key].prize})
-                    }
-                }
-            }); 
+                // Updates the global data values.
+                data.percent = viewModel.get("sliderValue")
+                data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+                data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+            }
 
-    
-            viewModel.set("myItems", myItems)
         }
 
+
+    });
+
+    // Updates data values in case of database event.
+    var onChildEvent = function (result) {
+        console.log("childEvent")
+        //TODO Bezahlen zurück zu myorders: keep values   
+        if (data.empty != true) {
+            viewModel.set("sum", `${0.00.toFixed(2)} EUR.`)
+            viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+            data.value = 0;
+        }
+
+
+
+
+        // total orders value
+        // Set sum to zero prior calculating the current value
+        sum = 0.00;
+
+        // Pushes the correct items into the list and calculates the total sum.
+        if (result.key == "myorders") {
+            orders = result.value;
+            myItems = []; // local myorder list
+            data.myorder = []; // database myorder list
+
+            Object.keys(orders).forEach(function (key, idx) {
+                if (orders[key] != null) {
+                    if (orders[key] != null) {
+                        // Pushes the order items into the view list.
+                        myItems.push({
+                            name: orders[key].name,
+                            prize: orders[key].prize.toFixed(2)
+                        });
+                        // Pushes the order items into a data array that is pushed to the firebase at the 
+                        // end of a transaction.
+                        data.myorder.push({
+                            name: orders[key].name,
+                            prize: orders[key].prize
+                        });
+                        // Updates the sum.
+                        sum += orders[key].prize
+                    }
+                }
+            });
+
+        }
+
+
+        if (data.empty != true) {
+            // TODO test without the following three lines...should be working 
+            data.percent = viewModel.get("sliderValue")
+            data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
+            data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
+
+            viewModel.set("myItems", myItems);
+            viewModel.set("sum", `${calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2)} EUR.`);
+            viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
+        }
     };
-    
+
+    // Adds a listener that fires in case of modifications on the database
     firebase.addChildEventListener(onChildEvent, `/restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}`).then(
         function (result) {
             this._userListenerWrapper = result;
@@ -74,8 +120,8 @@ function onNavigatingTo(args) {
     );
 
 
-    // console.log(page.bindingContext)
-    // console.log("here", viewModel.myItems)
+
+
 }
 exports.onNavigatingTo = onNavigatingTo;
 
@@ -86,79 +132,113 @@ function onTap(args) {
     var buttonKey;
     var buttonName;
     var buttonPrize;
+
     // Receives the correct name, prize and key on Tap event
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            if(orders[key].name == id){
+    Object.keys(orders).forEach(function (key, idx) {
+        if (orders[key] != null) {
+            if (orders[key].name == id) {
                 buttonKey = key;
-                console.log(key)
                 buttonName = orders[key].name
-                console.log(orders[key].name)
                 buttonPrize = orders[key].prize
-                console.log(orders[key].prize)
-                
+
             }
         }
-     }); 
+    });
 
-     firebase.setValue(
-        `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`,
-        {name: buttonName, prize: buttonPrize}
+    // Creates the item in the global order list
+    firebase.setValue(
+        `restaurants/${data.restaurant}/tables/${data.table}/global/orders/${buttonKey}`, {
+            name: buttonName,
+            prize: buttonPrize
+        }
     );
 
+    // Removes the item from the myorder list
     firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/guests/${data.guest.replaceAll("\.", "")}/myorders/${buttonKey}`);
 
-  
+
+    // Refreshes the page in case of zero items.
+    if (myItems.length == 1) {
+        data.value = 0;
+        data.percent = 0;
+        data.tip = 0;
+        data.empty = true;
+        const frame = getFrameById("topframe");
+        const navigationEntry = {
+            moduleName: "views/myorders/myorders-page",
+            backstackVisible: false,
+            animated: false
+        };
+        frame.navigate(navigationEntry);
+    }
+
 }
 exports.onTap = onTap;
 
-// Navigates to orders page
+// Navigates to global orders page
 function onOrdersTap() {
     const frame = getFrameById("topframe");
     frame.navigate("views/orders/orders-page");
 }
-
 exports.onOrdersTap = onOrdersTap
 
-// Navigates to orders page
+// Navigates to payment page (if sum <> 0)
 function onPayTap() {
-    var sum = 0;
-    // console.log(orders.orders)
-    // Receives the correct dish, prize and key on Tap event
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            sum += orders[key].prize
-            console.log(orders[key].prize)
-        }
-    });
-    console.log(sum);
-    console.log("total", Number(tip))
-    tip = page.getViewById("tipField").text
-    data.tip = tip;
-    data.value = sum + parseFloat(tip);
-    console.log(data.value);
-    const frame = getFrameById("topframe");
-    frame.navigate("views/payment/payment-page");
-    }   
-
+    if (sum != 0 && data.empty == false) {
+        const frame = getFrameById("topframe");
+        //TODO Load avgTip value at app initialisation
+        //TODO Set global order on secret button
+        data.pointsGained = calculatePoints();
+        frame.navigate("views/payment/payment-page");
+    } else {
+        alert('Bevor du bezahlen kannst, musst du Bestellungen vom Tisch auswählen und zu deinem persönlichen Warenkorb hinzufügen.');
+    }
+}
 exports.onPayTap = onPayTap
 
-function testTap(){
-    var sum = 0;
-    // console.log(orders.orders)
-    // Receives the correct dish, prize and key on Tap event
-    Object.keys(orders).forEach(function(key, idx) {
-        if(orders[key] != null){
-            sum += orders[key].prize
-            console.log(orders[key].prize)
-        }
-    });
-    console.log(sum);
-    console.log("total", Number(tip))
-    tip = page.getViewById("tipField").text
-    data.value = sum + parseFloat(tip);
-    percent =  parseFloat(tip) / data.value * 100
-    alert(`Trinkgeld gegeben: ${percent.toFixed(2) }%. Das Durchschnittliche Trinkgeld in den letzten 30 Tagen beträgt: 9%. `)
+
+
+// Calculates the points one gets for a tip.
+function calculatePoints() {
+    let distance = data.percent - data.avgTip
+    if (data.percent > 0) {
+        let points = 0;
+        points += 100;
+        points += (data.percent * data.value);
+        let i;
+        for (i = 0; i < distance; i++) {
+            points = points * 1.10;
+            points += 50;
+        };
+        return points.toFixed()
+    } else if (distance <= 0) {
+        return 100
+    }
+}
+exports.calculatePoints = calculatePoints
+
+
+
+// Replaces the given characters in a string.
+// Necessary to replace "." in emails as firebase does not accept certain characters.
+String.prototype.replaceAll = function (str1, str2, ignore) {
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
+};
+
+// TODO reevaluate tip calcuation
+// Calculates the tip value based on the choosen slider value and the total order value.
+function calculateTip(orderValue, sliderValue) {
+    return (orderValue * sliderValue) / 100
 }
 
-exports.testTap = testTap
+
+// Calculates the total value based on the tip and total order value.
+function calculateTotal(orderValue, tipValue) {
+    return (orderValue + tipValue)
+}
+
+
+function toggleDrawer() {
+    drawer.toggleDrawerState();
+};
+exports.toggleDrawer = toggleDrawer;

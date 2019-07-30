@@ -1,22 +1,22 @@
-<Page loaded = "loaded">
-    <ActionBar title="Login" class="action-bar"></ActionBar>
-     <FlexboxLayout>
+<Page loaded = "loaded" actionBarHidden="true" class="qrcodebackground">
+    <ActionBar title="Login" class="action-bar">
+    <NavigationButton visibility="hidden" ></NavigationButton>
+    </ActionBar>
         <StackLayout id="form" orientation="vertical">
+            <Image class="login_logo" src="~/images/paywise_write.png" />
 
-            <TextField class="input input-border" id="email" text="{{ email }}"
-                hint="Email Address" keyboardType="email" autocorrect="false"
+            <TextField class = "input-line" id="email" text="{{ email }}"
+                hint="Email Addresse" keyboardType="email" autocorrect="false"
                 autocapitalizationType="none" />
-            <TextField class="input input-border" secure="true" text="" id = "password"
-                hint="Password" />
+            <TextField class="input-line" secure="true" id = "password"
+                hint="Passwort" />
 
-            <Button class="btn btn-primary" text="Login" id = "Login"
-                tap="LogIn" />
-            <Button text="Register" class="btn btn-primary" tap="Register" id = "Register"
-                class="link" />
-            <!-- <Button text="sign out" class="btn btn-primary" tap="SignOut" id = "signOut" -->
-                <!-- class="link" /> -->
-        </StackLayout>
-    </FlexboxLayout>
+            <Button class="ghost-round input-fields" text="Log in" id = "LogIn" tap="LogIn" />
+            <Label text="Passwort vergessen?"  tap="resetPassword" class="labelForgotpw"/> 
+            <Label text="Noch keinen Account? Hier erstellen"  tap="navToRegister" id = "Register" class ="labelsignup"/>
+           <!-- <button text="Gast?" class="guestorder" tap="guest" id="guest"/>-->
+            
+    </StackLayout>
 </Page>
 
   

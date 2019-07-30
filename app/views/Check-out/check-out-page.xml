@@ -1,0 +1,16 @@
+<Page loaded="loaded" actionBarHidden ="true" class="qrcodebackground">
+   <NavigationButton visibility="hidden" ></NavigationButton>
+  <StackLayout orientation = "vertical">
+    <Label class ="largeText" text = "Vielen Dank!" />
+ 
+      <Label text = "Du hast bei diesem Besuch:" class="mediumText"/>
+      <Label id="points" text = "____"/>
+      <Label text = "Punkte gesammelt!" class="mediumText" />
+  
+    <Label text = "Komm bald wieder und löse die Punkte ein!"/>
+    <Image src="~/images/coins2.png"  height = "65" />
+  
+    <Button tap="checkOut" class="buttonprimary" text="Auschecken"  />
+    <Button tap="backTable" class="buttonsecondary" text="Etwas vergessen? Zurück zum Tisch."  height="7%"/>
+  </StackLayout>
+</Page>  

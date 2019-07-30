@@ -12,3 +12,4 @@ function welcomeViewModel() {
 }
 
 module.exports = welcomeViewModel;
+

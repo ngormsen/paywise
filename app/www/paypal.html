@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
 <html>
     <head></head>
-    <body>
+    <!--<body style="background:linear-gradient(#28364e,#3f5069) fixed; color:white">-->
+    <body style="background:#3f5069; color:white">
             <!-- Set up a container element for the button -->
             <div id="paypal-button-container"></div>
         
@@ -31,11 +40,18 @@
             <script>
                 // Render the PayPal button into #paypal-button-container
                 paypal.Buttons({
+
+                    /*style: {
+                        color:  'blue',
+                        shape:  'pill',
+                        label:  'pay',
+                        height: 40
+                    },*/
         
                     // Set up the transaction
                     createOrder: function(data, actions) {
-                        var event = new Event('transactionFinished');
-                        this.dispatchEvent(event);
+                        //var event = new Event('transactionFinished');
+                        //this.dispatchEvent(event);
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {

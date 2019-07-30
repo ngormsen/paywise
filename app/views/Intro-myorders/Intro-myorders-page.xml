@@ -1,0 +1,20 @@
+<page page = "loaded" actionBarHidden ="true" class="qrcodebackground" >
+    <NavigationButton visibility="hidden" ></NavigationButton>
+
+
+<GridLayout  rows="auto, *" columns="*">
+    <Image
+        row="0"
+        rowSpan="5"
+        col="0"
+        stretch="aspectFill"
+        src="~/images/sixth_coachmark.png"
+        id="userIcon" />
+
+    
+    <StackLayout row="1" class="btngotit">
+        <Button tap = "onGameTap" class="buttonprimary" text="Okay" />
+    </StackLayout>
+</GridLayout>
+
+</page>

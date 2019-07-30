@@ -1,7 +1,0 @@
-<!--Creates the frame where the navigation is performed. 
-The defaultPage ist the starting page of the application.-->
-
-
-
-<Frame id="topframe" defaultPage="views/home/home-page"></Frame> 
-

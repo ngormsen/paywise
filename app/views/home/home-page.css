@@ -1,22 +1,97 @@
-FlexboxLayout {
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-image: url("~/images/background.jpg");
-  }
+  /* filter over stacklayout, foggy */
   StackLayout {
-    width: 300;
-    padding: 12 16;
-    background-color: #f0f0f0;
+
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+    z-index: 1;
   }
+
+
+
+  /*Image*/
   Image {
-    margin-bottom: 20;
+    margin-bottom: 5test0;
     height: 70;
+    margin-top: 70;
   }
-  Button, TextField {
+
+  .login_logo {
+    width: 30%;
+    height: 30%;
+  }
+
+  .highlight:hover {
+    color: #fff;
+    transition: color .2s ease;
+  }
+
+  .input-line:focus {
+    outline: none;
+    border-color: white;
+    transition: color .2s ease;
+    placeholder-color: white;
+  }
+
+  .input-line {
+    background: none;
+    margin-bottom: 2%;
+    color: white;
+    font-family: robot;
+    font-weight: 300;
+    letter-spacing: 100px;
+    letter-spacing: 0.02rem;
+    border-bottom: white;
+    -webkit-transition: all .2s ease;
+    placeholder-color: rgba(255, 255, 255, 0.65);
+    transition: all .2s ease;
+    text-align: center;
+    font-size: 20;
     margin-bottom: 10;
   }
-  TextField {
-    placeholder-color: #C4AFB4;
-    color: black;
+
+
+  .ghost-round {
+    cursor: pointer;
+    background: #01B4D0;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 90%;
+    margin-top: 30;
+  }
+
+  .ghost-round:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+
+  /*Forgot password*/
+
+  .labelForgotpw {
+    display: block;
+    color: rgb(116, 116, 116);
+    text-align: center;
+    line-height: 150%;
+    margin-top: 1%;
+
+  }
+
+  /*Sign Up*/
+
+  .labelsignup {
+    display: block;
+    text-align: center;
+    line-height: 100%;
+    color: rgb(116, 116, 116);
+    margin-top: 17%;
+  }
+
+  /*Guest Order*/
+
+  .guestorder {
+    background-color: transparent;
+    color: white;
+    font-weight: 300;
+    align-content: center;
   }

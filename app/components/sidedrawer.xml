@@ -1,0 +1,40 @@
+    <StackLayout class="sidedrawer-left" loaded="onLoaded">
+    
+        <StackLayout class="radsideheader">
+            
+            <GridLayout class="radsideheader" rows="auto auto" columns="100 auto" class="radsideheadercred">
+                <Image src="~/images/profilepic.png" class="radsidepic" col="0" rowSpan="2"/>
+                <!-- Restaurant
+                <Label class="radsideheader" text="Restaurant: " row="0" col="0" />
+                <Label class="radsideheader" text="{{ restaurant }}" row="0" col="1" />
+                 -->
+                <!-- Guest -->
+                <Label class="radsideheadercontent" text=" {{ 'Hi ' + guest }} " row="0" col="1"/>
+                <!-- Points -->
+                <Label class="radsideheaderpoints" text="{{ 'Deine Punkte:  ' + points }}" row="1" col="1"/>
+            </GridLayout>
+
+        </StackLayout>
+
+        <StackLayout class="radsidebody">
+            <!-- <Button text="Home" class="radsidebutton" tap="onWelcomeTap"/> -->
+
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton" text="Am Tisch einchecken" tap="onTap" />
+            </StackLayout>
+            
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton2" text="Tisch Bestellungen" tap="onOrdersTap" />
+                <Button class="radsidebutton2" text="Aktueller Warenkorb" tap="onMyOrdersTap" />
+                <Button class="radsidebutton" text="Bezahlen" tap="onPayTap" /> 
+            </StackLayout>    
+
+            <StackLayout class="radsidecluster">
+                <Button class="radsidebutton" text="Anleitung" tap="onTutorialTap" />  
+            </StackLayout>
+
+             <StackLayout class="radsidecluster">           
+                <Button text="Ausloggen" class="radsidebuttonsignout" tap="SignOut" id = "signOut" />
+             </StackLayout>
+        </StackLayout>
+ </StackLayout>

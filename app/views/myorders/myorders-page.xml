@@ -1,41 +1,84 @@
-<Page class="page"
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
-    <ActionBar title="Meine Bestellungen" class="action-bar"></ActionBar>
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components" xmlns:lv="nativescript-ui-listview">
+    <ActionBar title="Aktueller Warenkorb" class="actionbar">
+        <NavigationButton visibility="hidden"></NavigationButton>
+        <NavigationButton icon="res://ic_menu" tap="toggleDrawer" />
 
-    <StackLayout id="form" orientation="vertical">
-        <Button class="btn btn-primary" text="Bestellungen anzeigen"
-        tap="onOrdersTap" />
-        <Button class="btn btn-primary" text="Bezahlen"
-        tap="onPayTap" />
-        <GridLayout rows="80" >
-            <GridLayout columns="150, auto">
-                <Button class="btn btn-primary" text="confirm"  tap="testTap" col="0"/>
-                <TextField id="tipField" text="{{ tipField }}" hint="Trinkgeld" col="1"/>
-            </GridLayout>
-        </GridLayout>
+        <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.position="left"
+            android.systemIcon="ic_menu_btn_add">
 
-        <GridLayout rows="*" >
-            <ListView items="{{ myItems }}">
-                <!--Describing how the element will look like-->
-                <ListView.itemTemplate>
-                    <GridLayout columns="100, 100, auto">
-                        <Button class="btn btn-primary" text="Hand back" id="{{ name }}" tap="onTap" col="0"/>
-                        <Label text="{{ prize }}" class="h2" col="1"/>
-                        <Label text="{{ name }}" class="h2" col="2"/>
+        </ActionItem>
+    </ActionBar>
+    <sd:RadSideDrawer id="sideDrawer">
 
-                        <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
-                        <!-- Parent binding to a string property -->
-                        <!-- <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/> -->
 
-                        <!-- Parent binding to a method onTap -->
-                        <!-- <Button text="Tap me" tap="{{ $parents['ListView'].onTap,  $parents['ListView'].onTap }}" /> -->
+        <sd:RadSideDrawer.drawerContent>
+            <comps:sidedrawer />
+        </sd:RadSideDrawer.drawerContent>
 
-                    </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
+        <sd:RadSideDrawer.mainContent>
 
-        </GridLayout>
+            <StackLayout id="from">
+                <Button class="buttonprimary" text="Zurück zum Tisch" tap="onOrdersTap" height="7%" />
 
-    </StackLayout>
+                <StackLayout orientation="horizontal" height="6%" backgroundColor="lightgray">
+                    <Label text="Deine Gerichte" width="55%" class="shoppingcard_header" />
+                    <Label text="Preis" width="20%" class="shoppingcard_header" tap="calculatePoints"/>
+                </StackLayout>
+
+                <StackLayout rows="*" class="myordercontent" height="50%">
+                    <ListView height="100%" items="{{ myItems }}">
+                        <!--Describing how the element will look like-->
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, auto , auto">
+                                <Label text="{{ name }}" col="0" width="60%" />
+                                <Label text="{{ prize }}" col="1" width="24%" />
+                                <Image class="handback" src="~/images/remove.png" id="{{ name }}" tap="onTap" col="2" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </StackLayout>
+
+
+                <StackLayout orientation="horizontal" height="6%" backgroundColor="lightgray">
+                    <Label text="Gesamtbetrag:" width="55%" class="shoppingcard_header" />
+                    <Label text="{{ sum }}" width="" class="shoppingcard_header" />
+                </StackLayout>
+
+
+                <!--Slider-->
+
+                <GridLayout class="slidercontent" rows="auto auto" columns="auto auto auto">
+                    <Image src="~/images/coin.png" row="1" col="0" class="coinicon" width="4%" />
+                    <!-- <Label row="1" col="0" text="{{ firstMinValue }}" textWrap="true" fontSize="15" class="icon" /> -->
+                    <Slider row="1" col="1" value="{{ sliderValue }}" minValue="{{ firstMinValue }}"
+                        maxValue="{{ firstMaxValue }}" width="87%" />
+                    <!-- <Label row="1" col="2" text="{{ firstMaxValue }}" textWrap="true" fontSize="20" class="icon" /> -->
+                    <Image src="~/images/coins.png" row="1" col="2" class="coinicon1" width="7%" />
+                </GridLayout>
+
+                <GridLayout class="slidercontent1" rows="auto auto" columns="auto, auto,auto,auto,auto">
+                    <Label row="0" col="0" class="slidervalues" text="Tip:" width="20%" />
+                    <Label row="0" col="1" class="slidervalues" text="{{ currentValue }}" />
+                    <Label row="0" col="2" class="slidervalues" text=" %" width="35%" />
+                    <Label row="0" col="3" class="slidervalues" text="{{ tipValue }}  " />
+                    <Label row="0" col="4" class="slidervalues" text=" EUR." />
+                </GridLayout>
+
+
+                <!-- <GridLayout columns="*" height="8%">
+                    <Button class="buttonprimarybit" text="Trinkgeld Bestätigen" tap="tipTap" col="0" />
+                </GridLayout>-->
+
+                <Button class="buttonsecondary" text="Bezahlen" tap="onPayTap" />
+
+            </StackLayout>
+
+
+
+        </sd:RadSideDrawer.mainContent>
+
+
+    </sd:RadSideDrawer>
+
 </Page>

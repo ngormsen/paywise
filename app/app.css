@@ -15,6 +15,7 @@ refer to http://docs.nativescript.org/ui/theme.
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
+
 .btn {
     font-size: 14;
 }
@@ -22,4 +23,279 @@ components that have the btn class name.
 .orderGrid {
     font-size: 20;
     margin: 10%;
+}
+
+/*Actionbar*/
+
+.actionbar{
+    background-color: #1F2D44;
+    color: white;
+}
+
+
+/*RadSideDrawer*/
+
+.radsideheader{
+    background-color: #1F2D44;
+    color: white;
+    height: 15%;
+}
+
+.radsideheadercontent{
+    margin-left: 3%;
+    margin-top: 10%;
+    font-size: 25;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.radsideheaderpoints{
+    margin-left: 3%;
+    font-size: 15;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.radsidepic{
+    width: 70%;
+    height: 70%;
+    margin-top: 20%;
+    margin-bottom: 8%;
+}
+
+.radsidebody{
+    background-color: rgb(233, 233, 233);
+    height: 85%;
+}
+
+.radsidebutton{
+    color: #1F2D44;
+    height: 50;
+    font-weight: bold;
+    background-color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.radsidebutton2{
+    color: #1F2D44;
+    height: 50;
+    font-weight: bold;
+    background-color: white;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(233, 233, 233);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.radsidecluster{
+    width: 94%;
+    background-color: white;
+    margin-top: 5%;
+    border-radius: 15px;
+}
+
+
+.radsidebuttonsignout{
+    background-color: #3F5069;
+    color: white;
+    height: 50;
+    font-weight: bold;
+    border-width: 1px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+/*App-content*/
+
+.buttonprimary{
+    background-color: #01B4D0;
+    color: white;
+    padding: 10;
+    margin-left: 7;
+    margin-right: 7;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 7%;
+    border-radius: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.buttonsecondary{
+    background-color: #464646;
+    color: white;
+    padding: 10;
+    margin-left: 10;
+    margin-right: 10;
+    margin-bottom: 10;
+    border-radius: 20px;
+    height: 9%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.willkommen{
+    align-content: center;
+}
+
+
+/*QR Code Scanner*/
+
+.qrcodebackground{
+    background-image: linear-gradient(to bottom right,#1F2D44,#3F5069);
+    color: white;
+}
+
+.qrcodepic{
+    width: 200;
+    height: 200%;
+
+    vertical-align: center;
+}
+
+/*Payment*/
+.paybackground{
+    background: #3f5069; /*linear-gradient(#1F2D44,#28364e);*/
+    color: white;
+}
+
+/*MyOrders*/
+.shoppingcard_header{
+    font-size: 20vw ;
+    font-weight: bold;
+    margin-left: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.myorderslist{
+    margin-left: 20%;
+    background-color: white;
+    align-content: stretch;
+}
+
+.radlistorder{
+    width: 100%;
+}
+
+.handback{
+    color: white;
+    margin-left: 20;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 100%;
+    width: 6%;
+    height: 6%;
+}
+
+
+.ghost-round {
+    cursor: pointer;
+    background:#464646;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 25px;
+    color: rgba(255, 255, 255, 0.65);
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    line-height: 2.5em;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    height: 8%;
+  }
+
+
+.pick-button {
+    height: 50;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;
+
+}
+
+.splitButton{
+    height:25;
+    width: auto;
+    background: none;
+    margin: white;
+    color: black;     
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.buttonprimarybit{
+    background-color: #01B4D0;
+    color: white;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 80%;
+    border-radius: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.myordercontent{
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 1%;
+    height: 70%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.slidercontent{
+    color: #464646;
+    align-content: center;
+    margin-left: 2%;
+    margin-right: 3%;
+    margin-top: 3%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.slidercontent1{
+    color: #464646;
+    font-size: 10;
+    align-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.slidervalues{
+    font-size: 20;
+    margin-bottom: 15%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.coinicon1{
+    margin-left: 1%;
+}
+
+.coinicon{
+
+    margin-right: 1%;
+}
+
+/*Orders*/
+.desksumup{
+    font-size: 20;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+.webview{
+height: 50%;
+width: 90%;
+
 }

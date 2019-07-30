@@ -1,0 +1,23 @@
+.pickButton {
+    height: 40;
+    width: 40;
+}
+
+.tableicon{
+    height:50;
+    width: 50;
+    margin-bottom: 3%;
+    color: white;
+}
+    
+.ordersText {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    font-size: 15vmin;
+    width: 96%;
+    border-radius:5;
+    background:lightgrey;
+    text-align: center;
+    
+
+}

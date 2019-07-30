@@ -1,0 +1,113 @@
+  /* filter over stacklayout, foggy */
+  StackLayout {
+    
+    opacity: 0.85;
+      filter: alpha(opacity=85);
+      z-index: 1;
+    }
+  
+ /*Image*/
+ Image {
+  margin-bottom: 5test0;
+  height: 70;
+  margin-top: 70;
+}
+
+.login_logo{
+width: 30%;
+height: 30%;
+}
+
+.registerbutton{
+  background-color: #01B4D0;
+  color: white;
+  padding: 10;
+  margin-left: 10;
+  margin-right: 10;
+  margin-top: 10;
+  margin-bottom: 10;
+  height: 7%;
+  border-radius: 25px;
+  margin-top: 5%;
+}
+
+ input {
+   border: none;
+ }
+
+
+
+.highlight:hover {
+  color: #fff;
+  transition: color .2s ease;
+}
+
+.input-line:focus {
+  outline: none;
+  border-color:white;
+  transition: color .2s ease;
+}
+
+.input-line {
+  background: none;
+  margin-bottom: 30px;
+  color:white;
+  font-family: robot;
+  font-weight: 300;
+  letter-spacing: 100px;
+  letter-spacing: 0.02rem;
+  border-bottom: white;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  text-align: center;
+  font-size: 20;
+  placeholder-color: rgba(255, 255, 255, 0.65);
+}
+
+.input-fields {
+  width: 90%;
+}
+
+.ghost-round {
+  cursor: pointer;
+  background:#01B4D0;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  width: 90%;
+  margin-top: 30;
+}
+
+.ghost-round:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+
+.page {
+  background: #1F2D44;
+  height: 100%;
+}
+
+
+.labelsignup {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    margin-top: 30;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+
+.labelForgotpw {
+  display: block;
+  color:rgba(255, 255, 255, 0.15);
+  text-align: center;
+  line-height: 150%;
+  margin-top: 10;
+}
+
+.gtc{
+  margin-top: 10;
+}
