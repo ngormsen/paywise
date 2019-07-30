@@ -2,7 +2,8 @@
 Paywise is a modern payment application that allows users to pay their restaurant bill via PayPal and share orders with their friends. Additionally, customers have the opportunity to gain points by giving a higher than average tip. Points can later be used to get a discount from the restaurant.
 
 ## Prerequisites
-Please make sure that nativescript is installed and configured. You can get the latest version from: https://www.npmjs.com/package/nativescript or use  
+Please make sure that nativescript is installed and configured. You can get the latest version from: https://www.npmjs.com/package/nativescript 
+or use  
 `npm install nativescript -g`.
 
 Additionally you need to have an emulator setup for either android or iOS.
