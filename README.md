@@ -6,7 +6,7 @@ Please make sure that nativescript is installed and configured. You can get the 
 or use  
 `npm install nativescript -g`.
 
-Additionally you need to have an emulator setup for either android or iOS.
+Additionally you need to setup an emulator for either android or iOS.
 
 ## Emulate the App
 To build the app localy on the selected target platform, navigate into the root directory of the repository and run 
