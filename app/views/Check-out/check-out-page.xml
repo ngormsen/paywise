@@ -4,7 +4,7 @@
     <Label class ="largeText" text = "Vielen Dank!" />
  
       <Label text = "Du hast bei diesem Besuch:" class="mediumText"/>
-      <Label id="points" text = "____"/>
+      <Label id="points" class="points" text = "____"/>
       <Label text = "Punkte gesammelt!" class="mediumText" />
   
     <Label text = "Komm bald wieder und löse die Punkte ein!"/>

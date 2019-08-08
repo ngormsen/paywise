@@ -214,7 +214,6 @@ components that have the btn class name.
     height: 50;
     width: auto;
     background: none;
-    margin: white;
     color: black;
 
 }
@@ -222,8 +221,6 @@ components that have the btn class name.
 .splitButton{
     height:25;
     width: auto;
-    background: none;
-    margin: white;
     color: black;     
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -245,6 +242,9 @@ components that have the btn class name.
     margin-right: 3%;
     margin-top: 1%;
     height: 70%;
+    font-weight: bolder;
+    font-size: 18px;
+    
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
