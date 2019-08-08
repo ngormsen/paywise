@@ -1,7 +1,6 @@
 var qr_view_model_1 = require("./qr-view-model");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 const timerModule = require("tns-core-modules/timer");
-//TODO switch qr-view qr-page names
 
 // Event handler for Page "loaded" event attached in main-page.xml
 function pageLoaded(args) {

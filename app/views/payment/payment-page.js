@@ -120,8 +120,6 @@ function handleEventFromWebView() {
             .then(result => calculateAverage(result))
             .catch(error => console.log("Error: " + error));
         
-        //TODO Calculate Tip Value based on past tips
-        //TODO add current Tip to database
 
         // Resetting values
         console.log("resettting values: ", data.tip)
@@ -143,10 +141,8 @@ function handleEventFromWebView() {
         }).then(function () {
 
             const frame = getFrameById("topframe");
-            // TODO: CHANGE NAVIGATION TO HOME VIEW
             frame.navigate("views/Check-out/check-out-page");
         });
-        // TODO: Adjust value in data.js & Firebase database
     });
 }
 
@@ -166,15 +162,11 @@ function onPoints() {
     viewModel.set("sum", `Zu bezahlender Betrag: ${data.value} EUR.`);
     console.log("onPoints", data.points);
 
-    // TODO Punkte in data.points setzen
-    // TODO Punkte in DB setzen
     data.points = points
 
 
 
-    //var page = page;
     console.log("here11:" + page);
-    //setupWebViewInterface(page);
     var webView = page.getViewById('webView');
     webView.reload();
 }

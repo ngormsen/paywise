@@ -6,8 +6,7 @@ var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
 var dialogs = require("tns-core-modules/ui/dialogs");
 var view = require("ui/core/view");
-// TODO Fix error messages: Failed to apply property background/margin with value none 
-// Global variables
+
 var page = null
 var orders;
 var drawer;
@@ -122,6 +121,12 @@ function onTap(args) {
     // Force refresh of list view if the last item is picked
     if (myItems.length == 1) {
         const frame = getFrameById("topframe");
+        firebase.setValue(
+            `restaurants/${data.restaurant}/tables/${data.table}/global`, {
+                orders: 0
+            });
+        firebase.remove(`restaurants/${data.restaurant}/tables/${data.table}/global`);
+
         const navigationEntry = {
             moduleName: "views/orders/orders-page",
             backstackVisible: false,
@@ -162,7 +167,6 @@ function splitItem(args) {
             }
         }
     });
-    // TODO restrict user from splitting to many times
     // Ask user in how many (n) parts to split
     dialogs.action({
         message: "Mit wie vielen Personen möchtest du dir diese Bestellung teilen?",

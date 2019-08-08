@@ -53,7 +53,6 @@ function onNavigatingTo(args) {
     // Updates data values in case of database event.
     var onChildEvent = function (result) {
         console.log("childEvent")
-        //TODO Bezahlen zurück zu myorders: keep values   
         if (data.empty != true) {
             viewModel.set("sum", `${0.00.toFixed(2)} EUR.`)
             viewModel.set("tipValue", calculateTip(sum, viewModel.get("currentValue")).toFixed(2))
@@ -97,7 +96,6 @@ function onNavigatingTo(args) {
 
 
         if (data.empty != true) {
-            // TODO test without the following three lines...should be working 
             data.percent = viewModel.get("sliderValue")
             data.tip = calculateTip(sum, viewModel.get("currentValue")).toFixed(2)
             data.value = calculateTotal(sum, parseFloat(calculateTip(sum, viewModel.get("currentValue")))).toFixed(2);
@@ -186,8 +184,6 @@ exports.onOrdersTap = onOrdersTap
 function onPayTap() {
     if (sum != 0 && data.empty == false) {
         const frame = getFrameById("topframe");
-        //TODO Load avgTip value at app initialisation
-        //TODO Set global order on secret button
         data.pointsGained = calculatePoints();
         frame.navigate("views/payment/payment-page");
     } else {
@@ -225,7 +221,6 @@ String.prototype.replaceAll = function (str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
 };
 
-// TODO reevaluate tip calcuation
 // Calculates the tip value based on the choosen slider value and the total order value.
 function calculateTip(orderValue, sliderValue) {
     return (orderValue * sliderValue) / 100

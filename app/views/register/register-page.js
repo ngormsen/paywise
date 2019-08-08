@@ -38,7 +38,6 @@ function register(){
   var password2 = page.getViewById("password2").text;
   //var accepted = page.getViewById("check");
 
-  // TODO: Check if password=password AND check box checked
   var mySwitch = page.getViewById("check");
   var checked = mySwitch.checked;
 

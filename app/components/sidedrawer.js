@@ -3,8 +3,6 @@ var firebase = require("nativescript-plugin-firebase");
 var data = require("../../app/views/shared/data.js");
 const Observable = require("tns-core-modules/data/observable").Observable;
 
-// TODO aufraeumen
-// TODO Fix side drawer button
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
@@ -109,7 +107,6 @@ exports.onPayTap = onPayTap
 function calculatePoints(avgTip, percent){
   let distance = percent - avgTip
   if ( distance < 5 && distance > 0){
-    // TODO toFixed returns String -> check if ok for all use cases
       return (10 * data.value * distance).toFixed()
   }
   else if(distance > 5){
