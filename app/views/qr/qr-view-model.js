@@ -124,13 +124,13 @@ var BarcodeModel = (function (_super) {
                     .catch(error => console.log("Error: " + error));
                 console.log("parse result", data.restaurant)
                 console.log(data.avgTip)
+                const frame = getFrameById("topframe");
+                frame.navigate("views/orders/orders-page");
                 dialogs_1.alert({
                     title: "Du hast dich erfolgreich angemeldet!",
                     message: "Restaurant: " + data.restaurant + ", Tisch: " + data.table, 
                     okButtonText: "OK"
                 });
-                    const frame = getFrameById("topframe");
-                    frame.navigate("views/orders/orders-page");
             }, 200);
         }, function (errorMessage) {
             console.log("No scan. " + errorMessage);
