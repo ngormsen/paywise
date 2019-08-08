@@ -1,0 +1,684 @@
+{
+  "restaurants" : {
+    "laContessa" : {
+      "avgtip" : {
+        "currentAvg" : 11.59
+      },
+      "paid" : {
+        "-LgWmolPwEMdUpa3IZ9E" : {
+          "date" : "06/04/2019",
+          "guest" : "nils.gormsen@googlemail.com",
+          "order" : [ {
+            "name" : "Essen",
+            "prize" : 12.22
+          }, {
+            "name" : "Fanta",
+            "prize" : 1.49
+          }, {
+            "name" : "Tee",
+            "prize" : 2.23
+          } ],
+          "sum" : 17.94,
+          "table" : 0,
+          "tip" : 0
+        },
+        "-LgXVMvG22tEai4Kuk-7" : {
+          "date" : "06/04/2019",
+          "guest" : "nils.gormsen@googlemail.com",
+          "order" : [ {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Tee",
+            "prize" : 2.23
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Tee",
+            "prize" : 2.23
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Tee",
+            "prize" : 2.23
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Tee",
+            "prize" : 2.23
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Wasser",
+            "prize" : 1.99
+          } ],
+          "sum" : 2.29,
+          "table" : 0,
+          "tip" : 0
+        },
+        "-LgXXEhTK9oPOswGhYn4" : {
+          "date" : "06/04/2019",
+          "guest" : "nils.gormsen@googlemail.com",
+          "order" : [ {
+            "name" : "Tee",
+            "prize" : 2.23
+          } ],
+          "sum" : 3.23,
+          "table" : 0,
+          "tip" : 0
+        },
+        "-LgXb1vgqFMNo6CW6xg4" : {
+          "date" : "06/04/2019",
+          "guest" : "nils.gormsen@googlemail.com",
+          "order" : [ {
+            "name" : "Sauerkraut",
+            "prize" : 3.49
+          }, {
+            "name" : "Fanta",
+            "prize" : 1.49
+          } ],
+          "sum" : 5.48,
+          "table" : 0,
+          "tip" : "0.50"
+        },
+        "-LihsVdrsXsHwmkgtym9" : {
+          "date" : "07/01/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Fanta",
+            "prize" : 3.39
+          }, {
+            "name" : "Wasser",
+            "prize" : 3.99
+          }, {
+            "name" : "Pizza [33%]",
+            "prize" : 2.74
+          }, {
+            "name" : "Fanta",
+            "prize" : 3.39
+          }, {
+            "name" : "Pizza [33%]",
+            "prize" : 2.74
+          } ],
+          "sum" : 6.3,
+          "table" : 0,
+          "tip" : "0.67"
+        },
+        "-LjbRgUxXD9ldf2JJfG5" : {
+          "date" : "07/12/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Pizza [3%]",
+            "prize" : 0.23
+          }, {
+            "name" : "Hamburger [20%]",
+            "prize" : 2.42
+          }, {
+            "name" : "Pizza [3%]",
+            "prize" : 0.23
+          }, {
+            "name" : "Hamburger [20%]",
+            "prize" : 2.42
+          } ],
+          "sum" : "2.92",
+          "table" : 0,
+          "tip" : "0.27"
+        },
+        "-LjbVma6-fTnw7H8xTTJ" : {
+          "date" : "07/12/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Pizza [7%]",
+            "prize" : 0.55
+          }, {
+            "name" : "Pizza [7%]",
+            "prize" : 0.55
+          }, {
+            "name" : "Pizza [7%]",
+            "prize" : 0.55
+          }, {
+            "name" : "Pizza [7%]",
+            "prize" : 0.55
+          } ],
+          "sum" : "0.66",
+          "table" : 0,
+          "tip" : "0.11"
+        },
+        "-LjfVKF8gh-GxIqXcfFG" : {
+          "date" : "07/13/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Sauerkraut mit was leckerem",
+            "prize" : 5.95
+          }, {
+            "name" : "Sauerkraut mit was leckerem",
+            "prize" : 5.95
+          } ],
+          "sum" : "1.54",
+          "table" : 0,
+          "tip" : "0.59"
+        },
+        "-LjkvrHhyqfOTSrMFTVG" : {
+          "date" : "07/14/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Wasser",
+            "prize" : 3.99
+          } ],
+          "sum" : "4.47",
+          "table" : 0,
+          "tip" : "0.48"
+        },
+        "-LjuTmMgYfYcXGmymAru" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          } ],
+          "sum" : "11.09",
+          "table" : 0,
+          "tip" : "1.10"
+        },
+        "-LjuV6Tsn3k08Q5sxD_9" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Kleiner Salat",
+            "prize" : 3.89
+          }, {
+            "name" : "Radler",
+            "prize" : 2.99
+          } ],
+          "sum" : "19.47",
+          "table" : 0,
+          "tip" : "2.09"
+        },
+        "-LjuWGUppPi4gkJYneoJ" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Apfelsaftschorle",
+            "prize" : 1.99
+          }, {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          } ],
+          "sum" : "7.25",
+          "table" : 0,
+          "tip" : "0.78"
+        },
+        "-LjuZmMal6-s0nb0ykZs" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Apfelsaftschorle",
+            "prize" : 1.99
+          }, {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "12.61",
+          "table" : 0,
+          "tip" : "2.11"
+        },
+        "-Lju_urNTHri8qGSoECT" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          }, {
+            "name" : "Bratwurst mit Sauerkraut",
+            "prize" : 8.99
+          }, {
+            "name" : "Pizza Diavolo",
+            "prize" : 7.89
+          } ],
+          "sum" : "21.02",
+          "table" : 0,
+          "tip" : "2.25"
+        },
+        "-Ljuc5FgiZUvH2vSjOqF" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Schokoladeneis",
+            "prize" : 4.99
+          }, {
+            "name" : "Kuchen",
+            "prize" : 4.99
+          } ],
+          "sum" : "11.08",
+          "table" : 0,
+          "tip" : "1.10"
+        },
+        "-LjucgHC3F9EmjYU3Sex" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Kleiner Salat",
+            "prize" : 3.89
+          }, {
+            "name" : "Radler",
+            "prize" : 2.99
+          } ],
+          "sum" : "11.19",
+          "table" : 0,
+          "tip" : "1.91"
+        },
+        "-Ljudqnh4TL7h-9FtpqL" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Apfelsaftschorle",
+            "prize" : 1.99
+          }, {
+            "name" : "Bratwurst mit Sauerkraut",
+            "prize" : 8.99
+          }, {
+            "name" : "Pizza Diavolo",
+            "prize" : 7.89
+          } ],
+          "sum" : "21.51",
+          "table" : 0,
+          "tip" : "2.64"
+        },
+        "-LjueorkNE1iySWZO-De" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "17.70",
+          "table" : 0,
+          "tip" : "1.61"
+        },
+        "-LjugCpEI99EhnDJbFu-" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          }, {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          }, {
+            "name" : "Kleiner Salat",
+            "prize" : 3.89
+          }, {
+            "name" : "Radler",
+            "prize" : 2.99
+          }, {
+            "name" : "Schokoladeneis",
+            "prize" : 4.99
+          }, {
+            "name" : "Kuchen",
+            "prize" : 4.99
+          } ],
+          "sum" : "32.19",
+          "table" : 0,
+          "tip" : "3.45"
+        },
+        "-LjuwpKltIkXmJERI2pi" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          }, {
+            "name" : "Bratwurst mit Sauerkraut",
+            "prize" : 8.99
+          }, {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          } ],
+          "sum" : "20.57",
+          "table" : 0,
+          "tip" : "2.30"
+        },
+        "-LjuxZVYqnVujizM0pqQ" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Bratwurst mit Sauerkraut",
+            "prize" : 8.99
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "18.53",
+          "table" : 0,
+          "tip" : "1.89"
+        },
+        "-LjuyBMp7f2DBUGjj7xb" : {
+          "date" : "07/16/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "20.73",
+          "table" : 0,
+          "tip" : "2.05"
+        },
+        "-LjuyLNWsn57-26IZnoE" : {
+          "date" : "07/16/2019",
+          "guest" : "michael@test.com",
+          "order" : [ {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "18.68",
+          "table" : 0,
+          "tip" : "0.00"
+        },
+        "-Ljv8_SqitecOv0IXCru" : {
+          "date" : "07/16/2019",
+          "guest" : "michael@test.com",
+          "order" : [ {
+            "name" : "Radler",
+            "prize" : 2.99
+          }, {
+            "name" : "Schokoladeneis [50%]",
+            "prize" : 2.5
+          } ],
+          "sum" : "6.20",
+          "table" : 0,
+          "tip" : "0.71"
+        },
+        "-Ll1zCBuN4Fd77p9sTja" : {
+          "date" : "07/30/2019",
+          "guest" : "nils.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Apfelsaftschorle",
+            "prize" : 1.99
+          }, {
+            "name" : "Bratwurst mit Sauerkraut",
+            "prize" : 8.99
+          }, {
+            "name" : "Pizza Diavolo",
+            "prize" : 7.89
+          } ],
+          "sum" : "26.26",
+          "table" : 0,
+          "tip" : "2.81"
+        },
+        "-Llm6Zjz3ngBypcIB-8Y" : {
+          "date" : "08/08/2019",
+          "guest" : "dieter@bohlen.de",
+          "order" : [ {
+            "name" : "Cola",
+            "prize" : 2.59
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          } ],
+          "sum" : "9.06",
+          "table" : 0,
+          "tip" : "0.98"
+        },
+        "-Llm6cp6r7bDkoE3VdjR" : {
+          "date" : "08/08/2019",
+          "guest" : "paul.gormsen@gmail.com",
+          "order" : [ {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          }, {
+            "name" : "Brathähnchen",
+            "prize" : 8.99
+          }, {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          }, {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Kleiner Salat",
+            "prize" : 3.89
+          }, {
+            "name" : "Radler",
+            "prize" : 2.99
+          } ],
+          "sum" : "41.69",
+          "table" : 0,
+          "tip" : "3.44"
+        }
+      },
+      "tables" : [ {
+        "global" : {
+          "orders" : [ {
+            "name" : "Wasser",
+            "prize" : 1.99
+          }, null, {
+            "name" : "Apfelsaftschorle",
+            "prize" : 1.99
+          }, {
+            "name" : "Orangensaft",
+            "prize" : 1.89
+          }, {
+            "name" : "Brathähnchen",
+            "prize" : 8.99
+          }, {
+            "name" : "Schnitzel mit Pommes",
+            "prize" : 9.99
+          }, {
+            "name" : "Pizza Diavolo",
+            "prize" : 7.89
+          }, {
+            "name" : "Pollo Piccante",
+            "prize" : 10.5
+          }, {
+            "name" : "Obstsalat",
+            "prize" : 5.59
+          }, {
+            "name" : "Kleiner Salat",
+            "prize" : 3.89
+          }, {
+            "name" : "Radler",
+            "prize" : 2.99
+          }, {
+            "name" : "Schokoladeneis",
+            "prize" : 4.99
+          }, {
+            "name" : "Kuchen",
+            "prize" : 4.99
+          } ]
+        },
+        "guests" : {
+          "michael@testcom" : {
+            "myorders" : [ null, {
+              "name" : "Cola",
+              "prize" : 2.59
+            } ]
+          }
+        }
+      } ],
+      "tips" : {
+        "-LjuTmNCG_qc_HUfLWAL" : {
+          "tip" : 11
+        },
+        "-LjuV6TvVZ5K1BACH_W-" : {
+          "tip" : 12
+        },
+        "-LjuWGVLWQEovzJJ-0au" : {
+          "tip" : 12
+        },
+        "-LjuZmMk_3OtZOGogrdu" : {
+          "tip" : 12
+        },
+        "-Lju_urWQHF_JHZhmJSd" : {
+          "tip" : 12
+        },
+        "-Ljuc5FrGxajFUz5oeTt" : {
+          "tip" : 11
+        },
+        "-LjucgHJhc4HGd-6nZSW" : {
+          "tip" : 11
+        },
+        "-Ljudqo8HpxMA_uTNAkO" : {
+          "tip" : 14
+        },
+        "-LjueortkaGf-M8Ef5jo" : {
+          "tip" : 10
+        },
+        "-LjugCpP1LvHi8MlyEAs" : {
+          "tip" : 12
+        },
+        "-LjuwpKtqd4ZlD6oPysM" : {
+          "tip" : 11
+        },
+        "-LjuxZVeULgo2PGggW3F" : {
+          "tip" : 11
+        },
+        "-LjuyBMsglxYgcuNyAAq" : {
+          "tip" : 11
+        },
+        "-LjuyLNYr3hbLrVwfcos" : {
+          "tip" : 12.589792251586914
+        },
+        "-Ljv8_SqitecOv0IXCrv" : {
+          "tip" : 12.950340270996094
+        },
+        "-Ll1zCCq34PDLkQfCjQD" : {
+          "tip" : 12
+        },
+        "-Llm6Zk-YSwhsiPrTfQY" : {
+          "tip" : 12.022684097290039
+        },
+        "-Llm6cpiS8MM5YcOFuSP" : {
+          "tip" : 9
+        }
+      }
+    }
+  },
+  "users" : {
+    "dieter@bohlende" : {
+      "email" : "dieter@bohlen.de",
+      "name" : "Dieter",
+      "points" : 281
+    },
+    "hans11@abcde" : {
+      "email" : "hans11@abc.de",
+      "name" : "Hans11",
+      "points" : 100
+    },
+    "lukas@testde" : {
+      "email" : "lukas@test.de",
+      "name" : "Lukas",
+      "points" : 100
+    },
+    "michael@testcom" : {
+      "email" : "michael@test.com",
+      "name" : "Michael",
+      "points" : 1628
+    },
+    "nilsgormsen@gmailcom" : {
+      "email" : "nils.gormsen@gmail.com",
+      "name" : "Nils",
+      "points" : 1315
+    },
+    "paulgormsen@gmailcom" : {
+      "email" : "paul.gormsen@gmail.com",
+      "name" : "Paul",
+      "points" : 575
+    },
+    "peter@gmxde" : {
+      "email" : "peter@gmx.de",
+      "name" : "Peter",
+      "points" : 100
+    }
+  }
+}
