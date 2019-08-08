@@ -22,9 +22,8 @@ The current configuration uses a sandbox account. For details check: https://dev
 To use real PayPal accounts change the file under `./app/www/paypal.html` according to: https://developer.paypal.com/docs/checkout/integrate/#8-go-live. 
 
 ## QR-Code
-<img src="app/images/qrLaContessa.png" width="200" alt="accessibility text">
-
-
+<img src="app/images/qrLaContessa.png" width="150" alt="accessibility text">
+You can use any software or website to create the QR-Code. E.g.: http://goqr.me/de/. The QR-Code is codified with a string of the following form: `restaurantname, tablenumber`. E.g.: `laContessa, 0`.
 ## Emulate the App
 To build the app localy on the selected target platform, navigate into the root directory of the repository and run 
 `tns run android`
