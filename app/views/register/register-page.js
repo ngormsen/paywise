@@ -61,7 +61,6 @@ function register(){
             alert("Es wurde erfolgreich ein Account angelegt. Du kannst dich nun mit E-Mail und Passwort einloggen.");
         }).catch(function (err) {
             // Registration not successful
-            console.log("createUser error: " + err);
             alert("Bei der Erstellung deines Accounts ist leider folgender Fehler aufgetreten: " + err);
         });
     } else {
