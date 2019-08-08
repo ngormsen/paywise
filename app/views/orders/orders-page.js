@@ -255,7 +255,7 @@ function onSetGlobalTap() {
                 "prize": 1.89
             },
             "4" : {
-              "name" : "Bratwurst mit Sauerkraut",
+              "name" : "Brathähnchen",
               "prize" : 8.99
             },
             "5" : {
