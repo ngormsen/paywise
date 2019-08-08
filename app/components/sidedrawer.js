@@ -8,7 +8,7 @@ const Observable = require("tns-core-modules/data/observable").Observable;
 String.prototype.replaceAll = function(str1, str2, ignore) {
     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
 };
-console.log(data.guest)
+
 // app/components/sidedrawer.js
 function onLoaded(args) {
     console.log("Custom Component Loaded");
@@ -36,7 +36,6 @@ function onLoaded(args) {
         }
       );
     
-    // console.log(data.name)
     // Navigates to orders page
     // you could also extend the custom component logic here e.g.:
 
@@ -97,7 +96,7 @@ function onPayTap() {
     const frame = getFrameById("topframe");
     if(data.empty == true || data.value == 0){
       alert('Bevor du bezahlen kannst, musst du Bestellungen vom Tisch auswählen und zu deinem persönlichen Warenkorb hinzufügen.');
-      console.log("empty")
+      // console.log("empty")
     }
     else{
       data.pointsGained = calculatePoints(data.avgTip, data.percent);
@@ -111,7 +110,6 @@ function calculatePoints(avgTip, percent){
   let distance = percent - avgTip
   if ( distance < 5 && distance > 0){
     // TODO toFixed returns String -> check if ok for all use cases
-      console.log((10 * data.value * distance).toFixed())
       return (10 * data.value * distance).toFixed()
   }
   else if(distance > 5){

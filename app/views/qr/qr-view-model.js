@@ -3,6 +3,7 @@ var dialogs_1 = require("ui/dialogs");
 var nativescript_barcodescanner_1 = require("nativescript-barcodescanner");
 var data = require("../shared/data.js");
 const getFrameById = require("tns-core-modules/ui/frame").getFrameById;
+var firebase = require("nativescript-plugin-firebase");
 
 var BarcodeModel = (function (_super) {
     __extends(BarcodeModel, _super);
@@ -92,6 +93,14 @@ var BarcodeModel = (function (_super) {
         });
     };
     ;
+
+   updateAvgtip = function(databaseAvg){
+        console.log("WTWFWFWTAWEFAOWEFJAWEIJFAWIEFJAWEJIF")
+        console.log(databaseAvg)
+        data.avgTip = databaseAvg;
+        console.log(data.avgTip)
+    };
+    
     BarcodeModel.prototype.scan = function (front, flip, torch, orientation) {
         console.log("scanning")
         this.barcodeScanner.scan({
@@ -110,6 +119,11 @@ var BarcodeModel = (function (_super) {
                 let text = (result.text).split(",");
                 data.restaurant = text[0];
                 data.table = parseInt(text[1]);
+                firebase.getValue(`/restaurants/laContessa/avgtip/currentAvg`)
+                    .then(result => updateAvgtip(parseFloat(JSON.stringify(result.value))))
+                    .catch(error => console.log("Error: " + error));
+                console.log("parse result", data.restaurant)
+                console.log(data.avgTip)
                 dialogs_1.alert({
                     title: "Du hast dich erfolgreich angemeldet!",
                     message: "Restaurant: " + data.restaurant + ", Tisch: " + data.table, 

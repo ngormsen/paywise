@@ -2,7 +2,7 @@
     xmlns:sd="nativescript-ui-sidedrawer" xmlns:comps="components" xmlns:lv="nativescript-ui-listview">
     <ActionBar title="Aktueller Warenkorb" class="actionbar">
         <NavigationButton visibility="hidden"></NavigationButton>
-        <NavigationButton icon="res://ic_menu" tap="toggleDrawer" />
+        <NavigationButton icon="res://ic_menu.png" tap="toggleDrawer" />
 
         <ActionItem tap="toggleDrawer" ios.systemIcon="4" ios.position="left" android.position="left"
             android.systemIcon="ic_menu_btn_add">
