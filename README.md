@@ -12,14 +12,18 @@ or use
 
 Additionally you need to setup an emulator for either android or iOS.
 
-## Firebase
+## Setup Firebase
 The application is connected to a Firebase backend and uses the authentication and realtime database modules. To setup your own database with the application, follow the instructions on: https://github.com/EddyVerbruggen/nativescript-plugin-firebase.
 
 Import the paywise-db-export.json file into a realtime database that is connected to the paywise application. 
 
-## PayPal
+## Setup PayPal
 The current configuration uses a sandbox account. For details check: https://developer.paypal.com/.
 To use real PayPal accounts change the file under `./app/www/paypal.html` according to: https://developer.paypal.com/docs/checkout/integrate/#8-go-live. 
+
+## QR-Code
+<img src="app/images/qrLaContessa.png" width="200" alt="accessibility text">
+
 
 ## Emulate the App
 To build the app localy on the selected target platform, navigate into the root directory of the repository and run 
