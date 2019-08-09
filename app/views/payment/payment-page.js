@@ -191,7 +191,7 @@ function calculateAverage(result){
     let totalValueOfTips = 0;
     for(var key in result.value){
         console.log(result.value[key].tip)
-        totalValueOfTips += result.value[key].tip
+        totalValueOfTips += parseFloat(result.value[key].tip)
         nrOfTips += 1
     }
     let avgTip = parseFloat((totalValueOfTips / nrOfTips).toFixed(2))
